@@ -1,0 +1,43 @@
+{
+  "name": "la-front-temp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@ledgerhq/hw-transport": "^6.3.0",
+    "@ledgerhq/hw-transport-webusb": "^6.3.0",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/svg": "^0.1.12",
+    "@project-serum/serum": "^0.13.57",
+    "@project-serum/sol-wallet-adapter": "^0.2.5",
+    "@solana/spl-token": "^0.1.8",
+    "@solana/wallet-base": "0.0.1",
+    "@solana/web3.js": "^1.24.1",
+    "ant-design-vue": "^1.7.8",
+    "bn.js": "^5.2.0",
+    "buffer-layout": "^1.2.2",
+    "coingecko-api": "^1.0.10",
+    "core-js": "^3.15.1",
+    "eventemitter3": "^4.0.7",
+    "gitbook-api": "^3.0.2",
+    "nuxt": "^2.15.7",
+    "nuxt-i18n": "^6.28.1",
+    "nuxt-property-decorator": "^2.9.1",
+    "nuxt-typed-vuex": "^0.2.0",
+    "sass": "^1.38.0",
+    "sass-loader": "^10.1.0",
+    "typed-vuex": "^0.2.0",
+    "v-mask": "^2.2.4",
+    "vuescroll": "^4.17.3",
+    "web3": "^1.5.2"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.7",
+    "@nuxt/typescript-build": "^2.1.0"
+  }
+}
