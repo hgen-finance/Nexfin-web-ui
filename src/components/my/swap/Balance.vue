@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 pt-4-S pt-0-XS">
+  <div class="w-100 p-4-S p-10-XS  mcolor-500 rad-fix-3 bs-sb-all pt-0-XS">
     <div
       class="w-100 fs-8-S fs-40-XS fw-600 f-white-200 pb-5-L pb-5-M pb-10-S pb-30-XS ta-c-XS fd-r"
     >
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="w-100-L w-100-M w-100-S w-100-XS">
-        <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 pb-3 fd-r">
+        <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r">
           <div class="w-20 fs-6-S fs-20-XS fw-600 f-mcolor-100 fd-r ai-c">
             GENS
           </div>
