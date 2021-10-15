@@ -21,7 +21,7 @@ export default {
   css: ["@/scss/base.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@plugins/web3.ts"],
+  plugins: ["@plugins/web3.ts", "@/plugins/notify.ts"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
