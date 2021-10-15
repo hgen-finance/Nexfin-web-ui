@@ -3,6 +3,9 @@
 
 @import "../modules/amberlib/variables.scss";
 
+//color
+$bg-color: #161421;
+
 html {
   font-family: "Inter", sans-serif;
 }
@@ -303,6 +306,10 @@ html {
   justify-content: space-between;
 }
 
+.jc-se {
+  justify-content: space-evenly;
+}
+
 .tr-all-ease {
   transition: all ease 0.2s;
 }
@@ -448,7 +455,7 @@ html {
     height: 32px;
     width: 32px;
     border-radius: 50%;
-    background: #161421;
+    background: $bg-color;
     cursor: pointer;
     & i {
       height: 20px;
@@ -460,4 +467,74 @@ html {
     width: 20px;
     height: 20px;
   }
+}
+
+// for swap
+.ant-tooltip-inner {
+  display: inline-block;
+  background: $bg-color;
+  min-width: 30px;
+  min-height: 32px;
+
+  p {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    // color: ;
+  }
+
+  .swap-info {
+    font-size: 12px;
+    line-height: 20px;
+    // color: ;
+
+    .info {
+      display: grid;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      gap: 10px;
+      grid-template-columns: minmax(auto, 1fr) auto auto;
+
+      .symbol {
+        opacity: 0.75;
+      }
+
+      .address {
+        padding: 2px 4px;
+        background: $bg-color;
+        border-radius: 4px;
+        opacity: 0.75;
+      }
+
+      .action {
+        font-size: 16px;
+
+        i {
+          cursor: pointer;
+
+          &:hover {
+            // color: ;
+          }
+        }
+
+        a {
+          //   color:;
+        }
+      }
+    }
+  }
+}
+
+// for the box shadow
+.bs-sb {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.br-sb {
+  border-radius: 15px;
+}
+
+.bs-sb-all {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
 }

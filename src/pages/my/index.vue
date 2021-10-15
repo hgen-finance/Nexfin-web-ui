@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100">
+  <div class="w-75-S w-100-XS">
     <div
       class="w-100 f-mcolor-300 fw-800 fs-15-S fs-30-XS ta-c pt-20-XS pb-1-S pb-3-XS"
     >
@@ -8,14 +8,12 @@
     <div class="w-100 f-white-200 fw-400 fs-6-S fs-20-XS ta-c pb-10-S pb-30-XS">
       Total Deposited Value (Total Value Locked)
     </div>
-    <div class="w-100 fd-r-S fd-c-XS ai-s">
-      <div
-        class="w-50-S w-100-XS br-6 gradient-200 rad-fix-8 p-6-S p-20-XS mr-8"
-      >
+    <div class="w-100 fd-r-S fd-c-XS ai-s jc-sb">
+      <div class="w-45-S w-100-XS br-6 gradient-200 rad-fix-8 p-6-S p-20-XS">
         <Borrowing />
       </div>
       <div
-        class="w-50-S w-100-XS gradient-200 rad-fix-8 p-6-S p-20-XS fsh-0 mt-40-XS"
+        class="w-45-S w-100-XS gradient-200 rad-fix-8 p-6-S p-20-XS fsh-0 mt-20-XS"
       >
         <Pool />
       </div>
@@ -31,7 +29,7 @@
         <Current />
       </div> -->
       <div
-        class="w-50-S w-100-XS gradient-200 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS  mt-5-S mt-20-XS"
+        class="w-45-S w-100-XS gradient-200 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS  mt-12-S mt-20-XS"
       >
         <Farming />
         <!-- <img src="@/static/my-farming.png" class="h-100 p-a r-0 t-0" /> -->

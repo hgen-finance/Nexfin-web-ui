@@ -3,11 +3,11 @@
     <div class="w-100 d-n-S d-b-XS">
       <Balance />
     </div>
-    <div class="w-100 fd-r-S fd-c-XS">
-      <div class="w-55-S w-100-XS pt-0-S pt-30-XS">
+    <div class="w-100 fd-r-S fd-c-XS jc-se">
+      <div class="w-35-S w-100-XS pt-0-S pt-30-XS">
         <Raydium @createRayFunc="createRayFunc" />
       </div>
-      <div class="w-45-S w-100-XS pl-8-S pl-0-XS pt-4-S pt-30-XS">
+      <div class="w-25-S w-100-XS pt-4-S pt-30-XS">
         <Info />
       </div>
     </div>

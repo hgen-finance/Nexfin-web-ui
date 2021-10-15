@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100">
+  <div class="w-75">
     <div class="w-100 fs-10 fw-600 f-white-200 pb-10 ta-c-XS">
       Liquidation
     </div>

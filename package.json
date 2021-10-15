@@ -23,6 +23,7 @@
     "buffer-layout": "^1.2.2",
     "coingecko-api": "^1.0.10",
     "core-js": "^3.15.1",
+    "enquire": "^0.0.2",
     "eventemitter3": "^4.0.7",
     "gitbook-api": "^3.0.2",
     "nuxt": "^2.15.7",
