@@ -10,7 +10,7 @@
         </div>
         <div class="w-95-L w-95-M w-95-S w-100-XS fd-r jc-c">
           <div
-            class="w-60-L w-70-M w-80-S w-100-XS px-0-S px-20-XS pt-8-S pt-50-XS fd-r jc-c"
+            class="w-100-L w-100-M w-100-S w-100-XS px-0-S px-20-XS pt-8-S pt-50-XS fd-r jc-c"
           >
             <Nuxt />
           </div>
