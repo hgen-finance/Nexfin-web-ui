@@ -9,11 +9,11 @@
       Total Deposited Value (Total Value Locked)
     </div>
     <div class="w-100 fd-r-S fd-c-XS ai-s jc-sb">
-      <div class="w-45-S w-100-XS br-6 gradient-200 rad-fix-8 p-6-S p-20-XS">
+      <div class="w-45-S w-100-XS br-6 gradient-600 rad-fix-8 p-6-S p-20-XS">
         <Borrowing />
       </div>
       <div
-        class="w-45-S w-100-XS gradient-200 rad-fix-8 p-6-S p-20-XS fsh-0 mt-20-XS"
+        class="w-45-S w-100-XS gradient-600 rad-fix-8 p-6-S p-20-XS fsh-0 mt-20-XS"
       >
         <Pool />
       </div>
@@ -29,7 +29,7 @@
         <Current />
       </div> -->
       <div
-        class="w-45-S w-100-XS gradient-200 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS  mt-12-S mt-20-XS"
+        class="w-45-S w-100-XS gradient-600 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS  mt-12-S mt-20-XS"
       >
         <Farming />
         <!-- <img src="@/static/my-farming.png" class="h-100 p-a r-0 t-0" /> -->

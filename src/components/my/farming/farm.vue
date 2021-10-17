@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 br-6 gradient-200 rad-fix-8 p-8-S p-20-XS bs-sb">
+  <div class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS bs-sb">
     <div class="w-100" :class="{ 'op-0': getLoading }">
       <div class="w-100 fd-r">
         <!-- <span class="fs-6 f-mcolor-100  ts-3 hv d-n-XS fsh-0">Close</span> -->
@@ -15,7 +15,7 @@
           >Close</span
         >
         <span
-          class="w-20 fs-6-S fs-25-XS f-mcolor-100  ts-3 hv fsh-0 ta-r-S"
+          class="w-20 fs-6-S fs-25-XS f-mcolor-100  ts-3 hv fsh-0 ta-r-S open-btn"
           @click="openList"
           v-if="!getToggleValue"
           >Open</span
@@ -126,7 +126,7 @@
               full
               v-if="getDepositKey"
             >
-              cancel
+              Reset
             </AmButton>
           </div>
           <div
