@@ -53,62 +53,52 @@
       >
         Your current Farmings
       </div>
-      <div class="w-100">
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+      <div class="w-100 rad-fix-4 mcolor-700 p-2-M p-5-S p-20-XS">
+        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Farming Date
           </div>
-          <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
-          >
+          <div class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c">
             <span class="f-white-200 pl-1-S pl-5-XS">{{ getNow }}</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Redemption Date
           </div>
-          <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
-          >
+          <div class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c">
             <span class="f-white-200 pl-1-S pl-5-XS">{{ getNow }}</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Deposited SOL
           </div>
-          <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
-          >
+          <div class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c">
             0 <span class="f-white-200 pl-1-S pl-5-XS">GENS</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Deposited HGEN
           </div>
-          <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
-          >
+          <div class="w-a fs-5-S fs-15-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c">
             0 <span class="f-white-200 pl-1-S pl-5-XS">HGEN</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Your Liquidity
           </div>
-          <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
-          >
+          <div class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c">
             (0<span class="f-white-200 pl-1-S pl-5-XS">%</span>)<span
               class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS pl-1-S pl-5-XS"
               >$</span
             >0
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Total Liquidity
           </div>
           <div
@@ -117,15 +107,15 @@
             <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>0
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-600 f-gray-500 fd-r ai-c">
-            Current Earnings (<span class="f-mcolor-100 fw-600">SOL</span>)
-          </div>
-          <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
-          >
-            <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>0
-          </div>
+      </div>
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-6-S fs-20-XS fw-600 f-gray-500 fd-r ai-c">
+          Current Earnings (<span class="f-mcolor-100 fw-600">SOL</span>)
+        </div>
+        <div
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+        >
+          <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>0
         </div>
       </div>
     </div>

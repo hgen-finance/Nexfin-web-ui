@@ -1,25 +1,25 @@
 <template>
-  <div class="w-100 br-6 gradient-200 rad-fix-8 p-8-S p-20-XS bs-sb">
+  <div class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS bs-sb">
     <div class="w-100" :class="{ 'op-0': getLoading }">
-      <div class="w-100 fd-r">
+      <div class="w-100 fd-r ai-c pb-4-S pb-10-XS jc-sb">
         <!-- <span class="fs-6 f-mcolor-100  ts-3 hv d-n-XS fsh-0">Close</span> -->
-        <div
-          class="w-80 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-10-XS ta-l-S ta-l-XS"
-        >
+        <div class="w-80 fs-8-S fs-25-XS fw-600 f-white-200  ta-l-S ta-l-XS">
           Farms
         </div>
         <span
-          class="w-20 fs-6-S fs-25-XS f-mcolor-100  ts-3 hv fsh-0 ta-r-S"
+          class=" fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S"
           @click="closeList"
           v-if="getToggleValue"
-          >Close</span
-        >
+          ><Tooltip placement="bottomRight"> <Icon type="caret-up" /> </Tooltip
+        ></span>
         <span
-          class="w-20 fs-6-S fs-25-XS f-mcolor-100  ts-3 hv fsh-0 ta-r-S"
+          class=" fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S "
           @click="openList"
           v-if="!getToggleValue"
-          >Open</span
-        >
+          ><Tooltip placement="bottomRight">
+            <Icon type="caret-down" />
+          </Tooltip>
+        </span>
       </div>
       <div class="w-100" v-if="getToggleValue">
         <div
@@ -126,7 +126,7 @@
               full
               v-if="getDepositKey"
             >
-              cancel
+              Reset
             </AmButton>
           </div>
           <div
@@ -153,10 +153,13 @@
 
 <script>
 import Loading from "@/components/Loading";
+import { Icon, Tooltip } from "ant-design-vue";
 
 export default {
   components: {
-    Loading
+    Loading,
+    Icon,
+    Tooltip
   },
   data() {
     return {
