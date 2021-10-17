@@ -15,7 +15,7 @@
           0 %
         </div>
         <div
-          class="w-100 fs-8-S fs-24-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-4-S pt-10-XS jc-l-S jc-c-XS"
+          class="w-100 fs-8-S fs-24-XS fw-600 f-white-200 pb-1-M pb-2-S pb-10-XS fd-r ai-c pt-2-S pt-10-XS jc-l-S jc-c-XS"
         >
           Collateral Ratio (CR)
           <Hint>
@@ -26,12 +26,12 @@
           </Hint>
         </div>
         <div
-          class="w-100 fs-6-S fs-20-XS fw-400 f-white-200 pb-4-S pb-10-XS fd-r ai-c pt-4-s pt-10-XS jc-l-S jc-c-XS"
+          class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 pb-4-S pb-10-XS fd-r ai-c pt-4-s pt-10-XS jc-l-S jc-c-XS"
         >
           Below <span class="f-mcolor-300"> 110% </span> will be liquidated.
         </div>
         <div
-          class=" w-100 fs-6-S fs-20-XS fw-400 f-white-200 pb-4-S pb-10-XS fd-r ai-c pt-4-s pt-10-XS jc-l-S jc-c-XS"
+          class=" w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c pt-4-s pt-10-XS jc-l-S jc-c-XS"
         >
           Liquidation Price
           <span class="px-1-S px-6-XS f-mcolor-100 fw-500">{{
@@ -140,13 +140,13 @@
         <div
           :class="{ 'w-100-S w-100-XS': getIsBorrow, 'w-100': !getIsBorrow }"
         >
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+          <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Fee
           </div>
           <div
-            class="w-100 fs-6-S fs-20-XS f-white-200 ta-l-S ta-c-XS fd-r pb-2-S pb-10-XS"
+            class="w-100 fs-6-S fs-20-XS f-white-200 ta-l-S ta-c-XS fd-r pt-1-S pt-5-XS pb-2-S pb-10-XS"
           >
-            <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+            <div class="w-100 fs-6-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
               <span class="fs-8-S fs-25-XS fw-800 f-mcolor-100">{{
                 getFee
               }}</span>
@@ -166,7 +166,7 @@
         You will receive GENS stable coin.
       </div> -->
         <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+          <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Total Borrow
           </div>
           <div
@@ -181,7 +181,7 @@
           </div>
         </div>
         <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+          <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Total Collateral Ratio
           </div>
           <div
@@ -190,8 +190,8 @@
             0<span class="f-white-200 pl-1-S pl-5-XS">%</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
-          <div class="w-100 fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c">
+        <div class="w-100 fd-r pt-2-S  pb-1-S pt-10-XS pb-5-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Total Liquidation Mode
           </div>
           <div
@@ -201,7 +201,7 @@
           </div>
         </div>
         <div
-          class="w-100 fs-4-L fs-4-M fs-6-S fs-20-XS fw-400 f-gray-500 fd-r ai-c"
+          class="w-100 fs-4-L fs-4-M fs-6-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
         >
           (Your liquidation price
           <span class="f-mcolor-100 pr-1-S pl-1-S pr-1-XS pl-5-XS">0 </span>
