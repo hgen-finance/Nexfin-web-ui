@@ -27,14 +27,14 @@
       class="w-100 p-4-S p-10-XS mcolor-500  rad-fix-3 bs-sb-all  mb-2-S mb-10-XS"
     >
       <div
-        class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-8-S pb-15-XS ta-l-S ta-c-XS"
+        class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-5-M pb-6-S pb-30-XS ta-l-S ta-c-XS"
       >
         Your current earnings
       </div>
       <div
         class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c jc-l-S jc-c-XS"
       >
-        1. Liquidation Incentive
+        Liquidation Incentive
         <Hint>
           You receive an incentive form borrower’s liquidation.
         </Hint>
@@ -47,7 +47,7 @@
       <div
         class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-4 jc-l-S jc-c-XS"
       >
-        2. Transaction Fee
+        Transaction Fee
         <Hint>
           You receive transaction fee of Borrowing and Repaying.
         </Hint>
@@ -60,7 +60,7 @@
       <div
         class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-4 jc-l-S jc-c-XS"
       >
-        3. Rewards
+        Rewards
         <Hint>
           ARP (Annual Percentage Rate) is just a simple interest that you will
           be receiving every year paid in the token of your choice. But the APR

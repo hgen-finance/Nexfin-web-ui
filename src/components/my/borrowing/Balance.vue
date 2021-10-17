@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 p-4-S p-10-XS  mcolor-500 rad-fix-3 bs-sb-all pt-0-XS">
     <div
-      class="w-100 fs-8-S fs-40-XS fw-600 f-white-200 pb-5-L pb-5-M pb-10-S pb-30-XS ta-c-XS fd-r"
+      class="w-100 fs-8-S fs-40-XS fw-600 f-white-200 pb-5-L pb-5-M pb-6-S pb-30-XS ta-c-XS fd-r"
     >
       <div
         class="w-70 fs-8-L fs-8-M fs-8-S fs-4-M fs-40-XS fw-600 f-white-200 fd-r ai-c"
