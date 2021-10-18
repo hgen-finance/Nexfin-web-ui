@@ -36,9 +36,9 @@
             Depost
           </AmButton>
           <AmButton
-            color="gray-800"
-            bColor="gray-800"
-            colorText="gray-500"
+            color="purple-800"
+            bColor="purple-800"
+            colorText="white-200"
             full
             disabled
             v-if="getWithdrawOrDeposit"
@@ -48,9 +48,9 @@
         </div>
         <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS">
           <AmButton
-            color="gray-800"
-            bColor="gray-800"
-            colorText="gray-500"
+            color="purple-800"
+            bColor="purple-800"
+            colorText="white-200"
             full
             disabled
             v-if="!getWithdrawOrDeposit"
