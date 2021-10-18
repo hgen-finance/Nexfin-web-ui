@@ -11,11 +11,11 @@
       v-if="withdrawOrDeposit"
     >
       <div class="w-100" v-if="getIsBorrow && withdrawOrDeposit">
-        <div class="w-100 f-mcolor-500 fs-12-S fs-30-XS fw-600 ta-l-S ta-c-XS">
+        <div class="w-100 f-mcolor-500 fs-13-S fs-30-XS fw-600 ta-l-S ta-c-XS">
           0 %
         </div>
         <div
-          class="w-100 fs-8-S fs-24-XS fw-600 f-white-200 pb-1-M pb-2-S pb-10-XS fd-r ai-c pt-2-S pt-10-XS jc-l-S jc-c-XS"
+          class="w-100 fs-7-M fs-6-S fs-24-XS fw-600 f-white-200 pb-1-M pb-2-S pb-10-XS fd-r ai-c pt-2-S pt-10-XS jc-l-S jc-c-XS"
         >
           Collateral Ratio (CR)
           <Hint>
@@ -46,7 +46,9 @@
       v-if="!withdrawOrDeposit"
     >
       <div class="w-100" v-if="!withdrawOrDeposit">
-        <div class="w-100 f-white-200 fs-8-S fs-25-XS fw-600 ta-l-S ta-c-XS">
+        <div
+          class="w-100 f-white-200 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 ta-l-S ta-c-XS"
+        >
           Amount Received
         </div>
         <div class="w-100 fd-r pt-4-S pt-10-XS fw-w">
@@ -70,7 +72,9 @@
       v-if="!withdrawOrDeposit"
     >
       <div class="w-100" v-if="getIsBorrow && !withdrawOrDeposit">
-        <div class="w-100 f-white-200 fs-8-S fs-25-XS fw-600 ta-l-S ta-c-XS">
+        <div
+          class="w-100 f-white-200 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 ta-l-S ta-c-XS"
+        >
           Remaining Amount
         </div>
         <div class="w-100 fd-r pt-4-S pt-10-XS fw-w">
@@ -88,14 +92,14 @@
           </div>
           <div class="w-30-S w-100-XS">
             <div
-              class="w-100 fs-8-S fs-25-XS f-green-600 fw-700 ta-l-S ta-c-XS pt-0-S pt-10-XS"
+              class="w-100 fs-12-S fs-25-XS f-green-600 fw-700 ta-l-S ta-c-XS pt-0-S pt-10-XS"
             >
               0 %
             </div>
             <div
-              class="w-100 fs-5-S fs-20-XS f-white-200 fw-400 pt-2-S pt-10-XS ta-l-S ta-c-XS"
+              class="w-100 fs-5-S fs-20-XS f-white-200 fw-600 pt-2-S pt-10-XS ta-l-S ta-c-XS"
             >
-              <br />CR Ratio
+              CR Ratio
             </div>
           </div>
         </div>
