@@ -31,18 +31,20 @@
       >
         Your current earnings
       </div>
-      <div
-        class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c jc-l-S jc-c-XS"
-      >
-        Liquidation Incentive
-        <Hint>
-          You receive an incentive form borrower’s liquidation.
-        </Hint>
-      </div>
-      <div
-        class="w-100 fs-6-S fs-20-XS f-white-200 fd-r ai-c fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
-      >
-        <span class="f-mcolor-300 pr-2">{{ getCoin }}</span> SOL
+      <div class="mcolor-700">
+        <div
+          class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c jc-l-S jc-c-XS"
+        >
+          Liquidation Incentive
+          <Hint>
+            You receive an incentive form borrower’s liquidation.
+          </Hint>
+        </div>
+        <div
+          class="w-100 fs-6-S fs-20-XS f-white-200 fd-r ai-c fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
+        >
+          <span class="f-mcolor-300 pr-2">{{ getCoin }}</span> SOL
+        </div>
       </div>
       <div
         class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-4 jc-l-S jc-c-XS"
