@@ -1,14 +1,22 @@
 <template>
-  <div id = "tokenomics" class="container">
+  <div class="container">
     <div class="w-100 fd-r jc-c ai-c fs-14-S fs-30-XS f-white-200 fw-600">
-      <img src="@/assets/svg/symbol-hgen.png" class="h-fix-20-S h-fix-20-S h-fix-35-XS mr-2-S mr-5-XS" />
+      <img
+        src="@/assets/svg/symbol-hgen.png"
+        class="h-fix-20-S h-fix-20-S h-fix-35-XS mr-2-S mr-5-XS"
+      />
       HGEN
     </div>
     <div class="w-100 fs-5-M fs-6-S fs-15-XS ta-c f-gray-500 pt-3-S pt-10-XS">
       Token of the Solana
     </div>
     <div class="w-100 fd-r-S fd-c-XS ai-c jc-c pt-6-S pt-15-XS px-0-S px-20-XS">
-      <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect class="mr-2-S mr-0-XS">
+      <AmButton
+        color="mcolor-100"
+        bColor="mcolor-100"
+        opacityEffect
+        class="mr-2-S mr-0-XS"
+      >
         <div class="w-100 ta-c pt-1 fs-6-S fs-18-XS fw-600">
           IDO
         </div>
@@ -16,7 +24,12 @@
           You can trade hgen
         </div>
       </AmButton>
-      <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect class="ml-2 ml-0-XS mt-0-S mt-10-XS">
+      <AmButton
+        color="mcolor-100"
+        bColor="mcolor-100"
+        opacityEffect
+        class="ml-2 ml-0-XS mt-0-S mt-10-XS"
+      >
         <div class="w-100 ta-c pt-1 fs-6-S fs-18-XS fw-600">
           GOVERNANCE
         </div>
@@ -25,7 +38,9 @@
         </div>
       </AmButton>
     </div>
-    <div class="w-100 ta-c fs-8-S fs-15-XS fw-600 f-white-200 pt-6-S pt-15-XS px-0-S px-20-XS">
+    <div
+      class="w-100 ta-c fs-8-S fs-15-XS fw-600 f-white-200 pt-6-S pt-15-XS px-0-S px-20-XS"
+    >
       HGEN token to invest in your family’s future
     </div>
   </div>
