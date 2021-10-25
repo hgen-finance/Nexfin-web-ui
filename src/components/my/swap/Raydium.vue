@@ -1,5 +1,7 @@
 <template>
-  <div class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS">
+  <div
+    class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
+  >
     <div
       class="
         w-100

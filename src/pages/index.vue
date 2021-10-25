@@ -4,6 +4,7 @@
       <Header @connect="setModalFunc" :publicKey="publicKey" />
       <Future />
       <DefiFeatures />
+      <Tax />
       <Hgen />
       <Statistic />
       <Gens />
@@ -44,6 +45,7 @@ import Gens from "@/components/HomeScreen/Gens";
 import Statistic from "@/components/HomeScreen/Statistic";
 import Roadmap from "@/components/HomeScreen/Roadmap";
 import Advisors from "@/components/HomeScreen/Advisors";
+import Tax from "@/components/HomeScreen/Tax";
 
 import ConnectWallet from "@/components/modals/ConnectWallet";
 import ConnectError from "@/components/modals/ConnectError";
@@ -53,6 +55,7 @@ export default {
     Header,
     Future,
     DefiFeatures,
+    Tax,
     Hgen,
     Gens,
     Statistic,
