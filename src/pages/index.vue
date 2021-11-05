@@ -1,9 +1,28 @@
 <template>
   <div class="w-100 fd-c ai-c py-6">
+    <Particles
+      id="tsparticles"
+      :options="{
+        fpsLimit: 60,
+        particles: {
+          color: {
+            value: '#8E24AA',
+          },
+          move: {
+            enable: true,
+          },
+          links: {
+            enable: true,
+            color: '#ba63ff',
+          },
+        },
+      }"
+    />
     <div class="w-75 fd-c ai-c py-6">
       <Header @connect="setModalFunc" :publicKey="publicKey" />
       <Future />
       <DefiFeatures />
+      <Tax />
       <Hgen />
       <Statistic />
       <Gens />
@@ -44,22 +63,31 @@ import Gens from "@/components/HomeScreen/Gens";
 import Statistic from "@/components/HomeScreen/Statistic";
 import Roadmap from "@/components/HomeScreen/Roadmap";
 import Advisors from "@/components/HomeScreen/Advisors";
+import Tax from "@/components/HomeScreen/Tax";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import ConnectWallet from "@/components/modals/ConnectWallet";
 import ConnectError from "@/components/modals/ConnectError";
+
+import Vue from "vue";
+import Particles from "particles.vue";
+
+Vue.use(Particles);
 
 export default {
   components: {
     Header,
     Future,
     DefiFeatures,
+    Tax,
     Hgen,
     Gens,
     Statistic,
     Roadmap,
     Advisors,
     ConnectWallet,
-    ConnectError
+    ConnectError,
   },
   computed: {
     modal() {
@@ -76,7 +104,7 @@ export default {
     },
     loaderConnect() {
       return this.$accessor.wallet.loaderConnect;
-    }
+    },
   },
   methods: {
     setModalFunc(value) {
@@ -88,10 +116,21 @@ export default {
     },
     connectWalletFunc(value) {
       this.$accessor.wallet.connectWallet(value);
-    }
+    },
   },
   mounted() {
     this.$accessor.getInfo();
-  }
+    AOS.init();
+  },
 };
 </script>
+<style lang="scss" scoped>
+#tsparticles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+</style>
