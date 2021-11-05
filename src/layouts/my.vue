@@ -5,12 +5,18 @@
     <!-- <div class="w-100 fd-r jc-c pt-0" v-if="publicKey && wallet"> -->
     <div class="w-100 fd-r jc-c pt-0" v-if="true">
       <div class="w-100-L w-100-M w-100-S w-100-XS fd-r jc-c">
-        <div class="w-15-L w-15-M w-15-S w-0-XS fsh-0 z-10 pt-5 ">
+        <div class="w-15-L w-15-M w-15-S w-0-XS fsh-0 z-10 pt-5">
           <Sidebar class="r-fix-s-15-M" />
         </div>
         <div class="w-95-L w-95-M w-95-S w-100-XS fd-r jc-c">
           <div
-            class="w-100-L w-100-M w-100-S w-100-XS px-0-S px-20-XS pt-8-S pt-50-XS fd-r jc-c"
+            class="
+              w-100-L w-100-M w-100-S w-100-XS
+              px-0-S px-20-XS
+              pt-8-S pt-50-XS
+              fd-r
+              jc-c
+            "
           >
             <Nuxt />
           </div>
@@ -55,7 +61,6 @@ import ConnectWallet from "@/components/modals/ConnectWallet";
 import ConnectError from "@/components/modals/ConnectError";
 
 import { AccountInfo } from "@solana/web3.js";
-
 export default {
   // change that later
   //   fetch() {
@@ -69,7 +74,7 @@ export default {
     Footer,
     Sidebar,
     ConnectWallet,
-    ConnectError
+    ConnectError,
   },
   computed: {
     publicKey() {
@@ -89,7 +94,7 @@ export default {
     },
     loaderConnect() {
       return this.$accessor.wallet.loaderConnect;
-    }
+    },
   },
   methods: {
     setModalFunc(value) {
@@ -104,13 +109,13 @@ export default {
     },
     logout() {
       this.$accessor.wallet.logout();
-    }
+    },
   },
   mounted() {
     this.$accessor.pool.getDeposit();
     this.$accessor.borrowing.getTrove();
     this.$accessor.wallet.getBalance();
     this.$accessor.getInfo();
-  }
+  },
 };
 </script>

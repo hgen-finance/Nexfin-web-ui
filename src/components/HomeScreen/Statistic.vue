@@ -1,6 +1,10 @@
 <template>
   <div class="container pt-20-S pt-40-XS fd-r-S fd-c-XS ovh px">
-    <div class="w-65-L w-65-M w-60-S w-100-XS pr-15-S pr-0-XS px-4-XS">
+    <div
+      class="w-65-L w-65-M w-60-S w-100-XS pr-15-S pr-0-XS px-4-XS"
+      data-aos="slide-right"
+      data-aos-anchor-placement="center-bottom"
+    >
       <div class="w-100">
         <div class="w-100" ref="round1">
           <ProgressCircle
@@ -66,9 +70,7 @@
           </div>
         </div>
         <div class="w-100 h-100 p-a l-0 t-0 fd-c ai-c jc-c">
-          <div class="fs-8-S fs-20-XS f-gray-500">
-            Total Supply
-          </div>
+          <div class="fs-8-S fs-20-XS f-gray-500">Total Supply</div>
           <div class="fs-7-S fs-15-XS f-gray-200 pt-2-S pt-10-XS fw-600">
             000,000,000 HGEN
           </div>
@@ -81,10 +83,27 @@
       </div>
     </div>
     <div
-      class="w-35-L w-35-M w-40-S w-100-XS pl-10-M pl-10-S pl-0-XS px-20-XS pt-0-M pt-8-S pt-30-XS"
+      class="
+        w-35-L w-35-M w-40-S w-100-XS
+        pl-10-M pl-10-S pl-0-XS
+        px-20-XS
+        pt-0-M pt-8-S pt-30-XS
+      "
+      data-aos="fade-in"
+      data-aos-ease="ease"
+      data-aos-anchor-placement="center-bottom"
     >
+      >
       <div
-        class="w-100 shadow-purple-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-mcolor-100"
+        class="
+          w-100
+          shadow-purple-200
+          rad-fix-6
+          p-3-S p-10-XS
+          br-6
+          brs-s
+          br-mcolor-100
+        "
         v-for="(item, i) in items"
         :key="i"
         :class="{ 'mt-3-S mt-10-XS': i > 0 }"
@@ -93,7 +112,14 @@
           {{ item.name }} {{ item.count }}%
         </div>
         <div
-          class="w-100 ta-c f-white-200 fw-600 fs-5-M fs-8-S fs-20-XS pt-2-S pt-5-XS"
+          class="
+            w-100
+            ta-c
+            f-white-200
+            fw-600
+            fs-5-M fs-8-S fs-20-XS
+            pt-2-S pt-5-XS
+          "
         >
           {{ item.value }} tokens
         </div>
@@ -107,7 +133,7 @@ import ProgressCircle from "@/components/ProgressCircle";
 
 export default {
   components: {
-    ProgressCircle
+    ProgressCircle,
   },
   data() {
     return {
@@ -118,10 +144,10 @@ export default {
         { name: "Partner & Adv", value: "100.000.000", count: 10 },
         { name: "Development", value: "50.000.000", count: 5 },
         { name: "Team", value: "50.000.000", count: 10 },
-        { name: "Reserve", value: "50.000.000", count: 5 }
+        { name: "Reserve", value: "50.000.000", count: 5 },
       ],
       radius: [],
-      stroke: 12
+      stroke: 12,
     };
   },
   methods: {
@@ -139,11 +165,11 @@ export default {
       this.radius.push(this.$refs.round3.clientWidth);
       this.radius.push(this.$refs.round4.clientWidth);
       this.radius.push(this.$refs.round5.clientWidth);
-    }
+    },
   },
   mounted() {
     this.resize();
     window.addEventListener("resize", this.resize);
-  }
+  },
 };
 </script>
