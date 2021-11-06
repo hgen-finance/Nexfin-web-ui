@@ -35,14 +35,14 @@ export default {
     Pay,
     Info,
     Notification,
-    UseFull
+    UseFull,
   },
   layout: "my",
   data() {
     return {
       to: null,
-      from: null
+      from: null,
     };
-  }
+  },
 };
 </script>
