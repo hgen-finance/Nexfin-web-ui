@@ -73,6 +73,7 @@ import ConnectError from "@/components/modals/ConnectError";
 import Vue from "vue";
 import Particles from "particles.vue";
 
+// must add it to run the particles
 Vue.use(Particles);
 
 export default {
@@ -131,6 +132,6 @@ export default {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 0;
+  z-index: 0; // 1 layer above the background
 }
 </style>
