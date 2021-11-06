@@ -188,7 +188,7 @@ export default {
         },
         {
           name: "Big Data (Hydrogen Focused Data)",
-          text: "Hydrogen cars registered on the platform will be connected to the HGEN network of data. Including hydrogen charging stations, hydrogen consumption usage, and the ability to pay using HGEN/GENS Tokens. i.e",
+          text: "Hydrogen cars registered on the platform will be connected to the HGEN network of data. Including hydrogen charging stations, hydrogen consumption usage, and the ability to pay using HGEN/GENS Tokens. e.g.",
           img: "roadMap3.png",
           items: [
             {
