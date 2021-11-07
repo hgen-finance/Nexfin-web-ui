@@ -17,11 +17,14 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
+  // for the custom loader
+  loading: "@/components/Loading.vue",
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/scss/base.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@plugins/web3.ts"],
+  plugins: ["@plugins/web3.ts", "@/plugins/notify.ts"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
