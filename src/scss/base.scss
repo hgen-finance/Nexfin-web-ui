@@ -650,6 +650,19 @@ html {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
 }
 
-// for buttons
-.open-btn {
+// font glow effect for headers
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #8e24aa,
+      0 0 40px #8e24aa, 0 0 50px #8e24aa, 0 0 60px #8e24aa, 0 0 70px #8e24aa;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+      0 0 50px #ba63ff, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+.glow {
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
 }
