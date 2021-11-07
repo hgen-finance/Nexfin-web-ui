@@ -13,8 +13,9 @@
             :stroke="stroke"
             colorFrom="8F00FF"
             colorTo="8F00FF"
-            text="Development, Team, Reserve"
+            text="Development, Reserve"
             tokens="50.000.000"
+            tokenpercent="5"
           />
         </div>
         <div class="w-100 p-a l-0 t-0 p-6-L p-6-M p-8-S p-12-XS">
@@ -25,8 +26,9 @@
               :stroke="stroke"
               colorFrom="A533FF"
               colorTo="A533FF"
-              text="Partner & Adv"
+              text="Partner & Adv, Team"
               tokens="100.000.000"
+              tokenpercent="10"
             />
           </div>
         </div>
@@ -40,6 +42,7 @@
               colorTo="BC66FF"
               text="Collateral"
               tokens="150.000.000"
+              tokenpercent="15"
             />
           </div>
         </div>
@@ -53,6 +56,7 @@
               colorTo="D299FF"
               text="Eco"
               tokens="250.000.000"
+              tokenpercent="25"
             />
           </div>
         </div>
@@ -66,19 +70,22 @@
               colorTo="E9CCFF"
               text="Sale"
               tokens="300.000.000"
+              tokenpercent="30"
             />
           </div>
         </div>
         <div class="w-100 h-100 p-a l-0 t-0 fd-c ai-c jc-c">
           <div class="fs-8-S fs-20-XS f-gray-500">Total Supply</div>
           <div class="fs-7-S fs-15-XS f-gray-200 pt-2-S pt-10-XS fw-600">
-            000,000,000 HGEN
+            1,000,000,000 $HGEN
           </div>
         </div>
       </div>
       <div class="w-100 fd-r jc-c pt-10-S pt-30-XS px-0-S px-20-XS">
         <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
-          Beginner’s Guide to DeFi
+          <div class="w-100 tt-n  fs-6-S fs-18-XS fw-600">
+            Beginner’s Guide to Token
+          </div>
         </AmButton>
       </div>
     </div>
@@ -133,7 +140,7 @@ import ProgressCircle from "@/components/ProgressCircle";
 
 export default {
   components: {
-    ProgressCircle,
+    ProgressCircle
   },
   data() {
     return {
@@ -142,12 +149,12 @@ export default {
         { name: "Eco", value: "250.000.000", count: 25 },
         { name: "Collateral", value: "150.000.000", count: 15 },
         { name: "Partner & Adv", value: "100.000.000", count: 10 },
-        { name: "Development", value: "50.000.000", count: 5 },
         { name: "Team", value: "50.000.000", count: 10 },
-        { name: "Reserve", value: "50.000.000", count: 5 },
+        { name: "Development", value: "50.000.000", count: 5 },
+        { name: "Reserve", value: "50.000.000", count: 5 }
       ],
       radius: [],
-      stroke: 12,
+      stroke: 12
     };
   },
   methods: {
@@ -165,11 +172,11 @@ export default {
       this.radius.push(this.$refs.round3.clientWidth);
       this.radius.push(this.$refs.round4.clientWidth);
       this.radius.push(this.$refs.round5.clientWidth);
-    },
+    }
   },
   mounted() {
     this.resize();
     window.addEventListener("resize", this.resize);
-  },
+  }
 };
 </script>

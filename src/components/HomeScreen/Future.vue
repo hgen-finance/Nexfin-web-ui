@@ -6,13 +6,33 @@
         fd-r-S fd-c-XS
         ai-c
         jc-l-S jc-c-XS
-        gradient-200
+        gradient-1000
         rad-fix-8
         px-14-S px-20-XS
         py-10-S py-20-XS
       "
     >
       <div class="w-50-S w-100-XS">
+        <div class="w-100-S">
+          <!-- <Particles
+            id="tsparticles"
+            :options="{
+              fpsLimit: 60,
+              particles: {
+                color: {
+                  value: '#8E24AA'
+                },
+                move: {
+                  enable: true
+                },
+                links: {
+                  enable: true,
+                  color: '#ba63ff'
+                }
+              }
+            }"
+          /> -->
+        </div>
         <div
           class="
             w-100
@@ -24,7 +44,7 @@
             pt-0-M pt-2-S pt-2-XS
           "
         >
-          FUTURE ENERGY
+          COMING Dec 2021
         </div>
         <div
           class="
@@ -38,10 +58,12 @@
             pb-15-XS
           "
         >
-          We have a strong integrated solution to bring our world to DeFi online
+          We are almost ready. Be one of the first to experience it by entering
+          presale.
+          <!-- We have a strong integrated solution to bring our world to DeFi online
           platform, greatly reduces risks and environmental pollution, and
           results in more reliable power through the utilization of existing
-          engineering art.
+          engineering art. -->
         </div>
         <div
           class="
@@ -53,7 +75,7 @@
           "
         >
           <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
-            Join Telegram
+            More info
           </AmButton>
           <AmButton
             class="ml-3-S ml-0-XS"
@@ -62,7 +84,7 @@
             colorText="mcolor-300"
             opacityEffect
           >
-            HGEN story on <span class="fw-800">Medium</span>
+            NEXFIN story on <span class="fw-800">Medium</span>
           </AmButton>
         </div>
       </div>
@@ -70,3 +92,13 @@
     </div>
   </div>
 </template>
+<style lang="scss" scoped>
+#tsparticles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0; // 1 layer above the background
+}
+</style>
