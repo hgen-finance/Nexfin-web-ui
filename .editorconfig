@@ -11,3 +11,4 @@ insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
+/Volumes/Data/Mywork/WEB/Giang/Solana Contract/test/.editorconfig

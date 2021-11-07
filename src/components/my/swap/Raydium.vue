@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
-  >
+  <div class="w-100 br-6 gradient-200 rad-fix-8 p-8-S p-20-XS">
     <div
       class="
         w-100
@@ -23,40 +21,6 @@
           />
         </Tooltip>
         <Tooltip placement="bottomRight">
-          <!-- <template slot="title">
-            <div
-              class="shadow-purple-100 p-2-S p-10-XS f-white-200 fs-5-S fs-20-XS mcolor-500 rad-fix-3 z-15"
-            >
-              <p>Program Addresses (DO NOT DEPOSIT)</p>
-              <div class="swap-info">
-                <div v-if="fromCoin || true" class="info">
-                  <div class="symbol">{{ currencyFrom.label }}</div>
-                  <div class="address">
-                    {{ currencyFrom.value.substr(0, 14) }}
-                    ...
-                    {{
-                      currencyFrom.value.substr(
-                        currencyFrom.value.length - 14,
-                        14
-                      )
-                    }}
-                  </div>
-                  <div class="action">
-                    <Icon
-                      type="copy"
-                      @click="$accessor.copy(currencyFrom.value)"
-                    />
-                    <a
-                      :href="`${url.explorer}/token/${currencyFrom.value}`"
-                      target="_blank"
-                    >
-                      <Icon type="link" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </template> -->
           <Icon type="info-circle" />
         </Tooltip>
         <Icon type="setting" />
@@ -80,7 +44,7 @@
       >
         From
       </div>
-      <div class="w-100 pb-3-S pb-0 fd-r">
+      <div class="w-100 pb-3-S pb-0">
         <input
           class="
             w-fix-s-10min
@@ -96,7 +60,7 @@
           maxlength="15"
           type="text"
         />
-        <div class="p-a-S p-r-XS r-0 b-0 w-fix-35-S w-35-XS">
+        <div class="p-a-S p-r-XS r-0 b-0 w-fix-35-S w-100-XS">
           <AmSelectbox
             v-bind:data.sync="currencyFrom"
             :update="true"
@@ -122,16 +86,11 @@
       "
     >
       <div
-        class="w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-3-S pt-10-XS fd-r jc-sb z-4"
+        class="w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-3-S pt-10-XS"
       >
-        <span>
-          To
-        </span>
-        <span>
-          Estimated
-        </span>
+        To (Estimate)
       </div>
-      <div class="w-100 pb-3-S pb-0 fd-r jc-sb ai-c">
+      <div class="w-100 pb-3-S pb-0">
         <div
           class="w-fix-s-10min fs-6-S fs-25-XS fw-600 br-0 oul-n"
           :class="{
@@ -141,7 +100,7 @@
         >
           {{ to }}
         </div>
-        <div class="p-a-S p-r-XS r-0 b-0 w-fix-35-S w-35-XS">
+        <div class="p-a-S p-r-XS r-0 b-0 w-fix-35-S w-100-XS">
           <AmSelectbox
             v-bind:data.sync="currencyTo"
             :update="true"
@@ -201,6 +160,26 @@
         "
       >
         1 <span class="f-white-200 pl-1">%</span>
+      </div>
+    </div>
+    <div class="w-100 fd-r py-1-S py-5-XS">
+      <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
+        Slippage Tolerance
+      </div>
+      <div
+        class="
+          w-a
+          fs-5-S fs-20-XS
+          fsh-0
+          fw-400
+          f-white-200
+          fd-r
+          ai-c
+          pt-2-XS
+          jc-c-XS
+        "
+      >
+        Serum DEX
       </div>
     </div>
     <div class="w-100 fd-r py-1-S py-5-XS">
@@ -266,8 +245,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 import Hint from "@/components/Hint";
 import { Icon, Tooltip, Button, Progress, Spin, Modal } from "ant-design-vue";
 
@@ -290,6 +267,7 @@ export default {
   },
   data() {
     return {
+      iconSize: 4,
       tokens: TOKENS,
       convertRay: CONVERT_RAY,
       convertSOL: CONVERT_SOL,
@@ -314,9 +292,6 @@ export default {
         colorTitle: "white-200"
       }
     };
-  },
-  computed: {
-    ...mapState(["wallet", "swap", "url"])
   },
   watch: {
     currencyFrom: {
@@ -355,13 +330,6 @@ export default {
     }
   },
   methods: {
-    setModalFunc(value) {
-      if (this.loaderConnect) {
-        this.$accessor.wallet.setLoaderConnect(false);
-      } else {
-        this.$accessor.setModal(value);
-      }
-    },
     convert() {
       if (this.currencyFrom.value === this.tokens[0].value) {
         this.to = CONVERT_RAY * Number(this.from);

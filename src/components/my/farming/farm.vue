@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
-  >
+  <div class="w-100 br-6 gradient-600 rad-fix-8 p-8-S p-20-XS bs-sb">
     <div class="w-100" :class="{ 'op-0': getLoading }">
       <div class="w-100 fd-r ai-c pb-4-S pb-10-XS jc-sb">
         <!-- <span class="fs-6 f-mcolor-100  ts-3 hv d-n-XS fsh-0">Close</span> -->
@@ -115,6 +113,7 @@
               type="text"
               class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
               placeholder="0"
+              v-model="day"
             />
             <!-- <span class="fs-6 f-mcolor-100 ts-3 hv d-n-XS fsh-0">Day</span> -->
           </div>
@@ -140,6 +139,7 @@
               opacityEffect
               full
               v-if="getDepositKey"
+              @click="setFarmingData()"
             >
               confirm
             </AmButton>
@@ -156,6 +156,8 @@
 <script>
 import Loading from "@/components/Loading";
 import { Icon, Tooltip } from "ant-design-vue";
+import Farming from "../../../utils/farming"
+const farming = new Farming()
 
 export default {
   components: {
@@ -167,8 +169,9 @@ export default {
     return {
       gen: "",
       hgen: "",
-      from: null,
-      to: null,
+      from: 100,
+      to: 100,
+      day: 100,
       open: true
     };
   },
@@ -197,6 +200,15 @@ export default {
     },
     getToggleValue() {
       return this.open;
+    },
+    getFrom() {
+      return this.from
+    },
+    getTo() {
+      return this.to
+    },
+    getDay() {
+      return this.day
     }
   },
   watch: {},
@@ -211,6 +223,11 @@ export default {
     },
     closeList() {
       this.open = false;
+    },
+    setFarmingData() {
+      // farming.buildFarmingAccount()
+      // farming.initializeAccount()
+      farming.setFarmingAccount(this.getFrom,this.getTo,this.getDay);
     }
   }
 };
