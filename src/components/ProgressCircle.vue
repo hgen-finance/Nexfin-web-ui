@@ -72,7 +72,7 @@
     <div
       class="w-100 p-a b-0 l-50 pl-6-S pl-10-XS pb-1-L pb-2-M pb-3-S pb-5-XS fs-5-S fs-10-XS f-gray-500"
     >
-      {{ text }} <span class="fw-600 f-white-200">{{ tokens }} tokens</span>
+      {{ text }} <span class="fw-600 f-white-200">{{ tokenpercent }} %</span>
     </div>
   </div>
 </template>
@@ -86,7 +86,8 @@ export default {
     colorFrom: { type: String, default: "ffffff" },
     colorTo: { type: String, default: "ffffff" },
     text: { type: String, default: null },
-    tokens: { type: String, default: null }
+    tokens: { type: String, default: null },
+    tokenpercent: { type: String, default: null }
   },
   data() {
     return {
