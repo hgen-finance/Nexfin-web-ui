@@ -666,3 +666,20 @@ html {
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
 }
+
+// for icons
+.lp-icons {
+  display: flex !important;
+  align-items: center;
+
+  .icons {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
