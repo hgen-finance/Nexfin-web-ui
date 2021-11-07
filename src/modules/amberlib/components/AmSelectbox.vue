@@ -20,7 +20,7 @@
         type="text"
         :value="getValue"
         :disabled="modelData.disabled"
-        class="w-50 h-fix-s-28min-S h-fix-s-100min-XS brs-s fs-5-S fs-20-XS ta-r"
+        class="w-100 h-fix-s-28min-S h-fix-s-100min-XS brs-s fs-5-S fs-20-XS ta-r"
         :class="[
           getInputClass,
           getFocusClass,

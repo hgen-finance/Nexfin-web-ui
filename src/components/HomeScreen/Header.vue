@@ -18,7 +18,7 @@
       $ {{ getTotal }}
     </div>
     <div class="w-100 f-gray-400 ta-c fs-6-S fs-15-XS fw-500">
-      Total Deposited Value at GENS
+      Total Deposited Value at $GENS
     </div>
     <div class="w-100 fd-r jc-c">
       <div class="w-100-L w-100-M w-50-S w-50-XS fd-r jc-c">
