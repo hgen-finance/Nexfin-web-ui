@@ -24,8 +24,8 @@
             SOL
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600  fd-r jc-r">
-            {{ getBalance > 0 ? getBalance : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            {{ this.$abc > 0 ? this.$abc : 0 }}
+            ($ {{ this.$abc > 0 ? getUsdBalance : 0 }})
           </div>
         </div>
       </div>
@@ -43,26 +43,68 @@
       <div class="w-100-L w-100-M w-100-S w-100-XS">
         <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 pb-3 fd-r">
           <div class="w-20 fs-6-S fs-20-XS fw-600 f-mcolor-100 fd-r ai-c">
-            GENS
+            GENS 
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
             {{ getBalanceGENS > 0 ? getBalanceGENS.toLocaleString() : 0 }}
             ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+
           </div>
+
+<div class="app"></div>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+     
+    var app = new Vue({
+      el: '#app',
+      data: {
+        myResult: 'aaavh'
+      },
+      methods:{
+        clickFunction: function () {   
+            this.myResult = this.myGlobalVar;
+        }
+      }
+    })
+  
 export default {
+  
+mounted(){
+const test = fetch("https://api.coingecko.com/api/v3/simple/price?ids=Solana&vs_currencies=usd")
+    .then(
+      function(response) {
+        if (response.status !== 200) {
+          console.log('Looks like there was a problem. Status Code: ' +
+            response.status);
+          return;
+        }
+  
+        // Examine the text in the response
+        response.json().then(function(data) {
+          // console.log('data: ',data.solana.usd);
+        var price = data.solana.usd;
+          Vue.prototype.$abc=price;
+          return data.solana.usd
+        });
+      }
+    )
+  },
   computed: {
     getUsd() {
       return this.$accessor.usd || 0;
     },
-    getBalance() {
-      return this.$accessor.wallet.balance || 0;
+     
+  async getBalance() {
+     // Make a transaction to get price
+      let price = ''; // await getPriceData(); //await getPrice();
+      console.log('Sol vue: ', price);
+    return  price
     },
     getBalanceHGEN() {
       return this.$accessor.wallet.balanceHGEN || 0;
@@ -71,25 +113,28 @@ export default {
       return this.$accessor.borrowing.trove?.borrowAmount || 0;
     },
     getUsdBalance() {
-      let result = 0;
-      if (this.getBalance) {
-        result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
-      }
-      return result.toString();
+      // let result = 0;
+      // if (this.getBalance) {
+      //   result = (Number(this.getBalance) * this.getUsd).toString().split(".");
+      //   result =
+      //     Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
+      // }
+      // return result.toString();
+      return 0 || '';
     },
     getHGENBalance() {
-      let result = 0;
-      if (this.getBalanceHGEN) {
-        result = (Number(this.getBalanceHGEN) * this.getUsd)
-          .toString()
-          .split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
-      }
-      return result.toString();
+      // let result = 0;
+      // if (this.getBalanceHGEN) {
+      //   result = (Number(this.getBalanceHGEN) * this.getUsd)
+      //     .toString()
+      //     .split(".");
+      //   result =
+      //     Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
+      // }
+      // return result.toString();
+      return ''
     }
+
   }
 };
 </script>
