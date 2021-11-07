@@ -17,6 +17,9 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
+  // for the custom loader
+  loading: "@/components/Loading.vue",
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/scss/base.scss"],
 

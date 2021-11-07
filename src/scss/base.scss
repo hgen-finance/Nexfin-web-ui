@@ -191,6 +191,102 @@ html {
   );
 }
 
+.gradient-2000 {
+  background: linear-gradient(
+    103.86deg,
+    rgba(209, 187, 255, 0.11) 1.36%,
+    rgba(201, 175, 255, 0) 99.58%
+  );
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1vw;
+    padding: 0.1rem;
+    background: linear-gradient(
+      99.43deg,
+      rgba(219, 0, 255, 0.43) 2.37%,
+      rgba(82, 0, 255, 0.16) 150.31%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(rgba(82, 0, 255, 0.5) 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+}
+
+.gradient-1000 {
+  background: linear-gradient(103.86deg, #1f1e40 1.36%, #181838 99.58%);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1vw;
+    padding: 0.1rem;
+    background: linear-gradient(
+      99.43deg,
+      rgba(219, 0, 255, 0.43) 2.37%,
+      rgba(82, 0, 255, 0.16) 150.31%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(rgba(82, 0, 255, 0.5) 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+}
+
+.gradient-1100 {
+  background: linear-gradient(103.86deg, #230952 1.36%, #2d0349 99.58%);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1vw;
+    padding: 0.1rem;
+    background: linear-gradient(
+      99.43deg,
+      rgba(219, 0, 255, 0.43) 2.37%,
+      rgba(82, 0, 255, 0.16) 150.31%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(rgba(82, 0, 255, 0.5) 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+}
+
+.gradient-1200 {
+  background: linear-gradient(90.57deg, #170e3b 0.49%, #150124 99.5%);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1vw;
+    padding: 0.1rem;
+    background: linear-gradient(
+      99.43deg,
+      rgba(219, 0, 255, 0.43) 2.37%,
+      rgba(82, 0, 255, 0.16) 150.31%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(rgba(82, 0, 255, 0.5) 0 0) border-box;
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+}
+
 .amSelectboxBlock {
   input {
     text-transform: uppercase;

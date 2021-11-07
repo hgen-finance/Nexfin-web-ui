@@ -33,18 +33,6 @@
         >
           Launch App
         </AmButton>
-        <AmButton
-          color="mcolor-100"
-          class="mt-3-L mt-3-M mt-8-S mt-8-XS"
-          opacityEffect
-          scaleEffect
-          :full="mobile"
-          to="/my"
-          @click="$emit('connect', 'connect')"
-          v-if="publicKey"
-        >
-          Launch App
-        </AmButton>
       </div>
     </div>
   </div>

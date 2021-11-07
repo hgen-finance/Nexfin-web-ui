@@ -1,7 +1,11 @@
 <template>
-  <div class="w-100 br-6 gradient-200 rad-fix-8 p-8-S p-20-XS">
-    <div class="w-100" :class="{'op-0': getLoading}">
-      <div class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-2-S pb-10-XS ta-c-XS">
+  <div
+    class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
+  >
+    <div class="w-100" :class="{ 'op-0': getLoading }">
+      <div
+        class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-2-S pb-10-XS ta-c-XS"
+      >
         Pool
       </div>
       <div class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS" v-if="getDepositKey">
