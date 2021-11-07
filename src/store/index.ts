@@ -4,6 +4,7 @@ import { OWNER_ACCOUNT_DATA_LAYOUT, DepositLayout } from '@/utils/layout';
 import { getAccessorType, mutationTree, actionTree, getterTree } from 'typed-vuex'
 
 // Import Modules
+import * as url from './url'
 import * as wallet from './wallet'
 import * as dashboard from './dashboard'
 import * as borrowing from './borrowing'
@@ -88,6 +89,22 @@ export const actions = actionTree(
         }
       })
     },
+    copy(_vuexContext, text: string) {
+        ;(this as any)._vm
+          .$copyText(text)
+          .then(() => {
+            this.$notify.success({
+              message: 'Copy success',
+              description: ''
+            })
+          })
+          .catch(() => {
+            this.$notify.error({
+              message: 'Copy failed',
+              description: ''
+            })
+          })
+      }
   }
 )
 
@@ -104,6 +121,7 @@ export const accessorType = getAccessorType({
     swap,
     pool,
     risky,
-    admin
+    admin,
+    url
   }
 })

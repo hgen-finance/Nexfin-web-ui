@@ -9,7 +9,7 @@ const publicKey = (property = "publicKey") => {
   return BufferLayout.blob(32, property);
 };
 
-export const EscrowProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
+export const EscrowProgramIdString = '5uqKRHcKyEJ4Pw4cRVus32a1wfEMGdHpgMa1FLqoQaN8'
 
 /**
  * Layout for a 64bit unsigned value
@@ -17,13 +17,6 @@ export const EscrowProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iG
 const uint64 = (property = "uint64") => {
   return BufferLayout.blob(8, property);
 };
-const dateArray = (property = "date") => {
-  return BufferLayout.seq(BufferLayout.u8(), 16, property)
-}
-
-const u8Array = (property = "data") => {
-  return BufferLayout.seq(BufferLayout.u8(), 64, property)
-}
 
 export const TROVE_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
   BufferLayout.u8("isInitialized"),
@@ -55,26 +48,6 @@ export const OWNER_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
   publicKey("owner"),
 ]);
 
-export const FARMING_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
-  BufferLayout.u8("isInitialized"),
-  dateArray("startDate"),
-  dateArray("endDate"),
-  uint64("depositedSol"),
-  uint64("depositedHgen"),
-  uint64("dayLength"),
-  uint64("dayLeft")
-])
-
-export const INSTRUCTION_LAYOUT = BufferLayout.struct([
-  BufferLayout.u8("instructionId"),
-  u8Array("data")
-])
-
-export interface InstructionLayout {
-  instructionId: number,
-  data : Uint8Array
-}
-
 export interface TroveLayout {
   isInitialized: number,
   isLiquidated: number,
@@ -96,16 +69,6 @@ export interface DepositLayout {
   bank: Uint8Array,
   governanceBank: Uint8Array,
   owner: Uint8Array
-}
-
-export interface FarmingLayout {
-  isInitialized: number,
-  startDate: Uint8Array,
-  endDate: Uint8Array,
-  depositedSol: Uint8Array,
-  depositedHgen: Uint8Array,
-  dayLength: Uint8Array,
-  dayLeft: Uint8Array
 }
 
 export const TOKEN_GENS = new PublicKey('JCnyD2wyimf5P3MBVAxB5yCVhotmswDhvrwXdS9xNbAq')
