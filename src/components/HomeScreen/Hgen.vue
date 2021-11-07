@@ -1,6 +1,35 @@
 <template>
   <div class="container">
-    <div
+    <div class="w-100 fd-r jc-c ai-c">
+      <div class="w-20 fd-c jc-c ">
+        <div class="w-100 fs-5-S fs-10-XS ta-c f-white-200 fw-600">
+          Governance & IDO Token
+        </div>
+        <div
+          class="w-100-S w-100-XS fd-r fs-12-S fs-25-XS f-white-200 fw-600 ai-c jc-c"
+        >
+          <img
+            src="@/assets/svg/symbol-hgen.png"
+            class="h-fix-20-S h-fix-20-S h-fix-35-XS mr-2-S mr-5-XS"
+          />
+          $HGEN
+        </div>
+      </div>
+      <div class="w-20-S w-100-XS">
+        <AmButton
+          color="mcolor-100"
+          bColor="mcolor-100"
+          opacityEffect
+          scaleEffect
+          class="ml-2 ml-0-XS mt-0-S mt-10-XS fw-600"
+        >
+          <div class="w-100 tt-n  fs-6-S fs-18-XS fw-600">
+            Buy $HGEN
+          </div>
+        </AmButton>
+      </div>
+    </div>
+    <!-- <div
       class="w-100 fd-r jc-c ai-c fs-14-S fs-30-XS f-white-200 fw-600"
       data-aos="zoom-in"
     >
@@ -45,8 +74,8 @@
           You can vote as a holder
         </div>
       </AmButton>
-    </div>
-    <div
+    </div> -->
+    <!-- <div
       class="
         w-100
         ta-c
@@ -62,7 +91,7 @@
       data-aos-delay="1000"
     >
       $HGEN token to invest in your family’s future
-    </div>
+    </div> -->
     <div
       class="
         w-100-L w-100-M w-100-S w-100-XS
