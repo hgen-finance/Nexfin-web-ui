@@ -4,6 +4,7 @@
       <Header @connect="setModalFunc" :publicKey="publicKey" />
       <Future />
       <DefiFeatures />
+      <Tax />
       <Hgen />
       <Statistic />
       <Gens />
@@ -44,15 +45,25 @@ import Gens from "@/components/HomeScreen/Gens";
 import Statistic from "@/components/HomeScreen/Statistic";
 import Roadmap from "@/components/HomeScreen/Roadmap";
 import Advisors from "@/components/HomeScreen/Advisors";
+import Tax from "@/components/HomeScreen/Tax";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import ConnectWallet from "@/components/modals/ConnectWallet";
 import ConnectError from "@/components/modals/ConnectError";
+
+import Vue from "vue";
+import Particles from "particles.vue";
+
+// must add it to run the particles
+Vue.use(Particles);
 
 export default {
   components: {
     Header,
     Future,
     DefiFeatures,
+    Tax,
     Hgen,
     Gens,
     Statistic,
@@ -92,6 +103,7 @@ export default {
   },
   mounted() {
     this.$accessor.getInfo();
+    AOS.init();
   }
 };
 </script>
