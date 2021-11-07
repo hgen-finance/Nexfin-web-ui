@@ -17,31 +17,34 @@
     >
       Token of the Solana
     </div>
-    <div class="w-100 fd-r-S fd-c-XS ai-c jc-c pt-6-S pt-15-XS px-0-S px-20-XS">
+    <div
+      class="w-100 fd-r-S fd-c-XS ai-c jc-c pt-6-S pt-15-XS px-0-S px-20-XS"
+      data-aos="zoom-in"
+    >
       <AmButton
         color="mcolor-100"
         bColor="mcolor-100"
         opacityEffect
+        scaleEffect
         class="mr-2-S mr-0-XS"
-        data-aos="zoom-in"
       >
-        <div class="w-100 ta-c pt-1 fs-6-S fs-18-XS fw-600">IDO</div>
+        <div class="w-100 ta-c pt-1 fs-7-S fs-18-XS fw-600">IDO</div>
         <div class="w-100 tt-n pt-2 pb-1 fs-5-S fs-15-XS">
           You can trade $HGEN
         </div>
       </AmButton>
-      <!-- <AmButton
+      <AmButton
         color="mcolor-100"
         bColor="mcolor-100"
         opacityEffect
+        scaleEffect
         class="ml-2 ml-0-XS mt-0-S mt-10-XS"
-        data-aos="zoom-in"
       >
-        <div class="w-100 ta-c pt-1 fs-6-S fs-18-XS fw-600">GOVERNANCE</div>
-        <div class="w-100 tt-n pt-2 pb-1 fs-5-S fs-15-XS">
+        <div class="w-a ta-c pt-1 fs-7-S fs-18-XS fw-600">GOVERNANCE</div>
+        <div class="w-a tt-n pt-2 pb-1 fs-5-S fs-15-XS">
           You can vote as a holder
         </div>
-      </AmButton> -->
+      </AmButton>
     </div>
     <div
       class="
