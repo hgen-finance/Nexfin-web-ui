@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-20-S pt-40-XS fd-r-S fd-c-XS ovh px">
     <div
-      class="w-65-L w-65-M w-60-S w-100-XS pr-15-S pr-0-XS px-4-XS"
+      class="w-60-L w-60-M w-60-S w-100-XS pr-15-S pr-0-XS px-4-XS"
       data-aos="slide-right"
       data-aos-anchor-placement="center-bottom"
     >
@@ -89,20 +89,31 @@
         </AmButton>
       </div>
     </div>
-    <div
-      class="
-        w-35-L w-35-M w-40-S w-100-XS
-        pl-10-M pl-10-S pl-0-XS
+    <div class="w-40-S w-100-XS fd-c-S fd-c-XS ai-c">
+      <span
+        class="fw-800  fs-13-S fs-30-XS f-white-200 mt-30-XS mb-3-S mb-10-XS"
+        data-aos="zoom-in"
+        data-aos-ease="ease"
+        ><i>Slippage</i></span
+      >
+      <div class="w-100 fd-r-S fd-c-XS jc-sb">
+        <div
+          class="
+        w-45-S w-100-XS
         px-20-XS
         pt-0-M pt-8-S pt-30-XS
       "
-      data-aos="fade-in"
-      data-aos-ease="ease"
-      data-aos-anchor-placement="center-bottom"
-    >
-      >
-      <div
-        class="
+          data-aos="fade-in"
+          data-aos-ease="ease"
+        >
+          <div class="fd-c ai-c f-white-200 mb-5-S mb-10-XS">
+            <span class="fs-10-S fs-30-XS fw-600 f-purple-500">
+              <i>{{ buyTax.value }} %</i>
+            </span>
+            <span class="fs-10-S fs-30-XS fw-600"><i>Buy Tax</i></span>
+          </div>
+          <div
+            class="
           w-100
           shadow-purple-200
           rad-fix-6
@@ -111,24 +122,52 @@
           brs-s
           br-mcolor-100
         "
-        v-for="(item, i) in items"
-        :key="i"
-        :class="{ 'mt-3-S mt-10-XS': i > 0 }"
-      >
-        <div class="w-100 ta-c f-mcolor-400 fw-600 fs-6-M fs-10-S fs-25-XS">
-          {{ item.name }} {{ item.count }}%
+            v-for="(item, i) in items"
+            :key="i"
+            :class="{ 'mt-3-S mt-10-XS': i > 0 }"
+          >
+            <div
+              class="w-100 ta-c f-mcolor-400 fw-600 fs-6-M fs-10-S fs-25-XS pt-5-S pb-5-S pt-10-XS pb-10-XS"
+            >
+              {{ item.name }} {{ item.count }}%
+            </div>
+          </div>
         </div>
         <div
           class="
-            w-100
-            ta-c
-            f-white-200
-            fw-600
-            fs-5-M fs-8-S fs-20-XS
-            pt-2-S pt-5-XS
-          "
+        w-45-S w-100-XS
+        px-20-XS
+        pt-0-M pt-8-S pt-30-XS
+      "
+          data-aos="fade-in"
+          data-aos-ease="ease"
         >
-          {{ item.value }} tokens
+          <div class="fd-c ai-c f-white-200 mb-5-S mb-10-XS">
+            <span class="fs-10-S fs-30-XS fw-600 f-purple-500">
+              <i>{{ sellTax.value }} %</i>
+            </span>
+            <span class="fs-10-S fs-30-XS fw-600"><i>Sell Tax</i></span>
+          </div>
+          <div
+            class="
+          w-100
+          shadow-purple-200
+          rad-fix-6
+          p-3-S p-10-XS
+          br-6
+          brs-s
+          br-mcolor-100
+        "
+            v-for="(item, i) in items2"
+            :key="i"
+            :class="{ 'mt-3-S mt-10-XS': i > 0 }"
+          >
+            <div
+              class="w-100 ta-c f-mcolor-400 fw-600 fs-6-M fs-10-S fs-25-XS pt-5-S pb-5-S pt-10-XS pb-10-XS"
+            >
+              {{ item.name }} {{ item.count }}%
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -144,14 +183,17 @@ export default {
   },
   data() {
     return {
+      sellTax: { value: 11 },
+      buyTax: { value: 9 },
       items: [
-        { name: "Sale", value: "300.000.000", count: 30 },
-        { name: "Eco", value: "250.000.000", count: 25 },
-        { name: "Collateral", value: "150.000.000", count: 15 },
-        { name: "Partner & Adv", value: "100.000.000", count: 10 },
-        { name: "Team", value: "50.000.000", count: 10 },
-        { name: "Development", value: "50.000.000", count: 5 },
-        { name: "Reserve", value: "50.000.000", count: 5 }
+        { name: "BuyBack", count: 3 },
+        { name: "Marketing", count: 3 },
+        { name: "Burn", count: 3 }
+      ],
+      items2: [
+        { name: "BuyBack", count: 3 },
+        { name: "Rewards", count: 5 },
+        { name: "Burn", count: 3 }
       ],
       radius: [],
       stroke: 12

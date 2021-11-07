@@ -74,7 +74,7 @@ export default {
     Footer,
     Sidebar,
     ConnectWallet,
-    ConnectError,
+    ConnectError
   },
   computed: {
     publicKey() {
@@ -94,7 +94,7 @@ export default {
     },
     loaderConnect() {
       return this.$accessor.wallet.loaderConnect;
-    },
+    }
   },
   methods: {
     setModalFunc(value) {
@@ -109,13 +109,13 @@ export default {
     },
     logout() {
       this.$accessor.wallet.logout();
-    },
+    }
   },
   mounted() {
     this.$accessor.pool.getDeposit();
     this.$accessor.borrowing.getTrove();
     this.$accessor.wallet.getBalance();
     this.$accessor.getInfo();
-  },
+  }
 };
 </script>

@@ -4,7 +4,7 @@
     <Menu @connect="setModalFunc" :publicKey="publicKey" @logout="logout" />
     <Nuxt />
     <Footer />
-    <AmModal
+    <!-- <AmModal
       :show="modal === 'connect'"
       :shadow="errorConnect ? 'shadow-red-100' : 'shadow-purple-300'"
       max="w-fix-250-S w-90-XS"
@@ -25,7 +25,7 @@
       @closed="setModalFunc"
     >
       <ConnectError />
-    </AmModal>
+    </AmModal> -->
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
     Menu,
     Footer,
     ConnectWallet,
-    ConnectError,
+    ConnectError
   },
   computed: {
     modal() {
@@ -57,7 +57,7 @@ export default {
     },
     loaderConnect() {
       return this.$accessor.wallet.loaderConnect;
-    },
+    }
   },
   methods: {
     setModalFunc(value) {
@@ -72,10 +72,10 @@ export default {
     },
     logout() {
       this.$accessor.wallet.logout();
-    },
+    }
   },
   mounted() {
     this.$accessor.getInfo();
-  },
+  }
 };
 </script>
