@@ -74,8 +74,8 @@ export default {
       let result = 0;
       if (this.getBalance) {
         result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
+        // result =
+        //   Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
       }
       return result.toString();
     },
@@ -85,8 +85,8 @@ export default {
         result = (Number(this.getBalanceHGEN) * this.getUsd)
           .toString()
           .split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
+        // result =
+        //   Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
       }
       return result.toString();
     }

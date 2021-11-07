@@ -1,6 +1,6 @@
 <template>
   <div class="w-100 h-100min fd-c jc-c">
-    <div class="w-100 fd-r jc-sb">
+    <div class="w-100 fd-r">
       <!-- <span class="fs-6 f-mcolor-100  ts-3 hv d-n-XS fsh-0">Close</span> -->
       <div
         class="w-80 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-10-XS ta-l-S ta-l-XS"
@@ -8,19 +8,17 @@
         Farms
       </div>
       <span
-        class="fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S"
+        class="w-20 fs-6-S fs-25-XS f-mcolor-100  ts-3 hv fsh-0 ta-r-S"
         @click="closeList"
         v-if="getToggleValue"
-        ><Tooltip placement="bottomRight"> <Icon type="caret-up" /> </Tooltip
-      ></span>
+        >Close</span
+      >
       <span
-        class=" fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S "
+        class="w-20 fs-6-S fs-25-XS f-mcolor-100  ts-3 hv fsh-0 ta-r-S"
         @click="openList"
         v-if="!getToggleValue"
-        ><Tooltip placement="bottomRight">
-          <Icon type="caret-down" />
-        </Tooltip>
-      </span>
+        >Open</span
+      >
     </div>
     <div class="w-100" v-if="getToggleValue">
       <div
@@ -29,7 +27,7 @@
         Your Current Farming
       </div>
       <div class="w-100">
-        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-M fs-5-S fs-20-XS fw-400 f-white-200">
             Farming Date
           </div>
@@ -39,7 +37,7 @@
             <span class="f-white-200 pl-1-S pl-5-XS">{{ getNow }}</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS">
           <div
             class="w-100 fs-5-M fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
           >
@@ -51,7 +49,7 @@
             <span class="f-white-200 pl-1-S pl-5-XS">{{ getNow }}</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS">
           <div
             class="w-100 fs-5-M fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
           >
@@ -63,7 +61,7 @@
             0 <span class="f-white-200 pl-1-S pl-5-XS">GENS</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS">
           <div
             class="w-100 fs-5-M fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
           >
@@ -75,7 +73,7 @@
             0 <span class="f-white-200 pl-1-S pl-5-XS">HGEN</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS">
           <div
             class="w-100 fs-5-M fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
           >
@@ -90,7 +88,7 @@
             >0
           </div>
         </div>
-        <div class="w-100 fd-r pt-1-M pt-2-S pt-10-XS">
+        <div class="w-100 fd-r pt-2-S pt-10-XS">
           <div
             class="w-100 fs-5-M fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
           >
@@ -182,7 +180,6 @@
 
 <script>
 import Hint from "@/components/Hint";
-import { Icon, Tooltip } from "ant-design-vue";
 
 export default {
   data() {
@@ -192,9 +189,7 @@ export default {
     };
   },
   components: {
-    Hint,
-    Icon,
-    Tooltip
+    Hint
   },
   computed: {
     getPercent() {

@@ -13,7 +13,7 @@
           <div
             class="w-a-S w-100-XS fsh-0 px-0-S px-20-XS mr-4 fd-r jc-c mb-5-XS"
           >
-            <nuxt-link to="/" @click.native="turnOffLogo">
+            <nuxt-link to="/">
               <img
                 src="@/assets/svg/company_logo.png"
                 class="h-fix-15-S h-fix-55-XS"
@@ -183,9 +183,6 @@ export default {
     turnOnLogo() {
       this.$accessor.dashboard.changeLogoVis(true);
       console.log(this.$accessor.dashboard.logo);
-    },
-    turnOffLogo() {
-      this.$accessor.dashboard.changeLogoVis(false);
     }
   },
   mounted() {
