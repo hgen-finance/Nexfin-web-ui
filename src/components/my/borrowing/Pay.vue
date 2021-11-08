@@ -29,17 +29,19 @@
       <div class="w-100 pt-6-S pb-15-XS fd-r-S fd-r-XS">
         <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
           <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
+            color="red-500"
+            bColor="red-500"
             full
+            opacityEffect
+            scaleEffect
             v-if="getIsBorrow && !getBorrowOrPay"
             @click="changeBorrowOrPayFunc"
           >
             Borrow
           </AmButton>
           <AmButton
-            color="purple-800"
-            bColor="purple-800"
+            color="red-500"
+            bColor="red-500"
             colorText="white-200"
             full
             disabled
@@ -50,8 +52,8 @@
         </div>
         <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS ">
           <AmButton
-            color="purple-800"
-            bColor="purple-800"
+            color="green-500"
+            bColor="green-500"
             colorText="white-200"
             full
             disabled
@@ -60,9 +62,11 @@
             Pay Debt
           </AmButton>
           <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
+            color="green-500"
+            bColor="green-500"
             full
+            opacityEffect
+            scaleEffect
             v-if="getIsBorrow && getBorrowOrPay"
             @click="changeBorrowOrPayFunc"
           >
