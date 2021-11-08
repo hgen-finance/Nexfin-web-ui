@@ -241,9 +241,9 @@ export default {
     return {
       gen: "",
       hgen: "",
-      from: 100,
-      to: 100,
-      day: 100,
+      from: null,
+      to: null,
+      day: null,
       open: true
     };
   },
@@ -297,9 +297,9 @@ export default {
       this.open = false;
     },
     setFarmingData() {
-      // farming.buildFarmingAccount()
-      // farming.initializeAccount()
-      farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
+      if (this.getFrom !== null && this.getTo !== null && this.getDay !== null) 
+        farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
+      else alert("Enter the values correctly")
     }
   }
 };
