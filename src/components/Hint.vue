@@ -1,7 +1,7 @@
 <template>
   <span class="hint f-white-200">
     <label
-      class="w-fix-s-12-S h-fix-s-12-S w-fix-s-42-XS h-fix-s-42-XS fd-r jc-c ai-c mcolor-100 rad-fix-2 fs-4-S fs-17-XS fw-400 ml-2-S ml-6-XS p-r"
+      class="w-fix-s-12-S h-fix-s-12-S w-fix-s-42-XS h-fix-s-42-XS fd-r jc-c ai-c mcolor-100 rad-fix-2 fs-6-S fs-17-XS fw-600 ml-2-S ml-6-XS p-r"
       >?</label
     >
     <span

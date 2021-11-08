@@ -1,12 +1,12 @@
 <template>
-  <div class="container pt-20-M pt-20-S pt-40-XS mb-10-S mb-20-XS">
+  <div class="container pt-20-M pt-20-S pt-40-XS mb-0-S mb-10-XS">
     <div
       class="w-100 tt-u fs-17-S fs-30-XS fw-800 f-white-200 ta-c glow"
       data-aos="zoom-in"
     >
       <i>Growth With Purpose</i>
     </div>
-    <div
+    <!-- <div
       class="
         w-100
         pt-6-M pt-4-S pt-15-XS
@@ -19,14 +19,10 @@
       data-aos-duration="500"
     >
       $HGEN DeFi Platform
-    </div>
-    <div class="w-100 fd-r jc-c pt-5-M pt-4-S pt-15-XS px-0-M px-3-S px-20-XS">
-      <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
-        Beginner’s Guide to DeFi
-      </AmButton>
-    </div>
+    </div> -->
+
     <div
-      class="w-100 pt-15-S pt-30-XS fd-r jc-c px-0-M px-20-S px-20-XS"
+      class="w-100  pt-30-XS fd-r jc-c px-0-M pt-5-S pb-0-S px-20-XS"
       data-aos="fade"
       data-aos-delay="500"
       data-aos-ease="ease"
@@ -35,13 +31,25 @@
       <div
         class="
           w-100-S w-100-XS
-          gradient-1000
           rad-fix-10
           fd-r-S fd-c-XS
           ai-s
           my-col-3
         "
       >
+        <div class="w-100 fd-c p-10-S p-20-XS jc-l">
+          <div class="w-100 f-white-200 mb-5-S mb-10-XS">
+            We have a strong integrated solution to bring our world to DeFi
+            online platform, greatly reduces risks and environmental pollution,
+            and results in more reliable power through the utilization of
+            existing hydrogen engineering art.
+          </div>
+          <div class="w-100-S w-100-XS">
+            <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
+              Beginner’s Guide to DeFi
+            </AmButton>
+          </div>
+        </div>
         <div
           class="w-100-M w-100-S w-100-XS p-8-M p-10-S p-20-XS"
           v-for="(item, i) in hydrogenItems"

@@ -8,19 +8,19 @@
     <div
       class="w-100 p-4-S p-10-XS mcolor-500  rad-fix-3 bs-sb-all  mb-2-S mb-10-XS"
     >
-      <div
-        class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-3-S pb-10-XS fd-r ai-c jc-l-S jc-c-XS"
-      >
-        Pool share
-        <Hint>
-          Percentage of your share on Safe Pool.
-        </Hint>
-      </div>
-      <div class="w-100 fs-6-S fs-20-XS f-white-200 ta-l-S ta-c-XS">
-        <span class="fs-8-S fs-25-XS fw-800 f-mcolor-100">{{
-          getPercent
-        }}</span>
-        <span class="fs-8-S fs-25-XS fw-600 px-1">%</span>
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
+          Pool share
+          <Hint>
+            Percentage of your share on Safe Pool.
+          </Hint>
+        </div>
+        <div
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+        >
+          {{ getPercent }}
+          <span class="f-white-200  pl-1-S  pr-5-XS">%</span>
+        </div>
       </div>
     </div>
     <div
@@ -31,36 +31,36 @@
       >
         Your current earnings
       </div>
-      <div class="">
-        <div
-          class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c jc-l-S jc-c-XS"
-        >
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
           Liquidation Incentive
           <Hint>
             You receive an incentive form borrower’s liquidation.
           </Hint>
         </div>
         <div
-          class="w-100 fs-6-S fs-20-XS f-white-200 fd-r ai-c fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ getCoin }}</span> SOL
+          <span class="f-mcolor-300 pr-2">{{ getCoin }}</span>
+          <span class="f-white-200  pl-1-S  pr-5-XS">SOL</span>
+        </div>
+      </div>
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
+          Transaction Fee
+          <Hint>
+            You receive transaction fee of Borrowing and Repaying.
+          </Hint>
+        </div>
+        <div
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+        >
+          <span class="f-mcolor-300 pr-2">{{ getGens }}</span>
+          <span class="f-white-200  pl-1-S  pr-5-XS">GENS</span>
         </div>
       </div>
       <div
-        class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-4 jc-l-S jc-c-XS"
-      >
-        Transaction Fee
-        <Hint>
-          You receive transaction fee of Borrowing and Repaying.
-        </Hint>
-      </div>
-      <div
-        class="w-100 fs-5-S fs-20-XS f-white-200 fd-r ai-c fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
-      >
-        <span class="f-mcolor-300 pr-2">{{ getGens }}</span> Gens
-      </div>
-      <div
-        class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-4 jc-l-S jc-c-XS"
+        class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-3 jc-l-S jc-c-XS"
       >
         Rewards
         <Hint>
@@ -70,29 +70,44 @@
           simply calculated to show how much you will be receiving at the term.
         </Hint>
       </div>
-      <div
-        class="w-100 fs-5-S fs-20-XS f-white-200 fd-r ai-b fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
-      >
-        <span class="f-mcolor-300 pr-2">{{ getHgen }}</span> HGEN
-        <span class="fs-5-S fs-20-XS pl-2"
-          >(<span class="f-mcolor-100">32.50%</span> APR)</span
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
+          <span class="fs-5-S fs-20-XS pl-2"
+            ><span class="f-mcolor-100">32.50%</span> APR</span
+          >
+        </div>
+        <div
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
+          <span class="f-mcolor-300 pr-2">{{ getHgen }}</span>
+          <span class="f-white-200  pl-1-S  pr-5-XS">HGEN</span>
+        </div>
       </div>
-      <div
-        class="w-100 fs-6-S fs-20-XS f-white-200 fd-r ai-b fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
-      >
-        <span class="f-mcolor-300 pr-2">{{ getHgen }}</span> HGEN
-        <span class="fs-5-S fs-20-XS pl-2"
-          >(<span class="f-mcolor-100">32.50%</span> Monthly)</span
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
+          <span class="fs-5-S fs-20-XS pl-2"
+            ><span class="f-mcolor-100">32.50%</span> Monthly</span
+          >
+        </div>
+        <div
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
+          <span class="f-mcolor-300 pr-2">{{ getHgen }}</span>
+          <span class="f-white-200  pl-1-S  pr-5-XS">HGEN</span>
+        </div>
       </div>
-      <div
-        class="w-100 fs-6-S fs-20-XS f-white-200 fd-r ai-b fd-600 py-1 pl-3-S pl-0 jc-l-S jc-c-XS pb-1-S pb-10-XS"
-      >
-        <span class="f-mcolor-300 pr-2">{{ getHgen }}</span> HGEN
-        <span class="fs-5-S fs-20-XS pl-2"
-          >(<span class="f-mcolor-100">1.50%</span> Daily)</span
+      <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
+          <span class="fs-5-S fs-20-XS pl-2"
+            >(<span class="f-mcolor-100">1.50%</span> Daily)</span
+          >
+        </div>
+        <div
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
+          <span class="f-mcolor-300 pr-2">{{ getHgen }}</span>
+          <span class="f-white-200  pl-1-S  pr-5-XS">HGEN</span>
+        </div>
       </div>
     </div>
   </div>
