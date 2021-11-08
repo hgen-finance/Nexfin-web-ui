@@ -92,7 +92,7 @@
     >
       $HGEN token to invest in your family’s future
     </div> -->
-    <div
+    <!-- <div
       class="
         w-100-L w-100-M w-100-S w-100-XS
         pl-10-M pl-10-S pl-0-XS
@@ -137,7 +137,7 @@
           {{ item.count }}%
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
