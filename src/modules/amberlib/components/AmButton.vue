@@ -3,7 +3,7 @@
   <div
     class="w-100-XS d-ib tt-u rad-fix-2 amButton br-4 brs-s"
     :class="[
-      { disabled: disabled, shadow: !disabled },
+      { disabled: disabled, 'shadow-purple-100': !disabled },
       color,
       `f-${colorText}`,
       `br-${bColor}`,
