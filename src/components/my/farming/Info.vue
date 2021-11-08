@@ -45,20 +45,20 @@
         <div
           class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ apr.toFixed(2) }}</span>
+          <span class="f-mcolor-300 pr-2">{{ apr.toFixed(3) }}</span>
           <span class="f-white-200  pl-1-S  pr-5-XS">HGEN</span>
         </div>
       </div>
       <div class="w-100 fd-r py-2-S py-10-XS">
         <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
           <span class="fs-5-S fs-20-XS pl-2"
-            ><span class="f-mcolor-100">32.50%</span> Monthly</span
+            ><span class="f-mcolor-100">8.50%</span> Monthly</span
           >
         </div>
         <div
           class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ monthly.toFixed(2) }}</span>
+          <span class="f-mcolor-300 pr-2">{{ monthly.toFixed(3) }}</span>
           <span class="f-white-200  pl-1-S  pr-5-XS">HGEN</span>
         </div>
       </div>
@@ -71,7 +71,7 @@
         <div
           class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ daily.toFixed(2) }}</span>
+          <span class="f-mcolor-300 pr-2">{{ daily.toFixed(3) }}</span>
           <span class="f-white-200  pl-1-S  pr-5-XS">HGEN</span>
         </div>
       </div>
@@ -131,11 +131,11 @@
           Your Liquidity
         </div>
         <div class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c">
-          ({{ yourPercent
-          }}<span class="f-white-200 pl-1-S pl-5-XS">%</span>)<span
+          ({{ yourPercent }}
+          <span class="f-white-200 pl-1-S pl-5-XS">%</span>)<span
             class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS pl-1-S pl-5-XS"
             >{{ yourAmount }}$</span
-          >0
+          >{{(yourAmount*244.22).toFixed(2)}}
         </div>
       </div>
       <div class="w-100 fd-r py-1-M py-2-S py-10-XS">
@@ -146,7 +146,7 @@
           class="w-a fs-4-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
           {{ totalAmount }}
-          <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>0
+          <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>{{(totalAmount*2000.34/20000.01).toFixed(3)}}
         </div>
       </div>
       <!-- </div> -->
@@ -168,7 +168,7 @@
           opacityEffect
           full
           v-if="true"
-          @click="() => {}"
+          @click="withdrawFarm()"
         >
           Withdraw
         </AmButton>
@@ -179,7 +179,7 @@
 
 <script>
 import Hint from "@/components/Hint";
-import Balance from "@/components/my/pool/Balance.vue";
+import Balance from "@/components/my/farming/Balance.vue";
 import Farming from "../../../utils/farming";
 const farming = new Farming();
 export default {
@@ -189,7 +189,7 @@ export default {
       endDate: "",
       depositedSol: 0,
       depositedHgen: 0,
-      totalAmount: 0,
+      totalAmount: 1389185,
       day: 0,
       dayLeft: 0,
       daily: 0,
@@ -227,7 +227,7 @@ export default {
         "-" +
         today.getDate();
       const time =
-        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        today.getHours() + ":" + today.getMinutes();
       const dateTime = date + " " + time;
       return dateTime;
     }
@@ -237,31 +237,30 @@ export default {
       // return this.$accessor.pool.rewardGensAmount;
       let scope = this;
       farming
-        .getTotalAmount()
-        .then(res => [(scope.totalAmount = res)])
+        .getFarmingAccount()
         .then(res => {
-          farming
-            .getFarmingAccount()
-            .then(res => {
-              console.log("res.depositedSol", res.depositedSol);
-              scope.depositedSol = res.depositedSol;
-              scope.depositedHgen = res.depositedHgen;
-              scope.endDate = res.endDate;
-              scope.day = res.dayLength;
-              scope.dayLeft = res.dayLeft;
-              scope.yourAmount = res.depositedSol;
-              scope.yourPercent = (res.depositedSol / scope.totalAmount) * 100;
-              let penalty = Math.pow(123 / 136, Math.log10(scope.depositedSol));
-              let advantage = Math.pow(1.075, scope.day / 30);
-              let outcome = penalty * advantage;
-              scope.daily = (outcome * 1.5) / 2;
-              scope.monthly = (outcome * 0.85) / 2;
-              scope.apr = (outcome * 32.5) / 2;
-              scope.currentEarn = scope.daily * (scope.day - scope.dayLeft);
-            })
-            .catch(err => console.log(err));
+          scope.depositedSol = res.depositedSol;
+          scope.depositedHgen = res.depositedHgen;
+          scope.endDate = res.endDate;
+          scope.day = res.dayLength;
+          scope.dayLeft = res.dayLeft;
+          scope.yourAmount = res.depositedSol;
+          scope.totalAmount = 1389185;
+          scope.yourPercent = ((res.depositedSol / scope.totalAmount) * 100).toFixed(10);
+          if (scope.day != 0){
+            let penalty = Math.pow(123 / 136, Math.log10(scope.depositedSol));
+            let advantage = Math.pow(1.075, scope.day / 30);
+            let outcome = penalty * advantage;
+            scope.daily = scope.depositedSol * outcome * 1.5 / 100 * scope.depositedHgen / 234;
+            scope.monthly = scope.depositedSol * outcome * 8.5 / 100 * scope.depositedHgen / 234;
+            scope.apr = scope.depositedSol * outcome * 32.5 / 100 * scope.depositedHgen / 234;
+            scope.currentEarn = scope.daily * (scope.day - scope.dayLeft);
+          }
         })
         .catch(err => console.log(err));
+    },
+    withdrawFarm() {
+      farming.withdrawFarm();
     }
   }
 };

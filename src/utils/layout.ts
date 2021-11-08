@@ -18,11 +18,11 @@ const uint64 = (property = "uint64") => {
   return BufferLayout.blob(8, property);
 };
 const dateArray = (property = "date") => {
-  return BufferLayout.seq(BufferLayout.u8(), 16, property)
+  return BufferLayout.seq(BufferLayout.u8(), 32, property)
 }
 
 const u8Array = (property = "data") => {
-  return BufferLayout.seq(BufferLayout.u8(), 64, property)
+  return BufferLayout.seq(BufferLayout.u8(), 96, property)
 }
 
 export const TROVE_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
