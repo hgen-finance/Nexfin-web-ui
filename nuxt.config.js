@@ -18,7 +18,8 @@ export default {
   },
 
   // for the custom loader
-  loading: "@/components/Loading.vue",
+  //   loadingIndicator: "@/components/loader.vue",
+  //   loading: "@/components/loader.vue",
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/scss/base.scss"],

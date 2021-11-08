@@ -7,7 +7,7 @@
       <div class="w-35-S w-100-XS pt-30-XS">
         <Safe @confirmFunc="confirmFunc" />
       </div>
-      <div class="w-25-S w-100-XS pt-4-S pt-30-XS">
+      <div class="w-25-S w-100-XS pt-30-XS">
         <Info />
       </div>
     </div>

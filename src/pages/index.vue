@@ -104,6 +104,10 @@ export default {
   mounted() {
     this.$accessor.getInfo();
     AOS.init();
+    this.$nextTick(() => {
+      window.$nuxt.$root.$loading.percent;
+      setTimeout(() => window.$nuxt.$root.$loading.finish(), 500);
+    });
   }
 };
 </script>

@@ -90,7 +90,7 @@
           class="fs-5-S fs-4-XS ts-3 pt-0-M pt-0-S pt-2-XS d-f-S d-n-XS"
           :class="{
             'f-mcolor-300 fw-600': getActive(item),
-            'f-white-200 fw-400': !getActive(item),
+            'f-white-200 fw-400': !getActive(item)
           }"
         >
           {{ item.name }}
@@ -129,12 +129,12 @@ export default {
     CoinsActiveSvg,
     DiggingSvg,
     DiggingActiveSvg,
-    ExitSvg,
+    ExitSvg
   },
   methods: {
     getActive(item) {
       return $nuxt.$route.name === item.class || false;
-    },
+    }
   },
   data() {
     return {
@@ -142,23 +142,23 @@ export default {
         { id: 1, name: "Dashboard", to: "/my", class: "my" },
         { id: 3, name: "Swap", to: "/my/swap", class: "my-swap" },
         { id: 2, name: "Borrow", to: "/my/borrowing", class: "my-borrowing" },
-        { id: 4, name: "Pool", to: "/my/pool", class: "my-pool" },
+        { id: 4, name: "Lend", to: "/my/pool", class: "my-pool" },
         { id: 6, name: "Farm", to: "/my/farming", class: "my-farming" },
         {
           id: 7,
           name: "PF Stake Pool",
           to: "/my/PFStakePool",
-          class: "my-projectfarm",
+          class: "my-projectfarm"
         },
         {
           id: 5,
           name: "Liquidation",
           to: "/my/liquidation",
-          class: "my-risky",
-        },
-      ],
+          class: "my-risky"
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 

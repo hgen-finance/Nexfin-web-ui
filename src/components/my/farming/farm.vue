@@ -12,14 +12,19 @@
           class="fs-6-S fs-25-XS f-white-200 ts-3 hv fsh-0 ta-r-S"
           @click="closeList"
           v-if="getToggleValue"
-          ><Tooltip placement="bottomRight"> <Icon type="caret-up" /> </Tooltip
-        ></span>
+        >
+          <Tooltip placement="bottomRight">
+            <!-- <Icon type="caret-up" /> -->
+            Close
+          </Tooltip>
+        </span>
         <span
           class="fs-6-S fs-25-XS f-white-200 ts-3 hv fsh-0 ta-r-S"
           @click="openList"
           v-if="!getToggleValue"
           ><Tooltip placement="bottomRight">
-            <Icon type="caret-down" />
+            <!-- <Icon type="caret-down" /> -->
+            Open
           </Tooltip>
         </span>
       </div>
@@ -230,7 +235,7 @@ export default {
   components: {
     Loading,
     Icon,
-    Tooltip,
+    Tooltip
   },
   data() {
     return {
@@ -239,7 +244,7 @@ export default {
       from: 100,
       to: 100,
       day: 100,
-      open: true,
+      open: true
     };
   },
   computed: {
@@ -276,7 +281,7 @@ export default {
     },
     getDay() {
       return this.day;
-    },
+    }
   },
   watch: {},
   methods: {
@@ -295,7 +300,7 @@ export default {
       // farming.buildFarmingAccount()
       // farming.initializeAccount()
       farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
-    },
-  },
+    }
+  }
 };
 </script>
