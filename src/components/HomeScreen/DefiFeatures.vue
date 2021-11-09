@@ -24,9 +24,7 @@
     <div
       class="w-100  pt-30-XS fd-r jc-c px-0-M pt-5-S pb-0-S px-20-XS"
       data-aos="fade"
-      data-aos-delay="500"
       data-aos-ease="ease"
-      data-aos-anchor-placement="center-bottom"
     >
       <div
         class="
@@ -37,7 +35,12 @@
           my-col-3
         "
       >
-        <div class="w-100 fd-c p-10-S p-20-XS jc-l">
+        <div
+          class="w-100 fd-c p-10-S p-20-XS jc-l"
+          data-aos="fade"
+          data-aos-ease="ease"
+          data-aos-delay="200"
+        >
           <div class="w-100 f-white-200 mb-5-S mb-10-XS">
             We have a strong integrated solution to bring our world to DeFi
             online platform, greatly reduces risks and environmental pollution,
@@ -52,6 +55,9 @@
         </div>
         <div
           class="w-100-M w-100-S w-100-XS p-8-M p-10-S p-20-XS"
+          data-aos="fade"
+          data-aos-ease="ease"
+          data-aos-delay="200"
           v-for="(item, i) in hydrogenItems"
           :key="i"
         >

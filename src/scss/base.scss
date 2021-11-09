@@ -657,12 +657,12 @@ html {
 // font glow effect for headers
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #8e24aa,
-      0 0 40px #8e24aa, 0 0 50px #8e24aa, 0 0 60px #8e24aa, 0 0 70px #8e24aa;
+    text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 12px #8e24aa, 0 0 16px #8e24aa,
+      0 0 20px #8e24aa, 0 0 24px #8e24aa, 0 0 28px #8e24aa;
   }
   to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
-      0 0 50px #ba63ff, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    text-shadow: 0 0 4px #fff, 0 0 8px #ff4da6, 0 0 12px #ff4da6,
+      0 0 16px #ba63ff, 0 0 20px #ff4da6, 0 0 24px #ff4da6, 0 0 28px #ff4da6;
   }
 }
 .glow {
