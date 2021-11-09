@@ -169,12 +169,12 @@
         </div>
         <div class="w-100 fd-r ai-c">
           <span class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
-            >SOL</span
+            >GENS</span
           >
           <input
             type="text"
             class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
-            placeholder="0.0000"
+            placeholder="0"
             v-model="repayTo"
             maxlength="12"
           />
