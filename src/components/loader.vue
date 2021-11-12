@@ -1,39 +1,15 @@
-<template>
-  <div v-if="loading" class="loading-page ">
-    <div class="outer-circle">
-      <div class="inner-circle">
-        <img src="@/assets/svg/company_logo.png" alt="nexfin Logomark" />
-      </div>
-    </div>
-    <p>Loading...</p>
-  </div>
-</template>
-
-<script>
-export default {
-  data: () => ({
-    loading: false
-  }),
-  methods: {
-    start() {
-      this.loading = true;
-    },
-    finish() {
-      this.loading = false;
-    }
-  }
-};
-</script>
-<style lang="scss" scoped>
+<style>
 .loading-page {
-  position: fixed;
-  top: 0;
+  display: flex;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background: rgba(255, 255, 255, 0.8);
   text-align: center;
-  font-size: 30px;
+  font-family: sans-serif;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
   font-family: sans-serif;
 }
 .outer-circle {
@@ -42,8 +18,8 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 100% !important;
-  box-shadow: inset -2px -2px 6px 0px var(--light-shadow),
-    inset 2px 2px 6px 0px var(--dark-shadow);
+  box-shadow: inset -2px -2px 6px 0px rgba(255, 255, 255, 0.8),
+    inset 2px 2px 6px 0px rgba(175, 186, 214, 0.8);
 }
 .button .outer-circle {
   width: 31px;
@@ -61,11 +37,11 @@ export default {
   width: 80%;
   height: 80%;
   border-radius: 100% !important;
-  background: var(--white);
-  box-shadow: -2px -2px 6px 0px var(--light-shadow),
-    2px 2px 6px 0px var(--dark-shadow),
-    inset 0px 0px 0px 0px var(--light-shadow),
-    inset 0px 0px 0px 0px var(--dark-shadow);
+  background: #e5ebf4;
+  box-shadow: -2px -2px 6px 0px rgba(255, 255, 255, 0.8),
+    2px 2px 6px 0px rgba(175, 186, 214, 0.8),
+    inset 0px 0px 0px 0px rgba(255, 255, 255, 0.8),
+    inset 0px 0px 0px 0px rgba(175, 186, 214, 0.8);
 }
 .inner-circle img {
   width: 100%;
@@ -91,10 +67,21 @@ export default {
     stroke-dashoffset: -124px;
   }
 }
-@media screen and (max-width: 1100px) {
-  .fullscreen {
-    width: 100% !important;
-    height: calc((var(--vh, 1vh) * 100)) !important;
-  }
-}
 </style>
+
+<script>
+window.addEventListener("error", function() {
+  var e = document.getElementById("nuxt-loading");
+  if (e) {
+    e.className += " error";
+  }
+});
+</script>
+
+<div class="loading-page ">
+    <div class="outer-circle">
+      <div class="inner-circle">
+        <img src="" alt="Nexfin"/>
+      </div>
+    </div>
+</div>

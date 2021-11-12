@@ -1,5 +1,23 @@
 <template>
   <div class="w-100 fd-c ai-c py-6">
+    <Particles
+      id="tsparticles"
+      :options="{
+        fpsLimit: 60,
+        particles: {
+          color: {
+            value: '#8E24AA'
+          },
+          move: {
+            enable: true
+          },
+          links: {
+            enable: true,
+            color: '#ba63ff'
+          }
+        }
+      }"
+    />
     <div class="w-75 fd-c ai-c py-6">
       <Header @connect="setModalFunc" :publicKey="publicKey" />
       <Future />
@@ -104,6 +122,10 @@ export default {
   mounted() {
     this.$accessor.getInfo();
     AOS.init();
+    this.$nextTick(() => {
+      window.$nuxt.$root.$loading.percent;
+      setTimeout(() => window.$nuxt.$root.$loading.finish(), 500);
+    });
   }
 };
 </script>

@@ -6,7 +6,7 @@
       <div
         class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-2-S pb-10-XS ta-c-XS"
       >
-        Pool
+        Lend
       </div>
       <div
         class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS"
@@ -15,22 +15,25 @@
         Your current pool share
       </div>
       <div
-        class="w-100 fs-6-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS mb-10-XS"
+        class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
         v-if="getDepositKey"
       >
-        <span class="fs-8-S fs-25-XS f-mcolor-100 fw-800 pr-1">{{
+        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{
           getDepositAmount.toLocaleString()
         }}</span>
-        GENS (<span class="fw-800 f-mcolor-100">{{
+        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">{{
           getPercent.toLocaleString()
         }}</span>
-        <span class="fw-600 px-1">%)</span>
+        <span class="fw-600 pr-1">% </span>CR)
       </div>
       <div class="w-100 pt-6-S pb-15-XS fd-r-S fd-r-XS">
         <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
           <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
+            shadow="shadow-green-100"
+            color="green-500"
+            bColor="green-500"
+            opacityEffect
+            scaleEffect
             full
             v-if="!getWithdrawOrDeposit"
             @click="changeWithdrawFunc"
@@ -38,8 +41,8 @@
             Depost
           </AmButton>
           <AmButton
-            color="purple-800"
-            bColor="purple-800"
+            color="green-500"
+            bColor="green-500"
             colorText="white-200"
             full
             disabled
@@ -50,8 +53,8 @@
         </div>
         <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS">
           <AmButton
-            color="purple-800"
-            bColor="purple-800"
+            color="red-500"
+            bColor="red-500"
             colorText="white-200"
             full
             disabled
@@ -60,9 +63,12 @@
             Withdraw
           </AmButton>
           <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
+            shadow="shadow-red-100"
+            color="red-500"
+            bColor="red-500"
             full
+            opacityEffect
+            scaleEffect
             v-if="getWithdrawOrDeposit"
             @click="changeWithdrawFunc"
           >
@@ -97,7 +103,7 @@
         v-if="getWithdrawOrDeposit && getDepositKey"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
-          Set amount you want to deposit
+          Set amount to deposit
         </div>
         <div class="w-100 fd-r ai-c">
           <span class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"

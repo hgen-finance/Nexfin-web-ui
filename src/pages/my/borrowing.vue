@@ -7,7 +7,7 @@
       <div class="w-35-S w-100-XS">
         <Pay @gens="to = $event" @sol="from = $event" />
       </div>
-      <div class="w-25-S w-100-XS pt-4-S pt-30-XS">
+      <div class="w-25-S w-100-XS pt-30-XS">
         <Info :to="Number(to)" :from="Number(from)" />
       </div>
     </div>
@@ -35,14 +35,14 @@ export default {
     Pay,
     Info,
     Notification,
-    UseFull,
+    UseFull
   },
   layout: "my",
   data() {
     return {
       to: null,
-      from: null,
+      from: null
     };
-  },
+  }
 };
 </script>

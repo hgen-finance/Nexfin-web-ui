@@ -24,8 +24,8 @@
             SOL
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600  fd-r jc-r">
-            {{ getBalance > 0 ? getBalance : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            {{ sol }}
+            ($ {{ usd }})
           </div>
         </div>
       </div>
@@ -35,8 +35,8 @@
             HGEN
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
-            {{ getBalanceHGEN > 0 ? getBalanceHGEN.toLocaleString() : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            {{ hgen }}
+            ($ {{ usd }})
           </div>
         </div>
       </div>
@@ -46,8 +46,8 @@
             GENS
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
-            {{ getBalanceGENS > 0 ? getBalanceGENS.toLocaleString() : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            {{ gens }}
+            ($ {{ usd }})
           </div>
         </div>
       </div>
@@ -56,7 +56,20 @@
 </template>
 
 <script>
+import Farming from "../../../utils/farming"
+const farming = new Farming()
 export default {
+  data() {
+    return {
+      sol : 0,
+      hgen : 0,
+      gens : 0,
+      usd: 0,
+    }
+  },
+  mounted(){
+    this.getMyBalance();
+  },
   computed: {
     getUsd() {
       return this.$accessor.usd || 0;
@@ -89,6 +102,17 @@ export default {
           Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
       }
       return result.toString();
+    }
+  },
+  methods: {
+    getMyBalance() {
+      let scope = this
+      farming.getMBalance().then(res => {
+        scope.sol = res.sol_balance.toFixed(2)
+        scope.usd = res.usd.toFixed(2)
+        scope.hgen = res.hgen.toFixed(2)
+        scope.gens = res.gens.toFixed(2)
+      })
     }
   }
 };
