@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 fd-r ai-c">
+  <div class="w-100 fd-r ai-c ">
     <div class=" fd-r ai-c my-2 mx-3 f-white-200">
       <img
         alt=""
@@ -17,7 +17,7 @@
       <div class="fs-4 fw-400 f-gray-600">
         Market Price
       </div>
-      <div class="fs-4 fw-600 f-white-200">{{ getPrice }}</div>
+      <div class="fs-4 fw-600 f-white-200">${{ getPrice }}</div>
     </div>
     <div class="fd-c my-2 mx-3">
       <div class="fs-4 fw-400 f-gray-600">
@@ -80,5 +80,8 @@ export default {
 <style>
 .my-green {
   color: #afd803;
+}
+.my-bg-mark {
+  background: #1c1c3d;
 }
 </style>
