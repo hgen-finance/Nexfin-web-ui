@@ -11,8 +11,8 @@
       b-a-S b-0-XS
       pl-10-M pl-5-S pl-0-XS
       fd-c-S fd-r-XS
-      mt-2
-      py-2-S
+      mt-2-XS
+      py-2-XS
     "
   >
     <span class="w-100 h-100 bg-r p-a l-0 t-0 d-n-S d-f-XS" />

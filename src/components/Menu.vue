@@ -1,6 +1,8 @@
 <template>
   <div class="w-100 fd-r jc-c">
-    <div class="w-100 w-100-XS h-a-S h-100-XS fd-r py-5 px-10 z-10 bs-menu">
+    <div
+      class="w-100 w-100-XS h-a-S h-100-XS fd-r py-3-S py-5-XS px-10 z-10 bs-menu"
+    >
       <span
         class="w-100 h-100 p-f t-0 gradient-400 d-n-S ts-3"
         :class="{ 'l-100': !open, 'l-0': open }"
