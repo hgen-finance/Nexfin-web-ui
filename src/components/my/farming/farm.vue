@@ -109,7 +109,11 @@
               v-model="from"
               maxlength="12"
             />
-            <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span>
+            <span
+              class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+              @click="setMax"
+              >Max</span
+            >
           </div>
         </div>
         <div
@@ -146,7 +150,11 @@
               placeholder="0"
               v-model="to"
             />
-            <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span>
+            <span
+              class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+              @click="setMax"
+              >Max</span
+            >
           </div>
         </div>
         <div
@@ -194,8 +202,9 @@
               opacityEffect
               full
               v-if="getDepositKey"
+              @click="reset"
             >
-              Reset
+              reset
             </AmButton>
           </div>
           <div
@@ -231,6 +240,15 @@ import { Icon, Tooltip } from "ant-design-vue";
 import Farming from "../../../utils/farming";
 const farming = new Farming();
 
+const TOKENS = [
+  { label: "HGEN", value: "123" }, // need to add the mint address of the hgen token
+  { label: "SOL", value: "So11111111111111111111111111111111111111112" }
+];
+
+// conversion fo the hgen and sol
+const CONVERT_HGEN = 200;
+const CONVERT_SOL = 0.02;
+
 export default {
   components: {
     Loading,
@@ -242,7 +260,25 @@ export default {
       gen: "",
       hgen: "",
       from: null,
-      to: null,
+      currencyFrom: {
+        theme: "default",
+        value: TOKENS[0].value,
+        items: TOKENS,
+        colorDefault: "mcolor-700",
+        colorFocus: "mcolor-700",
+        colorBackground: "mcolor-700",
+        colorTitle: "white-200"
+      },
+      to: "",
+      currencyTo: {
+        theme: "default",
+        value: TOKENS[1].value,
+        items: TOKENS,
+        colorDefault: "mcolor-700",
+        colorFocus: "mcolor-700",
+        colorBackground: "mcolor-700",
+        colorTitle: "white-200"
+      },
       day: null,
       open: true
     };
@@ -283,11 +319,25 @@ export default {
       return this.day;
     }
   },
-  watch: {},
+  watch: {
+    from(val) {
+      if (val) {
+        this.from = val.toString().replace(/[^+\d\.]/g, "");
+        if (this.from.split(".").length > 2)
+          this.from = this.from.replace(/\.(?=[^\.]*$)/, "");
+        if (this.from.substr(0, 2) === "00")
+          this.from = this.from.substr(1, this.from.length);
+        this.convertToHgen();
+      } else {
+        this.to = "";
+      }
+    }
+  },
   methods: {
     reset() {
-      this.from = null;
-      this.to = null;
+      this.from = "";
+      this.to = "";
+      this.day = "";
     },
     farmFunc() {},
     openList() {
@@ -297,9 +347,18 @@ export default {
       this.open = false;
     },
     setFarmingData() {
-      if (this.getFrom !== null && this.getTo !== null && this.getDay !== null) 
+      if (this.getFrom !== null && this.getTo !== null && this.getDay !== null)
         farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
-      else alert("Enter the values correctly")
+      else alert("Enter the values correctly");
+    },
+    convertToHgen() {
+      // converting to hgen when sol is entered
+      this.to = CONVERT_HGEN * Number(this.from);
+    },
+    setMax() {
+      this.from = this.$accessor.wallet.balance
+        ? this.$accessor.wallet.balance
+        : 0;
     }
   }
 };
