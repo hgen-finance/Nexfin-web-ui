@@ -13,6 +13,7 @@ import * as pool from './pool'
 import * as risky from './risky'
 import * as admin from './admin'
 
+import Vue from 'vue';
 // State
 export const state = () => ({
   modal: '',

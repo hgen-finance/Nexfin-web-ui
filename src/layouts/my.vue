@@ -3,9 +3,11 @@
     <div class="w-100 h-100min p-f l-0 t-0 ovh-y-a bg-r" />
     <Menu @connect="setModalFunc" :publicKey="publicKey" @logout="logout" />
     <!-- <div class="w-100 fd-r jc-c pt-0" v-if="publicKey && wallet"> -->
+
+    <MarketDetails />
     <div class="w-100 fd-r jc-c pt-0" v-if="true">
       <div class="w-100-L w-100-M w-100-S w-100-XS fd-r jc-c">
-        <div class="w-15-L w-15-M w-15-S w-0-XS fsh-0 z-10 pt-5">
+        <div class="w-15-L w-15-M w-15-S w-0-XS fsh-0 z-10 pt-0-S pt-5-XS">
           <Sidebar class="r-fix-s-15-M" />
         </div>
         <div class="w-95-L w-95-M w-95-S w-100-XS fd-r jc-c">
@@ -13,7 +15,7 @@
             class="
               w-100-L w-100-M w-100-S w-100-XS
               px-0-S px-20-XS
-              pt-8-S pt-50-XS
+              pt-0-S pt-50-XS
               fd-r
               jc-c
             "
@@ -56,11 +58,13 @@ import Balance from "@/components/my/Balance.vue";
 import Menu from "@/components/Menu";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
+import MarketDetails from "@/components/marketdetails.vue";
 
 import ConnectWallet from "@/components/modals/ConnectWallet";
 import ConnectError from "@/components/modals/ConnectError";
 
 import { AccountInfo } from "@solana/web3.js";
+import Marketdetails from "@/components/marketdetails.vue";
 export default {
   // change that later
   //   fetch() {
@@ -74,7 +78,8 @@ export default {
     Footer,
     Sidebar,
     ConnectWallet,
-    ConnectError
+    ConnectError,
+    MarketDetails
   },
   computed: {
     publicKey() {

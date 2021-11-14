@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100-S w-100-XS fd-r">
+  <div class="w-100 fd-r">
     <!-- <div
       class="w-100 f-mcolor-300 fw-800 fs-15-S fs-30-XS ta-c pt-20-XS pb-1-S pb-3-XS"
     >
