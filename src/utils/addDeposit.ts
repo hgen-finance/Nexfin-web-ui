@@ -52,7 +52,6 @@ export const addDepositUtil = async (
 
     const tx = new Transaction().add(depositIx);
 
-    // добавляем данне для возможност формирования подписи
     let {blockhash} = await connection.getRecentBlockhash();
     tx.recentBlockhash = blockhash;
     tx.feePayer = wallet.publicKey;

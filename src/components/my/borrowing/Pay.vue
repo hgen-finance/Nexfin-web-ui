@@ -234,7 +234,9 @@ export default {
       to: null,
       repayTo: null,
       mint: "",
-      borrow: 0
+      borrow: 0,
+      depositAmount: 0,
+      debtAmout: 0
     };
   },
   computed: {
@@ -263,6 +265,9 @@ export default {
     },
     getBorrowOrPay() {
       return this.$accessor.borrowing.borrowOrPay;
+    },
+    getPrice() {
+      return this.$store.state.usd;
     }
   },
   watch: {
@@ -276,7 +281,7 @@ export default {
         Math.round(Number(this.from) * this.getUsd) / 2.5
       ).toString();
       this.$emit("sol", this.from);
-      this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
+      //this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
     },
     to(val) {
       if (val) {

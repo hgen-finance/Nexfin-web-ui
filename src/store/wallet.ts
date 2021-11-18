@@ -55,8 +55,7 @@ export const actions = actionTree(
     // Connection
     async connectWallet ({ commit }, wallet: WalletInfo) {
       commit('setLoaderConnect', true)
-
-      // I have set it for devnet, need to change for main-net later
+        // I have set it for devnet, need to change for main net
       const adapter = await wallet.getAdapter({ providerUrl: wallet.url, endpoint: 'https://api.devnet.solana.com' })
       if (!adapter || !this.$web3) {
         this.app.$accessor.setModal('connectError')
