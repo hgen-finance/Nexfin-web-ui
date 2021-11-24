@@ -24,8 +24,8 @@
             SOL
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600  fd-r jc-r">
-            {{ 1 > 0 ? getBalance : 0 }}
-            <!-- ($ {{ getBalance > 0 ? getUsdBalance : 0 }}) -->
+            {{ getBalance > 0 ? getBalance : 0 }}
+            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
           </div>
         </div>
       </div>

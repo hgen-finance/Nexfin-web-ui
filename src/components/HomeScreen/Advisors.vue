@@ -58,10 +58,10 @@ export default {
           name: "Dr. Jong H. Baik",
           position: "Chief of the  Advisory Board",
           text: [
-            "A World Class Engineer  with 30 years of hydrogen liquefaction and storage expertise with mostly  NASA in the US  and S. Korea agencies such as KIST.",
-            "The founder of MetaVista USA providing total liquid hydrogen energy solution various applications.",
-            "Contribution to the IRAS thermal management technology for the world largest liquid hydrogen storage tank (1.25 million gallons) at NASA Kennedy Space Center.",
-            "Technical partner of NASA’s Moon to Mars exploration approach to develop a LOX/LH2 propellant system.",
+            "A World Class Engineer  with 30 years of hydrogen liquefaction and storage expertise with mostly  NASA in the US  and S. Korea agencies such as KIST",
+            "The founder of MetaVista USA providing total liquid hydrogen energy solution various applications",
+            "Contribution to the IRAS thermal management technology for the world largest liquid hydrogen storage tank (1.25 million gallons) at NASA Kennedy Space Center",
+            "Technical partner of NASA’s Moon to Mars exploration approach to develop a LOX/LH2 propellant system",
             "An Honor of The Russel B. Scott Award in 2015 for innovative compact hydrogen liquefier design"
           ]
         },
@@ -70,9 +70,9 @@ export default {
           name: "Dr. William Notardonato",
           position: "Technical Advisor",
           text: [
-            "The Founder and CEO of Eta Space LLC in Florida, The USA.",
-            "Chief Engineer and Cryogenic Fuel System Manager at NASA Kennedy Space Center.",
-            "An IAS (Institute of Advanced Studies) Western Australia University Fellow Professor.",
+            "The Founder and CEO of Eta Space LLC in Florida, The USA",
+            "Chief Engineer and Cryogenic Fuel System Manager at NASA Kennedy Space Center",
+            "An IAS (Institute of Advanced Studies) Western Australia University Fellow Professor",
             "A World Class  Engineer in Liquid Hydrogen and Oxygen Management"
           ]
         }
@@ -85,9 +85,11 @@ export default {
 ul {
   list-style-type: none;
 }
+
 ul li {
   padding-left: 30px;
 }
+
 ul li:before {
   font-weight: 600;
   font-size: 20px;

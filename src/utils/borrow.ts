@@ -19,6 +19,7 @@ export const borrowUtil = async (
 ) => {
 
     const troveAccount = new Account();
+    console.log("hey the trove accoutn is ", troveAccount)
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
 
     const createBorrowAccountIx = SystemProgram.createAccount({
@@ -65,6 +66,9 @@ export const borrowUtil = async (
     // Info
     const encodedTroveState = (await connection.getAccountInfo(troveAccount.publicKey, 'singleGossip'))!.data;
     const decodedTroveState = TROVE_ACCOUNT_DATA_LAYOUT.decode(encodedTroveState) as TroveLayout;
+
+    console.log("the decoded trove state value is ", decodedTroveState.borrowAmount);
+
 
     return {
       troveAccountPubkey: troveAccount.publicKey.toBase58(),

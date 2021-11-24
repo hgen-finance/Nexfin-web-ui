@@ -193,7 +193,7 @@
             bColor="mcolor-100"
             opacityEffect
             full
-            @click="reset"
+            @click="resetPay"
           >
             reset
           </AmButton>
@@ -242,10 +242,7 @@ export default {
   computed: {
     // for the CR percent
     getPercent() {
-      return 0;
-    },
-    getDebt() {
-      return this.$accessor.borrowing.debt || 0;
+      return (this.depositAmount / this.debtAmout) * 100 || 0;
     },
     getUsd() {
       return this.$accessor.usd || 0;
@@ -291,7 +288,7 @@ export default {
         }
       }
       this.$emit("gens", this.to);
-      this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
+      //this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
     }
   },
   methods: {
@@ -305,13 +302,28 @@ export default {
       this.to = null;
       this.mint = null;
     },
+    resetPay() {
+      this.repayTo = null;
+    },
     confirmFunc() {
-      if (
-        Number(this.from) > 0 &&
-        Number(this.to) > 1599 &&
-        this.mint &&
-        Number(this.getDebt) > 109
-      ) {
+      //   if (
+      //     Number(this.from) > 0 &&
+      //     Number(this.to) > 1599 &&
+      //     this.mint &&
+      //     Number(this.getDebt) > 109
+      //   ) {
+      //     this.$accessor.borrowing.confirmBorrow({
+      //       from: this.from,
+      //       to: this.to,
+      //       mint: this.mint
+      //     });
+      //     this.from = null;
+      //     this.to = this.getBorrowAmount;
+      //     this.mint = null;
+      //     this.depositAmount = this.from * this.getUsd;
+      //   }
+      if (Number(this.from) > 0) {
+        console.log("clicking on borrow function");
         this.$accessor.borrowing.confirmBorrow({
           from: this.from,
           to: this.to,
@@ -344,10 +356,6 @@ export default {
     // For updating the borrow or pay
     changeBorrowOrPayFunc() {
       this.$accessor.borrowing.changeBorrowOrPay(
-        this.$accessor.borrowing.borrowOrPay
-      );
-      console.log(
-        "the value changes to ",
         this.$accessor.borrowing.borrowOrPay
       );
     }
