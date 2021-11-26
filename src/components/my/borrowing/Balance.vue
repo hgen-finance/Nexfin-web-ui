@@ -68,7 +68,7 @@ export default {
     },
     getBalanceHGEN() {
       console.log("the hgen balance is", this.$accessor.wallet.balanceHGEN);
-      return this.$accessor.wallet.balanceHGEN || 1000;
+      return this.$accessor.wallet.balanceHGEN || 0;
     },
     getBalanceGENS() {
       return this.$accessor.wallet.BalanceGENS || 0;
