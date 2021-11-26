@@ -36,7 +36,8 @@
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
             {{ getBalanceHGEN > 0 ? getBalanceHGEN.toLocaleString() : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            <!-- ($ {{ getBalance > 0 ? getUsdBalance : 0 }}) -->
+            ($ {{ getBalanceHGEN }})
           </div>
         </div>
       </div>
@@ -47,7 +48,7 @@
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
             {{ getBalanceGENS > 0 ? getBalanceGENS.toLocaleString() : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            ($ {{ getBalanceGENS }})
           </div>
         </div>
       </div>
@@ -62,13 +63,16 @@ export default {
       return this.$accessor.usd || 0;
     },
     getBalance() {
+      console.log("the main balance is ", this.$accessor.wallet.balance);
       return this.$accessor.wallet.balance || 0;
     },
     getBalanceHGEN() {
-      return this.$accessor.wallet.balanceHGEN || 0;
+      console.log("the hgen balance is", this.$accessor.wallet.balanceHGEN);
+      return this.$accessor.wallet.balanceHGEN || 1000;
     },
     getBalanceGENS() {
-      return this.$accessor.borrowing.trove?.borrowAmount || 0;
+      return this.$accessor.wallet.BalanceGENS || 0;
+      //return this.$accessor.borrowing.trove?.borrowAmount || 1000;
     },
     getUsdBalance() {
       let result = 0;

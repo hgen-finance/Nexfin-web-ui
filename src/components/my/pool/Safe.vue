@@ -203,8 +203,8 @@ export default {
   },
   computed: {
     getDepositKey() {
-      return true;
-      // return this.$accessor.pool.depositKey
+      console.log(this.$accessor.pool.depositKey);
+      return this.$accessor.pool.depositKey || true;
     },
     getLoading() {
       return this.$accessor.pool.loading;
@@ -242,8 +242,10 @@ export default {
     },
     depositFunc() {
       if (this.getDepositKey) {
+        console.log("has the deposit key");
         this.$accessor.pool.addDeposit({ from: this.from });
       } else {
+        console.log("doenst have the deposit key");
         this.$accessor.pool.newDeposit({
           from: this.from,
           gen: this.gen,

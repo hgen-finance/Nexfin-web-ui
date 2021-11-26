@@ -19,7 +19,6 @@ export const borrowUtil = async (
 ) => {
 
     const troveAccount = new Account();
-    console.log("hey the trove accoutn is ", troveAccount)
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
 
     const createBorrowAccountIx = SystemProgram.createAccount({

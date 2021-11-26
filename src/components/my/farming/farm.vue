@@ -95,6 +95,7 @@
             >
             <input
               type="text"
+              id="from"
               class="
                 w-100
                 mx-1
@@ -136,6 +137,7 @@
               >HGEN</span
             >
             <input
+              id="to"
               type="text"
               class="
                 w-100
@@ -241,13 +243,13 @@ import Farming from "../../../utils/farming";
 const farming = new Farming();
 
 const TOKENS = [
-  { label: "HGEN", value: "123" }, // need to add the mint address of the hgen token
+  { label: "HGEN", value: "97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3" }, // need to add the mint address of the hgen token
   { label: "SOL", value: "So11111111111111111111111111111111111111112" }
 ];
 
 // conversion fo the hgen and sol
 const CONVERT_HGEN = 200;
-const CONVERT_SOL = 0.02;
+const CONVERT_SOL = 0.005;
 
 export default {
   components: {
@@ -282,6 +284,19 @@ export default {
       day: null,
       open: true
     };
+  },
+  mounted() {
+    // change value on input instead of the change
+    document.getElementById("from").addEventListener("input", function() {
+      document.getElementById("to").value = this.value * CONVERT_HGEN;
+      this.to = this.value;
+      this.convertToHgen();
+    });
+    document.getElementById("to").addEventListener("input", function() {
+      document.getElementById("from").value = this.value * CONVERT_SOL;
+      this.form = this.value;
+      this.convertToSol();
+    });
   },
   computed: {
     getUsd() {
@@ -320,18 +335,19 @@ export default {
     }
   },
   watch: {
-    from(val) {
-      if (val) {
-        this.from = val.toString().replace(/[^+\d\.]/g, "");
-        if (this.from.split(".").length > 2)
-          this.from = this.from.replace(/\.(?=[^\.]*$)/, "");
-        if (this.from.substr(0, 2) === "00")
-          this.from = this.from.substr(1, this.from.length);
-        this.convertToHgen();
-      } else {
-        this.to = "";
-      }
-    }
+    // uncomment if the value are updated based on changes instead of input
+    // from(val) {
+    //   if (val) {
+    //     this.from = val.toString().replace(/[^+\d\.]/g, "");
+    //     if (this.from.split(".").length > 2)
+    //       this.from = this.from.replace(/\.(?=[^\.]*$)/, "");
+    //     if (this.from.substr(0, 2) === "00")
+    //       this.from = this.from.substr(1, this.from.length);
+    //     this.convertToHgen();
+    //   } else {
+    //     this.to = "";
+    //   }
+    // }
   },
   methods: {
     reset() {
@@ -355,9 +371,17 @@ export default {
       // converting to hgen when sol is entered
       this.to = CONVERT_HGEN * Number(this.from);
     },
+    convertToSol() {
+      // converting to sol when hgen is entered
+      this.to = CONVERT_SOL * Number(this.to);
+    },
     setMax() {
       this.from = this.$accessor.wallet.balance
         ? this.$accessor.wallet.balance
+        : 0;
+      // remove this when you change the value on watch
+      this.to = this.$accessor.wallet.balance
+        ? this.$accessor.wallet.balance * 200
         : 0;
     }
   }

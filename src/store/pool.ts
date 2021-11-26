@@ -88,7 +88,7 @@ export const actions = actionTree(
         if (!state.depositKey) {
           commit('setLoading', true)
           try {
-            const data = await depositUtil(this.$wallet, process.env.mint, Number(value.from), value.gen, value.hgen, this.$web3)
+            const data = await depositUtil(this.$wallet, "54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t", Number(value.from), value.gen, value.hgen, this.$web3)
             if (data && (data.depositAccountPubkey)) {
               commit('setDepositKey', data.depositAccountPubkey || '')
               console.log(data, 'newDeposit')
@@ -110,11 +110,14 @@ export const actions = actionTree(
     // Add Deposit
     async addDeposit ({ state, commit }, value) {
       if (value && (Number(value.from) > 0)) {
+        console.log("this is runnng")
         if (state.depositKey && state.gen && state.hgen) {
           commit('setLoading', true)
           try {
-            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
-            console.log(data, 'addDeposit')
+            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t", Number(value.from),"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", "97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3", this.$web3)
+           // const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
+            console.log("the data for the add deposit", data);
+           //  console.log(data, 'addDeposit')
             this.$accessor.wallet.getBalance()
 
             await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {

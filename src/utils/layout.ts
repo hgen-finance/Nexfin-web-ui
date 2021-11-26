@@ -110,8 +110,11 @@ export interface FarmingLayout {
   dayLeft: Uint8Array
 }
 
-export const TOKEN_GENS = new PublicKey('JCnyD2wyimf5P3MBVAxB5yCVhotmswDhvrwXdS9xNbAq')
+// export const TOKEN_GENS = new PublicKey('JCnyD2wyimf5P3MBVAxB5yCVhotmswDhvrwXdS9xNbAq')
+export const TOKEN_GENS = new PublicKey('2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe')
+export const TOKEN_HGEN = new PublicKey('97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3')
 export const SYS_ACCOUNT = new PublicKey('H8zGtK1u7wtGmcYFLcrES4trMRAz8BR2WH83k3uYYiLo')
+//export const SYS_ACCOUNT = new PublicKey('54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t')
 export const CHAINLINK_SOL_USD_PUBKEY = new PublicKey('FmAmfoyPXiA8Vhhe6MZTr3U6rZfEZ1ctEHay1ysqCqcf')
 
 export const getCollateral = (gens: string, lamports: string, usd: string) => {

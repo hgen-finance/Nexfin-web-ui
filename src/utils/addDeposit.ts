@@ -25,7 +25,7 @@ export const addDepositUtil = async (
     connection: Connection,
 ) => {
 
-    console.log(wallet, depositId, tokenMintAccountPubkey, tokenAmount, pdaToken, connection)
+    console.log("the account depost util is ", wallet, depositId, tokenMintAccountPubkey, tokenAmount, pdaToken, connection)
 
     const depositAccount = new PublicKey(depositId);
     const escrowProgramId = new PublicKey(EscrowProgramIdString);

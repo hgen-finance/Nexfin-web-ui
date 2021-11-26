@@ -56,18 +56,18 @@
 </template>
 
 <script>
-import Farming from "../../../utils/farming"
-const farming = new Farming()
+import Farming from "../../../utils/farming";
+const farming = new Farming();
 export default {
   data() {
     return {
-      sol : 0,
-      hgen : 0,
-      gens : 0,
-      usd: 0,
-    }
+      sol: 0,
+      hgen: 0,
+      gens: 0,
+      usd: 0
+    };
   },
-  mounted(){
+  mounted() {
     this.getMyBalance();
   },
   computed: {
@@ -106,13 +106,13 @@ export default {
   },
   methods: {
     getMyBalance() {
-      let scope = this
+      let scope = this;
       farming.getMBalance().then(res => {
-        scope.sol = res.sol_balance.toFixed(2)
-        scope.usd = res.usd.toFixed(2)
-        scope.hgen = res.hgen.toFixed(2)
-        scope.gens = res.gens.toFixed(2)
-      })
+        scope.sol = res.sol_balance.toFixed(2);
+        scope.usd = res.usd.toFixed(2);
+        scope.hgen = res.hgen.toFixed(2);
+        scope.gens = res.gens.toFixed(2);
+      });
     }
   }
 };
