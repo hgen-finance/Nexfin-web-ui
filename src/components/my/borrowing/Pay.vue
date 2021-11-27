@@ -18,9 +18,9 @@
         class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
         v-if="getIsBorrow"
       >
-        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">0</span>
+        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{ getDebt }}</span>
         <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">
-          0
+          {{ getRatio }}
         </span>
         <span class="fw-600 pr-1">% </span>CR)
       </div>
@@ -223,6 +223,7 @@
 
 <script>
 import Loading from "@/components/Loading";
+import { getCollateral } from "@/utils/layout";
 
 export default {
   components: {
@@ -247,11 +248,11 @@ export default {
       return this.$accessor.borrowing.loading;
     },
     getIsBorrow() {
-      return true;
-      //return this.$accessor.borrowing.troveId
+      return this.$accessor.borrowing.troveId;
     },
     getDebt() {
-      return this.$accessor.borrowing.debt || 0;
+      //   return this.$accessor.borrowing.debt || 0;
+      return this.$accessor.borrowing.trove.borrowAmount || "0";
     },
     getBorrowAmount() {
       return this.$accessor.borrowing.trove.amountToClose || 0;
@@ -261,6 +262,15 @@ export default {
     },
     getPrice() {
       return this.$store.state.usd;
+    },
+    getRatio() {
+      return this.$accessor.borrowing.trove.borrowAmount
+        ? getCollateral(
+            this.$accessor.borrowing.trove.borrowAmount.toString(),
+            this.$accessor.borrowing.trove.lamports.toString(),
+            parseInt(this.$accessor.usd).toString()
+          )
+        : 0;
     }
   },
   watch: {
@@ -330,8 +340,7 @@ export default {
           mint: this.mint
         });
         this.from = null;
-        this.to = null;
-        this.repayTo = this.getBorrowAmount;
+        this.to = this.getBorrowAmount;
         this.mint = null;
       }
     },
@@ -363,7 +372,7 @@ export default {
   },
   mounted() {
     if (this.getIsBorrow) {
-      this.to = this.$accessor.borrowing.trove.amountToClose;
+      this.repayTo = this.$accessor.borrowing.trove.amountToClose;
     }
   }
 };
