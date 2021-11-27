@@ -176,7 +176,9 @@
             v-model="repayTo"
             maxlength="12"
           />
-          <span class="fs-6-S fs-20-XS f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+          <span
+            class="fs-6-S fs-20-XS f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+            @click="borrowToPay"
             >Close Borrow</span
           >
         </div>
@@ -299,6 +301,10 @@ export default {
     resetPay() {
       this.repayTo = null;
     },
+
+    borrowToPay() {
+      this.repayTo = this.$accessor.borrowing.trove.amountToClose;
+    },
     confirmFunc() {
       //   if (
       //     Number(this.from) > 0 &&
@@ -324,7 +330,8 @@ export default {
           mint: this.mint
         });
         this.from = null;
-        this.to = this.getBorrowAmount;
+        this.to = null;
+        this.repayTo = this.getBorrowAmount;
         this.mint = null;
       }
     },

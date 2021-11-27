@@ -71,8 +71,11 @@ export default {
       return this.$accessor.wallet.balanceHGEN || 0;
     },
     getBalanceGENS() {
-      return this.$accessor.wallet.balanceGENS || 0;
-      //return this.$accessor.borrowing.trove?.borrowAmount || 1000;
+      //return this.$accessor.wallet.balanceGENS || 0;
+      return this.$accessor.wallet.balanceGENS
+        ? this.$accessor.wallet.balanceGENS +
+            this.$accessor.borrowing.trove?.borrowAmount
+        : 0;
     },
     getUsdBalance() {
       let result = 0;

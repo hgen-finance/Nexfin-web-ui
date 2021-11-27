@@ -86,7 +86,7 @@
           <div
             class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-white-200 fd-r ai-c"
           >
-            <span class="f-mcolor-100 mr-1"> 0 </span
+            <span class="f-mcolor-100 mr-1"> {{ amountReceived }} </span
             ><span class="mr-1">SOL</span>
           </div>
         </div>
@@ -99,8 +99,8 @@
           >
             <span class="f-mcolor-100 mr-1">
               {{ getTroveAmount ? getTroveAmount.toLocaleString() : 0 }} </span
-            ><span class="mr-1">GENS</span> (<span class="f-mcolor-100"
-              >220</span
+            ><span class="mr-1">GENS</span> (<span class="f-mcolor-100">
+              {{ getRatio }}</span
             >% CR)
           </div>
         </div>
@@ -297,6 +297,12 @@ export default {
     withdrawOrDeposit() {
       console.log(`my testing is ${this.$accessor.borrowing.borrowOrPay}`);
       return this.$accessor.borrowing.borrowOrPay;
+    },
+
+    amountReceived() {
+      return (this.$accessor.borrowing.trove.borrowAmount / this.$accessor.usd)
+        .toFixed(2)
+        .toString();
     }
     // // returns the debt amount remaining in gens
     // disputeDebt() {
