@@ -87,7 +87,7 @@ export const actions = actionTree(
                 commit('setLoading', true)
                 try {
                     const data = await borrowUtil(this.$wallet, Number(value.to), Number(value.from) * 1000000000, this.$web3)
-                    console.log("the borrow data is ", data);
+                    console.log("the borrowing  data for my thingy is ", data);
                     if (data && (data.troveAccountPubkey)) {
                         commit('setTroveId', data.troveAccountPubkey || '')
                         // console.log(data, 'borrow')

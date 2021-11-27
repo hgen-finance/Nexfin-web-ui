@@ -28,6 +28,7 @@ export const borrowUtil = async (
         newAccountPubkey: troveAccount.publicKey,
         programId: escrowProgramId
     })
+    console.log("the borrow account is ", createBorrowAccountIx);
 
     const borrowIx = new TransactionInstruction({
         programId: escrowProgramId,
@@ -46,14 +47,20 @@ export const borrowUtil = async (
         )
     })
 
+    console.log("the borrow transaction is ", borrowIx)
+
     // transaction completed
-    // добавялем инструкции в транзакцию
+    // добавялем инструкции в транзакцию (add instruction to the transaction)
     const tx = new Transaction().add(createBorrowAccountIx, borrowIx);
 
+    console.log("the transaction is ", tx)
+
+    // add data for signature generation
     // добавляем данне для возможност формирования подписи
     let {blockhash} = await connection.getRecentBlockhash();
     tx.recentBlockhash = blockhash;
     tx.feePayer = wallet.publicKey;
+    //tx.feePayer = new PublicKey("BNeaiYnq9H4VsGZ7stRfLwwYPoi5J3Ywcw6J7hcZX31X");
 
     // to sign
     let signedTx = await wallet.signTransaction(tx);
@@ -65,9 +72,6 @@ export const borrowUtil = async (
     // Info
     const encodedTroveState = (await connection.getAccountInfo(troveAccount.publicKey, 'singleGossip'))!.data;
     const decodedTroveState = TROVE_ACCOUNT_DATA_LAYOUT.decode(encodedTroveState) as TroveLayout;
-
-    console.log("the decoded trove state value is ", decodedTroveState.borrowAmount);
-
 
     return {
       troveAccountPubkey: troveAccount.publicKey.toBase58(),
