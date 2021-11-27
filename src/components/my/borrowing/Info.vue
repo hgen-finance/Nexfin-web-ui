@@ -18,7 +18,7 @@
           <div
             class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
           >
-            170
+            {{ getDebt }}
             <span class="f-white-200  pl-1-S  pr-5-XS">%</span>
           </div>
         </div>
@@ -125,7 +125,7 @@
           Number(getDebt) - Number(repayTo) < 0
       "
     > -->
-    <div
+    <!-- <div
       class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
       v-if="
         Number(getDebt) - Number(repayTo) > 0 ||
@@ -145,7 +145,7 @@
       >
         Exceeded the debt amount.
       </div>
-    </div>
+    </div> -->
     <div
       class="w-100 p-4-S p-10-XS mcolor-500  rad-fix-3 bs-sb-all  mb-4-S mb-10-XS"
     >
@@ -246,17 +246,16 @@ export default {
   props: {
     to: { type: Number, default: null },
     from: { type: Number, default: null },
-    repayTo: { type: Number, default: null },
-    collateral: { type: Number, default: null }
+    repayTo: { type: Number, default: null }
+    // collateral: { type: Number, default: null }
   },
   computed: {
     getMaxRatio() {
       if (this.$accessor.lightMode) {
         return 110;
+      } else {
+        return 110;
       }
-      //   else {
-      //     return 110
-      //   }
     },
     getUsd() {
       return this.$accessor.usd || 0;
@@ -268,6 +267,10 @@ export default {
       return (this.to * 0.5) / 100 || 0;
     },
     getDebt() {
+      console.log(
+        "is this running to get debt ",
+        this.$accessor.borrowing.debt
+      );
       return this.$accessor.borrowing.debt || 0;
     },
     getCurrentDebt() {
@@ -294,11 +297,11 @@ export default {
     withdrawOrDeposit() {
       console.log(`my testing is ${this.$accessor.borrowing.borrowOrPay}`);
       return this.$accessor.borrowing.borrowOrPay;
-    },
-    // returns the debt amount remaining in gens
-    disputeDebt() {
-      return Number(this.getDebt) - Number(this.repayTo);
     }
+    // // returns the debt amount remaining in gens
+    // disputeDebt() {
+    //   return Number(this.getDebt) - Number(this.repayTo);
+    // }
   }
 };
 </script>

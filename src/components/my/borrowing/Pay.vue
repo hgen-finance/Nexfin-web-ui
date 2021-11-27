@@ -18,12 +18,10 @@
         class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
         v-if="getIsBorrow"
       >
-        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{
-          getDebt.toLocaleString()
-        }}</span>
-        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">{{
-          getPercent.toLocaleString()
-        }}</span>
+        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">0</span>
+        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">
+          0
+        </span>
         <span class="fw-600 pr-1">% </span>CR)
       </div>
       <div class="w-100 pt-6-S pb-15-XS fd-r-S fd-r-XS">
@@ -240,10 +238,6 @@ export default {
     };
   },
   computed: {
-    // for the CR percent
-    getPercent() {
-      return (this.depositAmount / this.debtAmout) * 100 || 0;
-    },
     getUsd() {
       return this.$accessor.usd || 0;
     },
@@ -288,7 +282,7 @@ export default {
         }
       }
       this.$emit("gens", this.to);
-      //this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
+      this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
     }
   },
   methods: {

@@ -36,7 +36,8 @@
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
             {{ getBalanceHGEN > 0 ? getBalanceHGEN.toLocaleString() : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            <!-- ($ {{ getBalance > 0 ? getUsdBalance : 0 }}) -->
+            ($ {{ getBalanceHGEN }})
           </div>
         </div>
       </div>
@@ -47,7 +48,7 @@
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
             {{ getBalanceGENS > 0 ? getBalanceGENS.toLocaleString() : 0 }}
-            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
+            ($ {{ getBalanceGENS }})
           </div>
         </div>
       </div>
@@ -68,28 +69,40 @@ export default {
       return this.$accessor.wallet.balanceHGEN || 0;
     },
     getBalanceGENS() {
-      return this.$accessor.borrowing.trove?.borrowAmount || 0;
+      return this.$accessor.wallet.balanceGENS || 0;
+      //return this.$accessor.borrowing.trove?.borrowAmount || 1000;
     },
     getUsdBalance() {
       let result = 0;
       if (this.getBalance) {
         result = (Number(this.getBalance) * this.getUsd).toString().split(".");
         result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
-      }
-      return result.toString();
-    },
-    getHGENBalance() {
-      let result = 0;
-      if (this.getBalanceHGEN) {
-        result = (Number(this.getBalanceHGEN) * this.getUsd)
-          .toString()
-          .split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
+          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
       }
       return result.toString();
     }
+    // getHGENBalance() {
+    //   let result = 0;
+    //   if (this.getBalanceHGEN) {
+    //     result = (Number(this.getBalanceHGEN) * this.getUsd)
+    //       .toString()
+    //       .split(".");
+    //     result =
+    //       Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+    //   }
+    //   return result.toString();
+    // },
+    // getGENSBalance() {
+    //   let result = 0;
+    //   if (this.getBalanceGENS) {
+    //     result = (Number(this.getBalanceGENS) * this.getUsd)
+    //       .toString()
+    //       .split(".");
+    //     result =
+    //       Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+    //   }
+    //   return result.toString();
+    // }
   }
 };
 </script>

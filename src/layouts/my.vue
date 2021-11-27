@@ -120,6 +120,8 @@ export default {
     this.$accessor.pool.getDeposit();
     this.$accessor.borrowing.getTrove();
     this.$accessor.wallet.getBalance();
+    this.$accessor.wallet.getHGENBalance();
+    this.$accessor.wallet.getGENSBalance();
     this.$accessor.getInfo();
   }
 };

@@ -10,13 +10,13 @@ export const TOKEN_GENS = new PublicKey('2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4Gg
 export const TOKEN_HGEN = new PublicKey('97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3')
 // State
 export const state = () => ({
-  publicKey: null,
+  publicKey: "",
   wallets: Wallets,
   errorConnect: false,
   loaderConnect: false,
   balance: 0,
-  balanceHGEN: 1000,
-  balanceGENS: 11
+  balanceHGEN: 0,
+  balanceGENS: 0
 })
 
 // Getters
@@ -73,6 +73,7 @@ export const actions = actionTree(
         }
         commit('setLoaderConnect', false)
       })
+      
       try {
         adapter.connect()
       } catch (error) {
@@ -92,35 +93,30 @@ export const actions = actionTree(
       this.$router.push('/')
     },
 
-    // Get Balanse
+    // Get Balance for sols
     async getBalance ({ commit }) {
       if (this.$web3 && this.$wallet) {
         const data = this.$web3.getBalance(this.$wallet.publicKey)
-        //hgen
-        // let HGENres = this.$web3.getTokenAccountsByOwner(this.$wallet.publickey, {mint:TOKEN_HGEN});
-        // //let HGENBalance = await this.$web3.getTokenAccountBalance(HGENres.value[0].pubkey);   
-        
-        // HGENres.then(value => {
-        //     commit('setBalanceHGEN', Number(this.$web3.getTokenAccountBalance(value[0].pubkey)))
-        // })
-        // // gens
-        // let GENSres = await this.$web3.getTokenAccountsByOwner(this.$wallet.publickey, {mint:TOKEN_GENS});
-        // let GENBalance = await this.$web3.getTokenAccountBalance(GENSres.value[0].pubkey);  
         data.then(value => {
           commit('setBalance', (value / 1000000000))
-          commit('setBalanceHGEN', 0)
-          commit('setBalanceGENS', (value / 1000000000) * 0.000926)
         })
         
       }
     },
     
-    // async getHGENBalance({commit}) {
-    //     let HGENres = this.$web3.getTokenAccountsByOwner(this.$wallet.publickey, {mint:TOKEN_HGEN});        
-    //     HGENres.then(value => {
-    //         commit('setBalanceHGEN', Number(this.$web3.getTokenAccountBalance(value[0].pubkey)))
-    //     })
-    // }
+    // getting balance from the hgens from the wallet
+    async getHGENBalance({commit}) {
+        let HGEN = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_HGEN)});   
+        let myTokenAmount = HGEN.value[0].account.data.parsed.info.tokenAmount.uiAmountString
+        commit('setBalanceHGEN', Number(myTokenAmount))
+    },
+
+    //getting balance for gens from the wallet
+    async getGENSBalance({commit}) {
+        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+        let myTokenAmount = GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString
+        commit('setBalanceGENS', Number(myTokenAmount))
+    }
   
   }
 )
