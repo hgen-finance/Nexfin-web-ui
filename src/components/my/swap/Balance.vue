@@ -63,14 +63,19 @@ export default {
       return this.$accessor.usd || 0;
     },
     getBalance() {
+      console.log("the main balance is ", this.$accessor.wallet.balance);
       return this.$accessor.wallet.balance || 0;
     },
     getBalanceHGEN() {
+      console.log("the hgen balance is", this.$accessor.wallet.balanceHGEN);
       return this.$accessor.wallet.balanceHGEN || 0;
     },
     getBalanceGENS() {
-      return this.$accessor.wallet.balanceGENS || 0;
-      //return this.$accessor.borrowing.trove?.borrowAmount || 1000;
+      //return this.$accessor.wallet.balanceGENS || 0;
+      return this.$accessor.wallet.balanceGENS
+        ? this.$accessor.wallet.balanceGENS +
+            this.$accessor.borrowing.trove?.borrowAmount
+        : 0;
     },
     getUsdBalance() {
       let result = 0;

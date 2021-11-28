@@ -6,20 +6,20 @@ import Wallet from "@project-serum/sol-wallet-adapter";
 
 export const closeBorrowUtil = async (
     wallet: Wallet,
-    // Адрес токена GENS
+    //gens token address
     tokenMintAccountPubkey: string,
-    troveId: string,
-    // Адрес кошелька токена пользователя GENS
+    troveId: string,    
+    //wallet address of the user gens token
     pdaToken: string,
     amount: number,
     connection: Connection,
 ) => {
-
+    console.log("this is being called")
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
     const troveAccount = new PublicKey(troveId)
-    const tokenMintAcc = new PublicKey(tokenMintAccountPubkey)
+    const tokenMintAcc = new PublicKey(tokenMintAccountPubkey);
     const pdaTokenAcc = new PublicKey(pdaToken)
-
+    console.log("my tokenMintAcc is ", tokenMintAcc)
     const closeBorrowIx = new TransactionInstruction({
         programId: escrowProgramId,
         keys: [
@@ -32,7 +32,7 @@ export const closeBorrowUtil = async (
         ],
         data: Buffer.from(
             Uint8Array.of(1, // id of instruction
-              ...new BN(amount*100).toArray('le', 8),
+                ...new BN(amount*1000000).toArray('le', 8),
             ))
     })
 

@@ -199,7 +199,13 @@
           </AmButton>
         </div>
         <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS mt-0-S mt-8-XS">
-          <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect full>
+          <AmButton
+            color="mcolor-100"
+            bColor="mcolor-100"
+            opacityEffect
+            full
+            @click="closeTroveFunc"
+          >
             confirm
           </AmButton>
         </div>
@@ -248,7 +254,9 @@ export default {
       return this.$accessor.borrowing.loading;
     },
     getIsBorrow() {
-      return this.$accessor.borrowing.troveId;
+      return true;
+      // doesnt show up when the wallet is not connected for the borrowing trove
+      //return this.$accessor.borrowing.troveId;
     },
     getDebt() {
       //   return this.$accessor.borrowing.debt || 0;
@@ -337,30 +345,31 @@ export default {
         this.$accessor.borrowing.confirmBorrow({
           from: this.from,
           to: this.to,
-          mint: this.mint
+          mint: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp"
         });
         this.from = null;
-        this.to = this.getBorrowAmount;
-        this.mint = null;
+        this.to = null;
+        //this.mint = null;
       }
     },
     closeTroveFunc() {
-      if (this.mint) {
-        this.to = 0;
-        this.$accessor.borrowing.closeTrove({
-          mint: this.mint,
-          amount: this.to
-        });
-        this.mint = null;
-      }
+      console.log("closing the trove for the borrow");
+      //   if (this.mint) {
+      this.$accessor.borrowing.closeTrove({
+        mint: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp",
+        amount: this.to
+      });
+      this.to = null;
+      //this.mint = null;
+      //   }
     },
     updateTroveFunc() {
       if (this.mint) {
         this.$accessor.borrowing.closeTrove({
-          mint: this.mint,
+          mint: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp",
           amount: this.to
         });
-        this.mint = null;
+        //this.mint = null;
       }
     },
     // For updating the borrow or pay
@@ -371,9 +380,10 @@ export default {
     }
   },
   mounted() {
-    if (this.getIsBorrow) {
-      this.repayTo = this.$accessor.borrowing.trove.amountToClose;
-    }
+    //   uncomment later
+    // if (this.getIsBorrow) {
+    //   this.repayTo = this.$accessor.borrowing.trove.amountToClose;
+    // }
   }
 };
 </script>

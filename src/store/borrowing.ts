@@ -111,9 +111,13 @@ export const actions = actionTree(
         async closeTrove({ state, commit, dispatch }, value) {
             if (state.troveId) {
                 commit('setLoading', true)
+                const my_key = new PublicKey("JCnyD2wyimf5P3MBVAxB5yCVhotmswDhvrwXdS9xNbAq");
                 try {
-                    const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
-                    console.log({ data })
+                    console.log("processing closing the trove...")
+                    console.log("my basee58 value for the pub key is ", my_key)
+                    const data = await closeBorrowUtil(this.$wallet, "C6tfES3TrhTzQnRopAyqHAjx4ixShAzJ16QeffWvoXBk", state.trove.troveAccountPubkey, '2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp', value.amount, this.$web3)
+                    // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
+                    console.log("the data is ", data )
                     if (data === null) {
                         console.log(data, 'closeTrove')
                         commit('setTroveId', '')
