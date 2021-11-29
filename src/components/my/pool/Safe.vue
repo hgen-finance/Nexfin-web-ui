@@ -242,14 +242,12 @@ export default {
     },
     depositFunc() {
       if (this.getDepositKey) {
-        console.log("has the deposit key");
         this.$accessor.pool.addDeposit({ from: this.from });
       } else {
-        console.log("doenst have the deposit key");
         this.$accessor.pool.newDeposit({
           from: this.from,
-          gen: this.gen,
-          hgen: this.hgen
+          gen: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp",
+          hgen: "6h81Zm4FdYwuTihTbvESnrScvCEfkTUj94pYkPS1iU1"
         });
       }
       this.from = null;
