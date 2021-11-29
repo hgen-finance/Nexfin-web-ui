@@ -88,7 +88,9 @@ export const actions = actionTree(
         if (!state.depositKey) {
           commit('setLoading', true)
           try {
-            const data = await depositUtil(this.$wallet, "54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t", Number(value.from), value.gen, value.hgen, this.$web3)
+              console.log("the new deposit is running")
+            const test = new PublicKey("C6tfES3TrhTzQnRopAyqHAjx4ixShAzJ16QeffWvoXBk").toBase58();
+            const data = await depositUtil(this.$wallet, test, Number(value.from),state.gen, state.hgen, this.$web3)
             if (data && (data.depositAccountPubkey)) {
               commit('setDepositKey', data.depositAccountPubkey || '')
               console.log(data, 'newDeposit')
@@ -114,8 +116,8 @@ export const actions = actionTree(
         if (state.depositKey && state.gen && state.hgen) {
           commit('setLoading', true)
           try {
-            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t", Number(value.from),"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", "97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3", this.$web3)
-           // const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
+           // const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"C6tfES3TrhTzQnRopAyqHAjx4ixShAzJ16QeffWvoXBk", Number(value.from),"2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp", "6h81Zm4FdYwuTihTbvESnrScvCEfkTUj94pYkPS1iU1", this.$web3)
+            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
             console.log("the data for the add deposit", data);
            //  console.log(data, 'addDeposit')
             this.$accessor.wallet.getBalance()
