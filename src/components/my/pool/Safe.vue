@@ -38,7 +38,7 @@
             v-if="!getWithdrawOrDeposit"
             @click="changeWithdrawFunc"
           >
-            Depost
+            Deposit
           </AmButton>
           <AmButton
             color="green-500"
@@ -204,7 +204,7 @@ export default {
   computed: {
     getDepositKey() {
       console.log(this.$accessor.pool.depositKey);
-      return this.$accessor.pool.depositKey || true;
+      return this.$accessor.pool.depositKey;
     },
     getLoading() {
       return this.$accessor.pool.loading;
@@ -246,8 +246,8 @@ export default {
       } else {
         this.$accessor.pool.newDeposit({
           from: this.from,
-          gen: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp",
-          hgen: "6h81Zm4FdYwuTihTbvESnrScvCEfkTUj94pYkPS1iU1"
+          gen: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
+          hgen: "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz"
         });
       }
       this.from = null;

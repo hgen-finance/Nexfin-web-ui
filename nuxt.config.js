@@ -82,15 +82,21 @@ export default {
   modules: ["@nuxtjs/axios", "@nuxtjs/svg"],
 
   axios: {
-    //baseUrl: process.env.baseUrl || 'http://34.64.168.231:1335/'
-    baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
+    // TODO: change http to https
+    //baseUrl: process.env.baseUrl || "http://dev-nexfin-back.herokuapp.com/"
+    baseUrl: process.env.baseUrl || "http://962d-118-208-107-33.ngrok.io"
+    //baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
+    //baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
   },
 
   // ENV
   env: {
-    //baseUrl: process.env.BASE_URL || 'http://34.64.168.231:1335/',
-    baseUrl: process.env.BASE_URL || "https://liquity-back.ambersoft.llc/",
-    mint: "C6tfES3TrhTzQnRopAyqHAjx4ixShAzJ16QeffWvoXBk"
+    // TODO: change http to https
+    //baseUrl: process.env.baseUrl || "http://dev-nexfin-back.herokuapp.com/",
+    baseUrl: process.env.BASE_URL || "http://962d-118-208-107-33.ngrok.io",
+    //baseUrl: process.env.BASE_URL || "http://192.168.43.112:3000/",
+    //baseUrl: process.env.BASE_URL || "https://liquity-back.ambersoft.llc/",
+    mint: "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe"
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

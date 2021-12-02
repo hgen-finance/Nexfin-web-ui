@@ -25,8 +25,6 @@ export const addDepositUtil = async (
     connection: Connection,
 ) => {
 
-    console.log("the account depost util is ", wallet, depositId, tokenMintAccountPubkey, tokenAmount, pdaToken, connection)
-
     const depositAccount = new PublicKey(depositId);
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
     const tokenMintAcc = new PublicKey(tokenMintAccountPubkey)
@@ -51,6 +49,7 @@ export const addDepositUtil = async (
     })
 
     const tx = new Transaction().add(depositIx);
+    console.log("the transaction is ", tx)
 
     let {blockhash} = await connection.getRecentBlockhash();
     tx.recentBlockhash = blockhash;

@@ -171,10 +171,11 @@
           >
           <input
             type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+            class="w-100 mx-1  white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
             placeholder="0"
             v-model="repayTo"
             maxlength="12"
+            disabled
           />
           <span
             class="fs-6-S fs-20-XS f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
@@ -239,7 +240,7 @@ export default {
     return {
       from: null,
       to: null,
-      repayTo: null,
+      repayTo: this.$accessor.borrowing.trove.amountToClose, // TO DO change this later
       mint: "",
       borrow: 0,
       depositAmount: 0,
@@ -345,7 +346,7 @@ export default {
         this.$accessor.borrowing.confirmBorrow({
           from: this.from,
           to: this.to,
-          mint: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp"
+          mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73"
         });
         this.from = null;
         this.to = null;
@@ -356,7 +357,7 @@ export default {
       console.log("closing the trove for the borrow");
       //   if (this.mint) {
       this.$accessor.borrowing.closeTrove({
-        mint: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp",
+        mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
         amount: this.to
       });
       this.to = null;
@@ -366,7 +367,7 @@ export default {
     updateTroveFunc() {
       if (this.mint) {
         this.$accessor.borrowing.closeTrove({
-          mint: "2cWN6Yj93XVkvnswt89S7RQZwJZpzx2S5L8PUvHz1Pyp",
+          mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
           amount: this.to
         });
         //this.mint = null;
