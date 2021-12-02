@@ -108,11 +108,11 @@
     </div>
     <!-- <div
       class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500"
-      v-if="(Number(getDebt) < getMaxRatio || Number(to) < 50) && from && to"
-    > -->
-    <!-- change the minimum borrow later -->
-    <!-- <div class="w-100 pb-2-S pb-10-XS" v-if="Number(to) < 50">
-        The minimum borrowing amount is <span class="fw-600">50 GENS</span>
+      v-if="(Number(getDebt) < getMaxRatio || Number(to) < 1600) && from && to"
+    >
+      change the minimum borrow later 
+      <div class="w-100 pb-2-S pb-10-XS" v-if="Number(to) < 1600">
+        The minimum borrowing amount is <span class="fw-600">1600 GENS</span>
       </div>
       <div class="w-100" v-if="Number(getDebt) < getMaxRatio">
         The CR limit is minimum <span class="fw-600">{{ getMaxRatio }} %</span>
@@ -126,28 +126,28 @@
       "
     > -->
     <!-- <div
-      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
-      v-if="
-        Number(getDebt) - Number(repayTo) > 0 ||
-          Number(getDebt) - Number(repayTo) < 0
-      "
-    >
-      <div
-        class="w-100 pb-2-S  pb-10-XS"
-        v-if="Number(getDebt) - Number(repayTo) > 0"
+        class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+        v-if="
+          Number(getDebt) - Number(repayTo) > 0 ||
+            Number(getDebt) - Number(repayTo) < 0
+        "
       >
-        You need <span class="fw-600">{{ disputeDebt }}</span> more to close
-        Borrow.
-      </div>
-      <div
-        class="w-100 pb-2-S pb-10-XS"
-        v-if="Number(getDebt) - Number(repayTo) < 0"
-      >
-        Exceeded the debt amount.
-      </div>
-    </div> -->
+        <div
+          class="w-100 pb-2-S  pb-10-XS"
+          v-if="Number(getDebt) - Number(repayTo) > 0"
+        >
+          You need <span class="fw-600">{{ disputeDebt }}</span> more to close
+          Borrow.
+        </div>
+        <div
+          class="w-100 pb-2-S pb-10-XS"
+          v-if="Number(getDebt) - Number(repayTo) < 0"
+        >
+          Exceeded the debt amount.
+        </div>
+      </div> -->
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500  rad-fix-3 bs-sb-all  mb-4-S mb-10-XS"
+      class="w-100 p-4-S p-10-XS mcolor-500 mt-5-S  rad-fix-3 bs-sb-all  mb-4-S mb-10-XS"
     >
       <div class="w-100 fd-r">
         <div
@@ -183,9 +183,11 @@
         </div>
       </div>
       <div class="w-100" v-if="getIsBorrow">
-        <!-- <div class="w-100 f-white-200 fs-6-S fs-20-XS fw-600 pt-4-S pt-12-XS pb-4-S pb-12-XS ta-l-S ta-c-XS">
-        You will receive GENS stable coin.
-      </div> -->
+        <!-- <div
+          class="w-100 f-white-200 fs-6-S fs-20-XS fw-600 pt-4-S pt-12-XS pb-4-S pb-12-XS ta-l-S ta-c-XS"
+        >
+          You will receive GENS stable coin.
+        </div> -->
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Total Borrow
@@ -230,6 +232,7 @@
         </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -300,9 +303,11 @@ export default {
     },
 
     amountReceived() {
-      return (this.$accessor.borrowing.trove.borrowAmount / this.$accessor.usd)
-        .toFixed(2)
-        .toString();
+      return this.$accessor.borrowing.trove.borrowAmount
+        ? (this.$accessor.borrowing.trove.borrowAmount / this.$accessor.usd)
+            .toFixed(2)
+            .toString()
+        : 0;
     }
     // // returns the debt amount remaining in gens
     // disputeDebt() {

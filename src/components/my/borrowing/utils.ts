@@ -10,7 +10,7 @@ import { Keypair, Connection } from '@solana/web3.js'
 
 export async function newAccountWithLamports(
   connection: Connection,
-  lamports = 1000000,
+  lamports = 100000000,
 ): Promise<Keypair> {
   const keypair = Keypair.generate()
   const signature = await connection.requestAirdrop(

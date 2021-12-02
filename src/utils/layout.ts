@@ -10,10 +10,10 @@ const publicKey = (property = "publicKey") => {
 };
 
 // set this for farming
-// export const EscrowProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
+//export const EscrowProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
 //set this for borrow
 export const EscrowProgramIdString = '5kLDDxNQzz82UtPA5hJmyKR3nUKBtRTfu4nXaGZmLanS'
-// export const EscrowProgramIdString = '5uqKRHcKyEJ4Pw4cRVus32a1wfEMGdHpgMa1FLqoQaN8'
+ //export const EscrowProgramIdString = '5uqKRHcKyEJ4Pw4cRVus32a1wfEMGdHpgMa1FLqoQaN8'
 //export const EscrowProgramIdString = '4XpqGMbFvrvHxXWyCDWNgyhVVVdh4G7Btp18NKr4Yp6T'
 
 /**
@@ -125,6 +125,7 @@ export const CHAINLINK_SOL_USD_PUBKEY = new PublicKey('FmAmfoyPXiA8Vhhe6MZTr3U6r
 
 export const getCollateral = (gens: string, lamports: string, usd: string) => {
     console.log("the value of the collateral gens are ", gens)
+    // TO DO might need to change the value later here
     let test = new BN(lamports).div(new BN("10000000")).mul(new BN(usd)).div(new BN(gens))
     console.log("testing for get Collateral", test)
     return test

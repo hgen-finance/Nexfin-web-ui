@@ -63,8 +63,11 @@ export default {
       return this.$accessor.usd || 0;
     },
     getBalance() {
-      console.log("the main balance is ", this.$accessor.wallet.balance);
-      return this.$accessor.wallet.balance || 0;
+      return (
+        Number(this.$accessor.wallet.balance)
+          .toFixed(2)
+          .toString() || 0
+      );
     },
     getBalanceHGEN() {
       console.log("the hgen balance is", this.$accessor.wallet.balanceHGEN);
@@ -72,19 +75,17 @@ export default {
     },
     getBalanceGENS() {
       //return this.$accessor.wallet.balanceGENS || 0;
-      return this.$accessor.wallet.balanceGENS
-        ? this.$accessor.wallet.balanceGENS +
-            this.$accessor.borrowing.trove?.borrowAmount
-        : 0;
+      return this.$accessor.wallet.balanceGENS;
     },
     getUsdBalance() {
       let result = 0;
       if (this.getBalance) {
-        result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+        // result = (Number(this.getBalance) * this.getUsd).toString().split(".");
+        result = (Number(this.getBalance) * this.getUsd).toString();
+        // result =
+        //   Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
       }
-      return result.toString();
+      return result;
     }
     // getHGENBalance() {
     //   let result = 0;
