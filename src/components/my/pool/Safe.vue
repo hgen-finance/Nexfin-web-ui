@@ -115,7 +115,11 @@
             placeholder="0"
             v-model="from"
           />
-          <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span>
+          <span
+            class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+            @click="setMax"
+            >Max</span
+          >
         </div>
       </div>
       <div
@@ -236,6 +240,16 @@ export default {
     }
   },
   methods: {
+    setMax() {
+      // TODO change the deposit set max to add certain value
+      if (this.$accessor.wallet.balanceGENS > 0) {
+        this.from = this.$accessor.wallet.balanceGENS
+          ? Number(this.$accessor.wallet.balanceGENS).toFixed(0) - 1
+          : 0;
+      } else {
+        this.form = null;
+      }
+    },
     reset() {
       this.from = null;
       this.to = null;

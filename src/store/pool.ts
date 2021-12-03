@@ -101,6 +101,7 @@ export const actions = actionTree(
                 commit('setLoading', false)
               })
               this.$accessor.wallet.getBalance()
+              this.$accessor.wallet.getGENSBalance()
             }
             commit('setLoading', false)
           } catch {
@@ -122,6 +123,7 @@ export const actions = actionTree(
             console.log("the data for the add deposit", data);
            //  console.log(data, 'addDeposit')
             this.$accessor.wallet.getBalance()
+            this.$accessor.wallet.getGENSBalance()
 
             await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
               commit('setDepositKey', data.model || '')
@@ -141,6 +143,7 @@ export const actions = actionTree(
               commit('setRewardCoinAmount', new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber());
             })
             commit('setLoading', false)
+            
           } catch {
             commit('setLoading', false)
           }
@@ -153,17 +156,21 @@ export const actions = actionTree(
       if (value && (Number(value) > 0)) {
         if (state.depositKey) {
           commit('setLoading', true)
+          console.log("the deposit key is ",state.depositKey.deposit)
+          console.log("the amount is ", value)
           this.$axios.post('deposit/withdraw', {deposit: state.depositKey.deposit, amount: value}).then(({ data }) => {
             console.log(data, 'closeDeposit')
           }).finally(async () => {
             commit('setLoading', false)
             this.$accessor.wallet.getBalance()
-
+            this.$accessor.wallet.getGENSBalance()
+            console.log("it is trying to withdraw")
             await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
               commit('setDepositKey', data.model || '')
               // Info
               const encodedDepositAccount = (await this.$web3.getAccountInfo(new PublicKey(data.model.deposit), 'singleGossip'))!.data;
               const decodedDepositState = DEPOSIT_ACCOUNT_DATA_LAYOUT.decode(encodedDepositAccount) as DepositLayout;
+              console.log("the token amount is ", new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber())
               if (decodedDepositState.bank) {
                 commit('setGen', new PublicKey(decodedDepositState.bank).toBase58())
               }
