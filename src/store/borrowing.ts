@@ -56,7 +56,7 @@ export const actions = actionTree(
         async setTroveById({ commit }, value) {
             const encodedTroveState = (await this.$web3.getAccountInfo(value, 'singleGossip'))!.data;
             const decodedTroveState = TROVE_ACCOUNT_DATA_LAYOUT.decode(encodedTroveState) as TroveLayout;
-
+            
             console.log({ decodedTroveState })
             commit('setTrove', {
                 troveAccountPubkey: value.toBase58(),
@@ -83,7 +83,9 @@ export const actions = actionTree(
         },
         // Claim
         async confirmBorrow({ commit, dispatch }, value) {
-            if (Number(value.from > 0) && Number(value.to) > 10) {
+
+            const cr = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
+            if (Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
                 commit('setLoading', true)
                 try {
                     const data = await borrowUtil(this.$wallet, Number(value.to), Number(value.from) * 1000000000, this.$web3)
@@ -100,6 +102,7 @@ export const actions = actionTree(
                         })
                     }
                     commit('setLoading', false)
+                    this.$accessor.wallet.getGENSBalance()
                 } catch {
                     commit('setLoading', false)
                 }
@@ -124,6 +127,7 @@ export const actions = actionTree(
                         })
                         commit('setTrove', {})
                         this.$accessor.wallet.getBalance()
+                        this.$accessor.wallet.getGENSBalance()
                         this.$accessor.dashboard.setBorrow(false)
                     } else {
                         dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
@@ -142,7 +146,6 @@ export const actions = actionTree(
         // Get Debt Ratio
         getDebt({ commit }, value) {
             if (value && (value.from > 0 && value.to > 0)) {
-                console.log("the value of the gen is ", value.to)
                 commit('setDebt', getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber())
             } else {
                 commit('setDebt', 0)

@@ -244,7 +244,8 @@ export default {
       mint: "",
       borrow: 0,
       depositAmount: 0,
-      debtAmout: 0
+      debtAmout: 0,
+      borrowVal: 0
     };
   },
   computed: {
@@ -289,11 +290,12 @@ export default {
         if (this.from.split(".").length > 2)
           this.from = this.from.replace(/\.(?=[^\.]*$)/, "");
       }
-      this.to = Math.round(
-        Math.round(Number(this.from) * this.getUsd) / 2.5
-      ).toString();
+
+      //   this.to = Math.round(
+      //     Math.round(Number(this.from) * this.getUsd) / 2.5
+      //   ).toString();
       this.$emit("sol", this.from);
-      //this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
+      this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
     },
     to(val) {
       if (val) {
@@ -309,7 +311,7 @@ export default {
   methods: {
     setMax() {
       this.from = this.$accessor.wallet.balance
-        ? this.$accessor.wallet.balance
+        ? this.$accessor.wallet.balance - 1
         : 0;
     },
     reset() {
@@ -360,7 +362,9 @@ export default {
         mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
         amount: this.to
       });
+      this.form = null;
       this.to = null;
+      this.repayTo = null;
       //this.mint = null;
       //   }
     },
