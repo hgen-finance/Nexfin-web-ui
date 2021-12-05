@@ -287,16 +287,16 @@ export default {
   },
   mounted() {
     // change value on input instead of the change
-    document.getElementById("from").addEventListener("input", function() {
-      document.getElementById("to").value = this.value * CONVERT_HGEN;
-      this.to = this.value;
-      this.convertToHgen();
-    });
-    document.getElementById("to").addEventListener("input", function() {
-      document.getElementById("from").value = this.value * CONVERT_SOL;
-      this.form = this.value;
-      this.convertToSol();
-    });
+    // document.getElementById("from").addEventListener("input", function() {
+    //   document.getElementById("to").value = this.value * CONVERT_HGEN;
+    //   this.to = this.value;
+    //   this.convertToHgen();
+    // });
+    // document.getElementById("to").addEventListener("input", function() {
+    //   document.getElementById("from").value = this.value * CONVERT_SOL;
+    //   this.form = this.value;
+    //   this.convertToSol();
+    // });
   },
   computed: {
     getUsd() {
@@ -363,9 +363,14 @@ export default {
       this.open = false;
     },
     setFarmingData() {
-      if (this.getFrom !== null && this.getTo !== null && this.getDay !== null)
+      if (
+        this.getFrom !== null &&
+        this.getTo !== null &&
+        this.getDay !== null
+      ) {
+        console.log("is this reading");
         farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
-      else alert("Enter the values correctly");
+      } else alert("Enter the values correctly");
     },
     convertToHgen() {
       // converting to hgen when sol is entered

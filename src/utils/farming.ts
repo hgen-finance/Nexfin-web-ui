@@ -15,13 +15,15 @@ import axios from "axios";
 import * as web3 from '@solana/web3.js';
 import web3Plugin from "@/plugins/web3";
 import * as bs58 from 'bs58';
-const programId = new PublicKey("3PtvnRuzC68zrDQoRsoKVQoVvhbVF7fTxeYzLF6mN3EE")
-const destination = new PublicKey("FnKXCAbNzvAGKtTqSxH2NrWemR4CoJhCMrdk4ihBG2P6")
-const destHgen = new PublicKey("7fNfB1oH7VwMwvC4ZL7a1yvCQCCFwuVVj3Xk7uwAuRZn")
-const mintHgen = new PublicKey("BVXpoVbg8imRCtSxLgjxd3DHy2qStb3CsJiVcBwzCBgt")
-const destGens = new PublicKey("AFW1bWMgdPdZJZhi3MvsXZT6VrXjoqdnUbhk1K9UUi9P")
-const mintGens = new PublicKey("BaeDT8a8PE22bbC2MyxLn9jPR78V7U2xtG7wKyzTZ6LZ")
-const privateKey = "224128Zpov8A1AVMGC3Ys46oZEerngk24PQCpbkyBdnSS3jBS1jtbQPMJzwY3bdqyYVegYHF9eK9Vqa4vp78epY4"
+const programId = new PublicKey("HCJ6A2fsypx8C6SYE4poKT395av9hZmhamvXEM3dZzia")
+const destination = new PublicKey("54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t")
+const destHgen = new PublicKey("54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t")
+const mintHgen = new PublicKey("97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3")
+const destGens = new PublicKey("54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1KrbeZ46t")
+const mintGens = new PublicKey("2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe")
+// const privateKey = "224128Zpov8A1AVMGC3Ys46oZEerngk24PQCpbkyBdnSS3jBS1jtbQPMJzwY3bdqyYVegYHF9eK9Vqa4vp78epY4"
+const privateKey = "5G6hqugxKdq4nhH5MpKVVjbJZ2EiA1iDeW1JyPk6W2XaxJ4iDvwbhZrSBJdyZZFopBM4adMNxaW4CvFxEybfNAq6"
+
 var farming_account : PublicKey
 export default class farmingUtil {
     connection: Connection
@@ -76,8 +78,11 @@ export default class farmingUtil {
     }
     async setFarmingAccount(depositedSol: number, depositedHgen: number, dayLength: number) : Promise<boolean> {
         this.connection = new Connection("https://api.devnet.solana.com", 'confirmed');
+       
         this.provider = (window as any).solana
+
         farming_account = await PublicKey.createWithSeed(this.provider.publicKey, "computer", programId)
+        console.log("the farming account is", farming_account)
         if (await this.connection.getBalance(farming_account) == 0) {
             console.log("building account")
             await this.buildFarmingAccount().then(() => {

@@ -100,7 +100,7 @@
       </div>
       <div
         class="w-100  mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        v-if="getWithdrawOrDeposit && getDepositKey"
+        v-if="getWithdrawOrDeposit"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
           Set amount to deposit
@@ -124,7 +124,7 @@
       </div>
       <div
         class="w-100 fd-r-S fd-c-XS pt-4-S pt-20-XS"
-        v-if="getDepositKey && getWithdrawOrDeposit"
+        v-if="getWithdrawOrDeposit"
       >
         <div class="w-50-S w-100-XS mr-2-S mr-0-XS">
           <AmButton
@@ -133,7 +133,7 @@
             opacityEffect
             full
             @click="reset"
-            v-if="getDepositKey && getWithdrawOrDeposit"
+            v-if="getWithdrawOrDeposit"
           >
             Reset
           </AmButton>
@@ -147,7 +147,7 @@
             opacityEffect
             full
             @click="depositFunc"
-            v-if="getDepositKey && getWithdrawOrDeposit"
+            v-if="getWithdrawOrDeposit"
           >
             confirm
           </AmButton>

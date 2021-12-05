@@ -84,8 +84,8 @@ export default {
   axios: {
     // TODO: change http to https
     //baseUrl: process.env.baseUrl || "http://dev-nexfin-back.herokuapp.com/"
-    baseUrl: process.env.baseUrl || "https://f927-49-195-89-82.ngrok.io"
-    //baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
+    //baseUrl: process.env.baseUrl || "https://f927-49-195-89-82.ngrok.io"
+    baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
     //baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
   },
 
@@ -93,8 +93,8 @@ export default {
   env: {
     // TODO: change http to https
     //baseUrl: process.env.baseUrl || "http://dev-nexfin-back.herokuapp.com/",
-    baseUrl: process.env.BASE_URL || "https://f927-49-195-89-82.ngrok.io",
-    //baseUrl: process.env.BASE_URL || "http://192.168.43.112:3000/",
+    //baseUrl: process.env.BASE_URL || "https://f927-49-195-89-82.ngrok.io",
+    baseUrl: process.env.BASE_URL || "http://192.168.43.112:3000/",
     //baseUrl: process.env.BASE_URL || "https://liquity-back.ambersoft.llc/",
     mint: "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe"
   },

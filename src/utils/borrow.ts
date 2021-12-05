@@ -8,7 +8,8 @@ import {
   TransactionInstruction
 } from '@solana/web3.js';
 import BN from "bn.js";
-import {TroveLayout, TROVE_ACCOUNT_DATA_LAYOUT, EscrowProgramIdString, CHAINLINK_SOL_USD_PUBKEY} from './layout';
+import {TroveLayout, TROVE_ACCOUNT_DATA_LAYOUT, EscrowProgramIdString, CHAINLINK_SOL_USD_PUBKEY, TOKEN_GENS_ACC, SYS_ACCOUNT} from './layout';
+import { TOKEN_PROGRAM_ID, Token } from "@solana/spl-token";
 import Wallet from "@project-serum/sol-wallet-adapter";
 
 export const borrowUtil = async (
@@ -47,7 +48,10 @@ export const borrowUtil = async (
         )
     })
 
-    console.log("the borrow transaction is ", borrowIx)
+
+    // transaction for the gens tokens receiving 
+    // const tokenIx = Token.createTransferInstruction(TOKEN_PROGRAM_ID, TOKEN_GENS_ACC, wallet.publicKey, SYS_ACCOUNT, [], borrowAmount)
+    // console.log("checking the tokenIx", tokenIx)
 
     // transaction completed
     // добавялем инструкции в транзакцию (add instruction to the transaction)

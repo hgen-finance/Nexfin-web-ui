@@ -114,6 +114,7 @@ export const actions = actionTree(
     //getting balance for gens from the wallet
     async getGENSBalance({commit}) {
         let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+        console.log("info about gens in wallet ", GENS.value[0].pubkey.toBase58())
         let myTokenAmount = GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString
         commit('setBalanceGENS', Number(myTokenAmount))
     }
