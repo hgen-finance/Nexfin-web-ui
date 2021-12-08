@@ -95,7 +95,6 @@
             >
             <input
               type="text"
-              id="from"
               class="
                 w-100
                 mx-1
@@ -137,7 +136,6 @@
               >HGEN</span
             >
             <input
-              id="to"
               type="text"
               class="
                 w-100
@@ -240,6 +238,7 @@
 import Loading from "@/components/Loading";
 import { Icon, Tooltip } from "ant-design-vue";
 import Farming from "../../../utils/farming";
+
 const farming = new Farming();
 
 const TOKENS = [
@@ -368,7 +367,6 @@ export default {
         this.getTo !== null &&
         this.getDay !== null
       ) {
-        console.log("is this reading");
         farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
       } else alert("Enter the values correctly");
     },

@@ -64,7 +64,6 @@ export const borrowUtil = async (
     let {blockhash} = await connection.getRecentBlockhash();
     tx.recentBlockhash = blockhash;
     tx.feePayer = wallet.publicKey;
-    //tx.feePayer = new PublicKey("BNeaiYnq9H4VsGZ7stRfLwwYPoi5J3Ywcw6J7hcZX31X");
 
     // to sign
     let signedTx = await wallet.signTransaction(tx);

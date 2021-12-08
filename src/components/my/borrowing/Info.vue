@@ -81,7 +81,8 @@
             "
           >
             <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>
-            {{ Number(Number(from) * getUsd).toLocaleString() }}
+            <!-- {{ Number(Number(from) * getUsd).toLocaleString() }} -->
+            {{ liquidationPrice.toLocaleString() }}
           </div>
         </div>
         <!-- <div class="w-100 f-mcolor-500 fs-13-S fs-30-XS fw-600 ta-l-S ta-c-XS">
@@ -197,7 +198,7 @@
           Number(getDebt) - Number(repayTo) < 0
       "
     > -->
-    <!-- <div
+    <div
       class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
       v-if="
         Number(getDebt) - Number(repayTo) > 0 ||
@@ -217,7 +218,7 @@
       >
         Exceeded the debt amount.
       </div>
-    </div> -->
+    </div>
     <div
       class="
         w-100
@@ -368,6 +369,11 @@ export default {
     Hint,
     Balance
   },
+  data() {
+    return {
+      liquidationCR: "109"
+    };
+  },
   props: {
     to: { type: Number, default: null },
     from: { type: Number, default: null },
@@ -426,11 +432,16 @@ export default {
             .toFixed(2)
             .toString()
         : 0;
+    },
+
+    // returns the debt amount remaining in gens
+    disputeDebt() {
+      return Number(this.getDebt) - Number(this.repayTo);
+    },
+
+    liquidationPrice() {
+      return (this.liquidationCR * this.to) / (this.from * 100) || 0;
     }
-    // // returns the debt amount remaining in gens
-    // disputeDebt() {
-    //   return Number(this.getDebt) - Number(this.repayTo);
-    // }
   }
 };
 </script>

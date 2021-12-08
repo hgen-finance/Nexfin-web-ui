@@ -175,7 +175,6 @@
             placeholder="0"
             v-model="repayTo"
             maxlength="12"
-            disabled
           />
           <span
             class="fs-6-S fs-20-XS f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
