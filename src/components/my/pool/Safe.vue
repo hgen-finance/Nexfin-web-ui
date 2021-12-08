@@ -207,7 +207,7 @@ export default {
   },
   computed: {
     getDepositKey() {
-      console.log(this.$accessor.pool.depositKey);
+      console.log("the env for baseurl is ", process.env.BASE_URL);
       return this.$accessor.pool.depositKey;
     },
     getLoading() {
