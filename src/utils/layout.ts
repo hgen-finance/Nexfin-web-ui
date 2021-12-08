@@ -10,7 +10,7 @@ const publicKey = (property = "publicKey") => {
 };
 
 // set this for farming
-//export const EscrowProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
+export const farmingProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
 //set this for borrow
 export const EscrowProgramIdString = '5kLDDxNQzz82UtPA5hJmyKR3nUKBtRTfu4nXaGZmLanS'
  //export const EscrowProgramIdString = '5uqKRHcKyEJ4Pw4cRVus32a1wfEMGdHpgMa1FLqoQaN8'
@@ -61,14 +61,14 @@ export const OWNER_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
 ]);
 
 export const FARMING_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
-  BufferLayout.u8("isInitialized"),
-  dateArray("startDate"),
-  dateArray("endDate"),
-  uint64("depositedSol"),
-  uint64("depositedHgen"),
-  uint64("dayLength"),
-  uint64("dayLeft")
-])
+    BufferLayout.u8("isInitialized"),
+    dateArray("startDate"),
+    dateArray("endDate"),
+    uint64("depositedSol"),
+    uint64("depositedHgen"),
+    uint64("dayLength"),
+    uint64("dayLeft")
+]);
 
 export const INSTRUCTION_LAYOUT = BufferLayout.struct([
   BufferLayout.u8("instructionId"),
@@ -104,18 +104,19 @@ export interface DepositLayout {
 }
 
 export interface FarmingLayout {
-  isInitialized: number,
-  startDate: Uint8Array,
-  endDate: Uint8Array,
-  depositedSol: Uint8Array,
-  depositedHgen: Uint8Array,
-  dayLength: Uint8Array,
-  dayLeft: Uint8Array
+    isInitialized: number,
+    startDate: Uint8Array,
+    endDate: Uint8Array,
+    depositedSol: Uint8Array,
+    depositedHgen: Uint8Array,
+    dayLength: Uint8Array,
+    dayLeft: Uint8Array
 }
 
 // export const TOKEN_GENS = new PublicKey('JCnyD2wyimf5P3MBVAxB5yCVhotmswDhvrwXdS9xNbAq')
 //export const TOKEN_GENS = new PublicKey('C6tfES3TrhTzQnRopAyqHAjx4ixShAzJ16QeffWvoXBk')
 export const TOKEN_GENS = new PublicKey('2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe')
+export const TOKEN_GENS_ACC = new PublicKey('Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73');
 //export const TOKEN_HGEN = new PublicKey('4MxiWoWWgRmd7YAPmJNtaivDATVgpoGjHbrdF4d2EmoJ')
 export const TOKEN_HGEN = new PublicKey('97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3')
 //export const SYS_ACCOUNT = new PublicKey('H8zGtK1u7wtGmcYFLcrES4trMRAz8BR2WH83k3uYYiLo')
@@ -124,9 +125,8 @@ export const SYS_ACCOUNT = new PublicKey('54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1Kr
 export const CHAINLINK_SOL_USD_PUBKEY = new PublicKey('FmAmfoyPXiA8Vhhe6MZTr3U6rZfEZ1ctEHay1ysqCqcf')
 
 export const getCollateral = (gens: string, lamports: string, usd: string) => {
-    console.log("the value of the collateral gens are ", gens)
-    // TO DO might need to change the value later here
+    
+    // TODO might need to change the value later here
     let test = new BN(lamports).div(new BN("10000000")).mul(new BN(usd)).div(new BN(gens))
-    console.log("testing for get Collateral", test)
     return test
 }

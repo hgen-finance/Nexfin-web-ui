@@ -1,6 +1,6 @@
 // Import Typed
 import { PublicKey } from '@solana/web3.js';
-import { DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout } from '@/utils/layout';
+import { DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout, TOKEN_GENS } from '@/utils/layout';
 import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 
 // Import Utils
@@ -84,13 +84,15 @@ export const actions = actionTree(
 
     // New Deposit
     async newDeposit ({ state, commit }, value) {
+        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+        let burn_addr = GENS.value[0].pubkey.toBase58();
       if (value && (Number(value.from) > 0 && value.gen && value.hgen)) {
         if (!state.depositKey) {
           commit('setLoading', true)
           try {
               console.log("the new deposit is running")
             const test = new PublicKey("2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe").toBase58();
-            const data = await depositUtil(this.$wallet, test, Number(value.from),"Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73", "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
+            const data = await depositUtil(this.$wallet, test, Number(value.from),burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
             console.log("het the data is ", data)
             if (data && (data.depositAccountPubkey)) {
               commit('setDepositKey', data.depositAccountPubkey || '')
@@ -113,12 +115,14 @@ export const actions = actionTree(
 
     // Add Deposit
     async addDeposit ({ state, commit }, value) {
+        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+        let burn_addr = GENS.value[0].pubkey.toBase58();
       if (value && (Number(value.from) > 0)) {
         console.log("this is running")
         if (state.depositKey && state.gen && state.hgen) {
           commit('setLoading', true)
           try {
-           const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", Number(value.from),"Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73", "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
+           const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", Number(value.from),burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
             //const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
             console.log("the data for the add deposit", data);
            //  console.log(data, 'addDeposit')

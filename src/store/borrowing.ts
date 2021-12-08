@@ -4,7 +4,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 // Import Utils
 import { borrowUtil } from '@/utils/borrow'
 import { closeBorrowUtil } from '@/utils/closeBorrow'
-import { TROVE_ACCOUNT_DATA_LAYOUT, TroveLayout, getCollateral } from "@/utils/layout";
+import { TROVE_ACCOUNT_DATA_LAYOUT, TroveLayout, getCollateral, TOKEN_GENS } from "@/utils/layout";
 import BN from "bn.js";
 import { PublicKey } from "@solana/web3.js";
 
@@ -16,6 +16,7 @@ export const state = () => ({
     loading: false,
     loadingSub: false,
     borrowOrPay: true,
+    closeAmount: 0,
 })
 
 // Getters
@@ -46,6 +47,9 @@ export const mutations = mutationTree(state, {
 
     setBorrowOrPay(state, newValue: boolean) {
         state.borrowOrPay = newValue
+    },
+    setCloseAmount(state, newValue: number) {
+        state.closeAmount = newValue
     }
 })
 
@@ -83,7 +87,7 @@ export const actions = actionTree(
         },
         // Claim
         async confirmBorrow({ commit, dispatch }, value) {
-
+            // check if the collaeral ratio is not higher than the 109
             const cr = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
             if (Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
                 commit('setLoading', true)
@@ -97,7 +101,7 @@ export const actions = actionTree(
                         this.$accessor.wallet.getBalance()
                         dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
                         this.$accessor.dashboard.setBorrow(true)
-                        await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint }).then((res) => {
+                        await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
                              console.log(res, 'newTrove Backend')
                         })
                     }
@@ -112,11 +116,13 @@ export const actions = actionTree(
 
         // Deposit
         async closeTrove({ state, commit, dispatch }, value) {
+            let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+            let burn_addr = GENS.value[0].pubkey.toBase58();
             if (state.troveId) {
                 commit('setLoading', true)
                 try {
                     console.log("processing closing the trove...")
-                    const data = await closeBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
+                    const data = await closeBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
                     console.log("reached to this point")
                     if (data === null) {
@@ -168,6 +174,14 @@ export const actions = actionTree(
         async changeBorrowOrPay({ commit }, value) {
             let newValue = !value;
             commit('setBorrowOrPay', newValue)
+        },
+
+        // get closing borrow amount 
+        async closeBorrowAmount({commit}, value){
+            if (value){
+                console.log("making changes in the repayto")
+                commit('setCloseAmount', this.$accessor.borrowing.trove.borrowAmount - value.repayTo)
+            }
         }
     }
 )

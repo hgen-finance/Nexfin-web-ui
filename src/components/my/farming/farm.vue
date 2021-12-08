@@ -95,7 +95,6 @@
             >
             <input
               type="text"
-              id="from"
               class="
                 w-100
                 mx-1
@@ -110,11 +109,7 @@
               v-model="from"
               maxlength="12"
             />
-            <span
-              class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
-              @click="setMax"
-              >Max</span
-            >
+            <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span>
           </div>
         </div>
         <div
@@ -137,7 +132,6 @@
               >HGEN</span
             >
             <input
-              id="to"
               type="text"
               class="
                 w-100
@@ -152,11 +146,7 @@
               placeholder="0"
               v-model="to"
             />
-            <span
-              class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
-              @click="setMax"
-              >Max</span
-            >
+            <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span>
           </div>
         </div>
         <div
@@ -204,9 +194,8 @@
               opacityEffect
               full
               v-if="getDepositKey"
-              @click="reset"
             >
-              reset
+              Reset
             </AmButton>
           </div>
           <div
@@ -242,15 +231,6 @@ import { Icon, Tooltip } from "ant-design-vue";
 import Farming from "../../../utils/farming";
 const farming = new Farming();
 
-const TOKENS = [
-  { label: "HGEN", value: "97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3" }, // need to add the mint address of the hgen token
-  { label: "SOL", value: "So11111111111111111111111111111111111111112" }
-];
-
-// conversion fo the hgen and sol
-const CONVERT_HGEN = 200;
-const CONVERT_SOL = 0.005;
-
 export default {
   components: {
     Loading,
@@ -262,41 +242,10 @@ export default {
       gen: "",
       hgen: "",
       from: null,
-      currencyFrom: {
-        theme: "default",
-        value: TOKENS[0].value,
-        items: TOKENS,
-        colorDefault: "mcolor-700",
-        colorFocus: "mcolor-700",
-        colorBackground: "mcolor-700",
-        colorTitle: "white-200"
-      },
-      to: "",
-      currencyTo: {
-        theme: "default",
-        value: TOKENS[1].value,
-        items: TOKENS,
-        colorDefault: "mcolor-700",
-        colorFocus: "mcolor-700",
-        colorBackground: "mcolor-700",
-        colorTitle: "white-200"
-      },
+      to: null,
       day: null,
       open: true
     };
-  },
-  mounted() {
-    // change value on input instead of the change
-    document.getElementById("from").addEventListener("input", function() {
-      document.getElementById("to").value = this.value * CONVERT_HGEN;
-      this.to = this.value;
-      this.convertToHgen();
-    });
-    document.getElementById("to").addEventListener("input", function() {
-      document.getElementById("from").value = this.value * CONVERT_SOL;
-      this.form = this.value;
-      this.convertToSol();
-    });
   },
   computed: {
     getUsd() {
@@ -334,26 +283,11 @@ export default {
       return this.day;
     }
   },
-  watch: {
-    // uncomment if the value are updated based on changes instead of input
-    // from(val) {
-    //   if (val) {
-    //     this.from = val.toString().replace(/[^+\d\.]/g, "");
-    //     if (this.from.split(".").length > 2)
-    //       this.from = this.from.replace(/\.(?=[^\.]*$)/, "");
-    //     if (this.from.substr(0, 2) === "00")
-    //       this.from = this.from.substr(1, this.from.length);
-    //     this.convertToHgen();
-    //   } else {
-    //     this.to = "";
-    //   }
-    // }
-  },
+  watch: {},
   methods: {
     reset() {
-      this.from = "";
-      this.to = "";
-      this.day = "";
+      this.from = null;
+      this.to = null;
     },
     farmFunc() {},
     openList() {
@@ -366,23 +300,6 @@ export default {
       if (this.getFrom !== null && this.getTo !== null && this.getDay !== null)
         farming.setFarmingAccount(this.getFrom, this.getTo, this.getDay);
       else alert("Enter the values correctly");
-    },
-    convertToHgen() {
-      // converting to hgen when sol is entered
-      this.to = CONVERT_HGEN * Number(this.from);
-    },
-    convertToSol() {
-      // converting to sol when hgen is entered
-      this.to = CONVERT_SOL * Number(this.to);
-    },
-    setMax() {
-      this.from = this.$accessor.wallet.balance
-        ? this.$accessor.wallet.balance
-        : 0;
-      // remove this when you change the value on watch
-      this.to = this.$accessor.wallet.balance
-        ? this.$accessor.wallet.balance * 200
-        : 0;
     }
   }
 };

@@ -8,7 +8,11 @@
         <Pay @gens="to = $event" @sol="from = $event" />
       </div>
       <div class="w-25-S w-100-XS pt-30-XS">
-        <Info :to="Number(to)" :from="Number(from)" />
+        <Info
+          :to="Number(to)"
+          :from="Number(from)"
+          :repayTo="Number(repayTo)"
+        />
       </div>
     </div>
     <!-- <div class="w-100 fd-r-S fd-c-XS pt-30 ai-s">
@@ -41,7 +45,8 @@ export default {
   data() {
     return {
       to: null,
-      from: null
+      from: null,
+      repayTo: null
     };
   }
 };

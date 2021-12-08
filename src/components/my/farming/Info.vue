@@ -23,7 +23,6 @@
         mt-2-S mt-10-XS
         mb-2-S mb-10-XS
       "
-      v-if="!withdrawOrDeposit"
     >
       <div
         class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-3 jc-l-S jc-c-XS"

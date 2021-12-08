@@ -175,7 +175,6 @@
             placeholder="0"
             v-model="repayTo"
             maxlength="12"
-            disabled
           />
           <span
             class="fs-6-S fs-20-XS f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
@@ -240,7 +239,7 @@ export default {
     return {
       from: null,
       to: null,
-      repayTo: this.$accessor.borrowing.trove.amountToClose, // TO DO change this later
+      repayTo: null, // this.$accessor.borrowing.trove.amountToClose, // TO DO change this later
       mint: "",
       borrow: 0,
       depositAmount: 0,
@@ -306,6 +305,10 @@ export default {
       }
       this.$emit("gens", this.to);
       this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
+    },
+    repayTo(val) {
+      console.log("checkinng the changes");
+      this.$accessor.borrowing.closeBorrowAmount({ repayTo: val });
     }
   },
   methods: {
