@@ -135,7 +135,7 @@
           <span class="f-white-200 pl-1-S pl-5-XS">%</span>)<span
             class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS pl-1-S pl-5-XS"
             >{{ yourAmount }}$</span
-          >{{ (yourAmount * 230.22).toFixed(2) }}
+          >{{ (yourAmount * 244.22).toFixed(2) }}
         </div>
       </div>
       <div class="w-100 fd-r py-1-M py-2-S py-10-XS">

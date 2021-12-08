@@ -10,7 +10,7 @@ const publicKey = (property = "publicKey") => {
 };
 
 // set this for farming
-//export const EscrowProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
+export const farmingProgramIdString = 'EXgCpsUR6DayempLFhq4mMdaKuZroRmjtRTRo6t9iGMB'
 //set this for borrow
 export const EscrowProgramIdString = '5kLDDxNQzz82UtPA5hJmyKR3nUKBtRTfu4nXaGZmLanS'
  //export const EscrowProgramIdString = '5uqKRHcKyEJ4Pw4cRVus32a1wfEMGdHpgMa1FLqoQaN8'
@@ -61,14 +61,14 @@ export const OWNER_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
 ]);
 
 export const FARMING_ACCOUNT_DATA_LAYOUT = BufferLayout.struct([
-  BufferLayout.u8("isInitialized"),
-  dateArray("startDate"),
-  dateArray("endDate"),
-  uint64("depositedSol"),
-  uint64("depositedHgen"),
-  uint64("dayLength"),
-  uint64("dayLeft")
-])
+    BufferLayout.u8("isInitialized"),
+    dateArray("startDate"),
+    dateArray("endDate"),
+    uint64("depositedSol"),
+    uint64("depositedHgen"),
+    uint64("dayLength"),
+    uint64("dayLeft")
+]);
 
 export const INSTRUCTION_LAYOUT = BufferLayout.struct([
   BufferLayout.u8("instructionId"),
@@ -104,13 +104,13 @@ export interface DepositLayout {
 }
 
 export interface FarmingLayout {
-  isInitialized: number,
-  startDate: Uint8Array,
-  endDate: Uint8Array,
-  depositedSol: Uint8Array,
-  depositedHgen: Uint8Array,
-  dayLength: Uint8Array,
-  dayLeft: Uint8Array
+    isInitialized: number,
+    startDate: Uint8Array,
+    endDate: Uint8Array,
+    depositedSol: Uint8Array,
+    depositedHgen: Uint8Array,
+    dayLength: Uint8Array,
+    dayLeft: Uint8Array
 }
 
 // export const TOKEN_GENS = new PublicKey('JCnyD2wyimf5P3MBVAxB5yCVhotmswDhvrwXdS9xNbAq')

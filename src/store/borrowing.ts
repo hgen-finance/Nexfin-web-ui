@@ -16,6 +16,7 @@ export const state = () => ({
     loading: false,
     loadingSub: false,
     borrowOrPay: true,
+    closeAmount: 0,
 })
 
 // Getters
@@ -46,6 +47,9 @@ export const mutations = mutationTree(state, {
 
     setBorrowOrPay(state, newValue: boolean) {
         state.borrowOrPay = newValue
+    },
+    setCloseAmount(state, newValue: number) {
+        state.closeAmount = newValue
     }
 })
 
@@ -171,5 +175,13 @@ export const actions = actionTree(
             let newValue = !value;
             commit('setBorrowOrPay', newValue)
         },
+
+        // get closing borrow amount 
+        async closeBorrowAmount({commit}, value){
+            if (value){
+                console.log("making changes in the repayto")
+                commit('setCloseAmount', this.$accessor.borrowing.trove.borrowAmount - value.repayTo)
+            }
+        }
     }
 )

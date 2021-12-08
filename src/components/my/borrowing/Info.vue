@@ -200,22 +200,13 @@
     > -->
     <div
       class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
-      v-if="
-        Number(getDebt) - Number(repayTo) > 0 ||
-          Number(getDebt) - Number(repayTo) < 0
-      "
+      v-if="disputeDebt > 0 || disputeDebt < 0"
     >
-      <div
-        class="w-100 pb-2-S  pb-10-XS"
-        v-if="Number(getDebt) - Number(repayTo) > 0"
-      >
+      <div class="w-100 pb-2-S  pb-10-XS" v-if="disputeDebt > 0">
         You need <span class="fw-600">{{ disputeDebt }}</span> more to close
         Borrow.
       </div>
-      <div
-        class="w-100 pb-2-S pb-10-XS"
-        v-if="Number(getDebt) - Number(repayTo) < 0"
-      >
+      <div class="w-100 pb-2-S pb-10-XS" v-if="disputeDebt < 0">
         Exceeded the debt amount.
       </div>
     </div>
@@ -380,6 +371,12 @@ export default {
     repayTo: { type: Number, default: null }
     // collateral: { type: Number, default: null }
   },
+  watch: {
+    repayTo: function(newVal, oldVal) {
+      // watch the changes to repayTo for the collateral
+      console.log("Prop changed: ", newVal, " | was: ", oldVal);
+    }
+  },
   computed: {
     getMaxRatio() {
       if (this.$accessor.lightMode) {
@@ -436,7 +433,8 @@ export default {
 
     // returns the debt amount remaining in gens
     disputeDebt() {
-      return Number(this.getDebt) - Number(this.repayTo);
+      return Number(this.$accessor.borrowing.closeAmount);
+      //return Number(this.getTroveAmount) - Number(this.repayTo);
     },
 
     liquidationPrice() {

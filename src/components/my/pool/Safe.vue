@@ -24,7 +24,7 @@
         <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">{{
           getPercent.toLocaleString()
         }}</span>
-        <span class="fw-600 pr-1">% </span>CR)
+        <span class="fw-600 pr-1">% </span>)
       </div>
       <div class="w-100 pt-6-S pb-15-XS fd-r-S fd-r-XS">
         <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
