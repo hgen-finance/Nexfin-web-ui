@@ -18,7 +18,7 @@ import * as bs58 from 'bs58';
 const programId = new PublicKey("3PtvnRuzC68zrDQoRsoKVQoVvhbVF7fTxeYzLF6mN3EE")
 const destination = new PublicKey("FnKXCAbNzvAGKtTqSxH2NrWemR4CoJhCMrdk4ihBG2P6")
 const privateKey = "224128Zpov8A1AVMGC3Ys46oZEerngk24PQCpbkyBdnSS3jBS1jtbQPMJzwY3bdqyYVegYHF9eK9Vqa4vp78epY4"
-var farming_account : PublicKey  = new PublicKey("");
+var farming_account : PublicKey
 export default class farmingUtil {
     connection: Connection
     provider: any
