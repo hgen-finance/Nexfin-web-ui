@@ -49,6 +49,10 @@
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Liquidation CR
+            <Hint
+              >Trove will be liquidated, when it drops below 110% Collateral
+              Ratio.</Hint
+            >
           </div>
           <div
             class="
@@ -68,6 +72,10 @@
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Liquidation Price
+            <Hint
+              >The dollar value per unit of collateral at which your current
+              Trove will be liquidated.</Hint
+            >
           </div>
           <div
             class="
