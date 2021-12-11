@@ -81,7 +81,7 @@ export default {
       let result = 0;
       if (this.getBalance) {
         // result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result = (Number(this.getBalance) * this.getUsd).toString();
+        result = (Number(this.getBalance) * this.getUsd).toFixed(2).toString();
         // result =
         //   Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
       }

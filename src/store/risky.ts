@@ -5,7 +5,8 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 // State
 export const state = () => ({
   troveList: [],
-  troveTotal: 0
+  troveTotal: 0,
+  loading: false,
 })
 
 // Getters
@@ -24,6 +25,9 @@ export const mutations = mutationTree(state, {
   setTroveTotal(state, newValue: number) {
     state.troveTotal = newValue
   },
+  setLoading (state, newValue: boolean) {
+    state.loading = newValue
+  },
 })
 
 // Actions
@@ -40,8 +44,11 @@ export const actions = actionTree(
       if (value.sort) {
         params += '&sort_field=' + value.sort + '&sort_direction=desc'
       }
-      await this.$axios.get('trove/list' + params).then(({ data }) => {
+      commit('setLoading', true)
+      console.log("the loading status atm is ", this.$accessor.loading)
+      await this.$axios.get('trove/list' + params).then(({ data }) => {        
         commit('setTroveTotal', data.total_count || 0)
+        commit('setLoading', false);
         if (value.clear) {
           commit('adjustTroveListClear', data.entities || [])
         } else {
