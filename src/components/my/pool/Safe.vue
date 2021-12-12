@@ -207,7 +207,6 @@ export default {
   },
   computed: {
     getDepositKey() {
-      console.log("the env for baseurl is ", process.env.BASE_URL);
       return this.$accessor.pool.depositKey;
     },
     getLoading() {
@@ -217,10 +216,10 @@ export default {
       return this.$accessor.pool.depositAmount;
     },
     getPercent() {
-      return Number.parseInt(
+      return Number(
         (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit || 0) *
           100
-      );
+      ).toFixed(2);
     },
     getDepositeTotal() {
       return this.$accessor.totalDeposit || 0;

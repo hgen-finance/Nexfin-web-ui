@@ -87,14 +87,14 @@
         class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.borrowAmount }}
+          {{ data.borrowAmount / 100 }}
         </div>
       </div>
       <div
         class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.depositorFee }}
+          {{ data.depositorFee / 100 }}
         </div>
       </div>
       <div
@@ -113,7 +113,12 @@
         class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ Number(getLamports(data.lamports) * getUsd).toLocaleString() }}
+          {{
+            getliquidationPrice(
+              data.borrowAmount.toString(),
+              data.lamports.toString()
+            )
+          }}
         </div>
       </div>
       <div class="w-5 fsh-0 fd-r ai-c jc-c">
@@ -122,11 +127,11 @@
           class="w-fix-s-10 hv ts-3"
           @click="false"
         /> -->
-        <img
+        <!-- <img
           src="@/assets/svg/my/bin.svg"
           class="w-fix-s-10 hv ts-3"
           @click="binAction({ trove: data, index: d })"
-        />
+        /> -->
       </div>
     </div>
     <div
@@ -235,13 +240,22 @@ export default {
     },
     getCollateralFunc(borrow, lamports) {
       return getCollateral(
-        borrow,
+        borrow / 100,
         lamports,
         parseInt(this.$accessor.usd).toString()
       );
     },
     getLamports(lamports) {
       return new BN(lamports).div(new BN("1000000000")).toString();
+    },
+
+    getliquidationPrice(borrow, lamports) {
+      const collateral_ratio = Number(this.getCollateralFunc(borrow, lamports));
+      const collateral = Number(this.getLamports(lamports));
+      console.log("the collateral is ", borrow);
+      return ((collateral_ratio * (borrow / 100)) / (collateral * 100))
+        .toFixed(2)
+        .toString();
     },
     binAction(val) {
       this.$accessor.risky.closeTroveUser(val);
