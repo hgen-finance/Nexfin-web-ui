@@ -216,10 +216,12 @@ export default {
       return this.$accessor.pool.depositAmount;
     },
     getPercent() {
-      return Number(
-        (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit || 0) *
-          100
-      ).toFixed(2);
+      return this.$accessor.pool.depositAmount
+        ? Number(
+            (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit) *
+              100
+          ).toFixed(2)
+        : 0;
     },
     getDepositeTotal() {
       return this.$accessor.totalDeposit || 0;
