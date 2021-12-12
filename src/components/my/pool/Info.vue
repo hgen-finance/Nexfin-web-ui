@@ -125,10 +125,12 @@ export default {
   layout: "my",
   computed: {
     getPercent() {
-      return Number.parseInt(
-        (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit || 0) *
-          100
-      );
+      return this.$accessor.pool.depositAmount
+        ? Number(
+            (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit) *
+              100
+          ).toFixed(2)
+        : 0;
     },
     getCoin() {
       return this.$accessor.pool.rewardCoinAmount;
