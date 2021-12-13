@@ -129,6 +129,7 @@ export const actions = actionTree(
             this.$accessor.wallet.getBalance()
             this.$accessor.wallet.getGENSBalance()
 
+            await this.$axios.post('deposit/upsert', {deposit: state.depositKey.deposit, amount: Number(value.from)})
             await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
               commit('setDepositKey', data.model || '')
               // Info
@@ -157,16 +158,16 @@ export const actions = actionTree(
 
     // Close Deposit
     async closeDeposit ({ state, commit }, value) {
-      let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
-      let burn_addr = GENS.value[0].pubkey.toBase58();
-      if (value && (Number(value) > 0)) {
+    //   let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+    //   let burn_addr = GENS.value[0].pubkey.toBase58();
+      if (value && (Number(value) > 0 && Number(value) <= this.$accessor.pool.depositAmount)) {
         if (state.depositKey) {
             commit('setLoading', true)
             //const data = await withdrawUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", value, burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
             //console.log("the data is ", data)
 
             //if (data){
-                await this.$axios.post('deposit/withdraw', {deposit: state.depositKey.deposit, amount: value}).then(({ data }) => {
+                await this.$axios.post('deposit/withdraw', {deposit: state.depositKey.deposit, amount: Number(value)}).then(({ data }) => {
                     console.log(data, 'closeDeposit')
                 }).finally(async () => {
                     commit('setLoading', false)

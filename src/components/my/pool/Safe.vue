@@ -95,7 +95,7 @@
           />
           <span
             class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
-            @click="setcloselend"
+            @click="setCloseLend"
             >Close Lend</span
           >
         </div>
