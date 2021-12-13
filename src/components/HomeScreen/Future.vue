@@ -44,7 +44,7 @@
             pt-0-M pt-2-S pt-2-XS
           "
         >
-          COMING Dec 2021
+          Q1 of 2022
         </div>
         <div
           class="

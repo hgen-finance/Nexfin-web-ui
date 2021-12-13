@@ -115,17 +115,16 @@ export const actions = actionTree(
 
     // Add Deposit
     async addDeposit ({ state, commit }, value) {
-        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
-        let burn_addr = GENS.value[0].pubkey.toBase58();
+      let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+      let burn_addr = GENS.value[0].pubkey.toBase58();
       if (value && (Number(value.from) > 0)) {
-        console.log("this is running")
         if (state.depositKey && state.gen && state.hgen) {
           commit('setLoading', true)
           try {
-           const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", Number(value.from),burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
+            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", Number(value.from),burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
             //const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
             console.log("the data for the add deposit", data);
-           //  console.log(data, 'addDeposit')
+            //console.log(data, 'addDeposit')
             this.$accessor.wallet.getBalance()
             this.$accessor.wallet.getGENSBalance()
 

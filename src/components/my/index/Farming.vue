@@ -7,17 +7,14 @@
       >
         Farms
       </div>
-      <span
+      <!-- <span
         class="fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S"
         @click="closeList"
         v-if="getToggleValue"
         ><Tooltip placement="bottomRight"> Close </Tooltip></span
-      >
-      <span
-        class=" fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S "
-        @click="openList"
-        v-if="!getToggleValue"
-        ><Tooltip placement="bottomRight">
+      > -->
+      <span class=" fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S "
+        ><Tooltip placement="bottomRight" class="f-green-600">
           Open
         </Tooltip>
       </span>
