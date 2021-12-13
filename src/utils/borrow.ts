@@ -29,7 +29,6 @@ export const borrowUtil = async (
         newAccountPubkey: troveAccount.publicKey,
         programId: escrowProgramId
     })
-    console.log("the borrow account is ", createBorrowAccountIx);
 
     const borrowIx = new TransactionInstruction({
         programId: escrowProgramId,
