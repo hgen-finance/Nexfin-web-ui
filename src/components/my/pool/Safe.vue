@@ -93,7 +93,9 @@
             placeholder="0"
             v-model="withdrawAmount"
           />
-          <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+          <span
+            class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+            @click="setcloselend"
             >Close Lend</span
           >
         </div>
@@ -242,6 +244,13 @@ export default {
     }
   },
   methods: {
+    setCloseLend() {
+      if (this.getDepositKey) {
+        this.withdrawAmount = this.$accessor.pool.depositAmount;
+      } else {
+        this.withdrawAmount = null;
+      }
+    },
     setMax() {
       // TODO change the deposit set max to add certain value
       if (this.$accessor.wallet.balanceGENS > 0) {
