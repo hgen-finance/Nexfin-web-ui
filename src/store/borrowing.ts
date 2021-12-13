@@ -87,7 +87,7 @@ export const actions = actionTree(
         },
         // Claim
         async confirmBorrow({ commit, dispatch }, value) {
-            // check if the collaeral ratio is not higher than the 109
+            // check if the collateral ratio is not higher than the 109
             const cr = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
             if (Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
                 commit('setLoading', true)
@@ -96,8 +96,6 @@ export const actions = actionTree(
                     console.log("the borrowing  data for my thingy is ", data);
                     if (data && (data.troveAccountPubkey)) {
                         commit('setTroveId', data.troveAccountPubkey || '')
-                        // console.log(data, 'borrow')
-
                         this.$accessor.wallet.getBalance()
                         dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
                         this.$accessor.dashboard.setBorrow(true)
@@ -124,7 +122,6 @@ export const actions = actionTree(
                     console.log("processing closing the trove...")
                     const data = await closeBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
-                    console.log("reached to this point")
                     if (data === null) {
                         console.log(data, 'closeTrove')
                         commit('setTroveId', '')

@@ -6,6 +6,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 // Import Utils
 import { depositUtil } from '@/utils/deposit'
 import { addDepositUtil } from '@/utils/addDeposit'
+import { withdrawUtil } from '@/utils/withdraw';
 import BN from "bn.js";
 
 // State
@@ -115,20 +116,20 @@ export const actions = actionTree(
 
     // Add Deposit
     async addDeposit ({ state, commit }, value) {
-        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
-        let burn_addr = GENS.value[0].pubkey.toBase58();
+      let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+      let burn_addr = GENS.value[0].pubkey.toBase58();
       if (value && (Number(value.from) > 0)) {
-        console.log("this is running")
         if (state.depositKey && state.gen && state.hgen) {
           commit('setLoading', true)
           try {
-           const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", Number(value.from),burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
+            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", Number(value.from),burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
             //const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
-            console.log("the data for the add deposit", data);
-           //  console.log(data, 'addDeposit')
+            // console.log("the data for the add deposit", data);
+            //console.log(data, 'addDeposit')
             this.$accessor.wallet.getBalance()
             this.$accessor.wallet.getGENSBalance()
 
+            await this.$axios.post('deposit/upsert', {deposit: state.depositKey.deposit, amount: Number(value.from)})
             await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
               commit('setDepositKey', data.model || '')
               // Info
@@ -157,38 +158,43 @@ export const actions = actionTree(
 
     // Close Deposit
     async closeDeposit ({ state, commit }, value) {
-      if (value && (Number(value) > 0)) {
+    //   let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+    //   let burn_addr = GENS.value[0].pubkey.toBase58();
+      if (value && (Number(value) > 0 && Number(value) <= this.$accessor.pool.depositAmount)) {
         if (state.depositKey) {
-          commit('setLoading', true)
-          console.log("the deposit key is ",state.depositKey.deposit)
-          console.log("the amount is ", value)
-          this.$axios.post('deposit/withdraw', {deposit: state.depositKey.deposit, amount: value}).then(({ data }) => {
-            console.log(data, 'closeDeposit')
-          }).finally(async () => {
-            commit('setLoading', false)
-            this.$accessor.wallet.getBalance()
-            this.$accessor.wallet.getGENSBalance()
-            console.log("it is trying to withdraw")
-            await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
-              commit('setDepositKey', data.model || '')
-              // Info
-              const encodedDepositAccount = (await this.$web3.getAccountInfo(new PublicKey(data.model.deposit), 'singleGossip'))!.data;
-              const decodedDepositState = DEPOSIT_ACCOUNT_DATA_LAYOUT.decode(encodedDepositAccount) as DepositLayout;
-              console.log("the token amount is ", new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber())
-              if (decodedDepositState.bank) {
-                commit('setGen', new PublicKey(decodedDepositState.bank).toBase58())
-              }
-              if (decodedDepositState.governanceBank) {
-                commit('setHGEN', new PublicKey(decodedDepositState.governanceBank).toBase58())
-              }
+            commit('setLoading', true)
+            //const data = await withdrawUtil(this.$wallet, state.depositKey.deposit,"2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", value, burn_addr, "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz", this.$web3)
+            //console.log("the data is ", data)
 
-              commit('setRewardGensAmount', new BN(decodedDepositState.rewardTokenAmount, 10, 'le').toNumber());
-              commit('setRewardHgenAmount', new BN(decodedDepositState.rewardGovernanceTokenAmount, 10, 'le').toNumber());
-              commit('setDepositAmount', new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber());
-              commit('setRewardCoinAmount', new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber());
-            })
-          })
-        }
+            //if (data){
+                await this.$axios.post('deposit/withdraw', {deposit: state.depositKey.deposit, amount: Number(value)}).then(({ data }) => {
+                    console.log(data, 'closeDeposit')
+                }).finally(async () => {
+                    commit('setLoading', false)
+                    this.$accessor.wallet.getBalance()
+                    this.$accessor.wallet.getGENSBalance()
+                    console.log("it is trying to withdraw")
+                    await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
+                    commit('setDepositKey', data.model || '')
+                    // Info
+                    const encodedDepositAccount = (await this.$web3.getAccountInfo(new PublicKey(data.model.deposit), 'singleGossip'))!.data;
+                    const decodedDepositState = DEPOSIT_ACCOUNT_DATA_LAYOUT.decode(encodedDepositAccount) as DepositLayout;
+                    console.log("the token amount is ", new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber())
+                    if (decodedDepositState.bank) {
+                        commit('setGen', new PublicKey(decodedDepositState.bank).toBase58())
+                    }
+                    if (decodedDepositState.governanceBank) {
+                        commit('setHGEN', new PublicKey(decodedDepositState.governanceBank).toBase58())
+                    }
+        
+                    commit('setRewardGensAmount', new BN(decodedDepositState.rewardTokenAmount, 10, 'le').toNumber());
+                    commit('setRewardHgenAmount', new BN(decodedDepositState.rewardGovernanceTokenAmount, 10, 'le').toNumber());
+                    commit('setDepositAmount', new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber());
+                    commit('setRewardCoinAmount', new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber());
+                    })
+                })
+                }
+            //}
       }
     },
 

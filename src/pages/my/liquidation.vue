@@ -45,13 +45,18 @@
       </div>
     </div>
     <div class="w-100 fd-r ai-s">
-      <div
-        class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100"
-        v-for="(header, h) in headers"
-        :key="h"
-      >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-600">
-          {{ header }}
+      <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
+        <loading />
+      </div>
+      <div class="w-100 fd-r ai-s" v-if="!getLoading">
+        <div
+          class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100"
+          v-for="(header, h) in headers"
+          :key="h"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-600">
+            {{ header }}
+          </div>
         </div>
       </div>
       <div class="w-5 fsh-0" />
@@ -167,10 +172,18 @@
 <script>
 import { getCollateral } from "@/utils/layout";
 import BN from "bn.js";
+import Loading from "@/components/Loading";
 
 export default {
+  components: {
+    Loading
+  },
+
   layout: "my",
   computed: {
+    getLoading() {
+      return this.$accessor.risky.loading;
+    },
     aTroveList() {
       return this.$accessor.risky.troveList;
     },

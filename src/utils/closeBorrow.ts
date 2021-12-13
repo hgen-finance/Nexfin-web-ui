@@ -18,7 +18,6 @@ export const closeBorrowUtil = async (
     const troveAccount = new PublicKey(troveId)
     const tokenMintAcc = new PublicKey(tokenMintAccountPubkey);
     const pdaTokenAcc = new PublicKey(pdaToken)
-    console.log("my tokenMintAcc is ", tokenMintAcc.toBase58())
     const closeBorrowIx = new TransactionInstruction({
         programId: escrowProgramId,
         keys: [

@@ -91,9 +91,11 @@
             type="text"
             class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
             placeholder="0"
-            v-model="from"
+            v-model="withdrawAmount"
           />
-          <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+          <span
+            class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
+            @click="setCloseLend"
             >Close Lend</span
           >
         </div>
@@ -202,7 +204,8 @@ export default {
     return {
       gen: "",
       hgen: "",
-      from: null
+      from: null,
+      withdrawAmount: ""
     };
   },
   computed: {
@@ -241,6 +244,13 @@ export default {
     }
   },
   methods: {
+    setCloseLend() {
+      if (this.getDepositKey) {
+        this.withdrawAmount = this.$accessor.pool.depositAmount;
+      } else {
+        this.withdrawAmount = null;
+      }
+    },
     setMax() {
       // TODO change the deposit set max to add certain value
       if (this.$accessor.wallet.balanceGENS > 0) {
@@ -268,8 +278,8 @@ export default {
       this.from = null;
     },
     closeDepositFunc() {
-      this.$accessor.pool.closeDeposit(this.from);
-      this.from = null;
+      this.$accessor.pool.closeDeposit(this.withdrawAmount);
+      this.withdrawAmount = null;
     },
     changeWithdrawFunc() {
       this.$accessor.pool.changeWithdrawAndDeposit(

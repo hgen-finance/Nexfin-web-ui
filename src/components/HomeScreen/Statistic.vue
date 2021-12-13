@@ -13,7 +13,7 @@
             :stroke="stroke"
             colorFrom="8F00FF"
             colorTo="8F00FF"
-            text="Development, Reserve"
+            text="Development"
             tokens="50.000.000"
             tokenpercent="5"
           />
@@ -21,22 +21,50 @@
         <div class="w-100 p-a l-0 t-0 p-6-L p-6-M p-8-S p-12-XS">
           <div class="w-100" ref="round2">
             <ProgressCircle
-              :percent="40"
+              :percent="20"
               :radius="radius[1]"
               :stroke="stroke"
-              colorFrom="A533FF"
-              colorTo="A533FF"
-              text="Partner & Adv, Team"
-              tokens="100.000.000"
-              tokenpercent="10"
+              colorFrom="8F00FF"
+              colorTo="8F00FF"
+              text="Reserve"
+              tokens="300.000.000"
+              tokenpercent="5"
             />
           </div>
         </div>
         <div class="w-100 p-a l-0 t-0 p-12-L p-12-M p-16-S p-24-XS">
           <div class="w-100" ref="round3">
             <ProgressCircle
-              :percent="50"
+              :percent="40"
               :radius="radius[2]"
+              :stroke="stroke"
+              colorFrom="A533FF"
+              colorTo="A533FF"
+              text="Team"
+              tokens="100.000.000"
+              tokenpercent="10"
+            />
+          </div>
+        </div>
+        <div class="w-100 p-a l-0 t-0 p-18-L p-18-M p-24-S p-36-XS">
+          <div class="w-100" ref="round4">
+            <ProgressCircle
+              :percent="40"
+              :radius="radius[3]"
+              :stroke="stroke"
+              colorFrom="A533FF"
+              colorTo="A533FF"
+              text="Partner & Adv"
+              tokens="100.000.000"
+              tokenpercent="10"
+            />
+          </div>
+        </div>
+        <div class="w-100 p-a l-0 t-0 p-24-L p-24-M p-32-S p-48-XS">
+          <div class="w-100" ref="round5">
+            <ProgressCircle
+              :percent="50"
+              :radius="radius[4]"
               :stroke="stroke"
               colorFrom="BC66FF"
               colorTo="BC66FF"
@@ -46,11 +74,11 @@
             />
           </div>
         </div>
-        <div class="w-100 p-a l-0 t-0 p-18-L p-18-M p-24-S p-36-XS">
-          <div class="w-100" ref="round4">
+        <div class="w-100 p-a l-0 t-0 p-30-L p-30-M p-40-S p-60-XS">
+          <div class="w-100" ref="round6">
             <ProgressCircle
               :percent="60"
-              :radius="radius[3]"
+              :radius="radius[5]"
               :stroke="stroke"
               colorFrom="D299FF"
               colorTo="D299FF"
@@ -60,11 +88,11 @@
             />
           </div>
         </div>
-        <div class="w-100 p-a l-0 t-0 p-24-L p-24-M p-32-S p-48-XS">
-          <div class="w-100" ref="round5">
+        <div class="w-100 p-a l-0 t-0 p-36-L p-36-M p-48-S p-72-XS">
+          <div class="w-100" ref="round7">
             <ProgressCircle
               :percent="70"
-              :radius="radius[4]"
+              :radius="radius[6]"
               :stroke="stroke"
               colorFrom="E9CCFF"
               colorTo="E9CCFF"
@@ -74,9 +102,10 @@
             />
           </div>
         </div>
+
         <div class="w-100 h-100 p-a l-0 t-0 fd-c ai-c jc-c">
-          <div class="fs-8-S fs-20-XS f-gray-500">Total Supply</div>
-          <div class="fs-7-S fs-15-XS f-gray-200 pt-2-S pt-10-XS fw-600">
+          <div class="fs-5-S fs-20-XS f-gray-500">Total Supply</div>
+          <div class="fs-4-S fs-15-XS f-gray-200 pt-2-S pt-10-XS fw-600">
             1,000,000,000 $HGEN
           </div>
         </div>
@@ -214,6 +243,8 @@ export default {
       this.radius.push(this.$refs.round3.clientWidth);
       this.radius.push(this.$refs.round4.clientWidth);
       this.radius.push(this.$refs.round5.clientWidth);
+      this.radius.push(this.$refs.round6.clientWidth);
+      this.radius.push(this.$refs.round7.clientWidth);
     }
   },
   mounted() {
