@@ -57,7 +57,18 @@
 </template>
 
 <script>
+import { PublicKey } from "@solana/web3.js";
 export default {
+  data() {
+    return {
+      udpateSol: this.$accessor.wallet.updateBalance()
+    };
+  },
+  watch: {
+    udpateSol(val) {
+      console.log(val);
+    }
+  },
   computed: {
     getUsd() {
       return this.$accessor.usd || 0;
