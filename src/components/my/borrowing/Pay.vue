@@ -363,11 +363,12 @@ export default {
       //   if (this.mint) {
       this.$accessor.borrowing.closeTrove({
         mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
-        amount: this.to
+        amount: this.repayTo
       });
       this.form = null;
       this.to = null;
-      this.repayTo = null;
+
+      //this.repayTo = null;
       //this.mint = null;
       //   }
     },

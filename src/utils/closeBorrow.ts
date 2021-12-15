@@ -18,6 +18,7 @@ export const closeBorrowUtil = async (
     const troveAccount = new PublicKey(troveId)
     const tokenMintAcc = new PublicKey(tokenMintAccountPubkey);
     const pdaTokenAcc = new PublicKey(pdaToken)
+    console.log("the amount for the close borrow is ", amount)
     const closeBorrowIx = new TransactionInstruction({
         programId: escrowProgramId,
         keys: [
@@ -30,7 +31,7 @@ export const closeBorrowUtil = async (
         ],
         data: Buffer.from(
             Uint8Array.of(1, // id of instruction
-                ...new BN(amount*1000000000).toArray('le', 8),
+                ...new BN(amount).toArray('le', 8),
             ))
     })
 

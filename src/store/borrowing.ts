@@ -120,6 +120,7 @@ export const actions = actionTree(
                 commit('setLoading', true)
                 try {
                     console.log("processing closing the trove...")
+                    console.log(value.amount)
                     const data = await closeBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
                     if (data === null) {

@@ -4,7 +4,7 @@
       class="w-100 fs-8-S fs-40-XS fw-600 f-white-200 pb-5-L pb-5-M pb-6-S pb-30-XS ta-c-XS fd-r"
     >
       <div
-        class="w-70 fs-7-L fs-7-M fs-6-S  fs-40-XS fw-600 f-white-200 fd-r ai-c"
+        class="w-70 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 fd-r ai-c"
       >
         Your Wallet Balance
       </div>
@@ -24,8 +24,8 @@
             SOL
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600  fd-r jc-r">
-            {{ sol }}
-            ($ {{ usd }})
+            {{ getBalance > 0 ? getBalance : 0 }}
+            ($ {{ getBalance > 0 ? getUsdBalance : 0 }})
           </div>
         </div>
       </div>
@@ -35,8 +35,9 @@
             HGEN
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
-            {{ hgen }}
-            ($ {{ usd }})
+            {{ getBalanceHGEN > 0 ? getBalanceHGEN.toLocaleString() : 0 }}
+            <!-- ($ {{ getBalance > 0 ? getUsdBalance : 0 }}) -->
+            ($ {{ getBalanceHGEN }})
           </div>
         </div>
       </div>
@@ -46,8 +47,8 @@
             GENS
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
-            {{ gens }}
-            ($ {{ usd }})
+            {{ getBalanceGENS > 0 ? getBalanceGENS.toLocaleString() : 0 }}
+            ($ {{ getBalanceGENS }})
           </div>
         </div>
       </div>
@@ -56,64 +57,58 @@
 </template>
 
 <script>
-import Farming from "../../../utils/farming";
-const farming = new Farming();
 export default {
-  data() {
-    return {
-      sol: 0,
-      hgen: 0,
-      gens: 0,
-      usd: 0
-    };
-  },
-  mounted() {
-    this.getMyBalance();
-  },
   computed: {
     getUsd() {
       return this.$accessor.usd || 0;
     },
     getBalance() {
-      return this.$accessor.wallet.balance || 0;
+      return (
+        Number(this.$accessor.wallet.balance)
+          .toFixed(2)
+          .toString() || 0
+      );
     },
     getBalanceHGEN() {
+      console.log("the hgen balance is", this.$accessor.wallet.balanceHGEN);
       return this.$accessor.wallet.balanceHGEN || 0;
     },
     getBalanceGENS() {
-      return this.$accessor.borrowing.trove?.borrowAmount || 0;
+      //return this.$accessor.wallet.balanceGENS || 0;
+      return this.$accessor.wallet.balanceGENS;
     },
     getUsdBalance() {
       let result = 0;
       if (this.getBalance) {
-        result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
+        // result = (Number(this.getBalance) * this.getUsd).toString().split(".");
+        result = (Number(this.getBalance) * this.getUsd).toFixed(2).toString();
+        // result =
+        //   Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
       }
-      return result.toString();
-    },
-    getHGENBalance() {
-      let result = 0;
-      if (this.getBalanceHGEN) {
-        result = (Number(this.getBalanceHGEN) * this.getUsd)
-          .toString()
-          .split(".");
-        result =
-          Number(result[0]).toLocaleString() + "," + result[1].substr(0, 2);
-      }
-      return result.toString();
+      return result;
     }
-  },
-  methods: {
-    getMyBalance() {
-      let scope = this;
-      farming.getMBalance().then(res => {
-        scope.sol = res.sol_balance.toFixed(2);
-        scope.usd = res.usd.toFixed(2);
-        scope.hgen = res.hgen.toFixed(2);
-        scope.gens = res.gens.toFixed(2);
-      });
-    }
+    // getHGENBalance() {
+    //   let result = 0;
+    //   if (this.getBalanceHGEN) {
+    //     result = (Number(this.getBalanceHGEN) * this.getUsd)
+    //       .toString()
+    //       .split(".");
+    //     result =
+    //       Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+    //   }
+    //   return result.toString();
+    // },
+    // getGENSBalance() {
+    //   let result = 0;
+    //   if (this.getBalanceGENS) {
+    //     result = (Number(this.getBalanceGENS) * this.getUsd)
+    //       .toString()
+    //       .split(".");
+    //     result =
+    //       Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+    //   }
+    //   return result.toString();
+    // }
   }
 };
 </script>
