@@ -178,7 +178,7 @@
           />
           <span
             class="fs-6-S fs-20-XS f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0"
-            @click="borrowToPay"
+            @click="closeTroveFunc"
             >Close Borrow</span
           >
         </div>
@@ -204,7 +204,7 @@
             bColor="mcolor-100"
             opacityEffect
             full
-            @click="closeTroveFunc"
+            @click="updateTroveFunc"
           >
             confirm
           </AmButton>
@@ -273,6 +273,7 @@ export default {
       return this.$store.state.usd;
     },
     getRatio() {
+      console.log("the trove value is ", this.$accessor.borrowing.trove);
       return this.$accessor.borrowing.trove.borrowAmount
         ? getCollateral(
             this.$accessor.borrowing.trove.borrowAmount.toString(),
@@ -325,10 +326,6 @@ export default {
     resetPay() {
       this.repayTo = null;
     },
-
-    borrowToPay() {
-      this.repayTo = this.$accessor.borrowing.trove.amountToClose;
-    },
     confirmFunc() {
       //   if (
       //     Number(this.from) > 0 &&
@@ -361,6 +358,7 @@ export default {
     closeTroveFunc() {
       console.log("closing the trove for the borrow");
       //   if (this.mint) {
+      this.repayTo = this.$accessor.borrowing.trove.amountToClose;
       this.$accessor.borrowing.closeTrove({
         mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
         amount: this.repayTo

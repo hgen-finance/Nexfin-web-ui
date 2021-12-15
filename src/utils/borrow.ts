@@ -41,7 +41,7 @@ export const borrowUtil = async (
         data: Buffer.from(
             Uint8Array.of(
                 0,
-                ...new BN(borrowAmount * 100).toArray("le", 8),
+                ...new BN(borrowAmount).toArray("le", 8),
                 ...new BN(lamportAmount).toArray('le', 8),
             )
         )
