@@ -8,6 +8,8 @@ import { Result } from 'ant-design-vue';
 
 export const TOKEN_GENS = new PublicKey('2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe')
 export const TOKEN_HGEN = new PublicKey('97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3')
+const LAMPORTS = 1000000000;
+
 // State
 export const state = () => ({
   publicKey: "",
@@ -93,12 +95,24 @@ export const actions = actionTree(
       this.$router.push('/')
     },
 
+    // update the cahced balance price
+    async updateBalance({commit}){
+        this.$web3.onAccountChange(
+            this.$wallet.publicKey,
+            (val) => {
+              commit('setBalance', (val.lamports / LAMPORTS));
+            }
+        );
+    },
+
+
     // Get Balance for sols
     async getBalance ({ commit }) {
+        console.log("is beign called")
       if (this.$web3 && this.$wallet) {
         const data = this.$web3.getBalance(this.$wallet.publicKey)
         data.then(value => {
-          commit('setBalance', (value / 1000000000))
+          commit('setBalance', (value / LAMPORTS))
         })
         
       }
@@ -117,7 +131,8 @@ export const actions = actionTree(
         console.log("info about gens in wallet ", GENS.value[0].pubkey.toBase58())
         let myTokenAmount = GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString
         commit('setBalanceGENS', Number(myTokenAmount))
-    }
+    },
+
   
   }
 )

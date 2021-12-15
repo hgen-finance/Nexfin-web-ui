@@ -57,35 +57,49 @@
 </template>
 
 <script>
+import { PublicKey } from "@solana/web3.js";
 export default {
+  data() {
+    return {
+      udpateSol: this.$accessor.wallet.updateBalance()
+    };
+  },
+  watch: {
+    udpateSol(val) {
+      console.log(val);
+    }
+  },
   computed: {
     getUsd() {
       return this.$accessor.usd || 0;
     },
     getBalance() {
-      return (
-        Number(this.$accessor.wallet.balance)
-          .toFixed(2)
-          .toString() || 0
-      );
+      let result = 0;
+      if (this.$accessor.wallet.balance) {
+        result = Number(this.$accessor.wallet.balance)
+          .toString()
+          .split(".");
+        result = Number(
+          result[0].toLocaleString() + "." + result[1].substr(0, 2)
+        );
+      }
+      return result.toString();
     },
     getBalanceHGEN() {
       console.log("the hgen balance is", this.$accessor.wallet.balanceHGEN);
       return this.$accessor.wallet.balanceHGEN || 0;
     },
     getBalanceGENS() {
-      //return this.$accessor.wallet.balanceGENS || 0;
-      return this.$accessor.wallet.balanceGENS;
+      return this.$accessor.wallet.balanceGENS || 0;
     },
     getUsdBalance() {
       let result = 0;
       if (this.getBalance) {
-        // result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result = (Number(this.getBalance) * this.getUsd).toFixed(2).toString();
-        // result =
-        //   Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+        result = (Number(this.getBalance) * this.getUsd).toString().split(".");
+        result =
+          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
       }
-      return result;
+      return result.toString();
     }
     // getHGENBalance() {
     //   let result = 0;

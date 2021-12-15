@@ -67,11 +67,11 @@ export const actions = actionTree(
                 isInitialized: !!decodedTroveState.isInitialized,
                 isLiquidated: !!decodedTroveState.isLiquidated,
                 isReceived: !!decodedTroveState.isReceived,
-                borrowAmount: new BN(decodedTroveState.borrowAmount, 10, 'le').div(new BN(100)).toNumber(),
+                borrowAmount: new BN(decodedTroveState.borrowAmount, 10, 'le').toNumber(),
                 lamports: new BN(decodedTroveState.lamports, 10, 'le').toString(),
-                teamFee: new BN(decodedTroveState.teamFee, 10, 'le').div(new BN(100)).toString(),
-                depositorFee: new BN(decodedTroveState.depositorFee, 10, 'le').div(new BN(100)).toString(),
-                amountToClose: new BN(decodedTroveState.amountToClose, 10, 'le').div(new BN(100)).toString(),
+                teamFee: new BN(decodedTroveState.teamFee, 10, 'le').toString(),
+                depositorFee: new BN(decodedTroveState.depositorFee, 10, 'le').toString(),
+                amountToClose: new BN(decodedTroveState.amountToClose, 10, 'le').toString(),
                 owner: new PublicKey(decodedTroveState.owner).toBase58(),
             })
         },
@@ -120,6 +120,7 @@ export const actions = actionTree(
                 commit('setLoading', true)
                 try {
                     console.log("processing closing the trove...")
+                    console.log(value.amount)
                     const data = await closeBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
                     if (data === null) {

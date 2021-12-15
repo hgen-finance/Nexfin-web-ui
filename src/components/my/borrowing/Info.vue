@@ -433,7 +433,7 @@ export default {
 
     amountReceived() {
       return this.$accessor.borrowing.trove.borrowAmount
-        ? (this.$accessor.borrowing.trove.borrowAmount / 200)
+        ? (this.$accessor.borrowing.trove.borrowAmount / this.$accessor.usd)
             .toFixed(2)
             .toString()
         : 0;

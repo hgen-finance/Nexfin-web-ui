@@ -86,7 +86,7 @@ export default {
     baseUrl:
       process.env.BASE_URL || "https://nexfin-backend-73znx.ondigitalocean.app/"
     //baseUrl: process.env.baseUrl || "https://8882-118-208-107-33.ngrok.io/"
-    // baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
+    //baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
     //baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
   },
 
