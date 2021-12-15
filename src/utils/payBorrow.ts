@@ -19,7 +19,7 @@ export const closeBorrowUtil = async (
     const tokenMintAcc = new PublicKey(tokenMintAccountPubkey);
     const pdaTokenAcc = new PublicKey(pdaToken)
     
-    const withdrBorrowIx = new TransactionInstruction({
+    const payBorrowIx = new TransactionInstruction({
         programId: escrowProgramId,
         keys: [
             { pubkey: wallet.publicKey, isSigner: true, isWritable: false },
@@ -35,7 +35,7 @@ export const closeBorrowUtil = async (
             ))
     })
 
-    const tx = new Transaction().add(withdrBorrowIx);
+    const tx = new Transaction().add(payBorrowIx);
 
     // добавляем данне для возможност формирования подписи
     let {blockhash} = await connection.getRecentBlockhash();
