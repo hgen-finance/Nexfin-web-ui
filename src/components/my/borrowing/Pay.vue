@@ -261,7 +261,8 @@ export default {
     },
     getDebt() {
       //   return this.$accessor.borrowing.debt || 0;
-      return this.$accessor.borrowing.trove.borrowAmount || "0";
+      console.log("the debt is ", this.$accessor.borrowing.trove.amountToClose);
+      return this.$accessor.borrowing.trove.amountToClose || "0";
     },
     getBorrowAmount() {
       return this.$accessor.borrowing.trove.amountToClose || 0;
@@ -274,9 +275,9 @@ export default {
     },
     getRatio() {
       console.log("the trove value is ", this.$accessor.borrowing.trove);
-      return this.$accessor.borrowing.trove.borrowAmount
+      return this.$accessor.borrowing.trove.amountToClose > 0
         ? getCollateral(
-            this.$accessor.borrowing.trove.borrowAmount.toString(),
+            this.$accessor.borrowing.trove.amountToClose.toString(),
             this.$accessor.borrowing.trove.lamports.toString(),
             parseInt(this.$accessor.usd).toString()
           )
@@ -308,7 +309,7 @@ export default {
       this.$accessor.borrowing.getDebt({ from: this.from, to: this.to });
     },
     repayTo(val) {
-      console.log("checkinng the changes");
+      console.log("checking the changes");
       this.$accessor.borrowing.closeBorrowAmount({ repayTo: val });
     }
   },
@@ -344,7 +345,6 @@ export default {
       //     this.depositAmount = this.from * this.getUsd;
       //   }
       if (Number(this.from) > 0) {
-        console.log("clicking on borrow function");
         this.$accessor.borrowing.confirmBorrow({
           from: this.from,
           to: this.to,
@@ -371,13 +371,10 @@ export default {
       //   }
     },
     updateTroveFunc() {
-      if (this.mint) {
-        this.$accessor.borrowing.closeTrove({
-          mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
-          amount: this.to
-        });
-        //this.mint = null;
-      }
+      this.$accessor.borrowing.updateTrove({
+        mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
+        amount: this.repayTo
+      });
     },
     // For updating the borrow or pay
     changeBorrowOrPayFunc() {

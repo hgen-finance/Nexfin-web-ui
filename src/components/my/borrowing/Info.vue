@@ -414,13 +414,13 @@ export default {
     },
     getTroveAmount() {
       return this.$accessor.borrowing.trove
-        ? this.$accessor.borrowing.trove.borrowAmount
+        ? this.$accessor.borrowing.trove.amountToClose
         : 0;
     },
     getRatio() {
-      return this.$accessor.borrowing.trove.borrowAmount
+      return this.$accessor.borrowing.trove.amountToClose > 0
         ? getCollateral(
-            this.$accessor.borrowing.trove.borrowAmount.toString(),
+            this.$accessor.borrowing.trove.amountToClose.toString(),
             this.$accessor.borrowing.trove.lamports.toString(),
             parseInt(this.$accessor.usd).toString()
           )
@@ -432,8 +432,8 @@ export default {
     },
 
     amountReceived() {
-      return this.$accessor.borrowing.trove.borrowAmount
-        ? (this.$accessor.borrowing.trove.borrowAmount / this.$accessor.usd)
+      return this.$accessor.borrowing.trove
+        ? (this.$accessor.borrowing.trove.amountToClose / this.$accessor.usd)
             .toFixed(2)
             .toString()
         : 0;

@@ -4,6 +4,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 // Import Utils
 import { borrowUtil } from '@/utils/borrow'
 import { closeBorrowUtil } from '@/utils/closeBorrow'
+import { payBorrowUtil } from '@/utils/payBorrow';
 import { TROVE_ACCOUNT_DATA_LAYOUT, TroveLayout, getCollateral, TOKEN_GENS } from "@/utils/layout";
 import BN from "bn.js";
 import { PublicKey } from "@solana/web3.js";
@@ -11,7 +12,7 @@ import { PublicKey } from "@solana/web3.js";
 // State
 export const state = () => ({
     troveId: '',
-    trove: { "troveAccountPubkey": "" },
+    trove: { "troveAccountPubkey": "", "amountToClose":0},
     debt: 0,
     loading: false,
     loadingSub: false,
@@ -116,7 +117,7 @@ export const actions = actionTree(
         async closeTrove({ state, commit, dispatch }, value) {
             let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
             let burn_addr = GENS.value[0].pubkey.toBase58();
-            if (state.troveId) {
+            if (state.troveId ) {
                 commit('setLoading', true)
                 try {
                     console.log("processing closing the trove...")
@@ -133,18 +134,62 @@ export const actions = actionTree(
                         this.$accessor.wallet.getBalance()
                         this.$accessor.wallet.getGENSBalance()
                         this.$accessor.dashboard.setBorrow(false)
-                    } else {
-                        dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
-                        await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint }).then((res) => {
-                            console.log(res, 'updateTrove Backend')
-                        })
                     }
+                    // else {
+                    //     dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
+                    //     await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint }).then((res) => {
+                    //         console.log(res, 'updateTrove Backend')
+                    //     })
+                    // }
                     commit('setLoading', false)
                 } catch (e) {
                     console.log({ e })
                     commit('setLoading', false)
                 }
             }
+        },
+
+        //updating the trove amount
+        async updateTrove({ state, commit, dispatch }, value){
+            let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+            let burn_addr = GENS.value[0].pubkey.toBase58();
+            if (state.troveId && (state.trove.amountToClose >= value.amount)) {
+                commit('setLoading', true)
+                try {
+                    console.log("processing updating the trove...")
+                    console.log(value.amount)
+                    const data = await payBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
+                    console.log("data after updating the trove is",data)
+
+                    await this.$axios.post('trove/pay', {trove:state.trove.troveAccountPubkey, amount: value.amount}).then((res)=>{
+                        console.log(res, 'updateTroveBackend')
+                    })
+
+                    const encodedTroveState = (await this.$web3.getAccountInfo(new PublicKey(state.trove.troveAccountPubkey), 'singleGossip'))!.data;
+                    const decodedTroveState = TROVE_ACCOUNT_DATA_LAYOUT.decode(encodedTroveState) as TroveLayout;
+                    
+                    console.log({ decodedTroveState })
+                    commit('setTrove', {
+                        troveAccountPubkey: state.trove.troveAccountPubkey,
+                        isInitialized: !!decodedTroveState.isInitialized,
+                        isLiquidated: !!decodedTroveState.isLiquidated,
+                        isReceived: !!decodedTroveState.isReceived,
+                        borrowAmount: new BN(decodedTroveState.borrowAmount, 10, 'le').toNumber(),
+                        lamports: new BN(decodedTroveState.lamports, 10, 'le').toString(),
+                        teamFee: new BN(decodedTroveState.teamFee, 10, 'le').toString(),
+                        depositorFee: new BN(decodedTroveState.depositorFee, 10, 'le').toString(),
+                        amountToClose: new BN(decodedTroveState.amountToClose, 10, 'le').toString(),
+                        owner: new PublicKey(decodedTroveState.owner).toBase58(),
+                    })
+
+                    this.$accessor.wallet.getGENSBalance()
+                    commit('setLoading', false)
+                } catch (e) {
+                    console.log({ e })
+                    commit('setLoading', false)
+                }
+            }
+
         },
 
         // Get Debt Ratio
@@ -178,7 +223,7 @@ export const actions = actionTree(
         async closeBorrowAmount({commit}, value){
             if (value){
                 console.log("making changes in the repayto")
-                commit('setCloseAmount', this.$accessor.borrowing.trove.borrowAmount - value.repayTo)
+                commit('setCloseAmount', this.$accessor.borrowing.trove.amountToClose - value.repayTo)
             }
         }
     }

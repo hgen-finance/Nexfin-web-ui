@@ -92,7 +92,7 @@
         class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.borrowAmount }}
+          {{ data.amountToClose }}
         </div>
       </div>
       <div
@@ -108,7 +108,7 @@
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{
             getCollateralFunc(
-              data.borrowAmount.toString(),
+              data.amountToClose.toString(),
               data.lamports.toString()
             )
           }}%
@@ -120,7 +120,7 @@
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{
             getliquidationPrice(
-              data.borrowAmount.toString(),
+              data.amountToClose.toString(),
               data.lamports.toString()
             )
           }}
@@ -263,8 +263,8 @@ export default {
     },
 
     getliquidationPrice(borrow, lamports) {
-      const collateral_ratio = Number(this.getCollateralFunc(borrow, lamports));
-      const collateral = Number(this.getLamports(lamports));
+      let collateral_ratio = Number(this.getCollateralFunc(borrow, lamports));
+      let collateral = Number(this.getLamports(lamports));
       console.log("the collateral is ", borrow);
       return ((collateral_ratio * borrow) / (collateral * 100))
         .toFixed(2)
