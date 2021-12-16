@@ -4,7 +4,7 @@ import BN from "bn.js";
 import {TroveLayout, TROVE_ACCOUNT_DATA_LAYOUT, EscrowProgramIdString, CHAINLINK_SOL_USD_PUBKEY, SYS_ACCOUNT} from './layout';
 import Wallet from "@project-serum/sol-wallet-adapter";
 
-export const closeBorrowUtil = async (
+export const payBorrowUtil = async (
     wallet: Wallet,
     //gens token address
     tokenMintAccountPubkey: string,
