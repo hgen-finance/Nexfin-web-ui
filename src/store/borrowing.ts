@@ -90,16 +90,18 @@ export const actions = actionTree(
         // Claim
         async confirmBorrow({ state, commit, dispatch }, value) {
             // check if there already previous trove opened under this wallet pub key
-            if(state.troveId){
-                console.log("User already has a trove for this account")               
+            const cr1 = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
+            if(state.troveId && Number(value.from > 0) && cr1 > 109){
+                console.log("User already has a trove for this account")
+                commit('setLoading', true)             
                 try{
-                    console.log("reached her")
                     const data = await addBorrowUtil(this.$wallet, state.troveId, Number(value.to), Number(value.from) * 1000000000, this.$web3);
                     console.log("the data is ",data)
                     console.log(data, 'updated trove');
-                    await this.$axios.post('trove/addBorrow', { trove: data.troveAccountPubkey, user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
+                    await this.$axios.post('trove/addBorrow', { trove: data.troveAccountPubkey, amount: Number(value.to), user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
                         console.log(res, 'newTrove Backend')
                     })
+                    dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
                     commit('setLoading', false)
                     this.$accessor.wallet.getBalance()
                     this.$accessor.wallet.getGENSBalance()

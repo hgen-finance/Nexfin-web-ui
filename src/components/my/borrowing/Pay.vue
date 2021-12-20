@@ -250,7 +250,7 @@ export default {
     getDebt() {
       //   return this.$accessor.borrowing.debt || 0;
       console.log("the debt is ", this.$accessor.borrowing.trove.amountToClose);
-      return this.$accessor.borrowing.trove.amountToClose || "0";
+      return Number(this.$accessor.borrowing.trove.amountToClose) || "0";
     },
     getBorrowAmount() {
       return this.$accessor.borrowing.trove.amountToClose || 0;

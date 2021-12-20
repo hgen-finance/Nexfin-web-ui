@@ -5,7 +5,8 @@ import {
     SYSVAR_RENT_PUBKEY,
     Transaction,
     Connection,
-    TransactionInstruction
+    TransactionInstruction,
+    SystemInstruction
   } from '@solana/web3.js';
   import BN from "bn.js";
   import {TroveLayout, TROVE_ACCOUNT_DATA_LAYOUT, EscrowProgramIdString, CHAINLINK_SOL_USD_PUBKEY, TOKEN_GENS_ACC, SYS_ACCOUNT} from './layout';
@@ -19,10 +20,17 @@ import {
       lamportAmount: number,
       connection: Connection,
   ) => {
-  
+    
+    
       const troveAccount = new PublicKey(troveId);
       const escrowProgramId = new PublicKey(EscrowProgramIdString);
-  
+      
+      const transferIx = SystemProgram.transfer({
+        fromPubkey: wallet.publicKey,
+        toPubkey:troveAccount,
+        lamports: lamportAmount
+      })
+
       const addBorrowIx = new TransactionInstruction({
           programId: escrowProgramId,
           keys: [
@@ -35,13 +43,13 @@ import {
               Uint8Array.of(
                   12,
                   ...new BN(borrowAmount).toArray("le", 8),
-                  ...new BN(lamportAmount).toArray('le', 8),
+                  ...new BN(lamportAmount).toArray("le", 8),
               )
           )
       })
   
       // add instruction to the transaction
-      const tx = new Transaction().add(addBorrowIx);
+      const tx = new Transaction().add(transferIx, addBorrowIx);
   
       // add data for signature generation
       let {blockhash} = await connection.getRecentBlockhash();

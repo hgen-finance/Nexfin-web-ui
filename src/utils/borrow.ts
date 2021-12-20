@@ -21,7 +21,6 @@ export const borrowUtil = async (
 
     const troveAccount = new Account();
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
-
     const createBorrowAccountIx = SystemProgram.createAccount({
         space: TROVE_ACCOUNT_DATA_LAYOUT.span,
         lamports: lamportAmount,
