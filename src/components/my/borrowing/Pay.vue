@@ -8,15 +8,11 @@
       >
         Borrow
       </div>
-      <div
-        class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS"
-        v-if="getIsBorrow"
-      >
+      <div class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS">
         Your Current Debt
       </div>
       <div
         class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
-        v-if="getIsBorrow"
       >
         <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{ getDebt }}</span>
         <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">
@@ -32,7 +28,7 @@
             full
             opacityEffect
             scaleEffect
-            v-if="getIsBorrow && !getBorrowOrPay"
+            v-if="!getBorrowOrPay"
             @click="changeBorrowOrPayFunc"
           >
             Borrow
@@ -43,7 +39,7 @@
             colorText="white-200"
             full
             disabled
-            v-if="getIsBorrow && getBorrowOrPay"
+            v-if="getBorrowOrPay"
           >
             Borrow
           </AmButton>
@@ -55,7 +51,7 @@
             colorText="white-200"
             full
             disabled
-            v-if="getIsBorrow && !getBorrowOrPay"
+            v-if="!getBorrowOrPay"
           >
             Pay Debt
           </AmButton>
@@ -65,7 +61,7 @@
             full
             opacityEffect
             scaleEffect
-            v-if="getIsBorrow && getBorrowOrPay"
+            v-if="getBorrowOrPay"
             @click="changeBorrowOrPayFunc"
           >
             Pay Debt
@@ -86,7 +82,7 @@
       <!-- This section is for the borrow  -->
       <div
         class="w-100 mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        v-if="getIsBorrow && getBorrowOrPay"
+        v-if="getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
           Set amount of collateral
@@ -111,7 +107,7 @@
       </div>
       <div
         class="w-100 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        v-if="getIsBorrow && getBorrowOrPay"
+        v-if="getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
           Amount received
@@ -129,10 +125,7 @@
           />
         </div>
       </div>
-      <div
-        class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS"
-        v-if="getIsBorrow && getBorrowOrPay"
-      >
+      <div class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS" v-if="getBorrowOrPay">
         <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
           <AmButton
             color="mcolor-200"
@@ -160,7 +153,7 @@
       <!-- This section for the pay debt  -->
       <div
         class="w-100 mt-4 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        v-if="getIsBorrow && !getBorrowOrPay"
+        v-if="!getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
           Set amount of repayment
@@ -183,10 +176,7 @@
           >
         </div>
       </div>
-      <div
-        class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS"
-        v-if="getIsBorrow && !getBorrowOrPay"
-      >
+      <div class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS" v-if="!getBorrowOrPay">
         <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
           <AmButton
             color="mcolor-200"
@@ -204,14 +194,14 @@
             bColor="mcolor-100"
             opacityEffect
             full
-            @click="updateTroveFunc"
+            @click="payTroveFunc"
           >
             confirm
           </AmButton>
         </div>
       </div>
       <!-- <div class="w-100 mt-4" v-if="getIsBorrow">
-        <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect full @click="updateTroveFunc">
+        <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect full @click="payTroveFunc">
           update trove
         </AmButton>
       </div>
@@ -255,9 +245,7 @@ export default {
       return this.$accessor.borrowing.loading;
     },
     getIsBorrow() {
-      return true;
-      // doesnt show up when the wallet is not connected for the borrowing trove
-      //return this.$accessor.borrowing.troveId;
+      return this.$accessor.borrowing.troveId;
     },
     getDebt() {
       //   return this.$accessor.borrowing.debt || 0;
@@ -348,7 +336,7 @@ export default {
         this.$accessor.borrowing.confirmBorrow({
           from: this.from,
           to: this.to,
-          mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73"
+          mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1"
         });
         this.from = null;
         this.to = null;
@@ -360,7 +348,7 @@ export default {
       //   if (this.mint) {
       this.repayTo = this.$accessor.borrowing.trove.amountToClose;
       this.$accessor.borrowing.closeTrove({
-        mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
+        mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
         amount: this.repayTo
       });
       this.form = null;
@@ -370,9 +358,9 @@ export default {
       //this.mint = null;
       //   }
     },
-    updateTroveFunc() {
-      this.$accessor.borrowing.updateTrove({
-        mint: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
+    payTroveFunc() {
+      this.$accessor.borrowing.payTrove({
+        mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
         amount: this.repayTo
       });
     },

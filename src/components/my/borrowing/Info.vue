@@ -26,7 +26,7 @@
       "
       v-if="withdrawOrDeposit"
     >
-      <div class="w-100" v-if="getIsBorrow && withdrawOrDeposit">
+      <div class="w-100" v-if="withdrawOrDeposit">
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Collateral Ratio (<span class="f-white-200 fw-600">CR</span>)
@@ -135,7 +135,7 @@
       "
       v-if="!withdrawOrDeposit"
     >
-      <div class="w-100" v-if="getIsBorrow && !withdrawOrDeposit">
+      <div class="w-100" v-if="!withdrawOrDeposit">
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Amount Received
@@ -189,7 +189,12 @@
         fs-5-S fs-20-XS
         f-mcolor-500
       "
-      v-if="(Number(getDebt) < getMaxRatio || Number(to) < 1600) && from && to"
+      v-if="
+        (Number(getDebt) < getMaxRatio || Number(to) < 1600) &&
+          from &&
+          to &&
+          !getIsBorrow
+      "
     >
       <!-- change the minimum borrow later -->
       <div class="w-100 pb-2-S pb-10-XS" v-if="Number(to) < 1600">
@@ -230,9 +235,7 @@
       "
     >
       <div class="w-100 fd-r">
-        <div
-          :class="{ 'w-100-S w-100-XS': getIsBorrow, 'w-100': !getIsBorrow }"
-        >
+        <div class="w-100-S w-100-XS">
           <div class="w-100 fd-r py-2-S py-10-XS">
             <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
               Fee (<span class="f-white-200 fw-600">0.5 %</span>)
@@ -254,7 +257,7 @@
           </div>
         </div>
       </div>
-      <div class="w-100" v-if="getIsBorrow">
+      <div class="w-100">
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             Debt
@@ -276,7 +279,7 @@
           </div>
         </div>
       </div>
-      <div class="w-100" v-if="getIsBorrow">
+      <div class="w-100">
         <!-- <div class="w-100 f-white-200 fs-6-S fs-20-XS fw-600 pt-4-S pt-12-XS pb-4-S pb-12-XS ta-l-S ta-c-XS">
         You will receive GENS stable coin.
       </div> -->
@@ -409,8 +412,7 @@ export default {
       return Number(this.getFee) + Number(this.to) || 0;
     },
     getIsBorrow() {
-      return true;
-      //return this.$accessor.borrowing.troveId
+      return this.$accessor.borrowing.troveId;
     },
     getTroveAmount() {
       return this.$accessor.borrowing.trove
@@ -432,7 +434,7 @@ export default {
     },
 
     amountReceived() {
-      return this.$accessor.borrowing.trove
+      return this.$accessor.borrowing.trove.amountToClose
         ? (this.$accessor.borrowing.trove.amountToClose / this.$accessor.usd)
             .toFixed(2)
             .toString()
