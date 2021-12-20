@@ -93,7 +93,7 @@ export default {
   // ENV
   env: {
     // TODO: change http to https
-    // baseUrl:
+    baseUrl:
       process.env.BASE_URL ||
       "https://nexfin-backend-73znx.ondigitalocean.app/",
     // baseUrl: process.env.BASE_URL || "https://8882-118-208-107-33.ngrok.io/",
