@@ -118,12 +118,7 @@
         class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{
-            getliquidationPrice(
-              data.amountToClose.toString(),
-              data.lamports.toString()
-            )
-          }}
+          {{ getliquidationPrice() }}
         </div>
       </div>
       <div class="w-5 fsh-0 fd-r ai-c jc-c">
@@ -262,11 +257,15 @@ export default {
       return new BN(lamports).div(new BN("1000000000")).toString();
     },
 
-    getliquidationPrice(borrow, lamports) {
-      let collateral_ratio = Number(this.getCollateralFunc(borrow, lamports));
-      let collateral = Number(this.getLamports(lamports));
-      console.log("the collateral is ", borrow);
-      return ((collateral_ratio * borrow) / (collateral * 100))
+    getliquidationPrice() {
+      const liquidationCR = 109;
+      let collateral = Number(
+        this.getLamports(this.$accessor.borrowing.trove.lamports.toString())
+      );
+      return (
+        (liquidationCR * this.$accessor.borrowing.trove.amountToClose) /
+        (collateral * 100)
+      )
         .toFixed(2)
         .toString();
     },

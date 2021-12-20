@@ -5,6 +5,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 import { borrowUtil } from '@/utils/borrow'
 import { closeBorrowUtil } from '@/utils/closeBorrow'
 import { payBorrowUtil } from '@/utils/payBorrow';
+import { addBorrowUtil } from '@/utils/addBorrow';
 import { TROVE_ACCOUNT_DATA_LAYOUT, TroveLayout, getCollateral, TOKEN_GENS } from "@/utils/layout";
 import BN from "bn.js";
 import { PublicKey } from "@solana/web3.js";
@@ -87,7 +88,27 @@ export const actions = actionTree(
             })
         },
         // Claim
-        async confirmBorrow({ commit, dispatch }, value) {
+        async confirmBorrow({ state, commit, dispatch }, value) {
+            // check if there already previous trove opened under this wallet pub key
+            if(state.troveId){
+                console.log("User already has a trove for this account")               
+                try{
+                    console.log("reached her")
+                    const data = await addBorrowUtil(this.$wallet, state.troveId, Number(value.to), Number(value.from) * 1000000000, this.$web3);
+                    console.log("the data is ",data)
+                    console.log(data, 'updated trove');
+                    await this.$axios.post('trove/addBorrow', { trove: data.troveAccountPubkey, user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
+                        console.log(res, 'newTrove Backend')
+                    })
+                    commit('setLoading', false)
+                    this.$accessor.wallet.getBalance()
+                    this.$accessor.wallet.getGENSBalance()
+                } catch {
+                    commit('setLoading', false)
+                } 
+                return;     
+            }
+
             // check if the collateral ratio is not higher than the 109
             const cr = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
             if (Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
@@ -122,7 +143,7 @@ export const actions = actionTree(
                 try {
                     console.log("processing closing the trove...")
                     console.log(value.amount)
-                    const data = await closeBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
+                    const data = await closeBorrowUtil(this.$wallet, "3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
                     if (data === null) {
                         console.log(data, 'closeTrove')
@@ -150,19 +171,23 @@ export const actions = actionTree(
         },
 
         //updating the trove amount
-        async updateTrove({ state, commit, dispatch }, value){
+        async payTrove({ state, commit, dispatch }, value){
             let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
             let burn_addr = GENS.value[0].pubkey.toBase58();
-            if (state.troveId && (state.trove.amountToClose >= value.amount)) {
+            console.log("the amount entered is ", value.amount)
+            console.log("the amount to close before was ", state.trove.amountToClose)
+            const exceedAmount = state.trove.amountToClose > Number(value.amount) ? false: true
+        
+            if (state.troveId && (!exceedAmount)) {
                 commit('setLoading', true)
                 try {
                     console.log("processing updating the trove...")
                     console.log(value.amount)
-                    const data = await payBorrowUtil(this.$wallet, "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
+                    const data = await payBorrowUtil(this.$wallet, "3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     console.log("data after updating the trove is",data)
 
                     await this.$axios.post('trove/pay', {trove:state.trove.troveAccountPubkey, amount: value.amount}).then((res)=>{
-                        console.log(res, 'updateTroveBackend')
+                        console.log(res, 'payTroveBackend')
                     })
 
                     const encodedTroveState = (await this.$web3.getAccountInfo(new PublicKey(state.trove.troveAccountPubkey), 'singleGossip'))!.data;

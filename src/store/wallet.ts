@@ -6,8 +6,8 @@ import { PublicKey } from '@solana/web3.js';
 import { Wallets, WalletInfo } from '../utils/wallets'
 import { Result } from 'ant-design-vue';
 
-export const TOKEN_GENS = new PublicKey('2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe')
-export const TOKEN_HGEN = new PublicKey('97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3')
+export const TOKEN_GENS = new PublicKey('3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ')
+export const TOKEN_HGEN = new PublicKey('6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv')
 const LAMPORTS = 1000000000;
 
 // State
@@ -60,8 +60,8 @@ export const actions = actionTree(
     // Connection
     async connectWallet ({ commit }, wallet: WalletInfo) {
       commit('setLoaderConnect', true)
-        // I have set it for devnet, need to change for main net
-      const adapter = await wallet.getAdapter({ providerUrl: wallet.url, endpoint: 'https://api.devnet.solana.com' })
+        // I have set it for testnet, need to change for main net
+      const adapter = await wallet.getAdapter({ providerUrl: wallet.url, endpoint: 'https://api.testnet.solana.com' })
       if (!adapter || !this.$web3) {
         this.app.$accessor.setModal('connectError')
         return
