@@ -120,17 +120,18 @@ export const actions = actionTree(
     
     // getting balance from the hgens from the wallet
     async getHGENBalance({commit}) {
-        let HGEN = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_HGEN)});   
-        let myTokenAmount = HGEN.value[0].account.data.parsed.info.tokenAmount.uiAmountString
+        let HGEN = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_HGEN)});
+        let myTokenAmount = HGEN.value[0] ? HGEN.value[0].account.data.parsed.info.tokenAmount.uiAmountString : 0;
         commit('setBalanceHGEN', Number(myTokenAmount))
+    
     },
 
     //getting balance for gens from the wallet
     async getGENSBalance({commit}) {
-        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
-        console.log("info about gens in wallet ", GENS.value[0].pubkey.toBase58())
-        let myTokenAmount = GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString
+        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
+        let myTokenAmount =GENS.value[0] ? GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString : 0;
         commit('setBalanceGENS', Number(myTokenAmount))
+     
     },
 
   
