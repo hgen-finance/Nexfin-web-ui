@@ -29,7 +29,7 @@
       >
         Rewards
         <Hint>
-          ARP (Annual Percentage Rate) is just a simple interest that you will
+          APR (Annual Percentage Rate) is just a simple interest that you will
           be receiving every year paid in the token of your choice. But the APR
           is subject to change and fluctuations. The “Monthly” and “Daily” are
           simply calculated to show how much you will be receiving at the term.

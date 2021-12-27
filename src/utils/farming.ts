@@ -23,7 +23,7 @@ export default class farmingUtil {
     connection: Connection
     provider: any
     constructor() {
-        this.connection = new Connection("https://api.devnet.solana.com", 'confirmed');
+        this.connection = new Connection("https://api.testnet.solana.com", 'confirmed');
         this.provider = (window as any).solana
     }
     async buildFarmingAccount() {
@@ -54,7 +54,7 @@ export default class farmingUtil {
         return total
     }
     async getFarmingAccount() : Promise<any> {
-        this.connection = new Connection("https://api.devnet.solana.com", 'confirmed');
+        this.connection = new Connection("https://api.testnet.solana.com", 'confirmed');
         this.provider = (window as any).solana
         farming_account = await PublicKey.createWithSeed(this.provider.publicKey, "computer", programId)
         let accountInfo = await this.connection.getAccountInfo(farming_account)
@@ -75,7 +75,7 @@ export default class farmingUtil {
     }
     async setFarmingAccount(depositedSol: number, depositedHgen: number, dayLength: number) : Promise<boolean> {
         console.log("it reaches here first")
-        this.connection = new Connection("https://api.devnet.solana.com", 'confirmed');
+        this.connection = new Connection("https://api.testnet.solana.com", 'confirmed');
         this.provider = (window as any).solana
         farming_account = await PublicKey.createWithSeed(this.provider.publicKey, "computer", programId)
        console.log("the farming account is ", farming_account)
@@ -202,7 +202,7 @@ export default class farmingUtil {
     }
     async initializeAccount(): Promise<boolean> {
         console.log("initializing")
-        this.connection = new Connection("https://api.devnet.solana.com", 'confirmed');
+        this.connection = new Connection("https://api.testnet.solana.com", 'confirmed');
         this.provider = (window as any).solana
         farming_account = await PublicKey.createWithSeed(this.provider.publicKey, "computer", programId)
         let _sendData = {
@@ -225,7 +225,7 @@ export default class farmingUtil {
         return true
     }
     async getMBalance() {
-        this.connection = new Connection("https://api.devnet.solana.com", 'confirmed');
+        this.connection = new Connection("https://api.testnet.solana.com", 'confirmed');
         this.provider = (window as any).solana
         let sol_balance = await this.connection.getBalance(this.provider.publicKey)/1e9;
         let usd = sol_balance*180.22;
@@ -240,7 +240,7 @@ export default class farmingUtil {
     }
     getTokenBalance = async (walletAddress, tokenMintAddress) => {
         const response = await axios({
-            url:"https://api.devnet.solana.com",
+            url:"https://api.testnet.solana.com",
             method: "post",
             headers: { "Content-Type": "application/json" },
             data: {

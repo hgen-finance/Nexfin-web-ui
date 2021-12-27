@@ -80,6 +80,7 @@ export const actions = actionTree(
         // Get Deposit
         async getTrove({ commit, dispatch }, value) {
             await this.$axios.get('trove?user=' + this.$wallet.publicKey.toBase58()).then(({ data }) => {
+                
                 commit('setTroveId', data.model || '')
                 if (data.model && data.model.trove) {
                     dispatch('setTroveById', new PublicKey(data.model.trove))
