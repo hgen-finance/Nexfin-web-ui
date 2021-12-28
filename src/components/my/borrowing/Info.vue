@@ -224,6 +224,14 @@
       </div>
     </div>
     <div
+      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+      v-if="CheckWalletBalance"
+    >
+      <div class="w-100 pb-2-S  pb-10-XS" v-if="CheckWalletBalance">
+        You don't have enough GENS for this transaction.
+      </div>
+    </div>
+    <div
       class="
         w-100
         p-4-S p-10-XS
@@ -399,6 +407,9 @@ export default {
     getUsd() {
       return this.$accessor.usd || 0;
     },
+    getGensBalance() {
+      return this.$accessor.wallet.balanceGENS || 0;
+    },
     getTotalBorrow() {
       return this.$accessor.troveTotal || 0;
     },
@@ -449,6 +460,9 @@ export default {
 
     liquidationPrice() {
       return (this.liquidationCR * this.to) / (this.from * 100) || 0;
+    },
+    CheckWalletBalance() {
+      return this.getGensBalance < this.repayTo;
     }
   }
 };
