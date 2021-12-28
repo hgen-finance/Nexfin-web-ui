@@ -79,9 +79,11 @@ export default {
         result = Number(this.$accessor.wallet.balance)
           .toString()
           .split(".");
-        result = Number(
-          result[0].toLocaleString() + "." + result[1].substr(0, 2)
-        );
+        console.log("testing for the the result", result);
+        result =
+          result.length > 1
+            ? Number(result[0].toLocaleString() + "." + result[1].substr(0, 2))
+            : Number(result[0].toLocaleString());
       }
       return result.toString();
     },

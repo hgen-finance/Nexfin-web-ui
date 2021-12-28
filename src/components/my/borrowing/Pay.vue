@@ -241,6 +241,9 @@ export default {
     getUsd() {
       return this.$accessor.usd || 0;
     },
+    getGensBalance() {
+      return this.$accessor.wallet.balanceGENS || 0;
+    },
     getLoading() {
       return this.$accessor.borrowing.loading;
     },
@@ -298,6 +301,7 @@ export default {
     },
     repayTo(val) {
       console.log("checking the changes");
+      this.$emit("repay", this.repayTo);
       this.$accessor.borrowing.closeBorrowAmount({ repayTo: val });
     }
   },
@@ -344,25 +348,26 @@ export default {
       }
     },
     closeTroveFunc() {
-      console.log("closing the trove for the borrow");
-      //   if (this.mint) {
       this.repayTo = this.$accessor.borrowing.trove.amountToClose;
-      this.$accessor.borrowing.closeTrove({
-        mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
-        amount: this.repayTo
-      });
-      this.form = null;
-      this.to = null;
+      if (this.getGensBalance >= this.repayTo) {
+        this.$accessor.borrowing.closeTrove({
+          mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
+          amount: this.repayTo
+        });
+        this.form = null;
+        this.to = null;
 
-      //this.repayTo = null;
-      //this.mint = null;
-      //   }
+        //this.repayTo = null;
+        //this.mint = null;
+      }
     },
     payTroveFunc() {
-      this.$accessor.borrowing.payTrove({
-        mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
-        amount: this.repayTo
-      });
+      if (this.getGensBalance >= this.repayTo) {
+        this.$accessor.borrowing.payTrove({
+          mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
+          amount: this.repayTo
+        });
+      }
     },
     // For updating the borrow or pay
     changeBorrowOrPayFunc() {

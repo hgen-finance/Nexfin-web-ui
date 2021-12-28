@@ -5,7 +5,11 @@
     </div>
     <div class="w-100 fd-r fw-w pt-0-S pt-30-XS jc-se">
       <div class="w-35-S w-100-XS">
-        <Pay @gens="to = $event" @sol="from = $event" />
+        <Pay
+          @gens="to = $event"
+          @sol="from = $event"
+          @repay="repayTo = $event"
+        />
       </div>
       <div class="w-25-S w-100-XS pt-30-XS">
         <Info
