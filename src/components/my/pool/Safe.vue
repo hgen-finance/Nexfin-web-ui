@@ -201,7 +201,7 @@ export default {
       gen: "",
       hgen: "",
       from: null,
-      withdrawAmount: null
+      withdrawAmount: ""
     };
   },
   computed: {
@@ -241,11 +241,11 @@ export default {
   },
   methods: {
     setCloseLend() {
-      if (this.getDepositKey) {
-        this.withdrawAmount = Number(this.$accessor.pool.depositAmount);
-      } else {
-        this.withdrawAmount = null;
-      }
+      //   if (this.getDepositKey) {
+      //     this.withdrawAmount = Number(this.$accessor.pool.depositAmount);
+      //   } else {
+      //     this.withdrawAmount = "";
+      //   }
     },
     setMax() {
       // TODO change the deposit set max to add certain value
