@@ -262,8 +262,7 @@ export default {
       this.to = null;
     },
     depositFunc() {
-      if (this.getDepositKey) {
-        console.log("reached here for deposit key", this.getDepositKey);
+      if (this.getDepositKey.deposit) {
         this.$accessor.pool.addDeposit({ from: this.from });
       } else {
         console.log("reached here for new deposit");

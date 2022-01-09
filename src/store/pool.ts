@@ -11,7 +11,7 @@ import BN from "bn.js";
 
 // State
 export const state = () => ({
-  depositKey: "",
+  depositKey: {"deposit":""},
   gen: 'EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1',
   hgen: '8dMknixujhgPTWBLsB6WRof9e1Ud3NpH4iBVtBrsqMK7',
   rewardCoinAmount: 0,
