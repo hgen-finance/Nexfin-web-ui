@@ -90,7 +90,7 @@ export const actions = actionTree(
         let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
         let burn_addr = GENS.value[0] ? GENS.value[0].pubkey.toBase58() : "";
 
-        if (value && (Number(value.from) > 0 && value.gen)) {
+        if (value && (Number(value.from) > 0)) {
             if (!state.depositKey) {
             commit('setLoading', true)
             try {
