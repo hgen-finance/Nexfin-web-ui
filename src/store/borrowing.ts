@@ -93,8 +93,7 @@ export const actions = actionTree(
             // check if there already previous trove opened under this wallet pub key
             const cr1 = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
             if(state.troveId && Number(value.from > 0) && cr1 > 109){
-                console.log("User already has a trove for this account")
-                commit('setLoading', true)             
+                commit('setLoading', true)   
                 try{
                     const data = await addBorrowUtil(this.$wallet, state.troveId, Number(value.to), Number(value.from) * 1000000000, this.$web3);
                     console.log("the data is ",data)
