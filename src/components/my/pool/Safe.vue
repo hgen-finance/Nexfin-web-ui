@@ -205,7 +205,7 @@ export default {
       gen: "",
       hgen: "",
       from: null,
-      withdrawAmount: ""
+      withdrawAmount: null
     };
   },
   computed: {
@@ -246,7 +246,7 @@ export default {
   methods: {
     setCloseLend() {
       if (this.getDepositKey) {
-        this.withdrawAmount = this.$accessor.pool.depositAmount;
+        this.withdrawAmount = Number(this.$accessor.pool.depositAmount);
       } else {
         this.withdrawAmount = null;
       }
