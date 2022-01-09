@@ -90,14 +90,13 @@ export const actions = actionTree(
         let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
         let burn_addr = GENS.value[0] ? GENS.value[0].pubkey.toBase58() : "";
 
-        if (value && (Number(value.from) > 0 && value.gen && value.hgen)) {
+        if (value && (Number(value.from) > 0 && value.gen)) {
             if (!state.depositKey) {
             commit('setLoading', true)
             try {
                 console.log("the new deposit is running")
                 const test = new PublicKey("3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ").toBase58();
                 const data = await depositUtil(this.$wallet, test, Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
-                console.log("het the data is ", data)
                 if (data && (data.depositAccountPubkey)) {
                 commit('setDepositKey', data.depositAccountPubkey || '')
                 console.log(data, 'newDeposit')
