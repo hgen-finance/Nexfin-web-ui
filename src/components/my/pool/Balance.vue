@@ -61,11 +61,11 @@ import { PublicKey } from "@solana/web3.js";
 export default {
   data() {
     return {
-      udpateSol: this.$accessor.wallet.updateBalance()
+      updateSol: this.$accessor.wallet.updateBalance()
     };
   },
   watch: {
-    udpateSol(val) {
+    updateSol(val) {
       console.log(val);
     }
   },
