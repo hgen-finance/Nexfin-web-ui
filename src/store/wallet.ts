@@ -95,14 +95,26 @@ export const actions = actionTree(
       this.$router.push('/')
     },
 
-    // update the cahced balance price
+    // update the cached balance price
     async updateBalance({commit}){
+        let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
+        let gensAccount = GENS.value[0].pubkey;
+        this.$web3.onAccountChange(gensAccount, async (val)=>{
+            let gensAmount = GENS.value[0] ? GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString : 0;
+            commit('setBalanceGENS', Number(gensAmount))
+        })
         this.$web3.onAccountChange(
             this.$wallet.publicKey,
-            (val) => {
-              commit('setBalance', (val.lamports / LAMPORTS));
+            async function (val){
+                commit('setBalance', (val.lamports / LAMPORTS));
+               
             }
         );
+    },
+
+    //update the cached balance for gens
+    async updateGensBalance({commit}){
+            
     },
 
 
