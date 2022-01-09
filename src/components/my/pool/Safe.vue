@@ -8,15 +8,11 @@
       >
         Lend
       </div>
-      <div
-        class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS"
-        v-if="getDepositKey"
-      >
+      <div class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS">
         Your current pool share
       </div>
       <div
         class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
-        v-if="getDepositKey"
       >
         <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{
           getDepositAmount.toLocaleString()
@@ -267,8 +263,10 @@ export default {
     },
     depositFunc() {
       if (this.getDepositKey) {
+        console.log("reached here for deposit key", this.getDepositKey);
         this.$accessor.pool.addDeposit({ from: this.from });
       } else {
+        console.log("reached here for new deposit");
         this.$accessor.pool.newDeposit({
           from: this.from,
           gen: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",

@@ -46,16 +46,36 @@ export const borrowUtil = async (
         )
     })
 
+    //TODO: add the mint transaction with the borrowed transaction
+    // transaction for minting gens token
+    // generate a new keypair for token account
+    // const tokenAccount = Keypair.generate();
+    // console.log(`token account: ${tokenAccount.publicKey.toBase58()}`);
 
-    // transaction for the gens tokens receiving 
-    // const tokenIx = Token.createTransferInstruction(TOKEN_PROGRAM_ID, TOKEN_GENS_ACC, wallet.publicKey, SYS_ACCOUNT, [], borrowAmount)
-    // console.log("checking the tokenIx", tokenIx)
+    //  // create token account
+    // let createTokenAccountIx = SystemProgram.createAccount({
+    //     fromPubkey: feePayer.publicKey,
+    //     newAccountPubkey: tokenAccount.publicKey,
+    //     space: AccountLayout.span,
+    //     lamports: await Token.getMinBalanceRentForExemptAccount(connection),
+    //     programId: TOKEN_PROGRAM_ID,
+    // })
+
+    // // init mint account 
+    // let initMintIx = Token.createInitAccountInstruction(
+    //     TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+    //     mintPubkey, // mint
+    //     tokenAccount.publicKey, // token account
+    //     alice.publicKey // owner of token account
+    // )
+
 
     // transaction completed
     // добавялем инструкции в транзакцию (add instruction to the transaction)
     const tx = new Transaction().add(createBorrowAccountIx, borrowIx);
-
-    console.log("the transaction is ", tx)
+    
+    //TODO: add the mint transaction with the borrowed transaction
+    //console.log(`txhash: ${await connection.sendTransaction(tx, [tx.feePayer, tokenAccount])}`);
 
     // add data for signature generation
     // добавляем данне для возможност формирования подписи
