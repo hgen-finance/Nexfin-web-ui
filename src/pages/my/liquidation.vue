@@ -127,11 +127,11 @@
           class="w-fix-s-10 hv ts-3"
           @click="false"
         /> -->
-        <img
+        <!-- <img
           src="@/assets/svg/my/bin.svg"
           class="w-fix-s-10 hv ts-3"
           @click="binAction({ trove: data, index: d })"
-        />
+        /> -->
       </div>
     </div>
     <div
