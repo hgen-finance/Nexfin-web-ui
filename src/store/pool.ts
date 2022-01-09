@@ -11,7 +11,7 @@ import BN from "bn.js";
 
 // State
 export const state = () => ({
-  depositKey: {"deposit":""},
+  depositKey: {"deposit":null},
   gen: 'EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1',
   hgen: '8dMknixujhgPTWBLsB6WRof9e1Ud3NpH4iBVtBrsqMK7',
   rewardCoinAmount: 0,
@@ -90,7 +90,7 @@ export const actions = actionTree(
         let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
         let burn_addr = GENS.value[0] ? GENS.value[0].pubkey.toBase58() : "";
         if (value && (Number(value.from) > 0)) {           
-            if (!state.depositKey) {
+            if (!state.depositKey.deposit) {
             commit('setLoading', true)
             try {
                 console.log("the new deposit is running")
@@ -144,7 +144,7 @@ export const actions = actionTree(
       let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
       let burn_addr = GENS.value[0].pubkey.toBase58();
       if (value && (Number(value.from) > 0)) {
-        if (state.depositKey) {
+        if (state.depositKey.deposit) {
           commit('setLoading', true)
           try {
             const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ", Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
