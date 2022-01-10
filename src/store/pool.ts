@@ -62,27 +62,27 @@ export const actions = actionTree(
   {
     // Get Deposit
     async getDeposit ({ state, commit }, value) {
-      
-        await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
-            if (data.model){
-                commit('setDepositKey', data.model || '')
-                // Info
-                const encodedDepositAccount = (await this.$web3.getAccountInfo(new PublicKey(data.model.deposit), 'singleGossip'))!.data;
-                const decodedDepositState = DEPOSIT_ACCOUNT_DATA_LAYOUT.decode(encodedDepositAccount) as DepositLayout;
-                if (decodedDepositState.bank) {
-                commit('setGen', new PublicKey(decodedDepositState.bank).toBase58())
+        if (this.$wallet){
+            await this.$axios.get('deposit?user=' + this.$wallet.publicKey.toBase58()).then(async ({ data }) => {
+                if (data.model){
+                    commit('setDepositKey', data.model || '')
+                    // Info
+                    const encodedDepositAccount = (await this.$web3.getAccountInfo(new PublicKey(data.model.deposit), 'singleGossip'))!.data;
+                    const decodedDepositState = DEPOSIT_ACCOUNT_DATA_LAYOUT.decode(encodedDepositAccount) as DepositLayout;
+                    if (decodedDepositState.bank) {
+                    commit('setGen', new PublicKey(decodedDepositState.bank).toBase58())
+                    }
+                    if (decodedDepositState.governanceBank) {
+                    commit('setHGEN', new PublicKey(decodedDepositState.governanceBank).toBase58())
+                    }
+    
+                    commit('setRewardGensAmount', new BN(decodedDepositState.rewardTokenAmount, 10, 'le').toNumber());
+                    commit('setRewardHgenAmount', new BN(decodedDepositState.rewardGovernanceTokenAmount, 10, 'le').toNumber());
+                    commit('setDepositAmount', new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber());
+                    commit('setRewardCoinAmount', new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber());
                 }
-                if (decodedDepositState.governanceBank) {
-                commit('setHGEN', new PublicKey(decodedDepositState.governanceBank).toBase58())
-                }
-
-                commit('setRewardGensAmount', new BN(decodedDepositState.rewardTokenAmount, 10, 'le').toNumber());
-                commit('setRewardHgenAmount', new BN(decodedDepositState.rewardGovernanceTokenAmount, 10, 'le').toNumber());
-                commit('setDepositAmount', new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber());
-                commit('setRewardCoinAmount', new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber());
-            }
-        })
-      
+            })
+        }
     },
 
     // New Deposit
