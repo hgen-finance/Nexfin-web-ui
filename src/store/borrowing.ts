@@ -93,8 +93,10 @@ export const actions = actionTree(
             // check if there already previous trove opened under this wallet pub key
             const cr1 = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
             if(state.troveId && Number(value.from > 0) && cr1 > 109){
+                
                 commit('setLoading', true)   
                 try{
+                    console.log("this is csalled")
                     const data = await addBorrowUtil(this.$wallet, state.troveId, Number(value.to), Number(value.from) * 1000000000, this.$web3);
                     console.log(data, 'updated trove');
                     await this.$axios.post('trove/addBorrow', { trove: data.troveAccountPubkey, amount: Number(value.to), user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
@@ -112,7 +114,7 @@ export const actions = actionTree(
 
             // check if the collateral ratio is not higher than the 109
             const cr = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
-            if (Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
+            if (!state.troveId && Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
                 commit('setLoading', true)
                 try {
                     const data = await borrowUtil(this.$wallet, Number(value.to), Number(value.from) * 1000000000, this.$web3)

@@ -47,10 +47,11 @@ import {
               )
           )
       })
-  
+
       // add instruction to the transaction
       const tx = new Transaction().add(transferIx, addBorrowIx);
-  
+      console.log("the tx is working", tx);
+
       // add data for signature generation
       let {blockhash} = await connection.getRecentBlockhash();
       tx.recentBlockhash = blockhash;
