@@ -13,7 +13,7 @@ import { PublicKey } from "@solana/web3.js";
 // State
 export const state = () => ({
     troveId: '',
-    trove: { "troveAccountPubkey": "", "amountToClose":0},
+    trove: { "troveAccountPubkey": "", "amountToClose":0, "depositorFee": 0},
     debt: 0,
     loading: false,
     loadingSub: false,
@@ -96,7 +96,6 @@ export const actions = actionTree(
                 commit('setLoading', true)   
                 try{
                     const data = await addBorrowUtil(this.$wallet, state.troveId, Number(value.to), Number(value.from) * 1000000000, this.$web3);
-                    console.log("the data is ",data)
                     console.log(data, 'updated trove');
                     await this.$axios.post('trove/addBorrow', { trove: data.troveAccountPubkey, amount: Number(value.to), user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
                         console.log(res, 'newTrove Backend')
@@ -123,7 +122,7 @@ export const actions = actionTree(
                         this.$accessor.wallet.getBalance()
                         dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
                         this.$accessor.dashboard.setBorrow(true)
-                        await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint, dest:this.$wallet.publicKey.toBase58() }).then((res) => {
+                        await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint, dest:this.$wallet.publicKey.toBase58()}).then((res) => {
                              console.log(res, 'newTrove Backend')
                         })
                     }

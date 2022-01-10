@@ -55,7 +55,7 @@
         <div
           class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ getGens }}</span>
+          <span class="f-mcolor-300 pr-2">{{ getRewardToken }}</span>
           <span class="f-white-200  pl-1-S  pr-5-XS">GENS</span>
         </div>
       </div>
@@ -130,6 +130,16 @@ export default {
             (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit) *
               100
           ).toFixed(2)
+        : 0;
+    },
+    getRewardToken() {
+      let token = this.$accessor.token;
+      let rewardToken = Number(token) / 1000000000;
+      let result = ((this.getPercent * rewardToken) / 100)
+        .toString()
+        .split(".");
+      return result[1]
+        ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
         : 0;
     },
     getCoin() {

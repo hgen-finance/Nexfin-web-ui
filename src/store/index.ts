@@ -23,6 +23,7 @@ export const state = () => ({
   governanceReward: 0,
   solReward: 0,
   tokenReward: 0,
+  token: "",
   troveTotal: 0,
   usd: 0,
   lightMode: false,
@@ -66,6 +67,9 @@ export const mutations = mutationTree(state, {
   setDebtRatio (state, newValue: boolean) {
     state.debtRatio = newValue
   },
+  setToken(state, newValue: string) {
+      state.token = newValue
+  }
   
 })
 
@@ -75,8 +79,7 @@ export const actions = actionTree(
   {
     async getInfo ({ commit }) {
       await this.$axios.get('info').then(({ data }) => {
-
-        console.log("the data total deposit was ", data.depositTotal)
+          
         commit('setTotalDeposit', data.depositTotal || 0)
         commit('setGasFee', data.gasFee || 0)
         commit('setGovernanceReward', data.governanceReward || 0)
@@ -85,6 +88,8 @@ export const actions = actionTree(
         commit('setTroveTotal', data.troveTotal || 0)
         commit('setLightMode', data.totalLiquidationMode || false)
         commit('setDebtRatio', data.debtRatio || 0)
+        commit('setToken', data.token || "0")
+        console.log("the data token is ", data.token)
       })
       await this.$axios.get('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd').then(({ data }) => {
         if (data.solana) {
