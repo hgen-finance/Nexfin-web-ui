@@ -138,7 +138,9 @@ export default {
       let result = ((this.getPercent * rewardToken) / 100)
         .toString()
         .split(".");
-      return Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+      return result[1]
+        ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
+        : 0;
     },
     getCoin() {
       return this.$accessor.pool.rewardCoinAmount;
