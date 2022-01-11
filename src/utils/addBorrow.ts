@@ -31,6 +31,8 @@ import {
         lamports: lamportAmount
       })
 
+      console.log(transferIx)
+
       const addBorrowIx = new TransactionInstruction({
           programId: escrowProgramId,
           keys: [
@@ -47,6 +49,7 @@ import {
               )
           )
       })
+      console.log(addBorrowIx)
 
       // add instruction to the transaction
       const tx = new Transaction().add(transferIx, addBorrowIx);

@@ -27,7 +27,8 @@ export const state = () => ({
   troveTotal: 0,
   usd: 0,
   lightMode: false,
-  logo: false
+  logo: false,
+  newToken: 0,
 })
 
 export type RootState = ReturnType<typeof state>
@@ -69,6 +70,9 @@ export const mutations = mutationTree(state, {
   },
   setToken(state, newValue: string) {
       state.token = newValue
+  },
+  setNewToken(state, newValue: number){
+      state.newToken = newValue
   }
   
 })
@@ -77,6 +81,9 @@ export const mutations = mutationTree(state, {
 export const actions = actionTree(
   { state, getters, mutations },
   {
+    checkReward({commit}, value){
+        commit('setNewToken', value)
+    },  
     async getInfo ({ commit }) {
       await this.$axios.get('info').then(({ data }) => {
         commit('setTotalDeposit', data.depositTotal || 0)
