@@ -92,9 +92,35 @@ export const actions = actionTree(
         // Claim
         async confirmBorrow({ state, commit, dispatch }, value) {
             // check if there already previous trove opened under this wallet pub key
-            const cr1 = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
+            // const currentColl = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
+            // const currentColl = this.$accessor.borrowing.debt || 0;
+            // const prevColl = this.$accessor.borrowing.trove.amountToClose > 0
+            // ? getCollateral(
+            //     this.$accessor.borrowing.trove.amountToClose.toString(),
+            //     this.$accessor.borrowing.trove.lamports.toString(),
+            //     parseInt(this.$accessor.usd).toString()
+            //   ).toNumber()
+            // : 0;
+            // const totalColl = (currentColl+prevColl )/2 // getting the average of the prev and curr collateral
+            // console.log("the total ratio for backend is ", totalColl)
+            let totalColl = 0;
+            if (this.$accessor.borrowing.trove.amountToClose > 0) {
+                totalColl = getCollateral(
+                (
+                    Number(this.$accessor.borrowing.trove.amountToClose) +
+                    parseInt(value.to)
+                ).toString(),
+                (
+                    Number(this.$accessor.borrowing.trove.lamports) +
+                    parseInt(value.from) * 1000000000
+                ).toString(),
+                parseInt(this.$accessor.usd).toString()
+                ).toNumber();
+            } else {
+                totalColl = this.$accessor.borrowing.debt || 0;
+            }
             // dispatch('getTrove').then(res => console.log("dispatching trove..."), err => console.log(err))
-            if(state.troveId && Number(value.from > 0) && cr1 > 109){
+            if(state.troveId && Number(value.from > 0) && totalColl > 109){
                 try{
                     commit('setLoading', true)   
                     console.log("this is called")
