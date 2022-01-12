@@ -373,6 +373,7 @@
 import Hint from "@/components/Hint";
 import Balance from "@/components/my/borrowing/Balance.vue";
 import { getCollateral } from "@/utils/layout";
+import BN from "bn.js";
 
 export default {
   components: {
@@ -417,7 +418,35 @@ export default {
       return (this.to * 0.5) / 100 || 0;
     },
     getDebt() {
-      return this.$accessor.borrowing.debt || 0;
+      //   let currentColl = this.$accessor.borrowing.debt || 0;
+      //   let prevColl = Number(this.getRatio);
+      //   console.log(currentColl, "|", prevColl);
+      //   let totalColl =
+      //     prevColl > 0 && currentColl > 0
+      //       ? (currentColl + prevColl) / 2
+      //       : currentColl;
+      //   console.log(totalColl, "totalColl");
+      let totalColl = 0;
+      if (this.$accessor.borrowing.trove.amountToClose > 0) {
+        console.log(this.$accessor.borrowing.trove.amountToClose, "|", this.to);
+        console.log(this.$accessor.borrowing.trove.lamports, "|", this.from);
+        totalColl = getCollateral(
+          (
+            Number(this.$accessor.borrowing.trove.amountToClose) +
+            parseInt(this.to)
+          ).toString(),
+          (
+            Number(this.$accessor.borrowing.trove.lamports) +
+            parseInt(this.from) * 1000000000
+          ).toString(),
+          parseInt(this.$accessor.usd).toString()
+        );
+      } else {
+        totalColl = this.$accessor.borrowing.debt || 0;
+      }
+
+      console.log(totalColl, "totalColl");
+      return totalColl;
     },
     getCurrentDebt() {
       return Number(this.getFee) + Number(this.to) || 0;
@@ -440,7 +469,6 @@ export default {
         : 0;
     },
     withdrawOrDeposit() {
-      console.log(`my testing is ${this.$accessor.borrowing.borrowOrPay}`);
       return this.$accessor.borrowing.borrowOrPay;
     },
 

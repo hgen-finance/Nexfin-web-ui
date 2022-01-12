@@ -125,8 +125,7 @@ export const SYS_ACCOUNT = new PublicKey('54sdQpgCMN1gQRG7xwTmCnq9vxdbPy8akfP1Kr
 export const CHAINLINK_SOL_USD_PUBKEY = new PublicKey('FmAmfoyPXiA8Vhhe6MZTr3U6rZfEZ1ctEHay1ysqCqcf')
 
 export const getCollateral = (gens: string, lamports: string, usd: string) => {
-    
     // TODO might need to change the value later here
-    let test = new BN(lamports).div(new BN("10000000")).mul(new BN(usd)).div(new BN(gens))
-    return test
+    let result = new BN(lamports).div(new BN("10000000")).mul(new BN(usd)).div(new BN(gens))
+    return result
 }
