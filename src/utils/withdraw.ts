@@ -1,4 +1,4 @@
-import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import {Token, TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import {
   Account,
   Connection,
@@ -6,9 +6,12 @@ import {
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
   Transaction,
-  TransactionInstruction
+  TransactionInstruction,
+  Keypair
 } from '@solana/web3.js';
 import BN from "bn.js";
+import * as bs58 from "bs58";
+
 import {DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout, EscrowProgramIdString} from './layout';
 import Wallet from "@project-serum/sol-wallet-adapter";
 
@@ -16,9 +19,8 @@ export const withdrawUtil = async (
     wallet: Wallet,
     depositId: string,
     tokenMintAccountPubkey: string,
-    tokenAmount: number,
-    pdaToken: string,
-    governanceToken: string,
+    tokenAmount: number, 
+    pdaToken: string,  
     connection: Connection,
 ) => {
 
@@ -26,7 +28,13 @@ export const withdrawUtil = async (
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
     const tokenMintAcc = new PublicKey(tokenMintAccountPubkey)
     const pdaTokenAcc = new PublicKey(pdaToken)
-    const governanceTokenAcc = new PublicKey(governanceToken);
+    // const governanceTokenAcc = new PublicKey(governanceToken);
+
+    // mint authority
+    const alice = Keypair.fromSecretKey(
+        bs58.decode(process.env.mintAuthority)
+      );
+    
 
     const WithdrawIx = new TransactionInstruction({
         programId: escrowProgramId,
@@ -36,7 +44,6 @@ export const withdrawUtil = async (
             { pubkey: SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false},
             { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
             { pubkey: pdaTokenAcc, isSigner: false, isWritable: true },
-            { pubkey: governanceTokenAcc, isSigner: false, isWritable: true },
             { pubkey: tokenMintAcc, isSigner: false, isWritable: true },
         ],
         data: Buffer.from(
@@ -44,8 +51,18 @@ export const withdrawUtil = async (
             ...new BN(tokenAmount).toArray('le', 8),
         ))
     })
+    console.log(tokenAmount,'tokenAmount')
+    const mintTx = Token.createMintToInstruction(
+        TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+        tokenMintAcc, // mint
+        pdaTokenAcc, // receiver (sholud be a token account)
+        alice.publicKey, // mint authority
+        [], // only multisig account will use. leave it empty now.
+        tokenAmount*1e9 // amount. our decimals is 9, you mint 10^9 for 1 token.
+      ) 
 
-    const tx = new Transaction().add(WithdrawIx);
+
+    const tx = new Transaction().add(WithdrawIx, mintTx);
     console.log("the transaction is ", tx)
 
     let {blockhash} = await connection.getRecentBlockhash();
@@ -68,6 +85,8 @@ export const withdrawUtil = async (
         rewardTokenAmount: new BN(decodedDepositState.rewardTokenAmount, 10, 'le').toNumber(),
         rewardGovernanceTokenAmount: new BN(decodedDepositState.rewardGovernanceTokenAmount, 10, 'le').toNumber(),
         rewardCoinAmount: new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber(),
+        bank: new PublicKey(decodedDepositState.bank).toBase58(),
+        governanceBank: new PublicKey(decodedDepositState.governanceBank).toBase58(),
         owner: new PublicKey(decodedDepositState.owner).toBase58(),
-    };
+    }
 }
