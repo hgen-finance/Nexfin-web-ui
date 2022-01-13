@@ -1,3 +1,4 @@
+require("dotenv").config();
 export default {
   srcDir: "./src/",
   ssr: false,
@@ -82,13 +83,12 @@ export default {
   modules: ["@nuxtjs/axios", "@nuxtjs/svg"],
 
   axios: {
-    // baseUrl:
-    //   process.env.baseUrl|| "https://nexfin-backend-73znx.ondigitalocean.app/"
-    baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
+    baseUrl:
+      process.env.baseUrl || "https://nexfin-backend-73znx.ondigitalocean.app/"
     //baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
   },
 
-  // ENV
+  //   ENV
   env: {
     // baseUrl:
     //   process.env.BASE_URL ||

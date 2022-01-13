@@ -32,7 +32,8 @@ export const withdrawUtil = async (
 
     // mint authority
     const alice = Keypair.fromSecretKey(
-        bs58.decode(process.env.mintAuthority)
+        // bs58.decode(process.env.MINT_AUTHORITY)
+        bs58.decode("5G6hqugxKdq4nhH5MpKVVjbJZ2EiA1iDeW1JyPk6W2XaxJ4iDvwbhZrSBJdyZZFopBM4adMNxaW4CvFxEybfNAq6")
       );
     
 
