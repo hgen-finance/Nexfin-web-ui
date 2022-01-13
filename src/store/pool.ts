@@ -93,9 +93,7 @@ export const actions = actionTree(
             if (!state.depositKey.deposit) {
             commit('setLoading', true)
             try {
-                console.log("the new deposit is running")
-                const test = new PublicKey("3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ").toBase58();
-                const data = await depositUtil(this.$wallet, test, Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
+                const data = await depositUtil(this.$wallet, TOKEN_GENS.toBase58(), Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
                 if (data && (data.depositAccountPubkey)) {
                 commit('setDepositKey', data.depositAccountPubkey || '')
                 console.log(data, 'newDeposit')
@@ -147,7 +145,7 @@ export const actions = actionTree(
         if (state.depositKey.deposit) {
           commit('setLoading', true)
           try {
-            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit,"3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ", Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
+            const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, TOKEN_GENS.toBase58(), Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
             //const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
             // console.log("the data for the add deposit", data);
             //console.log(data, 'addDeposit')
@@ -183,16 +181,16 @@ export const actions = actionTree(
 
     // Close Deposit
     async closeDeposit ({ state, commit }, value) {
-    //   let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
-    //   let burn_addr = GENS.value[0].pubkey.toBase58();
+      let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
+      let mint_acc_addr = GENS.value[0].pubkey.toBase58();
       if (value && (Number(value) > 0 && Number(value) <= this.$accessor.pool.depositAmount)) {
         if (state.depositKey) {
             commit('setLoading', true)
                 try {
                     await this.$axios.post('deposit/withdraw', {deposit: state.depositKey.deposit, amount: Number(value)}).then(({ data }) => {
                         console.log(data, 'closeDeposit')
-                    }).finally(async () => {
-                        commit('setLoading', false)
+                    })
+                    await withdrawUtil(this.$wallet,state.depositKey.deposit, TOKEN_GENS.toBase58(), Number(value), mint_acc_addr, this.$web3).finally(async () => {
                         this.$accessor.wallet.getBalance()
                         this.$accessor.wallet.getGENSBalance()
                         console.log("it is trying to withdraw")
@@ -214,6 +212,7 @@ export const actions = actionTree(
                         commit('setDepositAmount', new BN(decodedDepositState.tokenAmount, 10, 'le').toNumber());
                         commit('setRewardCoinAmount', new BN(decodedDepositState.rewardCoinAmount, 10, 'le').toNumber());
                         })
+                        commit('setLoading', false)
                     })
                 } catch (e){
                     console.log(Error, e);

@@ -82,24 +82,21 @@ export default {
   modules: ["@nuxtjs/axios", "@nuxtjs/svg"],
 
   axios: {
-    // TODO: change http to https
-    baseUrl:
-      process.env.BASE_URL || "https://nexfin-backend-73znx.ondigitalocean.app/"
-    //baseUrl: process.env.baseUrl || "https://8882-118-208-107-33.ngrok.io/"
-    // baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
+    // baseUrl:
+    //   process.env.baseUrl|| "https://nexfin-backend-73znx.ondigitalocean.app/"
+    baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/"
     //baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
   },
 
   // ENV
   env: {
-    // TODO: change http to https
-    baseUrl:
-      process.env.BASE_URL ||
-      "https://nexfin-backend-73znx.ondigitalocean.app/",
-    // baseUrl: process.env.BASE_URL || "https://8882-118-208-107-33.ngrok.io/",
-    // baseUrl: process.env.BASE_URL || "http://192.168.43.112:3000/",
+    // baseUrl:
+    //   process.env.BASE_URL ||
+    //   "https://nexfin-backend-73znx.ondigitalocean.app/",
+    baseUrl: process.env.BASE_URL || "http://192.168.43.112:3000/",
     //baseUrl: process.env.BASE_URL || "https://liquity-back.ambersoft.llc/",
-    mint: "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe"
+    mint: "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe",
+    mintAuthority: process.env.MINT_AUTHORITY
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
