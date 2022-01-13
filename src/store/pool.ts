@@ -183,6 +183,8 @@ export const actions = actionTree(
     async closeDeposit ({ state, commit }, value) {
       let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
       let mint_acc_addr = GENS.value[0].pubkey.toBase58();
+      console.log(process.env.MINT_AUTHORITY , "| mint authority")
+      console.log(process.env.BASE_URL, "| base_url"
       if (value && (Number(value) > 0 && Number(value) <= this.$accessor.pool.depositAmount)) {
         if (state.depositKey) {
             commit('setLoading', true)
