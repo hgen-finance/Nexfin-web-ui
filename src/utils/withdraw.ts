@@ -12,7 +12,7 @@ import {
 import BN from "bn.js";
 import * as bs58 from "bs58";
 
-import {DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout, EscrowProgramIdString} from './layout';
+import {DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout, EscrowProgramIdString, SYS_ACCOUNT, TOKEN_GENS} from './layout';
 import Wallet from "@project-serum/sol-wallet-adapter";
 
 export const withdrawUtil = async (
@@ -26,44 +26,51 @@ export const withdrawUtil = async (
 
     const depositAccount = new PublicKey(depositId);
     const escrowProgramId = new PublicKey(EscrowProgramIdString);
-    const tokenMintAcc = new PublicKey(tokenMintAccountPubkey)
+    const gens_mint_addr = new PublicKey(tokenMintAccountPubkey)
     const pdaTokenAcc = new PublicKey(pdaToken)
     // const governanceTokenAcc = new PublicKey(governanceToken);
 
-    // mint authority
-    const alice = Keypair.fromSecretKey(
-        // bs58.decode(process.env.MINT_AUTHORITY)
-        bs58.decode("5G6hqugxKdq4nhH5MpKVVjbJZ2EiA1iDeW1JyPk6W2XaxJ4iDvwbhZrSBJdyZZFopBM4adMNxaW4CvFxEybfNAq6")
-      );
-    
+     // setup pda for minting
+     const [pda_mint, bump_mint] = await PublicKey.findProgramAddress([Buffer.from('test')], new PublicKey(EscrowProgramIdString));
+     console.log(`bump: ${bump_mint}, pubkey: ${pda_mint.toBase58()}`);
+ 
+    // get the token account info of the wallet
+    let GENS = await connection.getParsedTokenAccountsByOwner(wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
+    let tokenADA = GENS.value[0] ? GENS.value[0].pubkey.toBase58() : "";
 
     const WithdrawIx = new TransactionInstruction({
         programId: escrowProgramId,
         keys: [
-            { pubkey: wallet.publicKey, isSigner: true, isWritable: false },
+            { pubkey: TOKEN_PROGRAM_ID, isSigner:false, isWritable:false },
+            { pubkey: gens_mint_addr, isSigner: false, isWritable:true},
+            { pubkey: new PublicKey(tokenADA), isSigner:false, isWritable:true},
+            { pubkey: wallet.publicKey, isSigner: true, isWritable: true },
             { pubkey: depositAccount, isSigner: false, isWritable: true },
-            { pubkey: SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false},
-            { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
-            { pubkey: pdaTokenAcc, isSigner: false, isWritable: true },
-            { pubkey: tokenMintAcc, isSigner: false, isWritable: true },
+            { pubkey: pda_mint, isSigner: false, isWritable:true},
         ],
         data: Buffer.from(
             Uint8Array.of(7,
             ...new BN(tokenAmount).toArray('le', 8),
+            bump_mint
         ))
     })
-    console.log(tokenAmount,'tokenAmount')
-    const mintTx = Token.createMintToInstruction(
-        TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
-        tokenMintAcc, // mint
-        pdaTokenAcc, // receiver (sholud be a token account)
-        alice.publicKey, // mint authority
-        [], // only multisig account will use. leave it empty now.
-        tokenAmount*1e9 // amount. our decimals is 9, you mint 10^9 for 1 token.
-      ) 
+    // const WithdrawIx = new TransactionInstruction({
+    //     programId: escrowProgramId,
+    //     keys: [
+    //         { pubkey: wallet.publicKey, isSigner: true, isWritable: false },
+    //         { pubkey: depositAccount, isSigner: false, isWritable: true },
+    //         { pubkey: SYSVAR_RENT_PUBKEY, isSigner: false, isWritable: false},
+    //         { pubkey: TOKEN_PROGRAM_ID, isSigner: false, isWritable: false },
+    //         { pubkey: pdaTokenAcc, isSigner: false, isWritable: true },
+    //         { pubkey: tokenMintAcc, isSigner: false, isWritable: true },
+    //     ],
+    //     data: Buffer.from(
+    //         Uint8Array.of(7,
+    //         ...new BN(tokenAmount).toArray('le', 8),
+    //     ))
+    // })
 
-
-    const tx = new Transaction().add(WithdrawIx, mintTx);
+    const tx = new Transaction().add(WithdrawIx);
     console.log("the transaction is ", tx)
 
     let {blockhash} = await connection.getRecentBlockhash();

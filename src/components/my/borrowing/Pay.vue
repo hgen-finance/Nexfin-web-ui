@@ -12,10 +12,19 @@
         Your Current Debt
       </div>
       <div
-        class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
+        class="
+          w-100
+          fs-7-S fs-20-XS
+          f-white-200
+          ta-c-XS
+          pb-2-S pb-10-XS
+          ta-c-XS
+          mb-10-XS
+          fw-600
+        "
       >
         <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{ getDebt }}</span>
-        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">
+        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100">
           {{ getRatio }}
         </span>
         <span class="fw-600 pr-1">% </span>CR)
@@ -44,7 +53,7 @@
             Borrow
           </AmButton>
         </div>
-        <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS ">
+        <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS">
           <AmButton
             color="green-500"
             bColor="green-500"
@@ -81,7 +90,15 @@
 
       <!-- This section is for the borrow  -->
       <div
-        class="w-100 mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+        class="
+          w-100
+          mt-4
+          mb-2
+          mcolor-700
+          rad-fix-2
+          px-4-S px-10-XS
+          py-3-S py-10-XS
+        "
         v-if="getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -93,7 +110,16 @@
           >
           <input
             type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+            class="
+              w-100
+              mx-1
+              white-100
+              br-0
+              oul-n
+              fs-6-S fs-20-XS
+              fw-600
+              f-mcolor-300
+            "
             placeholder="0.0000"
             v-model="from"
             maxlength="12"
@@ -118,7 +144,16 @@
           >
           <input
             type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+            class="
+              w-100
+              mx-1
+              white-100
+              br-0
+              oul-n
+              fs-6-S fs-20-XS
+              fw-600
+              f-mcolor-300
+            "
             placeholder="0"
             v-model="to"
             maxlength="20"
@@ -152,7 +187,15 @@
 
       <!-- This section for the pay debt  -->
       <div
-        class="w-100 mt-4 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+        class="
+          w-100
+          mt-4
+          mb-4
+          mcolor-700
+          rad-fix-2
+          px-4-S px-10-XS
+          py-3-S py-10-XS
+        "
         v-if="!getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -164,7 +207,16 @@
           >
           <input
             type="text"
-            class="w-100 mx-1  white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+            class="
+              w-100
+              mx-1
+              white-100
+              br-0
+              oul-n
+              fs-6-S fs-20-XS
+              fw-600
+              f-mcolor-300
+            "
             placeholder="0"
             v-model="repayTo"
             maxlength="12"
@@ -223,7 +275,7 @@ import { getCollateral } from "@/utils/layout";
 
 export default {
   components: {
-    Loading
+    Loading,
   },
   data() {
     return {
@@ -234,7 +286,7 @@ export default {
       borrow: 0,
       depositAmount: 0,
       debtAmout: 0,
-      borrowVal: 0
+      borrowVal: 0,
     };
   },
   computed: {
@@ -273,7 +325,7 @@ export default {
             parseInt(this.$accessor.usd).toString()
           )
         : 0;
-    }
+    },
   },
   watch: {
     from(val) {
@@ -303,7 +355,7 @@ export default {
       console.log("checking the changes");
       this.$emit("repay", this.repayTo);
       this.$accessor.borrowing.closeBorrowAmount({ repayTo: val });
-    }
+    },
   },
   methods: {
     setMax() {
@@ -340,7 +392,7 @@ export default {
         this.$accessor.borrowing.confirmBorrow({
           from: this.from,
           to: this.to,
-          mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1"
+          mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
         });
         this.from = null;
         this.to = null;
@@ -349,10 +401,16 @@ export default {
     },
     closeTroveFunc() {
       this.repayTo = this.$accessor.borrowing.trove.amountToClose;
+      //   this.$accessor.borrowing.closeTrove({
+      //     mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
+      //     amount: this.repayTo,
+      //   });
+      //   this.form = null;
+      //   this.to = null;
       if (this.getGensBalance >= this.repayTo) {
         this.$accessor.borrowing.closeTrove({
           mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
-          amount: this.repayTo
+          amount: this.repayTo,
         });
         this.form = null;
         this.to = null;
@@ -365,7 +423,7 @@ export default {
       if (this.getGensBalance >= this.repayTo) {
         this.$accessor.borrowing.payTrove({
           mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
-          amount: this.repayTo
+          amount: this.repayTo,
         });
       }
     },
@@ -374,13 +432,13 @@ export default {
       this.$accessor.borrowing.changeBorrowOrPay(
         this.$accessor.borrowing.borrowOrPay
       );
-    }
+    },
   },
   mounted() {
     //   uncomment later
     // if (this.getIsBorrow) {
     //   this.repayTo = this.$accessor.borrowing.trove.amountToClose;
     // }
-  }
+  },
 };
 </script>

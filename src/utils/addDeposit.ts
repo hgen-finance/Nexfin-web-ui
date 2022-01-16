@@ -1,4 +1,4 @@
-import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import {Token,  TOKEN_PROGRAM_ID, AuthorityType } from "@solana/spl-token";
 import {
   Account,
   Connection,
@@ -47,6 +47,7 @@ export const addDepositUtil = async (
             ...new BN(tokenAmount).toArray('le', 8),
         ))
     })
+
 
     const tx = new Transaction().add(depositIx);
     console.log("the transaction is ", tx)

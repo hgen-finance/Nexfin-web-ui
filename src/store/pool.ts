@@ -95,6 +95,7 @@ export const actions = actionTree(
             if (!state.depositKey.deposit) {
             commit('setLoading', true)
             try {
+                console.log("reached here");
                 const data = await depositUtil(this.$wallet, TOKEN_GENS.toBase58(), Number(value.from),burn_addr, "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv", this.$web3)
                 if (data && (data.depositAccountPubkey)) {
                 commit('setDepositKey', data.depositAccountPubkey || '')
@@ -185,8 +186,7 @@ export const actions = actionTree(
     async closeDeposit ({ state, commit }, value) {
       let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});   
       let mint_acc_addr = GENS.value[0].pubkey.toBase58();
-      console.log(process.env.MINT_AUTHORITY , "| mint authority")
-      console.log(process.env.BASE_URL, "| base_url")
+      console.log(mint_acc_addr, 'mint acc addr')
       if (value && (Number(value) > 0 && Number(value) <= this.$accessor.pool.depositAmount)) {
         if (state.depositKey) {
             commit('setLoading', true)
