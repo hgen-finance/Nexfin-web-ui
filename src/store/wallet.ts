@@ -6,7 +6,7 @@ import { PublicKey } from '@solana/web3.js';
 import { Wallets, WalletInfo } from '../utils/wallets'
 import { Result } from 'ant-design-vue';
 
-export const TOKEN_GENS = new PublicKey('3VkCNsok1V8Y65utG7LchxURHh7nAhFR7ScVyTLLG1jJ')
+export const TOKEN_GENS = new PublicKey('7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt')
 export const TOKEN_HGEN = new PublicKey('6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv')
 const LAMPORTS = 1000000000;
 

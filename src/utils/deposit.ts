@@ -1,4 +1,4 @@
-import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
+import {Token, TOKEN_PROGRAM_ID, AuthorityType } from "@solana/spl-token";
 import {
   Account,
   PublicKey,
@@ -9,8 +9,9 @@ import {
   TransactionInstruction
 } from '@solana/web3.js';
 import BN from "bn.js";
-import {TroveLayout, TROVE_ACCOUNT_DATA_LAYOUT, DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout, EscrowProgramIdString} from './layout';
+import {TroveLayout, TROVE_ACCOUNT_DATA_LAYOUT, DEPOSIT_ACCOUNT_DATA_LAYOUT, DepositLayout, EscrowProgramIdString, SYS_ACCOUNT} from './layout';
 import Wallet from "@project-serum/sol-wallet-adapter";
+import { setAuthority } from "@project-serum/serum/lib/token-instructions";
 
 export const depositUtil = async (
     wallet: Wallet,
@@ -29,6 +30,10 @@ export const depositUtil = async (
     const tokenMintAcc = new PublicKey(tokenMintAccountPubkey);
     const pdaTokenAcc = new PublicKey(pdaToken);
     const governanceTokenAcc = new PublicKey(governanceToken);
+
+    // setup pda for minting
+    const [pda_mint, bump_mint] = await PublicKey.findProgramAddress([Buffer.from("test")], new PublicKey(EscrowProgramIdString));
+    console.log(`bump: ${bump_mint}, pubkey: ${pda_mint.toBase58()}`);
 
     const createDepositAccountIx = SystemProgram.createAccount({
         space: DEPOSIT_ACCOUNT_DATA_LAYOUT.span,
@@ -55,6 +60,18 @@ export const depositUtil = async (
         ))
     })
 
+     let mint_type: AuthorityType = "MintTokens"
+     let pda_account_mint = pda_mint
+
+    // const changeMintIx = Token.createSetAuthorityInstruction(
+    //     TOKEN_PROGRAM_ID,
+    //     tokenMintAcc,
+    //     new PublicKey(pda_account_mint),
+    //     mint_type,
+    //     wallet.publicKey,
+    //     []
+    // )
+
     const tx = new Transaction().add(createDepositAccountIx, depositIx);
 
     // добавляем данне для возможност формирования подписи
@@ -64,6 +81,7 @@ export const depositUtil = async (
 
     // to sign
     let signedTx = await wallet.signTransaction(tx);
+    //TODO add pda to sign for writing balance info in deposit Account
     // to write without signer
     signedTx.partialSign(depositAccount)
     let txId = await connection.sendRawTransaction(signedTx.serialize());

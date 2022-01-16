@@ -7,15 +7,15 @@ export default {
   head: {
     title: "la-front-temp",
     htmlAttrs: {
-      lang: "en"
+      lang: "en",
     },
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" }
+      { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   // for the custom loader
@@ -38,12 +38,12 @@ export default {
     // lib amber
     "@modules/amberlib",
     // https://typed-vuex.roe.dev
-    "nuxt-typed-vuex"
+    "nuxt-typed-vuex",
   ],
 
   // nuxt scroll behaviour for anchoring
   router: {
-    scrollBehavior: async function(to, from, savedPosition) {
+    scrollBehavior: async function (to, from, savedPosition) {
       const ADDITIONAL_OFFSET = 80;
       if (savedPosition) {
         return savedPosition;
@@ -52,7 +52,7 @@ export default {
       const findEl = async (hash, x = 0) => {
         return (
           document.querySelector(hash) ||
-          new Promise(resolve => {
+          new Promise((resolve) => {
             if (x > 50) {
               return resolve(document.querySelector("#app"));
             }
@@ -68,7 +68,7 @@ export default {
         if ("scrollBehavior" in document.documentElement.style) {
           return window.scrollTo({
             top: el.offsetTop + ADDITIONAL_OFFSET,
-            behavior: "smooth"
+            behavior: "smooth",
           });
         } else {
           return window.scrollTo(0, el.offsetTop + ADDITIONAL_OFFSET);
@@ -76,15 +76,14 @@ export default {
       }
 
       return { x: 0, y: 0 };
-    }
+    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ["@nuxtjs/axios", "@nuxtjs/svg"],
 
   axios: {
-    baseUrl:
-      process.env.baseUrl || "https://nexfin-backend-73znx.ondigitalocean.app/"
+    baseUrl: process.env.baseUrl || "http://192.168.43.112:3000/",
     //baseUrl: process.env.baseUrl || "https://liquity-back.ambersoft.llc/"
   },
 
@@ -96,20 +95,20 @@ export default {
     // baseUrl: process.env.BASE_URL || "http://192.168.43.112:3000/",
     //baseUrl: process.env.BASE_URL || "https://liquity-back.ambersoft.llc/",
     mint: "2U3Mf4umT4CpLhhdwpfmGiktyvhdrLrNNv4z4GgsXNMe",
-    mintAuthority: process.env.MINT_AUTHORITY
+    mintAuthority: process.env.MINT_AUTHORITY,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extend(config, { isDev, isClient }) {
       config.node = {
-        fs: "empty"
+        fs: "empty",
       };
-    }
+    },
   },
 
   server: {
     host: "0.0.0.0",
-    port: process.env.PORT || 5000
-  }
+    port: process.env.PORT || 5000,
+  },
 };
