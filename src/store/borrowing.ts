@@ -122,15 +122,16 @@ export const actions = actionTree(
             }
             // dispatch('getTrove').then(res => console.log("dispatching trove..."), err => console.log(err))
 
-            console.log(state.troveId, "troveId")
+            console.log(state.troveId, "troveId here is called")
 
             // check if there already previous trove opened under this wallet pub key
             if (state.troveId && Number(value.from > 0) && totalColl > 109) {
-                console.log("this is read")
+                console.log("this is readin ......")
                 try {
                     commit('setLoading', true)
                     const data = await addBorrowUtil(this.$wallet, state.troveId, Number(value.to), Number(value.from) * 1000000000, this.$web3);
-                    console.log(data, 'updated trove');
+                    console.log(data, 'checking add borrow trove');
+
                     await this.$axios.post('trove/addBorrow', { trove: data.troveAccountPubkey, amount: Number(value.to), user: value.mint, dest: this.$wallet.publicKey.toBase58() }).then((res) => {
                         console.log(res, 'newTrove Backend')
                     })
@@ -150,6 +151,7 @@ export const actions = actionTree(
             if (!state.troveId && Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
                 commit('setLoading', true)
                 try {
+                    console.log("this is getting.....")
                     const data = await borrowUtil(this.$wallet, mintAmount, Number(value.to), Number(value.from) * 1000000000, this.$web3)
 
                     if (data && (data.troveAccountPubkey)) {
