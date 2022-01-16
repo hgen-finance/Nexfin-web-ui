@@ -75,8 +75,7 @@ export const borrowUtil = async (
             )
         );
 
-        let txHash = await connection.sendTransaction(ataAccountTx, [feePayer])
-        console.log(`Transaction succeeded. TxHash: ${txHash}`);
+        await connection.sendTransaction(ataAccountTx, [feePayer])
     }
 
 
@@ -107,11 +106,6 @@ export const borrowUtil = async (
     // добавялем инструкции в транзакцию (add instruction to the transaction)
     const tx = new Transaction().add(createBorrowAccountIx, borrowIx);
 
-    // console.log(tx, "tx");
-    // const txHash = await connection.sendTransaction(tx, [feePayer]);
-    // console.log(`Created successfully. Tx Hash: ${txHash}`);
-
-
     // add data for signature generation
     // добавляем данне для возможност формирования подписи
     let { blockhash } = await connection.getRecentBlockhash();
@@ -127,10 +121,11 @@ export const borrowUtil = async (
     let txId = await connection.sendRawTransaction(signedTx.serialize());
     await connection.confirmTransaction(txId);
 
-
     // Info
     const encodedTroveState = (await connection.getAccountInfo(troveAccount.publicKey, 'singleGossip'))!.data;
     const decodedTroveState = TROVE_ACCOUNT_DATA_LAYOUT.decode(encodedTroveState) as TroveLayout;
+
+    console.log(decodedTroveState, "decode trove is working");
 
     return {
         troveAccountPubkey: troveAccount.publicKey.toBase58(),
