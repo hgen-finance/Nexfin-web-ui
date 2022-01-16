@@ -4,6 +4,7 @@ import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 // Import Utils
 import { borrowUtil } from '@/utils/borrow'
 import { closeBorrowUtil } from '@/utils/closeBorrow'
+import { createATA } from '@/utils/createATA';
 import { payBorrowUtil } from '@/utils/payBorrow';
 import { addBorrowUtil } from '@/utils/addBorrow';
 import { TROVE_ACCOUNT_DATA_LAYOUT, TroveLayout, getCollateral, TOKEN_GENS } from "@/utils/layout";
@@ -145,13 +146,12 @@ export const actions = actionTree(
 
             // check if the collateral ratio is not higher than the 109
             const cr = getCollateral(value.to.toString(), (Number(value.from) * 1000000000).toString(), parseInt(this.$accessor.usd).toString()).toNumber();
-
+            
             if (!state.troveId && Number(value.from > 0) && Number(value.to) > 1599 && cr > 109) {
                 commit('setLoading', true)
                 try {
-                    console.log("reached here")
                     const data = await borrowUtil(this.$wallet, mintAmount, Number(value.to), Number(value.from) * 1000000000, this.$web3)
-                    console.log("the borrowing  data for my thingy is ", data);
+                    
                     if (data && (data.troveAccountPubkey)) {
                         commit('setTroveId', data.troveAccountPubkey || '')
                         this.$accessor.wallet.getBalance()
