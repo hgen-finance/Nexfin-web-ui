@@ -190,7 +190,7 @@ export const actions = actionTree(
                 try {
                     console.log("processing closing the trove...")
                     console.log(value.amount)
-                    const data = await closeBorrowUtil(this.$wallet, "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt", state.trove.troveAccountPubkey, burn_addr, pay_amount * 1000000000, this.$web3)
+                    const data = await closeBorrowUtil(this.$wallet, "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
                     if (data === null) {
                         console.log(data, 'closeTrove')
@@ -233,14 +233,14 @@ export const actions = actionTree(
             let burn_addr = GENS.value[0].pubkey.toBase58();
             console.log("the amount entered is ", value.amount)
             console.log("the amount to close before was ", state.trove.amountToClose)
-            const exceedAmount = pay_amount > Number(value.amount) ? false : true
+            const exceedAmount = state.trove.amountToClose >= Number(value.amount) ? false : true
 
             if (state.troveId && (!exceedAmount)) {
                 commit('setLoading', true)
                 try {
                     console.log("processing updating the trove...")
                     console.log(value.amount)
-                    const data = await payBorrowUtil(this.$wallet, "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt", state.trove.troveAccountPubkey, burn_addr, pay_amount * 1000000000, this.$web3)
+                    const data = await payBorrowUtil(this.$wallet, "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt", state.trove.troveAccountPubkey, burn_addr, value.amount, this.$web3)
                     console.log("data after updating the trove is", data)
 
                     await this.$axios.post('trove/pay', { trove: state.trove.troveAccountPubkey, amount: value.amount }).then((res) => {
