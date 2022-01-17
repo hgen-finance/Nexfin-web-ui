@@ -432,7 +432,9 @@ export default {
       return this.$accessor.troveTotal || 0;
     },
     getFee() {
-      return (this.to * 0.5) / 100 || 0;
+      let fee = this.to;
+      fee = fee ? (this.to * 0.5) / 100 : 0;
+      return fee != 0 && fee < 5 ? 5 : fee;
     },
     getDebt() {
       //   let currentColl = this.$accessor.borrowing.debt || 0;
