@@ -191,9 +191,9 @@
       "
       v-if="
         (Number(getDebt) < getMaxRatio || Number(to) < 1600) &&
-          from &&
-          to &&
-          !getIsBorrow
+        from &&
+        to &&
+        !getIsBorrow
       "
     >
       <!-- change the minimum borrow later -->
@@ -212,10 +212,22 @@
       "
     > -->
     <div
-      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
-      v-if="disputeDebt > 0 || disputeDebt < 0"
+      class="
+        w-100
+        mcolor-800
+        p-4-S p-15-XS
+        mt-4-S mt-10-XS
+        rad-fix-4
+        fs-5-S fs-20-XS
+        f-mcolor-500
+        mb-4-S mb-10-XS
+      "
+      v-if="(disputeDebt > 0 && getTroveAmount) || disputeDebt < 0"
     >
-      <div class="w-100 pb-2-S  pb-10-XS" v-if="disputeDebt > 0">
+      <div
+        class="w-100 pb-2-S pb-10-XS"
+        v-if="disputeDebt > 0 && getTroveAmount"
+      >
         You need <span class="fw-600">{{ disputeDebt }}</span> more to close
         Borrow.
       </div>
@@ -224,10 +236,19 @@
       </div>
     </div>
     <div
-      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+      class="
+        w-100
+        mcolor-800
+        p-4-S p-15-XS
+        mt-4-S mt-10-XS
+        rad-fix-4
+        fs-5-S fs-20-XS
+        f-mcolor-500
+        mb-4-S mb-10-XS
+      "
       v-if="CheckWalletBalance"
     >
-      <div class="w-100 pb-2-S  pb-10-XS" v-if="CheckWalletBalance">
+      <div class="w-100 pb-2-S pb-10-XS" v-if="CheckWalletBalance">
         You don't have enough GENS for this transaction.
       </div>
     </div>
@@ -306,11 +327,7 @@
               ai-c
             "
           >
-            {{
-              Number(getTotalBorrow)
-                .toLocaleString()
-                .slice(0, 16)
-            }}
+            {{ Number(getTotalBorrow).toLocaleString().slice(0, 16) }}
             <span class="f-white-200 pl-1-S pl-5-XS">GENS</span>
           </div>
         </div>
@@ -378,24 +395,24 @@ import BN from "bn.js";
 export default {
   components: {
     Hint,
-    Balance
+    Balance,
   },
   data() {
     return {
-      liquidationCR: "109"
+      liquidationCR: "109",
     };
   },
   props: {
     to: { type: Number, default: null },
     from: { type: Number, default: null },
-    repayTo: { type: Number, default: null }
+    repayTo: { type: Number, default: null },
     // collateral: { type: Number, default: null }
   },
   watch: {
-    repayTo: function(newVal, oldVal) {
+    repayTo: function (newVal, oldVal) {
       // watch the changes to repayTo for the collateral
       console.log("Prop changed: ", newVal, " | was: ", oldVal);
-    }
+    },
   },
   computed: {
     getMaxRatio() {
@@ -491,7 +508,7 @@ export default {
     },
     CheckWalletBalance() {
       return this.getGensBalance < this.repayTo;
-    }
-  }
+    },
+  },
 };
 </script>
