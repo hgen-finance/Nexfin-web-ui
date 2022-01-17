@@ -267,7 +267,7 @@
         <div class="w-100-S w-100-XS">
           <div class="w-100 fd-r py-2-S py-10-XS">
             <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
-              Fee (<span class="f-white-200 fw-600">0.5 %</span>)
+              Fee Borrow (<span class="f-white-200 fw-600">0.5 %</span>)
             </div>
             <div
               class="
@@ -281,6 +281,29 @@
               "
             >
               {{ getFee }}
+              <span class="f-white-200 pl-1-S pr-5-XS">GENS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-100 fd-r">
+        <div class="w-100-S w-100-XS">
+          <div class="w-100 fd-r py-2-S py-10-XS">
+            <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
+              Fee Pay Debt (<span class="f-white-200 fw-600">0.5 %</span>)
+            </div>
+            <div
+              class="
+                w-a
+                fs-5-M fs-8-S fs-25-XS
+                fsh-0
+                fw-600
+                f-mcolor-100
+                fd-r
+                ai-c
+              "
+            >
+              {{ getFeePay }}
               <span class="f-white-200 pl-1-S pr-5-XS">GENS</span>
             </div>
           </div>
@@ -434,6 +457,11 @@ export default {
     getFee() {
       let fee = this.to;
       fee = fee ? (this.to * 0.5) / 100 : 0;
+      return fee != 0 && fee < 5 ? 5 : fee;
+    },
+    getFeePay() {
+      let fee = this.repayTo;
+      fee = fee ? (this.repayTo * 0.5) / 100 : 0;
       return fee != 0 && fee < 5 ? 5 : fee;
     },
     getDebt() {
