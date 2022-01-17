@@ -241,11 +241,11 @@
         </div>
       </div>
       <div class="w-5 fsh-0 fd-r ai-c jc-c">
-        <img
+        <!-- <img
           src="@/assets/svg/my/bin.svg"
           class="w-fix-s-10 hv ts-3"
           @click="false"
-        />
+        /> -->
         <!-- <img
           src="@/assets/svg/my/bin.svg"
           class="w-fix-s-10 hv ts-3"
