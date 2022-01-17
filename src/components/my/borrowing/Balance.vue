@@ -94,7 +94,7 @@ export default {
       if (this.$accessor.wallet.balance) {
         result = Number(this.$accessor.wallet.balance).toString().split(".");
         result =
-          result.length > 1
+          result[1].length > 1 && result.length > 1
             ? Number(result[0].toLocaleString() + "." + result[1].substr(0, 2))
             : Number(result[0].toLocaleString());
       }
@@ -107,7 +107,9 @@ export default {
           .toString()
           .split(".");
         result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+          result[1].length > 1 && result.length > 1
+            ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
+            : Number(result[0].toLocaleString());
       }
       return result.toString();
     },
@@ -118,7 +120,9 @@ export default {
           .toString()
           .split(".");
         result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+          result[1].length > 1 && result.length > 1
+            ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
+            : Number(result[0]).toLocaleString();
       }
       return result.toString();
     },
@@ -127,7 +131,9 @@ export default {
       if (this.getBalance) {
         result = (Number(this.getBalance) * this.getUsd).toString().split(".");
         result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+          result[1].length > 1 && result.length > 1
+            ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
+            : Number(result[0]).toLocaleString();
       }
       return result.toString();
     },
