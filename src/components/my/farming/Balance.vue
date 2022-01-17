@@ -93,10 +93,14 @@ export default {
       let result = 0;
       if (this.$accessor.wallet.balance) {
         result = Number(this.$accessor.wallet.balance).toString().split(".");
-        result =
-          result.length > 1
-            ? Number(result[0].toLocaleString() + "." + result[1].substr(0, 2))
-            : Number(result[0].toLocaleString());
+        if (result.length > 1) {
+          result =
+            result[1].length > 1
+              ? Number(result[0]).toLocaleString() +
+                "." +
+                result[1].substr(0, 2)
+              : Number(result[0].toLocaleString());
+        }
       }
       return result.toString();
     },
@@ -106,9 +110,17 @@ export default {
         result = Number(this.$accessor.wallet.balanceHGEN)
           .toString()
           .split(".");
-        result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+        console.log("the gens is", result);
+        if (result.length > 1) {
+          result =
+            result[1].length > 1
+              ? Number(result[0]).toLocaleString() +
+                "." +
+                result[1].substr(0, 2)
+              : Number(result[0].toLocaleString());
+        }
       }
+
       return result.toString();
     },
     getBalanceGENS() {
@@ -117,8 +129,14 @@ export default {
         result = Number(this.$accessor.wallet.balanceGENS)
           .toString()
           .split(".");
-        result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+        if (result.length > 1) {
+          result =
+            result[1].length > 1
+              ? Number(result[0]).toLocaleString() +
+                "." +
+                result[1].substr(0, 2)
+              : Number(result[0].toLocaleString());
+        }
       }
       return result.toString();
     },
@@ -126,8 +144,14 @@ export default {
       let result = 0;
       if (this.getBalance) {
         result = (Number(this.getBalance) * this.getUsd).toString().split(".");
-        result =
-          Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
+        if (result.length > 1) {
+          result =
+            result[1].length > 1
+              ? Number(result[0]).toLocaleString() +
+                "." +
+                result[1].substr(0, 2)
+              : Number(result[0].toLocaleString());
+        }
       }
       return result.toString();
     },

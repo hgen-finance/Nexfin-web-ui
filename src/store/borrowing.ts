@@ -185,17 +185,17 @@ export const actions = actionTree(
 
             let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, { mint: new PublicKey(TOKEN_GENS) });
             let burn_addr = GENS.value[0].pubkey.toBase58();
-            if (state.troveId) {
+            if (true) {
                 commit('setLoading', true)
                 try {
                     console.log("processing closing the trove...")
                     console.log(value.amount)
-                    const data = await closeBorrowUtil(this.$wallet, "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt", state.trove.troveAccountPubkey, burn_addr, pay_amount * 1000000000, this.$web3)
+                    const data = await closeBorrowUtil(this.$wallet, "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt", "Dy6UAdnTF7E5cdLNa1ra3MLKiPLU1txRmM1sfKHWUGps", burn_addr, pay_amount * 1000000000, this.$web3)
                     // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
                     if (data === null) {
                         console.log(data, 'closeTrove')
                         commit('setTroveId', '')
-                        await this.$axios.post('trove/liquidate', { trove: state.trove.troveAccountPubkey }).then((res) => {
+                        await this.$axios.post('trove/liquidate', { trove: "Dy6UAdnTF7E5cdLNa1ra3MLKiPLU1txRmM1sfKHWUGps" }).then((res) => {
                             console.log(res, 'newTrove Backend')
                         })
                         commit('setTrove', {})
