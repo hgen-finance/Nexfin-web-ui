@@ -414,8 +414,7 @@ export default {
         });
         this.form = null;
         this.to = null;
-
-        //this.repayTo = null;
+        this.repayTo = 0;
         //this.mint = null;
       }
     },
