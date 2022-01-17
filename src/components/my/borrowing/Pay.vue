@@ -401,12 +401,12 @@ export default {
     },
     closeTroveFunc() {
       this.repayTo = this.$accessor.borrowing.trove.amountToClose;
-      this.$accessor.borrowing.closeTrove({
-        mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
-        amount: this.repayTo,
-      });
-      this.form = null;
-      this.to = null;
+      //   this.$accessor.borrowing.closeTrove({
+      //     mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
+      //     amount: this.repayTo,
+      //   });
+      //   this.form = null;
+      //   this.to = null;
       if (this.getGensBalance >= this.repayTo) {
         this.$accessor.borrowing.closeTrove({
           mint: "EdvHEGQ2sqC4ZofLpj2xE5BQefgewWFY5nHe9aMcReC1",
