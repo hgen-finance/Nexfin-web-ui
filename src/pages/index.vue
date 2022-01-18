@@ -6,16 +6,16 @@
         fpsLimit: 60,
         particles: {
           color: {
-            value: '#8E24AA'
+            value: '#8E24AA',
           },
           move: {
-            enable: true
+            enable: true,
           },
           links: {
             enable: true,
-            color: '#ba63ff'
-          }
-        }
+            color: '#ba63ff',
+          },
+        },
       }"
     />
     <div class="w-75 fd-c ai-c py-6">
@@ -88,7 +88,7 @@ export default {
     Roadmap,
     Advisors,
     ConnectWallet,
-    ConnectError
+    ConnectError,
   },
   computed: {
     modal() {
@@ -105,7 +105,7 @@ export default {
     },
     loaderConnect() {
       return this.$accessor.wallet.loaderConnect;
-    }
+    },
   },
   methods: {
     setModalFunc(value) {
@@ -117,7 +117,7 @@ export default {
     },
     connectWalletFunc(value) {
       this.$accessor.wallet.connectWallet(value);
-    }
+    },
   },
   mounted() {
     this.$accessor.getInfo();
@@ -126,6 +126,6 @@ export default {
       window.$nuxt.$root.$loading.percent;
       setTimeout(() => window.$nuxt.$root.$loading.finish(), 500);
     });
-  }
+  },
 };
 </script>

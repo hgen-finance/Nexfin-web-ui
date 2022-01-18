@@ -51,11 +51,11 @@
 export default {
   data() {
     return {
-      mobile: false
+      mobile: false,
     };
   },
   props: {
-    publicKey: { type: String, default: null }
+    publicKey: { type: String, default: null },
   },
   computed: {
     getTotal() {
@@ -65,7 +65,7 @@ export default {
         res = res.substr(0, res.length - total.toString().length) + total;
       }
       return res.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,");
-    }
-  }
+    },
+  },
 };
 </script>

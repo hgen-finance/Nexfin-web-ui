@@ -6,16 +6,14 @@
     <span class="f-white-200 mb-3 fw-700 fs-14">
       {{ marketPrice.price }}
     </span>
-    <span class="f-gray-700 fw-500 fs-7">
-      Market Price
-    </span>
+    <span class="f-gray-700 fw-500 fs-7"> Market Price </span>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    marketPrice: { type: Object, required: true }
-  }
-}
+    marketPrice: { type: Object, required: true },
+  },
+};
 </script>

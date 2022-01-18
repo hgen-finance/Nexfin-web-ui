@@ -15,7 +15,7 @@
     <div
       class="container w-100 my-10-L my-10-M my-10-S my-10-XS px-3-S px-3-XS"
     >
-      <div class="d-f  fd-c-XS fd-c-S fd-r-L fd-r-M  jc-c">
+      <div class="d-f fd-c-XS fd-c-S fd-r-L fd-r-M jc-c">
         <template v-for="(mp, index) in marketPrice">
           <MarketPrice
             :key="mp.token"
@@ -30,9 +30,7 @@
     <div
       class="container d-f fd-c jc-c ai-c mt-10 w-40-L w-40-M w-90-S w-90-XS m-0-auto ta-c"
     >
-      <div class="f-white-200 fw-600 fs-7">
-        Farming Lock up option
-      </div>
+      <div class="f-white-200 fw-600 fs-7">Farming Lock up option</div>
       <a
         href="#"
         class="fw-400 fs-6-L fs-6-M fs-6-S fs-6-XS td-u f-mcolor-300 wb-br-all mt-3"
@@ -61,7 +59,7 @@ export default {
   layout: "admin",
   components: {
     MarketPrice,
-    Borrowing
+    Borrowing,
   },
   computed: {
     ...mapGetters({ marketPrice: "admin/getMarketPrice" }),
@@ -82,7 +80,7 @@ export default {
         }
       }
       return res.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,");
-    }
-  }
+    },
+  },
 };
 </script>

@@ -68,20 +68,12 @@
   }
 }
 </style>
-
 <script>
-window.addEventListener("error", function() {
-  var e = document.getElementById("nuxt-loading");
-  if (e) {
-    e.className += " error";
-  }
-});
+// window.addEventListener("error", function () {
+//   var e = document.getElementById("nuxt-loading");
+//   if (e) {
+//     e.className += " error";
+//   }
+// });
+//
 </script>
-
-<div class="loading-page ">
-    <div class="outer-circle">
-      <div class="inner-circle">
-        <img src="" alt="Nexfin"/>
-      </div>
-    </div>
-</div>

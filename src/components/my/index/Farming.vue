@@ -13,10 +13,8 @@
         v-if="getToggleValue"
         ><Tooltip placement="bottomRight"> Close </Tooltip></span
       > -->
-      <span class=" fs-6-S fs-25-XS f-white-200  ts-3 hv fsh-0 ta-r-S "
-        ><Tooltip placement="bottomRight" class="f-green-600">
-          Open
-        </Tooltip>
+      <span class="fs-6-S fs-25-XS f-white-200 ts-3 hv fsh-0 ta-r-S"
+        ><Tooltip placement="bottomRight" class="f-green-600"> Open </Tooltip>
       </span>
     </div>
     <div class="w-100" v-if="getToggleValue">
@@ -185,13 +183,13 @@ export default {
   data() {
     return {
       timestamp: "",
-      open: true
+      open: true,
     };
   },
   components: {
     Hint,
     Icon,
-    Tooltip
+    Tooltip,
   },
   computed: {
     getPercent() {
@@ -224,7 +222,7 @@ export default {
     },
     getToggleValue() {
       return this.open;
-    }
+    },
   },
   methods: {
     openList() {
@@ -233,7 +231,7 @@ export default {
     closeList() {
       this.open = false;
       console.log(this.open);
-    }
-  }
+    },
+  },
 };
 </script>

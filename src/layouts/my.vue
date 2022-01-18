@@ -12,13 +12,7 @@
         </div>
         <div class="w-95-L w-95-M w-95-S w-100-XS fd-r jc-c">
           <div
-            class="
-              w-100-L w-100-M w-100-S w-100-XS
-              px-0-S px-20-XS
-              pt-0-S pt-50-XS
-              fd-r
-              jc-c
-            "
+            class="w-100-L w-100-M w-100-S w-100-XS px-0-S px-20-XS pt-0-S pt-50-XS fd-r jc-c"
           >
             <Nuxt />
           </div>
@@ -79,7 +73,7 @@ export default {
     Sidebar,
     ConnectWallet,
     ConnectError,
-    MarketDetails
+    MarketDetails,
   },
   computed: {
     publicKey() {
@@ -99,7 +93,7 @@ export default {
     },
     loaderConnect() {
       return this.$accessor.wallet.loaderConnect;
-    }
+    },
   },
   methods: {
     setModalFunc(value) {
@@ -114,7 +108,7 @@ export default {
     },
     logout() {
       this.$accessor.wallet.logout();
-    }
+    },
   },
   mounted() {
     this.$accessor.pool.getDeposit();
@@ -123,6 +117,6 @@ export default {
     this.$accessor.wallet.getHGENBalance();
     this.$accessor.wallet.getGENSBalance();
     this.$accessor.getInfo();
-  }
+  },
 };
 </script>

@@ -5,7 +5,7 @@
     >
       Lend
     </div>
-    <div class="w-100 fd-r ai-c ">
+    <div class="w-100 fd-r ai-c">
       <div class="w-70-S w-50-XS">
         <div class="w-100 fs-6-S fs-20-XS f-gray-600 pb-2-S pb-10-XS fw-600">
           Your current pool share
@@ -22,18 +22,14 @@
         </div>
       </div>
       <div class="w-30-S w-50-XS pl-0-S pl-40-XS ta-r">
-        <div class="w-100 fs-6-S fs-20-XS f-gray-600 pb-2-S pb-10-XS">
-          APY
-        </div>
+        <div class="w-100 fs-6-S fs-20-XS f-gray-600 pb-2-S pb-10-XS">APY</div>
         <div class="w-100 fs-8-S fs-25-XS fw-900 f-white-200">
           <span class="f-mcolor-100 mr-1">32.5</span>%
         </div>
       </div>
     </div>
     <div class="w-100 fd-r ai-c py-2-S py-10-XS my-2-S my-10-XS">
-      <div class="w-100 fs-6-S fs-20-XS f-gray-600 fw-600">
-        Total Deposited
-      </div>
+      <div class="w-100 fs-6-S fs-20-XS f-gray-600 fw-600">Total Deposited</div>
       <div class="w-45 fsh-0 fs-5-S fs-20-XS f-white-200 fw-600 ta-r">
         <span class="f-mcolor-100 pr-1-S pr-3-XS">{{
           getDepositeTotal.toLocaleString()
@@ -61,14 +57,12 @@
       </div>
     </div>
     <div class="w-100 fd-r ai-c py-1-M py-2-S py-5-XS">
-      <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200">
-        Rewards
-      </div>
+      <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200">Rewards</div>
       <div class="w-45 fs-5-S fs-20-XS fsh-0 f-white-200 fw-600 ta-r">
         <span class="f-mcolor-100 mr-1">{{ getHgen }}</span> HGEN
       </div>
     </div>
-    <div class="w-45-S w-100-XS  fsh-0 mt-3-S mt-10-XS fd-r jc-r ">
+    <div class="w-45-S w-100-XS fsh-0 mt-3-S mt-10-XS fd-r jc-r">
       <AmButton
         :height="false"
         color="mcolor-200"
@@ -127,14 +121,14 @@ export default {
     },
     getHgen() {
       return this.$accessor.pool.rewardHgenAmount;
-    }
+    },
   },
   methods: {
     claimFunc() {
       if (this.getDepositKey) {
         this.$accessor.dashboard.claim();
       }
-    }
-  }
+    },
+  },
 };
 </script>

@@ -12,50 +12,49 @@
         v-model="model"
         :placeholder="placeholder"
         @input="$emit('input', $event.target.value)"
-      >
+      />
     </div>
   </div>
 </template>
 
 <script>
-
-const randomHash = () => Math.random().toString(36).substring(6)
+const randomHash = () => Math.random().toString(36).substring(6);
 
 export default {
   props: {
-    inputType: { type: String, default: 'text' },
+    inputType: { type: String, default: "text" },
     value: { type: [String, Number, null], default: null },
-    label: { type: String, default: '' },
-    placeholder: { type: String, default: '' },
-    inputLabel: { type: String, default: '' }
+    label: { type: String, default: "" },
+    placeholder: { type: String, default: "" },
+    inputLabel: { type: String, default: "" },
   },
   watch: {
-    value (val) {
-      this.model = val
+    value(val) {
+      this.model = val;
     },
-    model (val) {
-      this.$emit('update:value', val)
-    }
+    model(val) {
+      this.$emit("update:value", val);
+    },
   },
   data() {
     return {
-      inputName: '',
-      model: null
-    }
+      inputName: "",
+      model: null,
+    };
   },
   created() {
-    this.inputName = 'input-with-label-' + randomHash()
-  }
-}
+    this.inputName = "input-with-label-" + randomHash();
+  },
+};
 </script>
 
 <style scoped>
 .input-with-label input {
   width: 100%;
   padding: 40px 32px 20px 32px;
-  background: #12112D;
+  background: #12112d;
   border-radius: 4px;
-  color: #CF68FF;
+  color: #cf68ff;
   font-size: 16px;
   line-height: 19px;
   border: none;

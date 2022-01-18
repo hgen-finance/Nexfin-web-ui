@@ -25,14 +25,14 @@ export default {
   head() {
     return {
       bodyAttrs: {
-        class: "isSwap"
-      }
+        class: "isSwap",
+      },
     };
   },
   components: {
     Balance,
     Raydium,
-    Info
+    Info,
   },
   methods: {
     swapFunc() {
@@ -40,8 +40,8 @@ export default {
     },
     createRayFunc() {
       this.$accessor.swap.createRay();
-    }
-  }
+    },
+  },
 };
 </script>
 
