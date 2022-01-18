@@ -3,32 +3,72 @@
     <div class="fw-700 f-white-200 fs-10 mb-5">Notification</div>
     <div class="d-f fd-r jc-sb mt-6">
       <div class="w-45 d-f fd-c">
-        <Textarea label="Warning Message Template" v-bind:value.sync="warning" />
-        <InputWithTopLabel label="Debit Ratio" inputLabel="81, 85, 90" class="mt-2" v-bind:value.sync="warningRatio" />
+        <Textarea
+          label="Warning Message Template"
+          v-bind:value.sync="warning"
+        />
+        <InputWithTopLabel
+          label="Debit Ratio"
+          inputLabel="81, 85, 90"
+          class="mt-2"
+          v-bind:value.sync="warningRatio"
+        />
         <div class="d-f fd-r jc-sb mt-4">
           <div class="w-45">
-            <AmButton color="mcolor-200" bColor="mcolor-100" colorText="mcolor-300" opacityEffect :full="true" @click="resetWarning">
+            <AmButton
+              color="mcolor-200"
+              bColor="mcolor-100"
+              colorText="mcolor-300"
+              opacityEffect
+              :full="true"
+              @click="resetWarning"
+            >
               REMOVE
             </AmButton>
           </div>
           <div class="w-45">
-            <AmButton color="mcolor-100" opacityEffect :full="true" @click="sendWarning">
+            <AmButton
+              color="mcolor-100"
+              opacityEffect
+              :full="true"
+              @click="sendWarning"
+            >
               Confirm
             </AmButton>
           </div>
         </div>
       </div>
       <div class="w-45 d-f fd-c">
-        <Textarea label="Liquidation Message Template" v-bind:value.sync="liquidation" />
-        <InputWithTopLabel label="Debit Ratio" inputLabel="81, 85, 90" class="mt-2" v-bind:value.sync="liquidationRatio" />
+        <Textarea
+          label="Liquidation Message Template"
+          v-bind:value.sync="liquidation"
+        />
+        <InputWithTopLabel
+          label="Debit Ratio"
+          inputLabel="81, 85, 90"
+          class="mt-2"
+          v-bind:value.sync="liquidationRatio"
+        />
         <div class="d-f fd-r jc-sb mt-4">
           <div class="w-45">
-            <AmButton color="mcolor-200" bColor="mcolor-100" colorText="mcolor-300" opacityEffect :full="true" @click="resetLiquidation">
+            <AmButton
+              color="mcolor-200"
+              bColor="mcolor-100"
+              colorText="mcolor-300"
+              opacityEffect
+              :full="true"
+              @click="resetLiquidation"
+            >
               REMOVE
             </AmButton>
           </div>
           <div class="w-45">
-            <AmButton color="mcolor-100" opacityEffect :full="true" @click="sendLiquidation">
+            <AmButton
+              color="mcolor-100"
+              opacityEffect
+              :full="true"
+              @click="sendLiquidation"
+            >
               Confirm
             </AmButton>
           </div>
@@ -39,39 +79,45 @@
 </template>
 
 <script>
-import Textarea from '@/components/common/form-elements/input-text/Textarea.vue'
-import InputWithTopLabel from '@/components/common/form-elements/input-text/InputWithTopLabel.vue'
+import Textarea from "@/components/common/form-elements/input-text/Textarea.vue";
+import InputWithTopLabel from "@/components/common/form-elements/input-text/InputWithTopLabel.vue";
 
 export default {
   components: {
     Textarea,
-    InputWithTopLabel
+    InputWithTopLabel,
   },
-  data () {
+  data() {
     return {
       warning: null,
       warningRatio: null,
       liquidation: null,
-      liquidationRatio: null
-    }
+      liquidationRatio: null,
+    };
   },
   methods: {
-    resetWarning () {
-      this.warning = null
-      this.warningRatio = null
+    resetWarning() {
+      this.warning = null;
+      this.warningRatio = null;
     },
-    resetLiquidation () {
-      this.liquidation = null
-      this.liquidationRatio = null
+    resetLiquidation() {
+      this.liquidation = null;
+      this.liquidationRatio = null;
     },
-    sendWarning () {
-      this.$accessor.admin.sendWarning({text: this.warning, ratio: this.warningRatio})
-      this.resetWarning()
+    sendWarning() {
+      this.$accessor.admin.sendWarning({
+        text: this.warning,
+        ratio: this.warningRatio,
+      });
+      this.resetWarning();
     },
-    sendLiquidation () {
-      this.$accessor.admin.sendLiquidation({text: this.liquidation, ratio: this.liquidationRatio})
-      this.resetLiquidation()
-    }
-  }
-}
+    sendLiquidation() {
+      this.$accessor.admin.sendLiquidation({
+        text: this.liquidation,
+        ratio: this.liquidationRatio,
+      });
+      this.resetLiquidation();
+    },
+  },
+};
 </script>

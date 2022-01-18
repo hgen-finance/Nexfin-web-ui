@@ -1,13 +1,21 @@
 <template>
   <div class="container px-0-L px-4-M px-3-S px-3-XS m-0-auto">
-    <div class="w-80-L w-90-M w-100-S gradient-200 rad-fix-8 p-6-M p-6-S p-6-XS m-0-auto br-mcolor-400 br-1 brs-">
+    <div
+      class="w-80-L w-90-M w-100-S gradient-200 rad-fix-8 p-6-M p-6-S p-6-XS m-0-auto br-mcolor-400 br-1 brs-"
+    >
       <div class="fw-700 f-white-200 fs-10 mb-5">Borrowing</div>
       <div class="d-f fd-r">
         <div>
           <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total</div>
-          <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total Borrowing</div>
-          <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total Debt Ratio</div>
-          <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total Liquidation Mode</div>
+          <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+            Total Borrowing
+          </div>
+          <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+            Total Debt Ratio
+          </div>
+          <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+            Total Liquidation Mode
+          </div>
         </div>
         <div>
           <div class="fw-600 fs-6 sub-mt-1">
@@ -33,8 +41,12 @@
           <div class="fw-700 f-white-200 fs-8 mb-3">Total fees</div>
           <div class="d-f fd-r">
             <div>
-              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Borrowing Fee</div>
-              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Repaying Fee</div>
+              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+                Borrowing Fee
+              </div>
+              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+                Repaying Fee
+              </div>
             </div>
             <div>
               <div class="fw-600 fs-6 sub-mt-1">
@@ -49,11 +61,17 @@
           </div>
         </div>
         <div class="w-33-L w-33-M w-100-S w-100-XS mt-5-XS">
-          <div class="fw-700 f-white-200 fs-8 mb-3">Total sharing in the pool</div>
+          <div class="fw-700 f-white-200 fs-8 mb-3">
+            Total sharing in the pool
+          </div>
           <div class="d-f fd-r">
             <div>
-              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Borrowing Fee</div>
-              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Repaying Fee</div>
+              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+                Borrowing Fee
+              </div>
+              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+                Repaying Fee
+              </div>
             </div>
             <div>
               <div class="fw-600 fs-6 sub-mt-1">
@@ -71,8 +89,12 @@
           <div class="fw-700 f-white-200 fs-8 mb-3">Total earning</div>
           <div class="d-f fd-r">
             <div>
-              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Borrowing Fee</div>
-              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Repaying Fee</div>
+              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+                Borrowing Fee
+              </div>
+              <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+                Repaying Fee
+              </div>
             </div>
             <div>
               <div class="fw-600 fs-6 sub-mt-1">
@@ -94,21 +116,21 @@
 <script>
 export default {
   computed: {
-    getLightMode () {
-      return this.$accessor.lightMode
+    getLightMode() {
+      return this.$accessor.lightMode;
     },
-    troveTotal () {
-      return this.$accessor.troveTotal
+    troveTotal() {
+      return this.$accessor.troveTotal;
     },
-    totalTroveList () {
-      return this.$accessor.risky.troveTotal
+    totalTroveList() {
+      return this.$accessor.risky.troveTotal;
     },
-    debtRatio () {
-      return this.$accessor.debtRatio
-    }
+    debtRatio() {
+      return this.$accessor.debtRatio;
+    },
   },
-  mounted () {
-    this.$accessor.risky.getTroveListAction({page: 1, clear: true})
-  }
-}
+  mounted() {
+    this.$accessor.risky.getTroveListAction({ page: 1, clear: true });
+  },
+};
 </script>

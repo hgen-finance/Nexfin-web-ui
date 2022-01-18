@@ -32,14 +32,7 @@
           />
           <div class="w-100 pt-4-S pt-10-XS">
             <div
-              class="
-                w-100
-                fd-r
-                ai-t
-                py-2-M py-3-S py-5-XS
-                fs-5-M fs-8-S fs-18-XS
-                f-white-200
-              "
+              class="w-100 fd-r ai-t py-2-M py-3-S py-5-XS fs-5-M fs-8-S fs-18-XS f-white-200"
               v-for="(item2, i2) in item.items"
               :key="i2"
             >
@@ -69,8 +62,8 @@ export default {
             { img: "checkOn.svg", name: "Multi-channel Marketing" },
             { img: "checkOff.svg", name: "Security Audit" },
             { img: "checkOff.svg", name: "1.5 Million+ Market Cap" },
-            { img: "checkOff.svg", name: "Exchange Listings (DEX)" }
-          ]
+            { img: "checkOff.svg", name: "Exchange Listings (DEX)" },
+          ],
         },
         {
           name: "2022 (Growth)",
@@ -78,24 +71,23 @@ export default {
           items: [
             {
               img: "checkOffBlack.svg",
-              name: "Cross platform with<br/>ERC20 (Ethereum)"
+              name: "Cross platform with<br/>ERC20 (Ethereum)",
             },
             {
               img: "checkOffBlack.svg",
-              name: "Funding for Hydrogen Industries"
+              name: "Funding for Hydrogen Industries",
             },
             {
               img: "checkOffBlack.svg",
-              name:
-                "Governance capabilities for holders to operate the NEXTFIN platform"
+              name: "Governance capabilities for holders to operate the NEXTFIN platform",
             },
             { img: "checkOffBlack.svg", name: "5 Million+ Market Cap" },
             { img: "checkOffBlack.svg", name: "Exchange Listings (CEX)" },
             {
               img: "checkOffBlack.svg",
-              name: "Farming for Hydrogen Industries"
-            }
-          ]
+              name: "Farming for Hydrogen Industries",
+            },
+          ],
         },
         {
           name: "2023 (Expansion)",
@@ -105,18 +97,18 @@ export default {
             { img: "checkOffBlack.svg", name: "Development of Own Pool" },
             {
               img: "checkOffBlack.svg",
-              name: "Operating Energy Tracking and Trading system"
+              name: "Operating Energy Tracking and Trading system",
             },
             {
               img: "checkOffBlack.svg",
-              name: "Activating Aggregator for EVs and Charge stations"
+              name: "Activating Aggregator for EVs and Charge stations",
             },
             { img: "checkOffBlack.svg", name: "P2P Energy Trading" },
-            { img: "checkOffBlack.svg", name: "More to Announced" }
-          ]
-        }
-      ]
+            { img: "checkOffBlack.svg", name: "More to Announced" },
+          ],
+        },
+      ],
     };
-  }
+  },
 };
 </script>

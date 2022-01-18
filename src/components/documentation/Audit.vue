@@ -1,10 +1,7 @@
 <template>
-  <div class="w-100">
-    faq
-  </div>
+  <div class="w-100">faq</div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>

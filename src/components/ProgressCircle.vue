@@ -87,11 +87,11 @@ export default {
     colorTo: { type: String, default: "ffffff" },
     text: { type: String, default: null },
     tokens: { type: String, default: null },
-    tokenpercent: { type: String, default: null }
+    tokenpercent: { type: String, default: null },
   },
   data() {
     return {
-      rand: 0
+      rand: 0,
     };
   },
   computed: {
@@ -119,11 +119,11 @@ export default {
             (((((((30 / 100) * this.percent) % 360) + 0.1) / 60) * 100) / 100) *
               this.getDashArray
         : 0;
-    }
+    },
   },
   mounted() {
     this.rand = Math.round(Math.random() * (999999 - 100000) + 100000);
-  }
+  },
 };
 </script>
 

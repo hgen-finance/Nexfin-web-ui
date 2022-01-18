@@ -1,20 +1,22 @@
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import { Connection, PublicKey } from '@solana/web3.js';
-import { EscrowProgramIdString } from './layout';
-import { Market } from '@project-serum/serum'
+import { Connection, PublicKey } from "@solana/web3.js";
+import { EscrowProgramIdString } from "./layout";
+import { Market } from "@project-serum/serum";
 import Wallet from "@project-serum/sol-wallet-adapter";
-
 
 export const swapUtil = async (
   wallet: Wallet,
   price: number,
   from: string,
   to: string,
-  connection: Connection,
+  connection: Connection
 ) => {
-
-  let marketAddress = new PublicKey('SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8');
-  let programAdress = new PublicKey('BPFLoaderUpgradeab1e11111111111111111111111');
+  let marketAddress = new PublicKey(
+    "SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8"
+  );
+  let programAdress = new PublicKey(
+    "BPFLoaderUpgradeab1e11111111111111111111111"
+  );
   let market = await Market.load(connection, marketAddress, {}, programAdress);
   // Fetching orderbooks
   let bids = await market.loadBids(connection);
@@ -29,11 +31,11 @@ export const swapUtil = async (
       order.orderId,
       order.price,
       order.size,
-      order.side, // 'buy' or 'sell'
+      order.side // 'buy' or 'sell'
     );
   }
 
   return {
-    status: true
-  }
-}
+    status: true,
+  };
+};

@@ -1,15 +1,7 @@
 <template>
   <div class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all pt-0-XS">
     <div
-      class="
-        w-100
-        fs-8-S fs-40-XS
-        fw-600
-        f-white-200
-        pb-5-L pb-5-M pb-6-S pb-30-XS
-        ta-c-XS
-        fd-r
-      "
+      class="w-100 fs-8-S fs-40-XS fw-600 f-white-200 pb-5-L pb-5-M pb-6-S pb-30-XS ta-c-XS fd-r"
     >
       <div
         class="w-70 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 fd-r ai-c"
@@ -17,15 +9,7 @@
         Your Wallet Balance
       </div>
       <div
-        class="
-          w-30
-          fs-4-L fs-4-M fs-6-S fs-15-XS
-          fw-400
-          f-gray-500
-          fd-r
-          ai-c
-          jc-r
-        "
+        class="w-30 fs-4-L fs-4-M fs-6-S fs-15-XS fw-400 f-gray-500 fd-r ai-c jc-r"
       >
         <span class="f-mcolor-100 pr-1-S pl-1-S pr-1-XS pl-5-XS"
           >Chainlink</span

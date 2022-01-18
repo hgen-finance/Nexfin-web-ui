@@ -12,16 +12,7 @@
         Your Current Debt
       </div>
       <div
-        class="
-          w-100
-          fs-7-S fs-20-XS
-          f-white-200
-          ta-c-XS
-          pb-2-S pb-10-XS
-          ta-c-XS
-          mb-10-XS
-          fw-600
-        "
+        class="w-100 fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
       >
         <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{ getDebt }}</span>
         <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100">
@@ -90,15 +81,7 @@
 
       <!-- This section is for the borrow  -->
       <div
-        class="
-          w-100
-          mt-4
-          mb-2
-          mcolor-700
-          rad-fix-2
-          px-4-S px-10-XS
-          py-3-S py-10-XS
-        "
+        class="w-100 mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
         v-if="getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -110,16 +93,7 @@
           >
           <input
             type="text"
-            class="
-              w-100
-              mx-1
-              white-100
-              br-0
-              oul-n
-              fs-6-S fs-20-XS
-              fw-600
-              f-mcolor-300
-            "
+            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
             placeholder="0.0000"
             v-model="from"
             maxlength="12"
@@ -144,16 +118,7 @@
           >
           <input
             type="text"
-            class="
-              w-100
-              mx-1
-              white-100
-              br-0
-              oul-n
-              fs-6-S fs-20-XS
-              fw-600
-              f-mcolor-300
-            "
+            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
             placeholder="0"
             v-model="to"
             maxlength="20"
@@ -187,15 +152,7 @@
 
       <!-- This section for the pay debt  -->
       <div
-        class="
-          w-100
-          mt-4
-          mb-4
-          mcolor-700
-          rad-fix-2
-          px-4-S px-10-XS
-          py-3-S py-10-XS
-        "
+        class="w-100 mt-4 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
         v-if="!getBorrowOrPay"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -207,16 +164,7 @@
           >
           <input
             type="text"
-            class="
-              w-100
-              mx-1
-              white-100
-              br-0
-              oul-n
-              fs-6-S fs-20-XS
-              fw-600
-              f-mcolor-300
-            "
+            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
             placeholder="0"
             v-model="repayTo"
             maxlength="12"
