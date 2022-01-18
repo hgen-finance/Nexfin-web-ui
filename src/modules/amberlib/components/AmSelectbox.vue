@@ -3,7 +3,7 @@
     class="w-100 amSelectbox"
     :class="{
       'pt-8': [2].indexOf(getActiveTheme) > -1,
-      disabled: modelData.disabled
+      disabled: modelData.disabled,
     }"
     ref="amSelectbox"
   >
@@ -26,7 +26,7 @@
           getFocusClass,
           { focus: focusValue },
           modelData.colorBackground,
-          { 'shadow-purple-100': shadow, 'px-4-S px-15-XS': padding }
+          { 'shadow-purple-100': shadow, 'px-4-S px-15-XS': padding },
         ]"
         @focus="focusValue = true"
         @blur="
@@ -82,7 +82,7 @@
           :class="[
             getOptionsClass,
             modelData.colorOptions,
-            `br-${modelData.colorOptionsBorder}`
+            `br-${modelData.colorOptionsBorder}`,
           ]"
         >
           <input
@@ -100,7 +100,7 @@
             class="w-100"
             :class="{
               'h-a': getItems.length < 6,
-              'h-fix-100': getItems.length > 5
+              'h-fix-100': getItems.length > 5,
             }"
           >
             <AmScroll :ops="ops">
@@ -109,7 +109,7 @@
                 :title="item.label"
                 :class="[
                   getOptionLine,
-                  { active: getActiveMultiple(item.value) }
+                  { active: getActiveMultiple(item.value) },
                 ]"
                 v-for="(item, i) in getItems"
                 :key="i"
@@ -127,7 +127,7 @@
                     width="78.369px"
                     height="78.369px"
                     viewBox="0 0 78.369 78.369"
-                    style="enable-background:new 0 0 78.369 78.369;"
+                    style="enable-background: new 0 0 78.369 78.369"
                     xml:space="preserve"
                   >
                     <path
@@ -199,7 +199,7 @@ export default {
     searchNotFound: { type: String, default: "Not found" },
     error: { type: Boolean, default: false },
     bottomText: { type: String, default: null },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -234,7 +234,7 @@ export default {
         searchNotFound: this.searchNotFound,
         error: this.error,
         bottomText: this.bottomText,
-        disabled: this.disabled
+        disabled: this.disabled,
       },
       ops: {
         vuescroll: {
@@ -244,19 +244,19 @@ export default {
           locking: true,
           wheelScrollDuration: 0,
           wheelDirectionReverse: true,
-          checkShifKey: false
+          checkShifKey: false,
         },
         scrollPanel: {
           initialScrollX: false,
           initialScrollY: false,
           scrollingX: false,
           scrollingY: true,
-          speed: 300
+          speed: 300,
         },
         bar: {
           specifyBorderRadius: false,
           keepShow: true,
-          background: this.colorBar
+          background: this.colorBar,
         },
         rail: {
           opacity: 1,
@@ -264,9 +264,9 @@ export default {
           background: this.colorBarRail,
           specifyBorderRadius: true,
           gutterOfEnds: "0.01rem",
-          gutterOfSide: 0
-        }
-      }
+          gutterOfSide: 0,
+        },
+      },
     };
   },
   computed: {
@@ -283,10 +283,10 @@ export default {
       } else {
         return this.modelData.items
           ? this.modelData.items.filter(
-              item => item.value === this.modelValue
+              (item) => item.value === this.modelValue
             )[0]
             ? this.modelData.items.filter(
-                item => item.value === this.modelValue
+                (item) => item.value === this.modelValue
               )[0].label
             : this.modelData.placeholder
           : this.modelData.placeholder;
@@ -336,7 +336,7 @@ export default {
       return `brt-4 brts-s br-${this.modelData.colorOptionLine} f-${this.modelData.colorOptionTitle}`;
     },
     getItems() {
-      return this.modelData.items.filter(item => {
+      return this.modelData.items.filter((item) => {
         if (this.searchModel && this.searchModel.length > 0) {
           if (
             item.label
@@ -350,7 +350,7 @@ export default {
           return item;
         }
       });
-    }
+    },
   },
   methods: {
     getActiveMultiple(value) {
@@ -378,7 +378,7 @@ export default {
           this.focusValue = false;
         }
       }
-    }
+    },
   },
   watch: {
     focusValue() {
@@ -400,12 +400,12 @@ export default {
         if (val) {
           this.modelValue = val.value;
         }
-      }
-    }
+      },
+    },
   },
   mounted() {
     if (this.data) {
-      Object.keys(this.data).forEach(key => {
+      Object.keys(this.data).forEach((key) => {
         if (this.modelData.hasOwnProperty(key)) {
           if (key === "value") {
             this.modelValue = this.data[key];
@@ -420,7 +420,7 @@ export default {
         ? this.modelData.theme
         : this.themes[0];
     if (this.modelData.multiple || this.modelData.search) {
-      window.addEventListener("click", e => {
+      window.addEventListener("click", (e) => {
         if (e.target.closest(".amSelectbox")) {
           if (
             !e.target
@@ -434,7 +434,7 @@ export default {
         }
       });
     }
-  }
+  },
 };
 </script>
 

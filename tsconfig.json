@@ -19,6 +19,5 @@
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
 
-
 //TODO: add to types later
 // "@/types/*.d.ts"

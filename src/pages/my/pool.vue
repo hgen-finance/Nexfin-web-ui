@@ -29,12 +29,12 @@ export default {
   components: {
     Balance,
     Safe,
-    Info
+    Info,
   },
   methods: {
     confirmFunc(value) {
       this.$accessor.pool.confirm(value);
-    }
-  }
+    },
+  },
 };
 </script>

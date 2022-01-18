@@ -1,3 +1,5 @@
+import { Integrations } from "@sentry/tracing";
+
 export default {
   srcDir: "./src/",
   ssr: false,
@@ -86,6 +88,7 @@ export default {
     dsn: "https://b519ab51f3774aa3b451b6cef1c1491a@o1120091.ingest.sentry.io/6155195", // project dsn generated in sentry web
     // Set tracesSampleRate to 1.0 to capture 100%
     // of transactions for performance monitoring.
+    integrations: [new Integrations.BrowserTracing()],
     // TODO: adjusting this value in production
     tracesSampleRate: 1.0,
     config: {

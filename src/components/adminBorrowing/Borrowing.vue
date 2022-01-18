@@ -5,8 +5,12 @@
       <div>
         <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total</div>
         <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total Borrowing</div>
-        <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total Debt Ratio</div>
-        <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">Total Liquidation Mode</div>
+        <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+          Total Debt Ratio
+        </div>
+        <div class="f-white-200 fw-400 fs-6 sub-mt-1 mr-2">
+          Total Liquidation Mode
+        </div>
       </div>
       <div>
         <div class="fw-600 fs-6 sub-mt-1">
@@ -34,7 +38,7 @@
         <SimpleInput label="Fee" />
       </div>
       <div class="w-20">
-        <SimpleRadio label="Total Liquidation Mode" :options="['OFF', 'ON']"/>
+        <SimpleRadio label="Total Liquidation Mode" :options="['OFF', 'ON']" />
       </div>
     </div>
     <div class="w-100 mt-2">
@@ -46,13 +50,13 @@
 </template>
 
 <script>
-import SimpleInput from '@/components/common/form-elements/input-text/SimpleInput.vue'
-import SimpleRadio from '@/components/common/form-elements/input-select/SimpleRadio.vue'
+import SimpleInput from "@/components/common/form-elements/input-text/SimpleInput.vue";
+import SimpleRadio from "@/components/common/form-elements/input-select/SimpleRadio.vue";
 
 export default {
   components: {
     SimpleInput,
-    SimpleRadio
-  }
-}
+    SimpleRadio,
+  },
+};
 </script>

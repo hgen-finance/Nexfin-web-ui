@@ -1,5 +1,5 @@
 <template>
-  <div class="w-75  mcolor-500 rad-fix-3 bs-sb-all fd-c jc-c">
+  <div class="w-75 mcolor-500 rad-fix-3 bs-sb-all fd-c jc-c">
     <img
       src="@/assets/svg/defiFuture3.svg"
       class="h-fix-40-S h-fix-20-S h-fix-35-XS mt-5-S mt-10-XS mr-2-S mr-5-XS"
@@ -21,6 +21,6 @@
 export default {
   layout: "my",
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>

@@ -5,16 +5,16 @@
 <script>
 export default {
   props: {
-    size: {type: Number, default: 1},
-    color: {type: String, default: 'gray-900'}
+    size: { type: Number, default: 1 },
+    color: { type: String, default: "gray-900" },
   },
   computed: {
-    getSize () {
-      return `h-fix-s-${this.size}`
+    getSize() {
+      return `h-fix-s-${this.size}`;
     },
-    getColor () {
-      return this.color
-    }
-  }
-}
+    getColor() {
+      return this.color;
+    },
+  },
+};
 </script>
