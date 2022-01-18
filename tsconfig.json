@@ -14,10 +14,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "@nuxtjs/sentry"]
+    "types": ["@nuxt/types", "@nuxtjs/axios", "@types/node", "@/types/*.d.ts"]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
-
-//TODO: add to types later
-// "@/types/*.d.ts"

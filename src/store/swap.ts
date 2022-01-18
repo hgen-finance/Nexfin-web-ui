@@ -1,33 +1,29 @@
 // Import Typed
-import { getterTree, mutationTree, actionTree } from "typed-vuex";
+import { getterTree, mutationTree, actionTree } from 'typed-vuex'
 
 // Import Utils
-import { swapUtil } from "@/utils/swap";
+import { swapUtil } from '@/utils/swap'
 
 // State
-export const state = () => ({});
+export const state = () => ({
+})
 
 // Getters
-export const getters = getterTree(state, {});
+export const getters = getterTree(state, {})
 
 // Mutation
-export const mutations = mutationTree(state, {});
+export const mutations = mutationTree(state, {
+})
 
 // Actions
 export const actions = actionTree(
   { state, getters, mutations },
   {
     // Swap
-    async swap({ commit }, value) {
-      if (value && value.from) {
-        await swapUtil(
-          this.$wallet,
-          Number(value.from),
-          value.mintFrom,
-          value.mintTo,
-          this.$web3
-        );
+    async swap ({ commit }, value) {
+      if (value && (value.from)) {
+        await swapUtil(this.$wallet, Number(value.from), value.mintFrom, value.mintTo, this.$web3)
       }
-    },
+    }
   }
-);
+)

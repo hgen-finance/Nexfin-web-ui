@@ -1,4 +1,4 @@
-export default function (moduleOptions) {
+export default function(moduleOptions) {
   // Styles
   this.options.css.push("@/modules/amberlib/styles/app.scss");
 
@@ -16,6 +16,6 @@ export default function (moduleOptions) {
     "@/modules/amberlib/components/AmSelectbox.vue",
     "@/modules/amberlib/components/AmDatePicker.vue",
     "@/modules/amberlib/components/AmButton.vue",
-    "@/modules/amberlib/components/AmModal.vue",
+    "@/modules/amberlib/components/AmModal.vue"
   ];
 }

@@ -10,7 +10,9 @@
       </span>
     </div>
     <div class="fw-600 fs-6 f-red-600" v-else>
-      <span> OFF </span>
+      <span>
+        OFF
+      </span>
     </div>
   </div>
 </template>
@@ -18,9 +20,9 @@
 <script>
 export default {
   props: {
-    label: { type: String, default: "Title" },
-    count: { type: String, default: "" },
-    info: { type: String, default: "" },
-  },
-};
+    label: { type: String, default: 'Title' },
+    count: { type: String, default: '' },
+    info: { type: String, default: '' }
+  }
+}
 </script>

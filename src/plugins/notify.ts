@@ -1,17 +1,17 @@
-import { Plugin } from "@nuxt/types";
+import { Plugin } from '@nuxt/types'
 
-import { notification } from "ant-design-vue";
+import { notification } from 'ant-design-vue'
 
 const notifyPlugin: Plugin = (ctx, inject) => {
-  const notify = notification;
+  const notify = notification
   notify.config({
-    placement: "bottomLeft",
-    bottom: "10px",
-    duration: 8,
-  });
+    placement: 'bottomLeft',
+    bottom: '10px',
+    duration: 8
+  })
 
-  ctx.$notify = notify;
-  inject("notify", notify);
-};
+  ctx.$notify = notify
+  inject('notify', notify)
+}
 
-export default notifyPlugin;
+export default notifyPlugin

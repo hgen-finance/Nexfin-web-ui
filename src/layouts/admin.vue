@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  mounted() {
-    this.$accessor.getInfo();
-  },
-};
+  mounted () {
+    this.$accessor.getInfo()
+  }
+}
 </script>

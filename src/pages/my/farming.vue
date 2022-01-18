@@ -24,10 +24,10 @@ export default {
   components: {
     Balance,
     Farm,
-    Info,
+    Info
   },
   methods: {
-    confirmFunc(value) {},
-  },
+    confirmFunc(value) {}
+  }
 };
 </script>

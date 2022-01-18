@@ -18,7 +18,7 @@
             Close
           </Tooltip> -->
         </span>
-        <span class="fs-6-S fs-25-XS f-white-200 ts-3 hv fsh-0 ta-r-S"
+        <span class="fs-6-S fs-25-XS f-white-200 ts-3 hv fsh-0 ta-r-S "
           ><Tooltip placement="bottomRight" class="f-green-600">
             <!-- <Icon type="caret-down" /> -->
             Open
@@ -27,7 +27,15 @@
       </div>
       <div class="w-100" v-if="getToggleValue">
         <div
-          class="w-100 fs-5-S fs-20-XS f-gray-500 pb-2-S pb-10-XS ta-c-XS jc-c-XS fd-r"
+          class="
+            w-100
+            fs-5-S fs-20-XS
+            f-gray-500
+            pb-2-S pb-10-XS
+            ta-c-XS
+            jc-c-XS
+            fd-r
+          "
           v-if="getDepositKey"
         >
           <div class="fd-r ai-c">
@@ -41,7 +49,16 @@
           </div>
 
           <span
-            class="fw-600 fs-6-L fs-5-S fs-20-XS f-mcolor-100 mr-2 ml-2 my-10-XS ml-10-XS mr-10-XS"
+            class="
+              fw-600
+              fs-6-L fs-5-S fs-20-XS
+              f-mcolor-100
+              mr-2
+              ml-2
+              my-10-XS
+              ml-10-XS
+              mr-10-XS
+            "
             >:</span
           >
 
@@ -55,7 +72,14 @@
           </div>
         </div>
         <div
-          class="w-100 my-2-S my-10-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+          class="
+            w-100
+            my-2-S my-10-XS
+            mcolor-700
+            rad-fix-2
+            px-4-S px-10-XS
+            py-3-S py-10-XS
+          "
           v-if="getDepositKey"
         >
           <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -69,7 +93,16 @@
             <input
               type="text"
               id="from"
-              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+              class="
+                w-100
+                mx-1
+                white-100
+                br-0
+                oul-n
+                fs-6-S fs-20-XS
+                fw-600
+                f-mcolor-300
+              "
               placeholder="0.0000"
               v-model="from"
               maxlength="12"
@@ -82,7 +115,14 @@
           </div>
         </div>
         <div
-          class="w-100 my-2-S my-10-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+          class="
+            w-100
+            my-2-S my-10-XS
+            mcolor-700
+            rad-fix-2
+            px-4-S px-10-XS
+            py-3-S py-10-XS
+          "
           v-if="getDepositKey"
         >
           <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -96,7 +136,16 @@
             <input
               type="text"
               id="to"
-              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+              class="
+                w-100
+                mx-1
+                white-100
+                br-0
+                oul-n
+                fs-6-S fs-20-XS
+                fw-600
+                f-mcolor-300
+              "
               placeholder="0"
               v-model="to"
             />
@@ -108,7 +157,14 @@
           </div>
         </div>
         <div
-          class="w-100 my-2-S my-10-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+          class="
+            w-100
+            my-2-S my-10-XS
+            mcolor-700
+            rad-fix-2
+            px-4-S px-10-XS
+            py-3-S py-10-XS
+          "
           v-if="getDepositKey"
         >
           <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -121,7 +177,16 @@
             >
             <input
               type="text"
-              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+              class="
+                w-100
+                mx-1
+                white-100
+                br-0
+                oul-n
+                fs-6-S fs-20-XS
+                fw-600
+                f-mcolor-300
+              "
               placeholder="0"
               v-model="day"
             />
@@ -141,7 +206,11 @@
             </AmButton>
           </div>
           <div
-            class="w-50-S w-100-XS ml-2-S ml-0-XS mt-0-S mt-4-XS mt-0-S mt-10-XS"
+            class="
+              w-50-S w-100-XS
+              ml-2-S ml-0-XS
+              mt-0-S mt-4-XS mt-0-S mt-10-XS
+            "
           >
             <AmButton
               color="mcolor-100"
@@ -171,7 +240,7 @@ const farming = new Farming();
 
 const TOKENS = [
   { label: "HGEN", value: "97MxeDbRgc6vYP1Sty2XdPXks3QhMD97EVYJ9pP4XcR3" }, // need to add the mint address of the hgen token
-  { label: "SOL", value: "So11111111111111111111111111111111111111112" },
+  { label: "SOL", value: "So11111111111111111111111111111111111111112" }
 ];
 
 // conversion fo the hgen and sol
@@ -182,7 +251,7 @@ export default {
   components: {
     Loading,
     Icon,
-    Tooltip,
+    Tooltip
   },
   data() {
     return {
@@ -199,7 +268,7 @@ export default {
         colorDefault: "mcolor-700",
         colorFocus: "mcolor-700",
         colorBackground: "mcolor-700",
-        colorTitle: "white-200",
+        colorTitle: "white-200"
       },
       currencyTo: {
         theme: "default",
@@ -208,17 +277,17 @@ export default {
         colorDefault: "mcolor-700",
         colorFocus: "mcolor-700",
         colorBackground: "mcolor-700",
-        colorTitle: "white-200",
-      },
+        colorTitle: "white-200"
+      }
     };
   },
   mounted() {
     // change value on input instead of the change
-    document.getElementById("from").addEventListener("input", function () {
+    document.getElementById("from").addEventListener("input", function() {
       document.getElementById("to").value = this.value * CONVERT_HGEN;
       this.to = this.value;
     });
-    document.getElementById("to").addEventListener("input", function () {
+    document.getElementById("to").addEventListener("input", function() {
       document.getElementById("from").value = this.value * CONVERT_SOL;
       this.form = this.value;
     });
@@ -257,7 +326,7 @@ export default {
     },
     getDay() {
       return this.day;
-    },
+    }
   },
   watch: {},
   methods: {
@@ -293,7 +362,7 @@ export default {
       this.to = this.$accessor.wallet.balance
         ? this.$accessor.wallet.balance * this.$accessor.usd
         : 0;
-    },
-  },
+    }
+  }
 };
 </script>

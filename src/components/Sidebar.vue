@@ -1,12 +1,32 @@
 <template>
   <div
-    class="w-100 br-sb bs-sb gradient-200 p-r-S p-f-XS l-0 t-0-S t-a-XS b-a-S b-0-XS pl-10-M pl-5-S pl-0-XS fd-c-S fd-r-XS mt-2-XS py-2-XS"
+    class="
+      w-100
+      br-sb
+      bs-sb
+      gradient-200
+      p-r-S p-f-XS
+      l-0
+      t-0-S t-a-XS
+      b-a-S b-0-XS
+      pl-10-M pl-5-S pl-0-XS
+      fd-c-S fd-r-XS
+      mt-2-XS
+      py-2-XS
+    "
   >
     <span class="w-100 h-100 bg-r p-a l-0 t-0 d-n-S d-f-XS" />
     <div class="w-100" v-for="item in items" :key="item.class">
       <nuxt-link
         :to="item.to"
-        class="w-a-M w-100-S w-100-XS fd-r-S fd-c-XS ai-c hv ts-3 my-2-S my-10-XS"
+        class="
+          w-a-M w-100-S w-100-XS
+          fd-r-S fd-c-XS
+          ai-c
+          hv
+          ts-3
+          my-2-S my-10-XS
+        "
       >
         <div class="w-fix-s-15-S w-100-XS mr-2-S fd-r ai-c jc-l-S jc-c-XS">
           <HomeSvg
@@ -70,7 +90,7 @@
           class="fs-5-S fs-4-XS ts-3 pt-0-M pt-0-S pt-2-XS d-f-S d-n-XS"
           :class="{
             'f-mcolor-300 fw-600': getActive(item),
-            'f-white-200 fw-400': !getActive(item),
+            'f-white-200 fw-400': !getActive(item)
           }"
         >
           {{ item.name }}
@@ -109,12 +129,12 @@ export default {
     CoinsActiveSvg,
     DiggingSvg,
     DiggingActiveSvg,
-    ExitSvg,
+    ExitSvg
   },
   methods: {
     getActive(item) {
       return $nuxt.$route.name === item.class || false;
-    },
+    }
   },
   data() {
     return {
@@ -128,17 +148,17 @@ export default {
           id: 7,
           name: "PF Stake Pool",
           to: "/my/PFStakePool",
-          class: "my-projectfarm",
+          class: "my-projectfarm"
         },
         {
           id: 5,
           name: "Liquidation",
           to: "/my/liquidation",
-          class: "my-risky",
-        },
-      ],
+          class: "my-risky"
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 

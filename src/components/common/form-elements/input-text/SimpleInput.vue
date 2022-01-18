@@ -11,39 +11,40 @@
         :type="inputType"
         :placeholder="placeholder"
         @input="$emit('input', $event.target.value)"
-      />
+      >
     </div>
   </div>
 </template>
 
 <script>
-const randomHash = () => Math.random().toString(36).substring(6);
+
+const randomHash = () => Math.random().toString(36).substring(6)
 
 export default {
   props: {
-    inputType: { type: String, default: "text" },
+    inputType: { type: String, default: 'text' },
     value: { type: [String, Number, null], default: null },
-    label: { type: String, default: "" },
-    placeholder: { type: String, default: "" },
+    label: { type: String, default: '' },
+    placeholder: { type: String, default: '' }
   },
   data() {
     return {
-      inputName: "",
-    };
+      inputName: ''
+    }
   },
   created() {
-    this.inputName = "simple-input-" + randomHash();
-  },
-};
+    this.inputName = 'simple-input-' + randomHash()
+  }
+}
 </script>
 
 <style scoped>
 .simple-input input {
   width: 100%;
   padding: 20px 32px;
-  background: #12112d;
+  background: #12112D;
   border-radius: 4px;
-  color: #cf68ff;
+  color: #CF68FF;
   font-size: 16px;
   line-height: 19px;
   border: none;
