@@ -1,14 +1,9 @@
 <template>
-  <div class="lds-ring">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>
@@ -25,10 +20,10 @@ export default {};
   width: 4rem;
   height: 4rem;
   margin: 0.2rem;
-  border: 0.2rem solid #cf68ff;
+  border: 0.2rem solid #CF68FF;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #cf68ff transparent transparent transparent;
+  border-color: #CF68FF transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;

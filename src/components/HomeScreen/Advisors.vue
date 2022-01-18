@@ -26,7 +26,7 @@
         </div>
         <div class="w-80-S w-100-XS mx-5-S">
           <div
-            class="w-100 fs-8-M fs-10-S fs-25-XS fw-600 ta-l pt-0-S pt-10-XS f-white-200"
+            class="w-100 fs-8-M fs-10-S fs-25-XS fw-600 ta-l  pt-0-S pt-10-XS f-white-200"
           >
             {{ item.name }}
           </div>
@@ -36,7 +36,7 @@
             {{ item.position }}
           </div>
           <div
-            class="w-100 fs-5-M fs-8-S fs-20-XS ta-l pt-0-S pt-10-XS f-white-200 px-10-XS f-lh-15-S f-lh-45-XS"
+            class="w-100 fs-5-M fs-8-S fs-20-XS ta-l pt-0-S pt-10-XS f-white-200  px-10-XS f-lh-15-S f-lh-45-XS"
           >
             <ul v-for="(list, m) in item.text" :key="m">
               <li>{{ list }}</li>
@@ -62,8 +62,8 @@ export default {
             "The founder of MetaVista USA providing total liquid hydrogen energy solution various applications",
             "Contribution to the IRAS thermal management technology for the world largest liquid hydrogen storage tank (1.25 million gallons) at NASA Kennedy Space Center",
             "Technical partner of NASA’s Moon to Mars exploration approach to develop a LOX/LH2 propellant system",
-            "An Honor of The Russel B. Scott Award in 2015 for innovative compact hydrogen liquefier design",
-          ],
+            "An Honor of The Russel B. Scott Award in 2015 for innovative compact hydrogen liquefier design"
+          ]
         },
         {
           img: "advisor2.png",
@@ -73,12 +73,12 @@ export default {
             "The Founder and CEO of Eta Space LLC in Florida, The USA",
             "Chief Engineer and Cryogenic Fuel System Manager at NASA Kennedy Space Center",
             "An IAS (Institute of Advanced Studies) Western Australia University Fellow Professor",
-            "A World Class  Engineer in Liquid Hydrogen and Oxygen Management",
-          ],
-        },
-      ],
+            "A World Class  Engineer in Liquid Hydrogen and Oxygen Management"
+          ]
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 <style lang="css" scoped>

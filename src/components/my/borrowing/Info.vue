@@ -1,13 +1,29 @@
 <template>
   <div class="w-100">
     <div
-      class="d-n-XS w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-0-L pb-0-M pb-0-S pb-15-XS ta-l-S ta-c-XS"
+      class="
+        d-n-XS
+        w-100
+        fs-8-S fs-25-XS
+        fw-600
+        f-white-200
+        pb-0-L pb-0-M pb-0-S pb-15-XS
+        ta-l-S ta-c-XS
+      "
     >
       <Balance />
     </div>
 
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all mt-2-S mt-10-XS mb-2-S mb-10-XS"
+      class="
+        w-100
+        p-4-S p-10-XS
+        mcolor-500
+        rad-fix-3
+        bs-sb-all
+        mt-2-S mt-10-XS
+        mb-2-S mb-10-XS
+      "
       v-if="withdrawOrDeposit"
     >
       <div class="w-100" v-if="withdrawOrDeposit">
@@ -16,7 +32,15 @@
             Collateral Ratio (<span class="f-white-200 fw-600">CR</span>)
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-600
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             {{ getDebt }}
             <span class="f-white-200 pl-1-S pr-5-XS">%</span>
@@ -31,7 +55,15 @@
             >
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-400
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             110
             <span class="f-white-200 pl-1-S pr-5-XS">%</span>
@@ -46,7 +78,15 @@
             >
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-400
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span>
             <!-- {{ Number(Number(from) * getUsd).toLocaleString() }} -->
@@ -84,7 +124,15 @@
       </div>
     </div>
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all mt-2-S mt-10-XS mb-2-S mb-10-XS"
+      class="
+        w-100
+        p-4-S p-10-XS
+        mcolor-500
+        rad-fix-3
+        bs-sb-all
+        mt-2-S mt-10-XS
+        mb-2-S mb-10-XS
+      "
       v-if="!withdrawOrDeposit"
     >
       <div class="w-100" v-if="!withdrawOrDeposit">
@@ -93,7 +141,15 @@
             Amount Received
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-white-200 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-600
+              f-white-200
+              fd-r
+              ai-c
+            "
           >
             <span class="f-mcolor-100 mr-1"> {{ amountReceived }} </span
             ><span class="mr-1">SOL</span>
@@ -104,7 +160,15 @@
             Remaining Amount
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-white-200 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-600
+              f-white-200
+              fd-r
+              ai-c
+            "
           >
             <span class="f-mcolor-100 mr-1">
               {{ getTroveAmount ? getTroveAmount.toLocaleString() : 0 }} </span
@@ -116,7 +180,15 @@
       </div>
     </div>
     <div
-      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500"
+      class="
+        w-100
+        mcolor-800
+        p-4-S p-15-XS
+        mt-4-S mt-10-XS
+        rad-fix-4
+        fs-5-S fs-20-XS
+        f-mcolor-500
+      "
       v-if="
         (Number(getDebt) < getMaxRatio || Number(to) < 1600) &&
         from &&
@@ -140,7 +212,16 @@
       "
     > -->
     <div
-      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+      class="
+        w-100
+        mcolor-800
+        p-4-S p-15-XS
+        mt-4-S mt-10-XS
+        rad-fix-4
+        fs-5-S fs-20-XS
+        f-mcolor-500
+        mb-4-S mb-10-XS
+      "
       v-if="(disputeDebt > 0 && getTroveAmount) || disputeDebt < 0"
     >
       <div
@@ -155,7 +236,16 @@
       </div>
     </div>
     <div
-      class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+      class="
+        w-100
+        mcolor-800
+        p-4-S p-15-XS
+        mt-4-S mt-10-XS
+        rad-fix-4
+        fs-5-S fs-20-XS
+        f-mcolor-500
+        mb-4-S mb-10-XS
+      "
       v-if="CheckWalletBalance"
     >
       <div class="w-100 pb-2-S pb-10-XS" v-if="CheckWalletBalance">
@@ -163,7 +253,15 @@
       </div>
     </div>
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 mt-5-S bs-sb-all mb-4-S mb-10-XS"
+      class="
+        w-100
+        p-4-S p-10-XS
+        mcolor-500
+        rad-fix-3
+        mt-5-S
+        bs-sb-all
+        mb-4-S mb-10-XS
+      "
     >
       <div class="w-100 fd-r">
         <div class="w-100-S w-100-XS">
@@ -172,7 +270,15 @@
               Fee Borrow (<span class="f-white-200 fw-600">0.5 %</span>)
             </div>
             <div
-              class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+              class="
+                w-a
+                fs-5-M fs-8-S fs-25-XS
+                fsh-0
+                fw-600
+                f-mcolor-100
+                fd-r
+                ai-c
+              "
             >
               {{ getFee }}
               <span class="f-white-200 pl-1-S pr-5-XS">GENS</span>
@@ -187,7 +293,15 @@
               Fee Pay Debt (<span class="f-white-200 fw-600">0.5 %</span>)
             </div>
             <div
-              class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+              class="
+                w-a
+                fs-5-M fs-8-S fs-25-XS
+                fsh-0
+                fw-600
+                f-mcolor-100
+                fd-r
+                ai-c
+              "
             >
               {{ getFeePay }}
               <span class="f-white-200 pl-1-S pr-5-XS">GENS</span>
@@ -202,7 +316,15 @@
             <Hint> Debt = Amount Received + Fee </Hint>
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-600
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             {{ getCurrentDebt }}
             <span class="f-white-200 pl-1-S pr-5-XS">GENS</span>
@@ -218,7 +340,15 @@
             Total Borrow
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-400
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             {{ Number(getTotalBorrow).toLocaleString().slice(0, 16) }}
             <span class="f-white-200 pl-1-S pl-5-XS">GENS</span>
@@ -229,7 +359,15 @@
             Total Collateral Ratio
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-400
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             0<span class="f-white-200 pl-1-S pl-5-XS">%</span>
           </div>
@@ -239,13 +377,28 @@
             Total Liquidation Mode
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c"
+            class="
+              w-a
+              fs-5-M fs-8-S fs-25-XS
+              fsh-0
+              fw-400
+              f-mcolor-100
+              fd-r
+              ai-c
+            "
           >
             <span class="f-red-700 pl-1-S pl-5-XS">OFF</span>
           </div>
         </div>
         <div
-          class="w-100 fs-4-L fs-4-M fs-6-S fs-20-XS fw-400 f-white-200 fd-r ai-c"
+          class="
+            w-100
+            fs-4-L fs-4-M fs-6-S fs-20-XS
+            fw-400
+            f-white-200
+            fd-r
+            ai-c
+          "
         >
           (Your liquidation price
           <span class="f-mcolor-100 pr-1-S pl-1-S pr-1-XS pl-5-XS">0 </span>

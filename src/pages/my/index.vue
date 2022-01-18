@@ -33,7 +33,7 @@
           <Pool />
         </label>
         <label
-          class="w-45-S w-100-XS gradient-1000 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS mt-12-S mt-20-XS card"
+          class="w-45-S w-100-XS gradient-1000 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS  mt-12-S mt-20-XS card"
           id="card-3"
           for="item-3"
         >
@@ -44,7 +44,7 @@
     </div>
     <div class="w-25 d-b-XS mr-10-S">
       <div
-        class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all pt-5-S pt-10-XS"
+        class="w-100 p-4-S p-10-XS  mcolor-500 rad-fix-3 bs-sb-all pt-5-S pt-10-XS"
       >
         <div
           class="w-100 f-mcolor-300 fw-800 fs-10-S fs-30-XS ta-c pt-20-XS pb-1-S pb-3-XS"
@@ -92,7 +92,7 @@ export default {
     Farming,
     Borrowing,
     Pool,
-    Balance,
+    Balance
   },
   layout: "my",
   computed: {
@@ -107,8 +107,8 @@ export default {
         }
       }
       return res.toString().replace(/(.)(?=(\d{3})+$)/g, "$1,");
-    },
-  },
+    }
+  }
 };
 </script>
 

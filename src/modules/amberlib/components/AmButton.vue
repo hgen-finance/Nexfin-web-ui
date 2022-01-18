@@ -11,8 +11,8 @@
         'w-100-S': full,
         'w-a-S': !full,
         opacity: opacityEffect,
-        scale: scaleEffect,
-      },
+        scale: scaleEffect
+      }
     ]"
   >
     <span
@@ -52,7 +52,7 @@
       @click="$emit('click')"
       :class="[
         getHover,
-        { 'h-fix-s-28min': height, 'w-100-M': full, 'w-a-M': !full },
+        { 'h-fix-s-28min': height, 'w-100-M': full, 'w-a-M': !full }
       ]"
     >
       <span v-if="label">
@@ -82,13 +82,13 @@ export default {
     height: { type: Boolean, default: true },
     full: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    shadow: { type: String, default: "shadow-purple-100" },
+    shadow: { type: String, default: "shadow-purple-100" }
   },
   computed: {
     getHover() {
       return this.hover ? `f-${this.colorTextHover}` : null;
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,5 +1,4 @@
-import { Integrations } from "@sentry/tracing";
-
+require("dotenv").config();
 export default {
   srcDir: "./src/",
   ssr: false,
@@ -79,23 +78,9 @@ export default {
       return { x: 0, y: 0 };
     },
   },
-  // TODO: set the runtime-base config for the sentry
+
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxtjs/axios", "@nuxtjs/svg", "@nuxtjs/sentry"],
-  sentry: {
-    // Additional Module Options
-    // https://sentry.nuxtjs.org/sentry/options
-    dsn: "https://b519ab51f3774aa3b451b6cef1c1491a@o1120091.ingest.sentry.io/6155195", // project dsn generated in sentry web
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    integrations: [new Integrations.BrowserTracing()],
-    // TODO: adjusting this value in production
-    tracesSampleRate: 1.0,
-    config: {
-      // native Sentry config here
-      // https://docs.sentry.io/platforms/javascript/guides/vue/configuration/options/
-    },
-  },
+  modules: ["@nuxtjs/axios", "@nuxtjs/svg"],
 
   axios: {
     baseUrl:

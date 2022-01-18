@@ -17,7 +17,7 @@
         <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{
           getDepositAmount.toLocaleString()
         }}</span>
-        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100">{{
+        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100 ">{{
           getPercent.toLocaleString()
         }}</span>
         <span class="fw-600 pr-1">% </span>)
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div
-        class="w-100 mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+        class="w-100  mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
         v-if="!getWithdrawOrDeposit"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -97,7 +97,7 @@
         </div>
       </div>
       <div
-        class="w-100 mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+        class="w-100  mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
         v-if="getWithdrawOrDeposit"
       >
         <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
@@ -194,14 +194,14 @@ import Loading from "@/components/Loading";
 
 export default {
   components: {
-    Loading,
+    Loading
   },
   data() {
     return {
       gen: "",
       hgen: "",
       from: null,
-      withdrawAmount: "",
+      withdrawAmount: ""
     };
   },
   computed: {
@@ -227,7 +227,7 @@ export default {
     },
     getWithdrawOrDeposit() {
       return this.$accessor.pool.depositOrWithdraw;
-    },
+    }
   },
   watch: {
     from(val) {
@@ -237,7 +237,7 @@ export default {
           this.from = 1;
         }
       }
-    },
+    }
   },
   methods: {
     setCloseLend() {
@@ -269,7 +269,7 @@ export default {
         this.$accessor.pool.newDeposit({
           from: this.from,
           gen: "Dgb9x1ay5qEFHPimLJY9JZpTHcssdvYgM7aC5c2DVA73",
-          hgen: "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz",
+          hgen: "C52NZgDTrdevk8YY1Pq2bWxVqd2PteshuyXKavd6E6iz"
         });
       }
       this.from = null;
@@ -282,7 +282,7 @@ export default {
       this.$accessor.pool.changeWithdrawAndDeposit(
         this.$accessor.pool.depositOrWithdraw
       );
-    },
-  },
+    }
+  }
 };
 </script>

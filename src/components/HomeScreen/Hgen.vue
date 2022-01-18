@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="w-100 fd-r fd-c-XS jc-c ai-c">
-      <div class="w-20 fd-c jc-c">
+      <div class="w-20 fd-c jc-c ">
         <div class="w-100 fs-5-S fs-10-XS ta-c f-white-200 fw-600">
           Governance & IDO Token
         </div>
@@ -23,7 +23,9 @@
           scaleEffect
           class="ml-2 ml-0-XS mt-0-S mt-10-XS fw-600"
         >
-          <div class="w-100 tt-n fs-6-S fs-18-XS fw-600">Buy $HGEN</div>
+          <div class="w-100 tt-n fs-6-S fs-18-XS fw-600">
+            Buy $HGEN
+          </div>
         </AmButton>
       </div>
     </div>
@@ -146,10 +148,10 @@ export default {
       items: [
         { name: "Buyback", count: 30 },
         { name: "Marketing", count: 25 },
-        { name: "Bnb", count: 15 },
+        { name: "Bnb", count: 15 }
       ],
-      show: true,
+      show: true
     };
-  },
+  }
 };
 </script>

@@ -23,46 +23,44 @@
           </AmButton>
         </div>
         <div class="w-40 ta-r">
-          <span class="fw-400 fs-7 f-mcolor-300 wb-br-all"> Sort by Date </span>
+          <span class="fw-400 fs-7 f-mcolor-300 wb-br-all">
+            Sort by Date
+          </span>
         </div>
       </div>
     </div>
     <div class="w-100">
-      <CommonTable
-        :tableData="borrowingList"
-        :tableOptions="tableOptions"
-        class="mt-4"
-      />
+      <CommonTable :tableData="borrowingList" :tableOptions="tableOptions" class="mt-4"/>
     </div>
   </div>
 </template>
 
 <script>
-import SimpleInput from "@/components/common/form-elements/input-text/SimpleInput.vue";
-import CommonTable from "@/components/common/table/CommonTable.vue";
+import SimpleInput from '@/components/common/form-elements/input-text/SimpleInput.vue'
+import CommonTable from '@/components/common/table/CommonTable.vue'
 
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
     CommonTable,
-    SimpleInput,
+    SimpleInput
   },
   computed: {
-    ...mapGetters({ borrowingList: "admin/getBorrowingList" }),
+    ...mapGetters({ borrowingList: 'admin/getBorrowingList' })
   },
   data() {
     return {
       tableOptions: [
-        { title: "Date", field: "date" },
-        { title: "Holder", field: "holder", isLink: true },
-        { title: "Collateral (SOL)", field: "coll" },
-        { title: "Debt (GENS)", field: "debt" },
-        { title: "Fee (GENS)", field: "fee" },
-        { title: "Debt Ratio", field: "debtRatio" },
-        { title: "Liquidated Price (GENS)", field: "price" },
-      ],
-    };
-  },
-};
+        { title: 'Date', field: 'date' },
+        { title: 'Holder', field: 'holder', isLink: true },
+        { title: 'Collateral (SOL)', field: 'coll' },
+        { title: 'Debt (GENS)', field: 'debt' },
+        { title: 'Fee (GENS)', field: 'fee' },
+        { title: 'Debt Ratio', field: 'debtRatio' },
+        { title: 'Liquidated Price (GENS)', field: 'price' },
+      ]
+    }
+  }
+}
 </script>

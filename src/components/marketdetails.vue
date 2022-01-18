@@ -1,6 +1,6 @@
 <template>
-  <div class="w-100 fd-r ai-c">
-    <div class="fd-r ai-c my-2 mx-3 f-white-200">
+  <div class="w-100 fd-r ai-c ">
+    <div class=" fd-r ai-c my-2 mx-3 f-white-200">
       <img
         alt=""
         width="24"
@@ -14,11 +14,15 @@
     </div>
 
     <div class="fd-c my-2 mx-3">
-      <div class="fs-4 fw-400 f-gray-600">Market Price</div>
+      <div class="fs-4 fw-400 f-gray-600">
+        Market Price
+      </div>
       <div class="fs-4 fw-600 f-white-200">${{ getPrice }}</div>
     </div>
     <div class="fd-c my-2 mx-3">
-      <div class="fs-4 fw-400 f-gray-600">Daily Change</div>
+      <div class="fs-4 fw-400 f-gray-600">
+        Daily Change
+      </div>
       <div
         v-bind:class="
           change > 0 ? 'my-green' : change < 0 ? 'f-red-700' : 'f-white-200'
@@ -29,7 +33,9 @@
       </div>
     </div>
     <div class="fd-c my-2 mx-3">
-      <div class="fs-4 fw-400 f-gray-600">24hr Volume</div>
+      <div class="fs-4 fw-400 f-gray-600">
+        24hr Volume
+      </div>
       <div class="fs-4 fw-600 f-white-200">${{ volume }}</div>
     </div>
     <DailyHighAndLow :high="260" :low="140" :latest="getPrice" />
@@ -40,7 +46,7 @@
 import DailyHighAndLow from "@/components/dailyhighandlow.vue";
 export default {
   components: {
-    DailyHighAndLow,
+    DailyHighAndLow
   },
   data() {
     return {
@@ -49,7 +55,7 @@ export default {
       quoteSymbol: "USD",
       volume: 0, // based on 24hrs
       status: null,
-      pollInterval: null, // polling interval for fetching the data from the coin gecko
+      pollInterval: null // polling interval for fetching the data from the coin gecko
     };
   },
   created() {
@@ -60,15 +66,15 @@ export default {
       setInterval(() => {
         this.$store.dispatch("getInfo", { self: this });
       }, 15000);
-    },
+    }
   },
   mounted() {},
   computed: {
     getPrice() {
       return this.$store.state.usd;
-    },
+    }
   },
-  watch: {},
+  watch: {}
 };
 </script>
 <style>

@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div
-      class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-10-XS ta-c-XS"
+      class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-10-XS ta-c-XS "
     >
       Borrow
     </div>
@@ -29,7 +29,11 @@
         :title="getTotalDebt.toLocaleString()"
       >
         <span class="f-mcolor-100 pr-1-S pr-3-XS"
-          >{{ getTotalDebt.toLocaleString().toString().slice(0, 10)
+          >{{
+            getTotalDebt
+              .toLocaleString()
+              .toString()
+              .slice(0, 10)
           }}{{ getTotalDebt.toString().length > 10 ? "... " : " " }}</span
         >
         GENS
@@ -112,7 +116,7 @@ export default {
             parseInt(this.$accessor.usd.toString())
           )
         : 0;
-    },
-  },
+    }
+  }
 };
 </script>

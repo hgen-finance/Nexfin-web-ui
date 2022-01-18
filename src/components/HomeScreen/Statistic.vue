@@ -112,7 +112,7 @@
       </div>
       <div class="w-100 fd-r jc-c pt-10-S pt-30-XS px-0-S px-20-XS">
         <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
-          <div class="w-100 tt-n fs-6-S fs-18-XS fw-600">
+          <div class="w-100 tt-n  fs-6-S fs-18-XS fw-600">
             Beginner’s Guide to Token
           </div>
         </AmButton>
@@ -120,14 +120,18 @@
     </div>
     <div class="w-40-S w-100-XS fd-c-S fd-c-XS ai-c">
       <span
-        class="fw-800 fs-13-S fs-30-XS f-white-200 mt-30-XS mb-3-S mb-10-XS"
+        class="fw-800  fs-13-S fs-30-XS f-white-200 mt-30-XS mb-3-S mb-10-XS"
         data-aos="zoom-in"
         data-aos-ease="ease"
         ><i>Slippage</i></span
       >
       <div class="w-100 fd-r-S fd-c-XS jc-sb">
         <div
-          class="w-45-S w-100-XS px-20-XS pt-0-M pt-8-S pt-30-XS"
+          class="
+        w-45-S w-100-XS
+        px-20-XS
+        pt-0-M pt-8-S pt-30-XS
+      "
           data-aos="fade-in"
           data-aos-ease="ease"
         >
@@ -138,7 +142,15 @@
             <span class="fs-10-S fs-30-XS fw-600"><i>Buy Tax</i></span>
           </div>
           <div
-            class="w-100 shadow-purple-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-mcolor-100"
+            class="
+          w-100
+          shadow-purple-200
+          rad-fix-6
+          p-3-S p-10-XS
+          br-6
+          brs-s
+          br-mcolor-100
+        "
             v-for="(item, i) in items"
             :key="i"
             :class="{ 'mt-3-S mt-10-XS': i > 0 }"
@@ -151,7 +163,11 @@
           </div>
         </div>
         <div
-          class="w-45-S w-100-XS px-20-XS pt-0-M pt-8-S pt-30-XS"
+          class="
+        w-45-S w-100-XS
+        px-20-XS
+        pt-0-M pt-8-S pt-30-XS
+      "
           data-aos="fade-in"
           data-aos-ease="ease"
         >
@@ -162,7 +178,15 @@
             <span class="fs-10-S fs-30-XS fw-600"><i>Sell Tax</i></span>
           </div>
           <div
-            class="w-100 shadow-purple-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-mcolor-100"
+            class="
+          w-100
+          shadow-purple-200
+          rad-fix-6
+          p-3-S p-10-XS
+          br-6
+          brs-s
+          br-mcolor-100
+        "
             v-for="(item, i) in items2"
             :key="i"
             :class="{ 'mt-3-S mt-10-XS': i > 0 }"
@@ -184,7 +208,7 @@ import ProgressCircle from "@/components/ProgressCircle";
 
 export default {
   components: {
-    ProgressCircle,
+    ProgressCircle
   },
   data() {
     return {
@@ -193,15 +217,15 @@ export default {
       items: [
         { name: "BuyBack", count: 3 },
         { name: "Marketing", count: 3 },
-        { name: "Burn", count: 3 },
+        { name: "Burn", count: 3 }
       ],
       items2: [
         { name: "BuyBack", count: 3 },
         { name: "Rewards", count: 5 },
-        { name: "Burn", count: 3 },
+        { name: "Burn", count: 3 }
       ],
       radius: [],
-      stroke: 12,
+      stroke: 12
     };
   },
   methods: {
@@ -221,11 +245,11 @@ export default {
       this.radius.push(this.$refs.round5.clientWidth);
       this.radius.push(this.$refs.round6.clientWidth);
       this.radius.push(this.$refs.round7.clientWidth);
-    },
+    }
   },
   mounted() {
     this.resize();
     window.addEventListener("resize", this.resize);
-  },
+  }
 };
 </script>

@@ -12,7 +12,18 @@
       <div class="w-65-S w-100-XS pr-6-S pr-0-XS fd-r ai-c">
         <input
           type="text"
-          class="w-100 mcolor-700 br-0 pl-3 pr-10 py-3 rad-fix-3 oul-n f-mcolor-300 fs-6"
+          class="
+            w-100
+            mcolor-700
+            br-0
+            pl-3
+            pr-10
+            py-3
+            rad-fix-3
+            oul-n
+            f-mcolor-300
+            fs-6
+          "
           placeholder="Search..."
           maxlength="60"
           v-model="search"
@@ -46,7 +57,21 @@
       </div>
       <div class="w-100 fd-r ai-s" v-if="!getLoading">
         <div
-          class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100"
+          class="
+            d-i
+            fs-5
+            f-white-200
+            ta-c
+            px-1
+            py-2
+            br-r-4
+            brrs-s
+            br-mcolor-400
+            fd-r
+            ai-c
+            jc-c
+            w-100
+          "
           v-for="(header, h) in headers"
           :key="h"
         >
@@ -63,14 +88,42 @@
       :key="d"
     >
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-gray-400
+        "
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{ data.createdAt ? getDate(data.createdAt) : "" }}
         </div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-mcolor-300"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-mcolor-300
+        "
         :title="data.owner"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
@@ -78,28 +131,84 @@
         </div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-gray-400
+        "
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{ getLamports(data.lamports) }}
         </div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-gray-400
+        "
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{ data.amountToClose }}
         </div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-gray-400
+        "
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{ data.depositorFee }}
         </div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-gray-400
+        "
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{
@@ -111,7 +220,21 @@
         </div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        class="
+          d-i
+          fs-5
+          ta-c
+          px-1
+          py-4
+          br-r-4
+          brrs-s
+          br-mcolor-400
+          fd-r
+          ai-c
+          jc-c
+          w-100
+          f-gray-400
+        "
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{ getliquidationPrice(data.amountToClose, data.lamports) }}

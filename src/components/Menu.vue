@@ -107,33 +107,33 @@
 <script>
 export default {
   props: {
-    publicKey: { type: String, default: null },
+    publicKey: { type: String, default: null }
   },
   data() {
     return {
       items: [
         { title: "Beginners Guide", to: "/" },
-        { title: "Documentation", to: "/" },
+        { title: "Documentation", to: "/" }
       ],
       languages: {
         theme: "default",
         value: 1,
         items: [
           { label: "English", value: 1 },
-          { label: "Russian", value: 2 },
+          { label: "Russian", value: 2 }
         ],
         colorDefault: "mcolor-100",
         colorBackground: "mcolor-200",
-        colorTitle: "white-200",
+        colorTitle: "white-200"
       },
       mobile: false,
-      open: true,
+      open: true
     };
   },
   computed: {
     getLogo() {
       return this.$accessor.dashboard.logo;
-    },
+    }
   },
   watch: {
     open(val) {
@@ -161,7 +161,7 @@ export default {
       }
       console.log(this.$route.fullPath);
       console.log("the value changes", this.showLogo);
-    },
+    }
   },
   methods: {
     resize() {
@@ -188,12 +188,12 @@ export default {
     },
     turnOffLogo() {
       this.$accessor.dashboard.changeLogoVis(false);
-    },
+    }
   },
   mounted() {
     this.resize();
     window.addEventListener("resize", this.resize);
-  },
+  }
 };
 </script>
 

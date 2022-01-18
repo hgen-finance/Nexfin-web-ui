@@ -96,12 +96,12 @@ import { Button, Modal, Icon } from "ant-design-vue";
 export default {
   components: {
     Loading,
-    Modal,
+    Modal
   },
   props: {
     wallets: { type: Array, default: null },
     error: { type: Boolean, default: false },
-    loader: { type: Boolean, default: false },
+    loader: { type: Boolean, default: false }
   },
   methods: {
     importIcon(path) {
@@ -110,8 +110,8 @@ export default {
       } catch (e) {
         return require("@/assets/icons/unknown.png");
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
