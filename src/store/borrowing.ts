@@ -419,5 +419,15 @@ export const actions = actionTree(
         );
       }
     },
+
+    // clear trove state when user logs out of the wallet
+    async clearTove({ commit }, value) {
+      commit("setTroveId", "");
+      commit("setTrove", {
+        troveAccountPubkey: "",
+        amountToClose: 0,
+        depositorFee: 0,
+      });
+    },
   }
 );
