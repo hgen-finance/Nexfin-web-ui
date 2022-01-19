@@ -99,7 +99,6 @@ export const actions = actionTree(
         commit("setLightMode", data.totalLiquidationMode || false);
         commit("setDebtRatio", data.debtRatio || 0);
         commit("setToken", data.token || "0");
-        console.log("the data token is ", data.token);
       });
       await this.$axios
         .get(

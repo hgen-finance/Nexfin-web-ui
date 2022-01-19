@@ -160,7 +160,7 @@ export default {
         this.$accessor.dashboard.changeLogoVis(true);
       }
       console.log(this.$route.fullPath);
-      console.log("the value changes", this.showLogo);
+      //   console.log("the value changes", this.showLogo);
     },
   },
   methods: {
