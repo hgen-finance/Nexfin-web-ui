@@ -106,8 +106,8 @@ export const actions = actionTree(
         await this.$axios
           .get("trove?user=" + this.$wallet.publicKey.toBase58())
           .then(({ data }) => {
-            commit("setTroveId", data.model.trove || "");
             if (data.model && data.model.trove) {
+              commit("setTroveId", data.model.trove || "");
               dispatch("setTroveById", new PublicKey(data.model.trove));
               this.$accessor.dashboard.setBorrow(true);
             }
@@ -143,9 +143,6 @@ export const actions = actionTree(
       } else {
         totalColl = this.$accessor.borrowing.debt || 0;
       }
-      // dispatch('getTrove').then(res => console.log("dispatching trove..."), err => console.log(err))
-
-      console.log(state.troveId, "troveId here is called");
 
       // check if there already previous trove opened under this wallet pub key
       if (state.troveId && Number(value.from > 0) && totalColl > 109) {
@@ -258,7 +255,7 @@ export const actions = actionTree(
             value.amount,
             this.$web3
           );
-          // const data = await closeBorrowUtil(this.$wallet, process.env.mint, state.trove.troveAccountPubkey, value.mint, value.amount, this.$web3)
+
           if (data === null) {
             console.log(data, "closeTrove");
             commit("setTroveId", "");
@@ -305,8 +302,6 @@ export const actions = actionTree(
         { mint: new PublicKey(TOKEN_GENS) }
       );
       let burn_addr = GENS.value[0].pubkey.toBase58();
-      console.log("the amount entered is ", value.amount);
-      console.log("the amount to close before was ", state.trove.amountToClose);
       const exceedAmount =
         state.trove.amountToClose >= Number(value.amount) ? false : true;
 

@@ -123,7 +123,7 @@ export default {
       };
     },
   },
-
+  dev: process.env.NODE_ENV !== "production",
   server: {
     host: "0.0.0.0",
     port: process.env.PORT || 5000,
