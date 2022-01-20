@@ -373,7 +373,6 @@ export const actions = actionTree(
             ).finally(async () => {
               this.$accessor.wallet.getBalance();
               this.$accessor.wallet.getGENSBalance();
-              console.log("it is trying to withdraw");
               await this.$axios
                 .get("deposit?user=" + this.$wallet.publicKey.toBase58())
                 .then(async ({ data }) => {
@@ -446,6 +445,12 @@ export const actions = actionTree(
     // Change the deposit and withdraw tab
     async changeWithdrawAndDeposit({ state, commit }, value) {
       commit("setDepositOrWithdraw", !value);
+    },
+
+    // clear trove state when user logs out of the wallet
+    async clearDeposit({ commit }, value) {
+      commit("setDepositKey", "");
+      commit("setDepositAmount", 0);
     },
   }
 );

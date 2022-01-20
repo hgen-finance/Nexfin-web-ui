@@ -71,7 +71,6 @@ export const actions = actionTree(
   {
     // Get Balance for sols
     async getBalance({ commit }) {
-      console.log("is beign called");
       if (this.$web3 && this.$wallet) {
         const data = this.$web3.getBalance(this.$wallet.publicKey);
         data.then((value) => {
@@ -82,29 +81,36 @@ export const actions = actionTree(
 
     // getting balance from the hgens from the wallet
     async getHGENBalance({ commit }) {
-      if (this.$wallet) {
-        let HGEN = await this.$web3.getParsedTokenAccountsByOwner(
-          this.$wallet.publicKey,
-          { mint: new PublicKey(TOKEN_HGEN) }
-        );
-        let myTokenAmount = HGEN.value[0]
-          ? HGEN.value[0].account.data.parsed.info.tokenAmount.uiAmountString
-          : 0;
+      if (this.$web3 && this.$wallet) {
+        let myTokenAmount = 0;
+        await this.$web3
+          .getParsedTokenAccountsByOwner(this.$wallet.publicKey, {
+            mint: new PublicKey(TOKEN_HGEN),
+          })
+          .then((res) => {
+            myTokenAmount = res.value[0]
+              ? res.value[0].account.data.parsed.info.tokenAmount.uiAmountString
+              : 0;
+          })
+          .catch((err) => console.log(err));
         commit("setBalanceHGEN", Number(myTokenAmount));
       }
     },
 
     //getting balance for gens from the wallet
     async getGENSBalance({ commit }) {
-      console.log(this.$wallet, "| wallet connection");
-      if (this.$wallet) {
-        let GENS = await this.$web3.getParsedTokenAccountsByOwner(
-          this.$wallet.publicKey,
-          { mint: new PublicKey(TOKEN_GENS) }
-        );
-        let myTokenAmount = GENS.value[0]
-          ? GENS.value[0].account.data.parsed.info.tokenAmount.uiAmountString
-          : 0;
+      if (this.$web3 && this.$wallet) {
+        let myTokenAmount = 0;
+        await this.$web3
+          .getParsedTokenAccountsByOwner(this.$wallet.publicKey, {
+            mint: new PublicKey(TOKEN_GENS),
+          })
+          .then((res) => {
+            myTokenAmount = res.value[0]
+              ? res.value[0].account.data.parsed.info.tokenAmount.uiAmountString
+              : 0;
+          })
+          .catch((err) => console.log(err));
         commit("setBalanceGENS", Number(myTokenAmount));
       }
     },
@@ -117,7 +123,6 @@ export const actions = actionTree(
         providerUrl: wallet.url,
         endpoint: "https://api.testnet.solana.com",
       });
-      console.log(adapter, "adapter");
       if (!adapter || !this.$web3) {
         this.app.$accessor.setModal("connectError");
         console.error("connection error");
@@ -127,15 +132,18 @@ export const actions = actionTree(
       adapter.on("connect", () => {
         if (adapter.publicKey) {
           commit("setPublicKey", adapter.publicKey.toBase58());
-          // TODO refractor the code
-          this.app.$accessor.borrowing.getTrove(); // for borrow
           this.app.$accessor.setModal("");
           this.$router.push("/my");
+        }
+        commit("setLoaderConnect", false);
+        if (this.$wallet.publicKey) {
           dispatch("getBalance");
           dispatch("getHGENBalance");
           dispatch("getGENSBalance");
+          // TODO refractor the code
+          dispatch("borrowing/getTrove", null, { root: true }); // for borrow
+          dispatch("pool/getDeposit", null, { root: true }); // for deposit
         }
-        commit("setLoaderConnect", false);
       });
 
       try {
@@ -148,7 +156,7 @@ export const actions = actionTree(
     },
 
     // Disconnection
-    logout({ commit }) {
+    logout({ commit, dispatch }) {
       if (this.$wallet) {
         this.$wallet.disconnect();
         this.$wallet = null;
@@ -157,11 +165,14 @@ export const actions = actionTree(
       this.$router.push("/");
       // TODO check if this need any changes later
       commit("setClearState");
+      dispatch("borrowing/clearTove", null, { root: true });
+      dispatch("pool/clearDeposit", null, { root: true });
     },
 
     // update the cached balance price
     async updateBalance({ commit }) {
       if (this.$wallet) {
+        // TODO uncomment this if it is added in the business requirement
         // let GENS = await this.$web3.getParsedTokenAccountsByOwner(this.$wallet.publicKey, {mint: new PublicKey(TOKEN_GENS)});
         // if (GENS.value[0]){
         //     let gensAccount =GENS.value[0].pubkey;

@@ -139,28 +139,6 @@ export default {
       }
       return result.toString();
     },
-    // getHGENBalance() {
-    //   let result = 0;
-    //   if (this.getBalanceHGEN) {
-    //     result = (Number(this.getBalanceHGEN) * this.getUsd)
-    //       .toString()
-    //       .split(".");
-    //     result =
-    //       Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
-    //   }
-    //   return result.toString();
-    // },
-    // getGENSBalance() {
-    //   let result = 0;
-    //   if (this.getBalanceGENS) {
-    //     result = (Number(this.getBalanceGENS) * this.getUsd)
-    //       .toString()
-    //       .split(".");
-    //     result =
-    //       Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2);
-    //   }
-    //   return result.toString();
-    // }
   },
 };
 </script>
