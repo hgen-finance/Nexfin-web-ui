@@ -95,7 +95,7 @@
         class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.depositorFee }}
+          {{ data.depositorFee / 1000 }}
         </div>
       </div>
       <div

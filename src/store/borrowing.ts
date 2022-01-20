@@ -139,7 +139,7 @@ export const actions = actionTree(
             parseInt(value.from) * 1000000000
           ).toString(),
           parseInt(this.$accessor.usd).toString()
-        ).toNumber();
+        );
       } else {
         totalColl = this.$accessor.borrowing.debt || 0;
       }
@@ -182,7 +182,7 @@ export const actions = actionTree(
         value.to.toString(),
         (Number(value.from) * 1000000000).toString(),
         parseInt(this.$accessor.usd).toString()
-      ).toNumber();
+      );
 
       if (
         !state.troveId &&
@@ -381,7 +381,7 @@ export const actions = actionTree(
             value.to.toString(),
             (Number(value.from) * 1000000000).toString(),
             parseInt(this.$accessor.usd).toString()
-          ).toNumber()
+          )
         );
       } else {
         commit("setDebt", 0);
