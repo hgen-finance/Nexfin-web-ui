@@ -47,8 +47,6 @@ export const addBorrowUtil = async (
     lamports: lamportAmount,
   });
 
-  //   console.log(transferIx)
-
   const GENS = await connection.getParsedTokenAccountsByOwner(
     wallet.publicKey,
     { mint: new PublicKey(TOKEN_GENS) }

@@ -140,7 +140,7 @@ export const CHAINLINK_SOL_USD_PUBKEY = new PublicKey(
 
 export const getCollateral = (gens: string, lamports: string, usd: string) => {
   // TODO might need to change the value later here
-  console.log(`gens:${gens}, lamports:${lamports}, usd:${usd}}`);
+  //   console.log(`gens:${gens}, lamports:${lamports}, usd:${usd}}`);
   let result = 0;
   if (gens === "0") {
     return result;

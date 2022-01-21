@@ -208,6 +208,7 @@ export const actions = actionTree(
             await this.$axios
               .post("trove/upsert", {
                 trove: data.troveAccountPubkey,
+                amount: Number(value.to),
                 user: value.mint,
                 dest: this.$wallet.publicKey.toBase58(),
               })
