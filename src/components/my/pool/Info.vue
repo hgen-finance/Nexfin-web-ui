@@ -127,14 +127,14 @@ export default {
         : 0;
     },
     getRewardToken() {
-      let token = this.$accessor.token;
-      let rewardToken = Number(token) / 1000000000;
-      let result = ((this.getPercent * rewardToken) / 100)
-        .toString()
-        .split(".");
-      return result[1]
-        ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
-        : 0;
+      return this.$accessor.pool.rewardGensAmount || 0;
+      //   let rewardToken = Number(token) / 1000000000;
+      //   let result = ((this.getPercent * rewardToken) / 100)
+      //     .toString()
+      //     .split(".");
+      //   return result[1]
+      //     ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
+      //     : 0;
     },
     getCoin() {
       return this.$accessor.pool.rewardCoinAmount;
