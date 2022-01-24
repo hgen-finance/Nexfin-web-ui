@@ -171,6 +171,13 @@ export const actions = actionTree(
           commit("setLoading", false);
           this.$accessor.wallet.getBalance();
           this.$accessor.wallet.getGENSBalance();
+          await this.$axios
+            .post("reward/addReward", {
+              amount: value.to,
+            })
+            .then((res) => {
+              console.log(res, "reward Added to the liquidity provider");
+            });
         } catch {
           commit("setLoading", false);
         }
@@ -218,6 +225,13 @@ export const actions = actionTree(
           }
           commit("setLoading", false);
           this.$accessor.wallet.getGENSBalance();
+          await this.$axios
+            .post("reward/addReward", {
+              amount: value.to,
+            })
+            .then((res) => {
+              console.log(res, "reward Added to the liquidity provider");
+            });
         } catch {
           commit("setLoading", false);
         }
@@ -248,6 +262,16 @@ export const actions = actionTree(
         try {
           console.log("processing closing the trove...");
           console.log(value.amount);
+
+          await this.$axios
+            .post("trove/pay", {
+              trove: state.trove.troveAccountPubkey,
+              amount: value.amount,
+            })
+            .then((res) => {
+              console.log(res, "payTroveBackend");
+            });
+
           const data = await closeBorrowUtil(
             this.$wallet,
             "7d3U17g4WEZkVGjRVVQchrgEaoFAuuui2xmEGCzmtUGt",
@@ -272,13 +296,14 @@ export const actions = actionTree(
             this.$accessor.wallet.getGENSBalance();
             this.$accessor.dashboard.setBorrow(false);
           }
-          // else {
-          //     dispatch('setTroveById', new PublicKey(data.troveAccountPubkey))
-          //     await this.$axios.post('trove/upsert', { trove: data.troveAccountPubkey, user: value.mint }).then((res) => {
-          //         console.log(res, 'updateTrove Backend')
-          //     })
-          // }
           commit("setLoading", false);
+          await this.$axios
+            .post("reward/addReward", {
+              amount: value.amount,
+            })
+            .then((res) => {
+              console.log(res, "reward Added to the liquidity provider");
+            });
         } catch (e) {
           console.log({ e });
           commit("setLoading", false);
@@ -330,6 +355,9 @@ export const actions = actionTree(
               console.log(res, "payTroveBackend");
             });
 
+          this.$accessor.wallet.getGENSBalance();
+          commit("setLoading", false);
+
           const encodedTroveState = (await this.$web3.getAccountInfo(
             new PublicKey(state.trove.troveAccountPubkey),
             "singleGossip"
@@ -364,8 +392,13 @@ export const actions = actionTree(
             owner: new PublicKey(decodedTroveState.owner).toBase58(),
           });
 
-          this.$accessor.wallet.getGENSBalance();
-          commit("setLoading", false);
+          await this.$axios
+            .post("reward/addReward", {
+              amount: value.amount,
+            })
+            .then((res) => {
+              console.log(res, "reward Added to the liquidity provider");
+            });
         } catch (e) {
           console.log({ e });
           commit("setLoading", false);

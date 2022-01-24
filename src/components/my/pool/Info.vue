@@ -127,7 +127,7 @@ export default {
         : 0;
     },
     getRewardToken() {
-      return this.$accessor.pool.rewardGensAmount || 0;
+      return this.$accessor.pool.rewardGensAmount / 100 || 0;
       //   let rewardToken = Number(token) / 1000000000;
       //   let result = ((this.getPercent * rewardToken) / 100)
       //     .toString()
