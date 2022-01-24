@@ -215,7 +215,14 @@ export default {
       return this.$accessor.pool.depositAmount;
     },
     getPercent() {
-      return this.$accessor.pool.depositAmount
+      if (
+        this.$accessor.pool.depositAmount > this.$accessor.pool.totalDeposit &&
+        this.$accessor.pool.depositAmount > 0
+      ) {
+        return 100;
+      }
+      return this.$accessor.pool.depositAmount ==
+        this.$accessor.pool.depositAmount && this.$accessor.pool.depositAmount
         ? Number(
             (this.$accessor.pool.depositAmount / this.$accessor.totalDeposit) *
               100

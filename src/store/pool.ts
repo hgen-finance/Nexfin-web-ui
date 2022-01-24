@@ -131,7 +131,7 @@ export const actions = actionTree(
     },
 
     // New Deposit
-    async newDeposit({ state, commit }, value) {
+    async newDeposit({ state, commit, dispatch }, value) {
       let GENS = await this.$web3.getParsedTokenAccountsByOwner(
         this.$wallet.publicKey,
         { mint: new PublicKey(TOKEN_GENS) }
@@ -238,6 +238,7 @@ export const actions = actionTree(
 
               this.$accessor.wallet.getBalance();
               this.$accessor.wallet.getGENSBalance();
+              dispatch("getInfo", null, { root: true });
             }
             commit("setLoading", false);
           } catch {
@@ -248,7 +249,7 @@ export const actions = actionTree(
     },
 
     // Add Deposit
-    async addDeposit({ state, commit }, value) {
+    async addDeposit({ state, commit, dispatch }, value) {
       let GENS = await this.$web3.getParsedTokenAccountsByOwner(
         this.$wallet.publicKey,
         { mint: new PublicKey(TOKEN_GENS) }
@@ -332,6 +333,7 @@ export const actions = actionTree(
                 );
               });
             commit("setLoading", false);
+            dispatch("getInfo", null, { root: true });
           } catch {
             commit("setLoading", false);
           }
