@@ -128,13 +128,6 @@ export default {
     },
     getRewardToken() {
       return this.$accessor.pool.rewardGensAmount / 100 || 0;
-      //   let rewardToken = Number(token) / 1000000000;
-      //   let result = ((this.getPercent * rewardToken) / 100)
-      //     .toString()
-      //     .split(".");
-      //   return result[1]
-      //     ? Number(result[0]).toLocaleString() + "." + result[1].substr(0, 2)
-      //     : 0;
     },
     getCoin() {
       return this.$accessor.pool.rewardCoinAmount;
@@ -145,6 +138,9 @@ export default {
     getHgen() {
       return this.$accessor.pool.rewardHgenAmount;
     },
+  },
+  mounted() {
+    this.$accessor.pool.onDepositChange(); // for handling subscription to account change in deposit
   },
 };
 </script>

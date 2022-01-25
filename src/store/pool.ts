@@ -268,9 +268,7 @@ export const actions = actionTree(
               "6UeYcgjzpij4wGhVShJQsoCoi3nk2bPvz4v4Dz4cmMVv",
               this.$web3
             );
-            //const data = await addDepositUtil(this.$wallet, state.depositKey.deposit, process.env.mint, Number(value.from), state.gen, state.hgen, this.$web3)
-            // console.log("the data for the add deposit", data);
-            //console.log(data, 'addDeposit')
+
             this.$accessor.wallet.getBalance();
             this.$accessor.wallet.getGENSBalance();
 
@@ -445,14 +443,24 @@ export const actions = actionTree(
     },
 
     // Change the deposit and withdraw tab
-    async changeWithdrawAndDeposit({ state, commit }, value) {
+    async changeWithdrawAndDeposit({ commit }, value) {
       commit("setDepositOrWithdraw", !value);
     },
 
     // clear trove state when user logs out of the wallet
-    async clearDeposit({ commit }, value) {
+    async clearDeposit({ commit }) {
       commit("setDepositKey", "");
       commit("setDepositAmount", 0);
+    },
+
+    // on account change for the deposit account
+    async onDepositChange({ state, dispatch }) {
+      if (state.depositKey.deposit)
+        this.$web3.onAccountChange(
+          new PublicKey(state.depositKey.deposit),
+          () => dispatch("pool/getDeposit", null, { root: true }),
+          "confirmed"
+        );
     },
   }
 );
