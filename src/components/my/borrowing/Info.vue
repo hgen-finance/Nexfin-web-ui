@@ -118,15 +118,15 @@
     <div
       class="w-100 mcolor-800 p-4-S p-15-XS mt-4-S mt-10-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500"
       v-if="
-        (Number(getDebt) < getMaxRatio || Number(to) < 1600) &&
+        (Number(getDebt) < getMaxRatio || Number(to) < 100) &&
         from &&
         to &&
         !getIsBorrow
       "
     >
       <!-- change the minimum borrow later -->
-      <div class="w-100 pb-2-S pb-10-XS" v-if="Number(to) < 1600">
-        The minimum borrowing amount is <span class="fw-600">1600 GENS</span>
+      <div class="w-100 pb-2-S pb-10-XS" v-if="Number(to) < 100">
+        The minimum borrowing amount is <span class="fw-600">100 GENS</span>
       </div>
       <div class="w-100" v-if="Number(getDebt) < getMaxRatio">
         The CR limit is minimum <span class="fw-600">{{ getMaxRatio }} %</span>

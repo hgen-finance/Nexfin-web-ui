@@ -1,0 +1,10 @@
+#ignore node modules
+node_modules/
+
+#linting and precommits
+.husky
+
+#build files for the nuxt
+.nuxt
+dist
+.env
