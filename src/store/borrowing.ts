@@ -165,7 +165,7 @@ export const actions = actionTree(
               dest: this.$wallet.publicKey.toBase58(),
             })
             .then((res) => {
-              console.log(res, "newTrove Backend");
+              console.log(res, "addTrove Backend");
             });
           dispatch("setTroveById", new PublicKey(data.troveAccountPubkey));
           commit("setLoading", false);
@@ -194,7 +194,7 @@ export const actions = actionTree(
       if (
         !state.troveId &&
         Number(value.from > 0) &&
-        Number(value.to) > 1599 &&
+        Number(value.to) > 99 &&
         cr > 109
       ) {
         commit("setLoading", true);
@@ -206,6 +206,9 @@ export const actions = actionTree(
             Number(value.from) * 1000000000,
             this.$web3
           );
+          console.group("Trove account");
+          console.log(data);
+          console.groupEnd();
 
           if (data && data.troveAccountPubkey) {
             commit("setTroveId", data.troveAccountPubkey || "");
