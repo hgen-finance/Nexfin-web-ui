@@ -122,7 +122,7 @@ export default {
         { id: 1, name: "Dashboard", to: "/my", class: "my" },
         { id: 3, name: "Swap", to: "/my/swap", class: "my-swap" },
         { id: 2, name: "Borrow", to: "/my/borrowing", class: "my-borrowing" },
-        { id: 4, name: "Lend", to: "/my/pool", class: "my-pool" },
+        { id: 4, name: "Stake", to: "/my/pool", class: "my-pool" },
         { id: 6, name: "Farm", to: "/my/farming", class: "my-farming" },
         {
           id: 7,
