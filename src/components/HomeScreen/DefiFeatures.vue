@@ -121,7 +121,7 @@ export default {
               img: "checkOn.svg",
               name: "Get an interests-free loan with Borrow",
             },
-            { img: "checkOn.svg", name: "Get triple earnings with Lending" },
+            { img: "checkOn.svg", name: "Get triple earnings with Staking" },
             {
               img: "checkOn.svg",
               name: "Leverage investments possible through",
