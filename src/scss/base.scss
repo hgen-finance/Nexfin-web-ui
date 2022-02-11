@@ -586,10 +586,15 @@ html {
 
 // for swap
 .ant-tooltip-inner {
-  display: inline-block;
-  background: $bg-color;
+  display: block;
+  //   background: $bg-color;
+  //transform: translate(-50%, 1rem);
   min-width: 30px;
   min-height: 32px;
+  border-radius: 0.3vw;
+  background-color: #151433;
+  box-shadow: 0 0 0.5rem #b556ff;
+  color: #ffffff;
 
   p {
     margin-bottom: 8px;
@@ -638,6 +643,34 @@ html {
           //   color:;
         }
       }
+    }
+  }
+}
+
+// for buttons
+.buttons {
+  display: flex;
+
+  .anticon {
+    font-size: 20px;
+  }
+
+  .ant-progress {
+    line-height: 1;
+  }
+
+  .ant-progress.disabled {
+    cursor: not-allowed;
+  }
+
+  .anticon,
+  .ant-progress {
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background: #000829;
     }
   }
 }

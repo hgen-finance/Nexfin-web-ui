@@ -465,6 +465,7 @@ export const actions = actionTree(
         amountToClose: 0,
         depositorFee: 0,
       });
+      commit("setCloseAmount", 0);
     },
   }
 );

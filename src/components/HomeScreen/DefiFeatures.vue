@@ -113,15 +113,15 @@ export default {
       ],
       hydrogenItems: [
         {
-          name: "Borrow & Lending",
-          text: "The borrowing & lending will be a critical component to the $HGEN DeFi Project Financing Platform",
+          name: "Borrow & Staking",
+          text: "The borrowing & Staking will be a critical component to the $HGEN DeFi Project Financing Platform",
           img: "roadMap1.png",
           items: [
             {
               img: "checkOn.svg",
               name: "Get an interests-free loan with Borrow",
             },
-            { img: "checkOn.svg", name: "Get triple earnings with Lending" },
+            { img: "checkOn.svg", name: "Get triple earnings with Staking" },
             {
               img: "checkOn.svg",
               name: "Leverage investments possible through",
