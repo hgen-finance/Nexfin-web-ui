@@ -105,7 +105,7 @@ export const actions = actionTree(
         async getTrove({ commit, dispatch }, value) {
             if (this.$wallet) {
                 await this.$axios
-                    .get("trove?user=" + this.$wallet.publicKey.toBase58())
+                    .get("/api/trove?user=" + this.$wallet.publicKey.toBase58())
                     .then(({ data }) => {
                         if (data.model && data.model.trove) {
                             commit("setTroveId", data.model.trove || "");
@@ -159,7 +159,7 @@ export const actions = actionTree(
 
                     // pass wait transaction notification
                     await this.$axios
-                        .post("trove/addBorrow", {
+                        .post("/api/trove/addBorrow", {
                             trove: data.troveAccountPubkey,
                             amount: Number(value.to),
                             user: value.mint,
@@ -173,7 +173,7 @@ export const actions = actionTree(
                     this.$accessor.wallet.getBalance();
                     this.$accessor.wallet.getGENSBalance();
                     await this.$axios
-                        .post("reward/addReward", {
+                        .post("/api/reward/addReward", {
                             amount: value.to,
                         })
                         .then((res) => {
@@ -232,7 +232,7 @@ export const actions = actionTree(
                         dispatch("setTroveById", new PublicKey(data.troveAccountPubkey));
                         this.$accessor.dashboard.setBorrow(true);
                         await this.$axios
-                            .post("trove/upsert", {
+                            .post("/api/trove/upsert", {
                                 trove: data.troveAccountPubkey,
                                 amount: Number(value.to),
                                 user: value.mint,
@@ -245,7 +245,7 @@ export const actions = actionTree(
                     commit("setLoading", false);
                     this.$accessor.wallet.getGENSBalance();
                     await this.$axios
-                        .post("reward/addReward", {
+                        .post("/api/reward/addReward", {
                             amount: value.to,
                         })
                         .then((res) => {
@@ -283,7 +283,7 @@ export const actions = actionTree(
                     console.log(value.amount);
 
                     await this.$axios
-                        .post("trove/pay", {
+                        .post("/api/trove/pay", {
                             trove: state.trove.troveAccountPubkey,
                             amount: value.amount,
                         })
@@ -304,7 +304,7 @@ export const actions = actionTree(
                         console.log(data, "closeTrove");
                         commit("setTroveId", "");
                         await this.$axios
-                            .post("trove/liquidate", {
+                            .post("/api/trove/liquidate", {
                                 trove: state.trove.troveAccountPubkey,
                             })
                             .then((res) => {
@@ -317,7 +317,7 @@ export const actions = actionTree(
                     }
                     commit("setLoading", false);
                     await this.$axios
-                        .post("reward/addReward", {
+                        .post("/api/reward/addReward", {
                             amount: value.amount,
                         })
                         .then((res) => {
@@ -366,7 +366,7 @@ export const actions = actionTree(
                     console.log("data after updating the trove is", data);
 
                     await this.$axios
-                        .post("trove/pay", {
+                        .post("/api/trove/pay", {
                             trove: state.trove.troveAccountPubkey,
                             amount: value.amount,
                         })
@@ -380,7 +380,7 @@ export const actions = actionTree(
 
                     // TODO: fix issue for ``block has not found on rewards``. Check the time for the block to expire
                     await this.$axios
-                        .post("reward/addReward", {
+                        .post("/api/reward/addReward", {
                             amount: value.amount,
                         })
                         .then((res) => {
