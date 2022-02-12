@@ -1,19 +1,30 @@
 <template>
   <div class="lds-ring">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div :style="style"></div>
+    <div :style="style"></div>
+    <div :style="style"></div>
+    <div :style="style"></div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    width: { type: String, default: "4rem" },
+    height: { type: String, default: "4rem" },
+  },
+  computed: {
+    style() {
+      return "width:" + this.width + ";height:" + this.height;
+    },
+  },
+};
 </script>
 
 <style scoped>
 .lds-ring {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   width: 4rem;
   height: 4rem;
@@ -22,8 +33,6 @@ export default {};
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 4rem;
-  height: 4rem;
   margin: 0.2rem;
   border: 0.2rem solid #cf68ff;
   border-radius: 50%;
