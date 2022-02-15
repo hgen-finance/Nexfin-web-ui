@@ -202,7 +202,7 @@
 <script>
 import Loading from "@/components/Loading";
 import { getCollateral } from "@/utils/layout";
-import NotificaitonsTx from "@/components/my/NotificationTx.vue";
+import NotificaitonsTx from "@/components/NotificationTx.vue";
 
 export default {
   components: {

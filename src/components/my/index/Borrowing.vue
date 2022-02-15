@@ -70,7 +70,7 @@
           bColor="mcolor-100"
           opacityEffect
           full
-          to="/my/borrowing"
+          @click="payDebt"
         >
           pay debt
         </AmButton>
@@ -91,8 +91,7 @@ export default {
       return this.$accessor.dashboard.isBorrow;
     },
     getDebt() {
-      console.log(this.$accessor.borrowing.trove);
-      return this.$accessor.borrowing.trove.borrowAmount || "0";
+      return this.$accessor.borrowing.trove.amountToClose || "0";
     },
     getBalanceHGEN() {
       return this.$accessor.wallet.balanceHGEN || 0;
@@ -105,13 +104,19 @@ export default {
       return this.$accessor.troveTotal;
     },
     getCollateral() {
-      return this.$accessor.borrowing.trove.borrowAmount
+      return this.$accessor.borrowing.trove.amountToClose
         ? getCollateral(
-            this.$accessor.borrowing.trove.borrowAmount.toString(),
+            this.$accessor.borrowing.trove.amountToClose.toString(),
             this.$accessor.borrowing.trove.lamports.toString(),
             parseInt(this.$accessor.usd.toString())
           )
         : 0;
+    },
+  },
+  methods: {
+    payDebt() {
+      console.log("clicked");
+      this.$accessor.borrowing.closeTrove();
     },
   },
 };
