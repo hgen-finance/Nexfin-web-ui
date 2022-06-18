@@ -1,0 +1,50 @@
+@import "../variables.scss";
+
+// ===================================================
+// zIndex Create =====================================
+
+@mixin zIndexCreate($size, $counts) {
+  @for $count from 0 to $counts {
+    .z-#{$count} {
+      z-index: $count;
+    }
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .z-#{$count}-XS {
+        left: $count;
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .z-#{$count}-S {
+        left: $count;
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .z-#{$count}-M {
+        left: $count;
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .z-#{$count}-L {
+        left: $count;
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .z-#{$count}-XL {
+        left: $count;
+      }
+    }
+  }
+}
+
+// Start zIndex
+@include zIndexCreate(0, 100);

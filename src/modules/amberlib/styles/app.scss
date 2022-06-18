@@ -1,0 +1,116 @@
+@import "../variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.us {
+  user-select: none;
+}
+.ts-3 {
+  transition: 0.3s;
+}
+.hv:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+.hvw:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+.ovh {
+  overflow: hidden;
+}
+.ovh-x-a {
+  overflow-x: auto;
+}
+.ovh-y-a {
+  overflow-y: auto;
+}
+.ovh-y-v {
+  overflow-y: visible;
+}
+
+@media (max-width: $small) {
+  .container {
+    width: 100%;
+  }
+  .ovh-y-a-XS {
+    overflow-y: auto;
+  }
+  .ovh-y-v-XS {
+    overflow-y: visible;
+  }
+}
+@media (min-width: $small) {
+  .container {
+    width: 100%;
+  }
+  .ovh-y-a-S {
+    overflow-y: auto;
+  }
+  .ovh-y-v-S {
+    overflow-y: visible;
+  }
+}
+@media (min-width: $medium) {
+  .container {
+    width: 80%;
+  }
+  .ovh-y-a-M {
+    overflow-y: auto;
+  }
+  .ovh-y-v-M {
+    overflow-y: visible;
+  }
+}
+@media (min-width: $large) {
+  .container {
+    width: $containerSize;
+    max-width: 1400px;
+  }
+  .ovh-y-a-L {
+    overflow-y: auto;
+  }
+  .ovh-y-v-L {
+    overflow-y: visible;
+  }
+}
+@media (min-width: $xlarge) {
+  .container {
+    width: $containerSize;
+    max-width: 1900px;
+  }
+  .ovh-y-a-XL {
+    overflow-y: auto;
+  }
+  .ovh-y-v-XL {
+    overflow-y: visible;
+  }
+}
+
+// Import Styles
+@import "./size.scss";
+@import "./position.scss";
+@import "./padding.scss";
+@import "./margin.scss";
+@import "./flex.scss";
+@import "./border.scss";
+@import "./display.scss";
+@import "./font.scss";
+@import "./radius.scss";
+@import "./zindex.scss";
+@import "./borderPallete.scss";
+@import "./backgroundPallete.scss";
+@import "./colorPallete.scss";
+@import "./svgPallete.scss";

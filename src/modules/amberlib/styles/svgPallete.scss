@@ -1,0 +1,49 @@
+@import "../variables.scss";
+@import "../pallete.scss";
+
+// ===================================================
+// Background Colors Create ==========================
+
+@mixin svgColorCreate($name, $colors) {
+  @each $color in $colors {
+    $i: index($colors, $color);
+    @if $i * 100 > 900 {
+      .svg-s-#{$name}-A#{($i * 100) - 1000} {
+        stroke: $color;
+      }
+      .svg-f-#{$name}-A#{($i * 100) - 1000} {
+        fill: $color;
+      }
+    } @else {
+      .svg-s-#{$name}-#{$i * 100} {
+        stroke: $color;
+      }
+      .svg-f-#{$name}-#{$i * 100} {
+        fill: $color;
+      }
+    }
+  }
+}
+
+// Start Background Color
+@include svgColorCreate("red", $red); // Start Red
+@include svgColorCreate("pink", $pink); // Start Pink
+@include svgColorCreate("purple", $purple); // Start Purple
+@include svgColorCreate("deepPurple", $deepPurple); // Start Deep Purple
+@include svgColorCreate("indigo", $indigo); // Start Indigo
+@include svgColorCreate("blue", $blue); // Start Blue
+@include svgColorCreate("lightBlue", $lightBlue); // Start Light Blue
+@include svgColorCreate("cyan", $cyan); // Start Cyan
+@include svgColorCreate("teal", $teal); // Start Teal
+@include svgColorCreate("green", $green); // Start Green
+@include svgColorCreate("lightGreen", $lightGreen); // Start Light Green
+@include svgColorCreate("lime", $lime); // Start Lime
+@include svgColorCreate("yellow", $yellow); // Start Yellow
+@include svgColorCreate("amber", $amber); // Start Amber
+@include svgColorCreate("orange", $orange); // Start Orange
+@include svgColorCreate("deepOrange", $deepOrange); // Start Deep Orange
+@include svgColorCreate("brown", $brown); // Start Brown
+@include svgColorCreate("gray", $gray); // Start Gray
+@include svgColorCreate("blueGray", $blueGray); // Start Blue
+@include svgColorCreate("black", $black); // Start Black
+@include svgColorCreate("white", $white); // Start White

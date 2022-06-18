@@ -1,0 +1,500 @@
+@use "sass:math";
+@import "../variables.scss";
+
+// ===================================================
+// Width Create ======================================
+
+@mixin widthCreate($size, $counts, $fixed, $coficent) {
+  @for $count from 0 to $counts {
+    @if $fixed {
+      .w-fix-#{$count * 5} {
+        width: $size * $count;
+      }
+      .w-fix-#{$count * 5}min {
+        min-width: $size * $count;
+      }
+      .w-fix-#{$count * 5}max {
+        max-width: $size * $count;
+      }
+      .w-fix-s-#{$count} {
+        width: math.div($size, $coficent) * $count;
+      }
+      .w-fix-s-#{$count}min {
+        min-width: math.div($size, $coficent) * $count;
+      }
+      .w-fix-s-#{$count}max {
+        max-width: math.div($size, $coficent) * $count;
+      }
+    } @else {
+      .w-#{$count * 5} {
+        width: $size * $count;
+      }
+      .w-#{$count * 5}min {
+        min-width: $size * $count;
+      }
+      .w-#{$count * 5}max {
+        max-width: $size * $count;
+      }
+    }
+  }
+  .w-a {
+    width: auto;
+  }
+  .w-14 {
+    width: 14.28%;
+  }
+  .w-33 {
+    width: 33.33%;
+  }
+  .w-66 {
+    width: 66.66%;
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .w-fix-#{$count * 5}-XS {
+          width: $size * $count;
+        }
+        .w-fix-#{$count * 5}min-XS {
+          min-width: $size * $count;
+        }
+        .w-fix-#{$count * 5}max-XS {
+          max-width: $size * $count;
+        }
+        .w-fix-s-#{$count}-XS {
+          width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}min-XS {
+          min-width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}max-XS {
+          max-width: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .w-#{$count * 5}-XS {
+          width: $size * $count;
+        }
+        .w-#{$count * 5}min-XS {
+          min-width: $size * $count;
+        }
+        .w-#{$count * 5}max-XS {
+          max-width: $size * $count;
+        }
+      }
+    }
+    .w-a-XS {
+      width: auto;
+    }
+    .w-14-XS {
+      width: 14.28%;
+    }
+    .w-33-XS {
+      width: 33.33%;
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .w-fix-#{$count * 5}-S {
+          width: $size * $count;
+        }
+        .w-fix-#{$count * 5}min-S {
+          min-width: $size * $count;
+        }
+        .w-fix-#{$count * 5}max-S {
+          max-width: $size * $count;
+        }
+        .w-fix-s-#{$count}-S {
+          width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}min-S {
+          min-width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}max-S {
+          max-width: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .w-#{$count * 5}-S {
+          width: $size * $count;
+        }
+        .w-#{$count * 5}min-S {
+          min-width: $size * $count;
+        }
+        .w-#{$count * 5}max-S {
+          max-width: $size * $count;
+        }
+      }
+    }
+    .w-a-S {
+      width: auto;
+    }
+    .w-14-S {
+      width: 14.28%;
+    }
+    .w-33-S {
+      width: 33.33%;
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .w-fix-#{$count * 5}-M {
+          width: $size * $count;
+        }
+        .w-fix-#{$count * 5}min-M {
+          min-width: $size * $count;
+        }
+        .w-fix-#{$count * 5}max-M {
+          max-width: $size * $count;
+        }
+        .w-fix-s-#{$count}-M {
+          width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}min-M {
+          min-width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}max-M {
+          max-width: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .w-#{$count * 5}-M {
+          width: $size * $count;
+        }
+        .w-#{$count * 5}min-M {
+          min-width: $size * $count;
+        }
+        .w-#{$count * 5}max-M {
+          max-width: $size * $count;
+        }
+      }
+    }
+    .w-a-M {
+      width: auto;
+    }
+    .w-14-M {
+      width: 14.28%;
+    }
+    .w-33-M {
+      width: 33.33%;
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .w-fix-#{$count * 5}-L {
+          width: $size * $count;
+        }
+        .w-fix-#{$count * 5}min-L {
+          min-width: $size * $count;
+        }
+        .w-fix-#{$count * 5}max-L {
+          max-width: $size * $count;
+        }
+        .w-fix-s-#{$count}-L {
+          width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}min-L {
+          min-width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}max-L {
+          max-width: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .w-#{$count * 5}-L {
+          width: $size * $count;
+        }
+        .w-#{$count * 5}min-L {
+          min-width: $size * $count;
+        }
+        .w-#{$count * 5}max-L {
+          max-width: $size * $count;
+        }
+      }
+    }
+    .w-a-L {
+      width: auto;
+    }
+    .w-14-L {
+      width: 14.28%;
+    }
+    .w-33-L {
+      width: 33.33%;
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .w-fix-#{$count * 5}-XL {
+          width: $size * $count;
+        }
+        .w-fix-#{$count * 5}min-XL {
+          min-width: $size * $count;
+        }
+        .w-fix-#{$count * 5}max-XL {
+          max-width: $size * $count;
+        }
+        .w-fix-s-#{$count}-XL {
+          width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}min-XL {
+          min-width: math.div($size, $coficent) * $count;
+        }
+        .w-fix-s-#{$count}max-XL {
+          max-width: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .w-#{$count * 5}-XL {
+          width: $size * $count;
+        }
+        .w-#{$count * 5}min-XL {
+          min-width: $size * $count;
+        }
+        .w-#{$count * 5}max-XL {
+          max-width: $size * $count;
+        }
+      }
+    }
+    .w-a-XL {
+      width: auto;
+    }
+    .w-14-XL {
+      width: 14.28%;
+    }
+    .w-33-XL {
+      width: 33.33%;
+    }
+  }
+}
+
+// Start Width Absolute
+@include widthCreate($widthAbsoluteSize, $widthAbsoluteCount, false, 0);
+
+// Start Width Fixed
+@include widthCreate(
+  $widthFixedSize,
+  $widthFixedCount,
+  true,
+  $widthFixedSizeCoficent
+);
+
+// ====================================================
+// Height Create ======================================
+
+@mixin heightCreate($size, $counts, $fixed, $coficent) {
+  @for $count from 0 to $counts {
+    @if $fixed {
+      .h-fix-#{$count * 5} {
+        height: $size * $count;
+      }
+      .h-fix-#{$count * 5}min {
+        min-height: $size * $count;
+      }
+      .h-fix-#{$count * 5}max {
+        max-height: $size * $count;
+      }
+      .h-fix-s-#{$count} {
+        height: math.div($size, $coficent) * $count;
+      }
+      .h-fix-s-#{$count}min {
+        min-height: math.div($size, $coficent) * $count;
+      }
+      .h-fix-s-#{$count}max {
+        max-height: math.div($size, $coficent) * $count;
+      }
+    } @else {
+      .h-#{$count * 5} {
+        height: $size * $count;
+      }
+      .h-#{$count * 5}min {
+        min-height: $size * $count;
+      }
+      .h-#{$count * 5}max {
+        max-height: $size * $count;
+      }
+    }
+  }
+  .h-a {
+    height: auto;
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .h-fix-#{$count * 5}-XS {
+          height: $size * $count;
+        }
+        .h-fix-#{$count * 5}min-XS {
+          min-height: $size * $count;
+        }
+        .h-fix-#{$count * 5}max-XS {
+          max-height: $size * $count;
+        }
+        .h-fix-s-#{$count}-XS {
+          height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}min-XS {
+          min-height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}max-XS {
+          max-height: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .h-#{$count * 5}-XS {
+          height: $size * $count;
+        }
+        .h-#{$count * 5}min-XS {
+          min-height: $size * $count;
+        }
+        .h-#{$count * 5}max-XS {
+          max-height: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .h-fix-#{$count * 5}-S {
+          height: $size * $count;
+        }
+        .h-fix-#{$count * 5}min-S {
+          min-height: $size * $count;
+        }
+        .h-fix-#{$count * 5}max-S {
+          max-height: $size * $count;
+        }
+        .h-fix-s-#{$count}-S {
+          height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}min-S {
+          min-height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}max-S {
+          max-height: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .h-#{$count * 5}-S {
+          height: $size * $count;
+        }
+        .h-#{$count * 5}min-S {
+          min-height: $size * $count;
+        }
+        .h-#{$count * 5}max-S {
+          max-height: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .h-fix-#{$count * 5}-M {
+          height: $size * $count;
+        }
+        .h-fix-#{$count * 5}min-M {
+          min-height: $size * $count;
+        }
+        .h-fix-#{$count * 5}max-M {
+          max-height: $size * $count;
+        }
+        .h-fix-s-#{$count}-M {
+          height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}min-M {
+          min-height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}max-M {
+          max-height: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .h-#{$count * 5}-M {
+          height: $size * $count;
+        }
+        .h-#{$count * 5}min-M {
+          min-height: $size * $count;
+        }
+        .h-#{$count * 5}max-M {
+          max-height: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .h-fix-#{$count * 5}-L {
+          height: $size * $count;
+        }
+        .h-fix-#{$count * 5}min-L {
+          min-height: $size * $count;
+        }
+        .h-fix-#{$count * 5}max-L {
+          max-height: $size * $count;
+        }
+        .h-fix-s-#{$count}-L {
+          height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}min-L {
+          min-height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}max-L {
+          max-height: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .h-#{$count * 5}-L {
+          height: $size * $count;
+        }
+        .h-#{$count * 5}min-L {
+          min-height: $size * $count;
+        }
+        .h-#{$count * 5}max-L {
+          max-height: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .h-fix-#{$count * 5}-XL {
+          height: $size * $count;
+        }
+        .h-fix-#{$count * 5}min-XL {
+          min-height: $size * $count;
+        }
+        .h-fix-#{$count * 5}max-XL {
+          max-height: $size * $count;
+        }
+        .h-fix-s-#{$count}-XL {
+          height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}min-XL {
+          min-height: math.div($size, $coficent) * $count;
+        }
+        .h-fix-s-#{$count}max-XL {
+          max-height: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .h-#{$count * 5}-XL {
+          height: $size * $count;
+        }
+        .h-#{$count * 5}min-XL {
+          min-height: $size * $count;
+        }
+        .h-#{$count * 5}max-XL {
+          max-height: $size * $count;
+        }
+      }
+    }
+  }
+}
+
+// Start Height Absolute
+@include heightCreate($heightAbsoluteSize, $heightAbsoluteCount, false, 0);
+
+// Start Height Fixed
+@include heightCreate(
+  $heightFixedSize,
+  $heightFixedCount,
+  true,
+  $heightFixedSizeCoficent
+);

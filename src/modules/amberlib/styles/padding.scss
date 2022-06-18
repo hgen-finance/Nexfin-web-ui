@@ -1,0 +1,170 @@
+@import "../variables.scss";
+
+// ===================================================
+// Padding Create ======================================
+
+@mixin paddingCreate($size, $coficent, $counts) {
+  @for $count from 0 to $counts {
+    .p-#{$count} {
+      padding: $size * ($coficent * $count);
+    }
+    .px-#{$count} {
+      padding-left: $size * ($coficent * $count);
+      padding-right: $size * ($coficent * $count);
+    }
+    .py-#{$count} {
+      padding-top: $size * ($coficent * $count);
+      padding-bottom: $size * ($coficent * $count);
+    }
+    .pl-#{$count} {
+      padding-left: $size * ($coficent * $count);
+    }
+    .pt-#{$count} {
+      padding-top: $size * ($coficent * $count);
+    }
+    .pr-#{$count} {
+      padding-right: $size * ($coficent * $count);
+    }
+    .pb-#{$count} {
+      padding-bottom: $size * ($coficent * $count);
+    }
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .p-#{$count}-XS {
+        padding: $size * ($coficent * $count);
+      }
+      .px-#{$count}-XS {
+        padding-left: $size * ($coficent * $count);
+        padding-right: $size * ($coficent * $count);
+      }
+      .py-#{$count}-XS {
+        padding-top: $size * ($coficent * $count);
+        padding-bottom: $size * ($coficent * $count);
+      }
+      .pl-#{$count}-XS {
+        padding-left: $size * ($coficent * $count);
+      }
+      .pt-#{$count}-XS {
+        padding-top: $size * ($coficent * $count);
+      }
+      .pr-#{$count}-XS {
+        padding-right: $size * ($coficent * $count);
+      }
+      .pb-#{$count}-XS {
+        padding-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .p-#{$count}-S {
+        padding: $size * ($coficent * $count);
+      }
+      .px-#{$count}-S {
+        padding-left: $size * ($coficent * $count);
+        padding-right: $size * ($coficent * $count);
+      }
+      .py-#{$count}-S {
+        padding-top: $size * ($coficent * $count);
+        padding-bottom: $size * ($coficent * $count);
+      }
+      .pl-#{$count}-S {
+        padding-left: $size * ($coficent * $count);
+      }
+      .pt-#{$count}-S {
+        padding-top: $size * ($coficent * $count);
+      }
+      .pr-#{$count}-S {
+        padding-right: $size * ($coficent * $count);
+      }
+      .pb-#{$count}-S {
+        padding-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .p-#{$count}-M {
+        padding: $size * ($coficent * $count);
+      }
+      .px-#{$count}-M {
+        padding-left: $size * ($coficent * $count);
+        padding-right: $size * ($coficent * $count);
+      }
+      .py-#{$count}-M {
+        padding-top: $size * ($coficent * $count);
+        padding-bottom: $size * ($coficent * $count);
+      }
+      .pl-#{$count}-M {
+        padding-left: $size * ($coficent * $count);
+      }
+      .pt-#{$count}-M {
+        padding-top: $size * ($coficent * $count);
+      }
+      .pr-#{$count}-M {
+        padding-right: $size * ($coficent * $count);
+      }
+      .pb-#{$count}-M {
+        padding-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .p-#{$count}-L {
+        padding: $size * ($coficent * $count);
+      }
+      .px-#{$count}-L {
+        padding-left: $size * ($coficent * $count);
+        padding-right: $size * ($coficent * $count);
+      }
+      .py-#{$count}-L {
+        padding-top: $size * ($coficent * $count);
+        padding-bottom: $size * ($coficent * $count);
+      }
+      .pl-#{$count}-L {
+        padding-left: $size * ($coficent * $count);
+      }
+      .pt-#{$count}-L {
+        padding-top: $size * ($coficent * $count);
+      }
+      .pr-#{$count}-L {
+        padding-right: $size * ($coficent * $count);
+      }
+      .pb-#{$count}-L {
+        padding-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .p-#{$count}-XL {
+        padding: $size * ($coficent * $count);
+      }
+      .px-#{$count}-XL {
+        padding-left: $size * ($coficent * $count);
+        padding-right: $size * ($coficent * $count);
+      }
+      .py-#{$count}-XL {
+        padding-top: $size * ($coficent * $count);
+        padding-bottom: $size * ($coficent * $count);
+      }
+      .pl-#{$count}-XL {
+        padding-left: $size * ($coficent * $count);
+      }
+      .pt-#{$count}-XL {
+        padding-top: $size * ($coficent * $count);
+      }
+      .pr-#{$count}-XL {
+        padding-right: $size * ($coficent * $count);
+      }
+      .pb-#{$count}-XL {
+        padding-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+}
+
+// Start Padding Fixed
+@include paddingCreate($paddingSize, $paddingSizeCoficent, $paddingSizeCount);

@@ -1,0 +1,621 @@
+@import "../variables.scss";
+
+// ===================================================
+// Border Create =====================================
+
+@mixin borderCreate($size, $coficent, $counts) {
+  @for $count from 0 to $counts {
+    .br-#{$count} {
+      border-width: $size * ($coficent * $count);
+    }
+    .brx-#{$count} {
+      border-left-width: $size * ($coficent * $count);
+      border-right-width: $size * ($coficent * $count);
+    }
+    .bry-#{$count} {
+      border-top-width: $size * ($coficent * $count);
+      border-bottom-width: $size * ($coficent * $count);
+    }
+    .brl-#{$count} {
+      border-left-width: $size * ($coficent * $count);
+    }
+    .brt-#{$count} {
+      border-top-width: $size * ($coficent * $count);
+    }
+    .brr-#{$count} {
+      border-right-width: $size * ($coficent * $count);
+    }
+    .brb-#{$count} {
+      border-bottom-width: $size * ($coficent * $count);
+    }
+  }
+
+  // solid
+  .brs-s {
+    border-style: solid;
+  }
+  .brxs-s {
+    border-left-style: solid;
+    border-right-style: solid;
+  }
+  .brys-s {
+    border-top-style: solid;
+    border-bottom-style: solid;
+  }
+  .brls-s {
+    border-left-style: solid;
+  }
+  .brts-s {
+    border-top-style: solid;
+  }
+  .brrs-s {
+    border-right-style: solid;
+  }
+  .brbs-s {
+    border-bottom-style: solid;
+  }
+
+  // dashed
+  .brs-d {
+    border-style: dashed;
+  }
+  .brxs-d {
+    border-left-style: dashed;
+    border-right-style: dashed;
+  }
+  .brys-d {
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+  }
+  .brls-d {
+    border-left-style: dashed;
+  }
+  .brts-d {
+    border-top-style: dashed;
+  }
+  .brrs-d {
+    border-right-style: dashed;
+  }
+  .brbs-d {
+    border-bottom-style: dashed;
+  }
+
+  // dotted
+  .brs-dt {
+    border-style: dotted;
+  }
+  .brxs-dt {
+    border-left-style: dotted;
+    border-right-style: dotted;
+  }
+  .brys-dt {
+    border-top-style: dotted;
+    border-bottom-style: dotted;
+  }
+  .brls-dt {
+    border-left-style: dotted;
+  }
+  .brts-dt {
+    border-top-style: dotted;
+  }
+  .brrs-dt {
+    border-right-style: dotted;
+  }
+  .brbs-dt {
+    border-bottom-style: dotted;
+  }
+
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .br-#{$count}-XS {
+        border-width: $size * ($coficent * $count);
+      }
+      .brx-#{$count}-XS {
+        border-left-width: $size * ($coficent * $count);
+        border-right-width: $size * ($coficent * $count);
+      }
+      .bry-#{$count}-XS {
+        border-top-width: $size * ($coficent * $count);
+        border-bottom-width: $size * ($coficent * $count);
+      }
+      .brl-#{$count}-XS {
+        border-left-width: $size * ($coficent * $count);
+      }
+      .brt-#{$count}-XS {
+        border-top-width: $size * ($coficent * $count);
+      }
+      .brr-#{$count}-XS {
+        border-right-width: $size * ($coficent * $count);
+      }
+      .brb-#{$count}-XS {
+        border-bottom-width: $size * ($coficent * $count);
+      }
+    }
+
+    // solid
+    .brs-s-XS {
+      border-style: solid;
+    }
+    .brxs-s-XS {
+      border-left-style: solid;
+      border-right-style: solid;
+    }
+    .brys-s-XS {
+      border-top-style: solid;
+      border-bottom-style: solid;
+    }
+    .brls-s-XS {
+      border-left-style: solid;
+    }
+    .brts-s-XS {
+      border-top-style: solid;
+    }
+    .brrs-s-XS {
+      border-right-style: solid;
+    }
+    .brbs-s-XS {
+      border-bottom-style: solid;
+    }
+
+    // dashed
+    .brs-d-XS {
+      border-style: dashed;
+    }
+    .brxs-d-XS {
+      border-left-style: dashed;
+      border-right-style: dashed;
+    }
+    .brys-d-XS {
+      border-top-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .brls-d-XS {
+      border-left-style: dashed;
+    }
+    .brts-d-XS {
+      border-top-style: dashed;
+    }
+    .brrs-d-XS {
+      border-right-style: dashed;
+    }
+    .brbs-d-XS {
+      border-bottom-style: dashed;
+    }
+
+    // dotted
+    .brs-dt-XS {
+      border-style: dotted;
+    }
+    .brxs-dt-XS {
+      border-left-style: dotted;
+      border-right-style: dotted;
+    }
+    .brys-dt-XS {
+      border-top-style: dotted;
+      border-bottom-style: dotted;
+    }
+    .brls-dt-XS {
+      border-left-style: dotted;
+    }
+    .brts-dt-XS {
+      border-top-style: dotted;
+    }
+    .brrs-dt-XS {
+      border-right-style: dotted;
+    }
+    .brbs-dt-XS {
+      border-bottom-style: dotted;
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .br-#{$count}-S {
+        border-width: $size * ($coficent * $count);
+      }
+      .brx-#{$count}-S {
+        border-left-width: $size * ($coficent * $count);
+        border-right-width: $size * ($coficent * $count);
+      }
+      .bry-#{$count}-S {
+        border-top-width: $size * ($coficent * $count);
+        border-bottom-width: $size * ($coficent * $count);
+      }
+      .brl-#{$count}-S {
+        border-left-width: $size * ($coficent * $count);
+      }
+      .brt-#{$count}-S {
+        border-top-width: $size * ($coficent * $count);
+      }
+      .brr-#{$count}-S {
+        border-right-width: $size * ($coficent * $count);
+      }
+      .brb-#{$count}-S {
+        border-bottom-width: $size * ($coficent * $count);
+      }
+    }
+
+    // solid
+    .brs-s-S {
+      border-style: solid;
+    }
+    .brxs-s-S {
+      border-left-style: solid;
+      border-right-style: solid;
+    }
+    .brys-s-S {
+      border-top-style: solid;
+      border-bottom-style: solid;
+    }
+    .brls-s-S {
+      border-left-style: solid;
+    }
+    .brts-s-S {
+      border-top-style: solid;
+    }
+    .brrs-s-S {
+      border-right-style: solid;
+    }
+    .brbs-s-S {
+      border-bottom-style: solid;
+    }
+
+    // dashed
+    .brs-d-S {
+      border-style: dashed;
+    }
+    .brxs-d-S {
+      border-left-style: dashed;
+      border-right-style: dashed;
+    }
+    .brys-d-S {
+      border-top-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .brls-d-S {
+      border-left-style: dashed;
+    }
+    .brts-d-S {
+      border-top-style: dashed;
+    }
+    .brrs-d-S {
+      border-right-style: dashed;
+    }
+    .brbs-d-S {
+      border-bottom-style: dashed;
+    }
+
+    // dotted
+    .brs-dt-S {
+      border-style: dotted;
+    }
+    .brxs-dt-S {
+      border-left-style: dotted;
+      border-right-style: dotted;
+    }
+    .brys-dt-S {
+      border-top-style: dotted;
+      border-bottom-style: dotted;
+    }
+    .brls-dt-S {
+      border-left-style: dotted;
+    }
+    .brts-dt-S {
+      border-top-style: dotted;
+    }
+    .brrs-dt-S {
+      border-right-style: dotted;
+    }
+    .brbs-dt-S {
+      border-bottom-style: dotted;
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .br-#{$count}-M {
+        border-width: $size * ($coficent * $count);
+      }
+      .brx-#{$count}-M {
+        border-left-width: $size * ($coficent * $count);
+        border-right-width: $size * ($coficent * $count);
+      }
+      .bry-#{$count}-M {
+        border-top-width: $size * ($coficent * $count);
+        border-bottom-width: $size * ($coficent * $count);
+      }
+      .brl-#{$count}-M {
+        border-left-width: $size * ($coficent * $count);
+      }
+      .brt-#{$count}-M {
+        border-top-width: $size * ($coficent * $count);
+      }
+      .brr-#{$count}-M {
+        border-right-width: $size * ($coficent * $count);
+      }
+      .brb-#{$count}-M {
+        border-bottom-width: $size * ($coficent * $count);
+      }
+    }
+
+    // solid
+    .brs-s-M {
+      border-style: solid;
+    }
+    .brxs-s-M {
+      border-left-style: solid;
+      border-right-style: solid;
+    }
+    .brys-s-M {
+      border-top-style: solid;
+      border-bottom-style: solid;
+    }
+    .brls-s-M {
+      border-left-style: solid;
+    }
+    .brts-s-M {
+      border-top-style: solid;
+    }
+    .brrs-s-M {
+      border-right-style: solid;
+    }
+    .brbs-s-M {
+      border-bottom-style: solid;
+    }
+
+    // dashed
+    .brs-d-M {
+      border-style: dashed;
+    }
+    .brxs-d-M {
+      border-left-style: dashed;
+      border-right-style: dashed;
+    }
+    .brys-d-M {
+      border-top-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .brls-d-M {
+      border-left-style: dashed;
+    }
+    .brts-d-M {
+      border-top-style: dashed;
+    }
+    .brrs-d-M {
+      border-right-style: dashed;
+    }
+    .brbs-d-M {
+      border-bottom-style: dashed;
+    }
+
+    // dotted
+    .brs-dt-M {
+      border-style: dotted;
+    }
+    .brxs-dt-M {
+      border-left-style: dotted;
+      border-right-style: dotted;
+    }
+    .brys-dt-M {
+      border-top-style: dotted;
+      border-bottom-style: dotted;
+    }
+    .brls-dt-M {
+      border-left-style: dotted;
+    }
+    .brts-dt-M {
+      border-top-style: dotted;
+    }
+    .brrs-dt-M {
+      border-right-style: dotted;
+    }
+    .brbs-dt-M {
+      border-bottom-style: dotted;
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .br-#{$count}-L {
+        border-width: $size * ($coficent * $count);
+      }
+      .brx-#{$count}-L {
+        border-left-width: $size * ($coficent * $count);
+        border-right-width: $size * ($coficent * $count);
+      }
+      .bry-#{$count}-L {
+        border-top-width: $size * ($coficent * $count);
+        border-bottom-width: $size * ($coficent * $count);
+      }
+      .brl-#{$count}-L {
+        border-left-width: $size * ($coficent * $count);
+      }
+      .brt-#{$count}-L {
+        border-top-width: $size * ($coficent * $count);
+      }
+      .brr-#{$count}-L {
+        border-right-width: $size * ($coficent * $count);
+      }
+      .brb-#{$count}-L {
+        border-bottom-width: $size * ($coficent * $count);
+      }
+    }
+
+    // solid
+    .brs-s-L {
+      border-style: solid;
+    }
+    .brxs-s-L {
+      border-left-style: solid;
+      border-right-style: solid;
+    }
+    .brys-s-L {
+      border-top-style: solid;
+      border-bottom-style: solid;
+    }
+    .brls-s-L {
+      border-left-style: solid;
+    }
+    .brts-s-L {
+      border-top-style: solid;
+    }
+    .brrs-s-L {
+      border-right-style: solid;
+    }
+    .brbs-s-L {
+      border-bottom-style: solid;
+    }
+
+    // dashed
+    .brs-d-L {
+      border-style: dashed;
+    }
+    .brxs-d-L {
+      border-left-style: dashed;
+      border-right-style: dashed;
+    }
+    .brys-d-L {
+      border-top-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .brls-d-L {
+      border-left-style: dashed;
+    }
+    .brts-d-L {
+      border-top-style: dashed;
+    }
+    .brrs-d-L {
+      border-right-style: dashed;
+    }
+    .brbs-d-L {
+      border-bottom-style: dashed;
+    }
+
+    // dotted
+    .brs-dt-L {
+      border-style: dotted;
+    }
+    .brxs-dt-L-L {
+      border-left-style: dotted;
+      border-right-style: dotted;
+    }
+    .brys-dt-L {
+      border-top-style: dotted;
+      border-bottom-style: dotted;
+    }
+    .brls-dt-L {
+      border-left-style: dotted;
+    }
+    .brts-dt-L {
+      border-top-style: dotted;
+    }
+    .brrs-dt-L {
+      border-right-style: dotted;
+    }
+    .brbs-dt-L {
+      border-bottom-style: dotted;
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .br-#{$count}-XL {
+        border-width: $size * ($coficent * $count);
+      }
+      .brx-#{$count}-XL {
+        border-left-width: $size * ($coficent * $count);
+        border-right-width: $size * ($coficent * $count);
+      }
+      .bry-#{$count}-XL {
+        border-top-width: $size * ($coficent * $count);
+        border-bottom-width: $size * ($coficent * $count);
+      }
+      .brl-#{$count}-XL {
+        border-left-width: $size * ($coficent * $count);
+      }
+      .brt-#{$count}-XL {
+        border-top-width: $size * ($coficent * $count);
+      }
+      .brr-#{$count}-XL {
+        border-right-width: $size * ($coficent * $count);
+      }
+      .brb-#{$count}-XL {
+        border-bottom-width: $size * ($coficent * $count);
+      }
+    }
+
+    // solid
+    .brs-s-XL {
+      border-style: solid;
+    }
+    .brxs-s-XL {
+      border-left-style: solid;
+      border-right-style: solid;
+    }
+    .brys-s-XL {
+      border-top-style: solid;
+      border-bottom-style: solid;
+    }
+    .brls-s-XL {
+      border-left-style: solid;
+    }
+    .brts-s-XL {
+      border-top-style: solid;
+    }
+    .brrs-s-XL {
+      border-right-style: solid;
+    }
+    .brbs-s-XL {
+      border-bottom-style: solid;
+    }
+
+    // dashed
+    .brs-d-XL {
+      border-style: dashed;
+    }
+    .brxs-d-XL {
+      border-left-style: dashed;
+      border-right-style: dashed;
+    }
+    .brys-d-XL {
+      border-top-style: dashed;
+      border-bottom-style: dashed;
+    }
+    .brls-d-XL {
+      border-left-style: dashed;
+    }
+    .brts-d-XL {
+      border-top-style: dashed;
+    }
+    .brrs-d-XL {
+      border-right-style: dashed;
+    }
+    .brbs-d-XL {
+      border-bottom-style: dashed;
+    }
+
+    // dotted
+    .brs-dt-XL {
+      border-style: dotted;
+    }
+    .brxs-dt-XL {
+      border-left-style: dotted;
+      border-right-style: dotted;
+    }
+    .brys-dt-XL {
+      border-top-style: dotted;
+      border-bottom-style: dotted;
+    }
+    .brls-dt-XL {
+      border-left-style: dotted;
+    }
+    .brts-dt-XL {
+      border-top-style: dotted;
+    }
+    .brrs-dt-XL {
+      border-right-style: dotted;
+    }
+    .brbs-dt-XL {
+      border-bottom-style: dotted;
+    }
+  }
+}
+
+// Start Padding Fixed
+@include borderCreate($borderSize, $borderSizeCoficent, $borderSizeCount);

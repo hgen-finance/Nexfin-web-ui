@@ -1,0 +1,166 @@
+@import "../variables.scss";
+
+// ===================================================
+// Display Create ====================================
+
+.d-f {
+  display: flex;
+}
+.d-b {
+  display: block;
+}
+.d-n {
+  display: none;
+}
+.d-li {
+  display: list-item;
+}
+.d-ib {
+  display: inline-block;
+}
+.d-i {
+  display: inline;
+}
+
+.o-0 {
+  opacity: 0;
+}
+.c-p {
+  cursor: pointer;
+}
+
+@media (max-width: $small) {
+  .d-f-XS {
+    display: flex;
+  }
+  .d-b-XS {
+    display: block;
+  }
+  .d-n-XS {
+    display: none;
+  }
+  .d-li-XS {
+    display: list-item;
+  }
+  .d-ib-XS {
+    display: inline-block;
+  }
+  .d-i-XS {
+    display: inline;
+  }
+
+  .o-0-XS {
+    opacity: 0;
+  }
+  .c-p-XS {
+    cursor: pointer;
+  }
+}
+@media (min-width: $small) {
+  .d-f-S {
+    display: flex;
+  }
+  .d-b-S {
+    display: block;
+  }
+  .d-n-S {
+    display: none;
+  }
+  .d-li-S {
+    display: list-item;
+  }
+  .d-ib-S {
+    display: inline-block;
+  }
+  .d-i-S {
+    display: inline;
+  }
+
+  .o-0-S {
+    opacity: 0;
+  }
+  .c-p-S {
+    cursor: pointer;
+  }
+}
+@media (min-width: $medium) {
+  .d-f-M {
+    display: flex;
+  }
+  .d-b-M {
+    display: block;
+  }
+  .d-n-M {
+    display: none;
+  }
+  .d-li-M {
+    display: list-item;
+  }
+  .d-ib-M {
+    display: inline-block;
+  }
+  .d-i-M {
+    display: inline;
+  }
+
+  .o-0-M {
+    opacity: 0;
+  }
+  .c-p-M {
+    cursor: pointer;
+  }
+}
+@media (min-width: $large) {
+  .d-f-L {
+    display: flex;
+  }
+  .d-b-L {
+    display: block;
+  }
+  .d-n-L {
+    display: none;
+  }
+  .d-li-L {
+    display: list-item;
+  }
+  .d-ib-L {
+    display: inline-block;
+  }
+  .d-i-L {
+    display: inline;
+  }
+
+  .o-0-L {
+    opacity: 0;
+  }
+  .c-p-L {
+    cursor: pointer;
+  }
+}
+@media (min-width: $xlarge) {
+  .d-f-XL {
+    display: flex;
+  }
+  .d-b-XL {
+    display: block;
+  }
+  .d-n-XL {
+    display: none;
+  }
+  .d-li-XL {
+    display: list-item;
+  }
+  .d-ib-XL {
+    display: inline-block;
+  }
+  .d-i-XL {
+    display: inline;
+  }
+
+  .o-0-XL {
+    opacity: 0;
+  }
+  .c-p-XL {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,43 @@
+@import "../variables.scss";
+@import "../pallete.scss";
+
+// ===================================================
+// Background Colors Create ==========================
+
+@mixin backgroundColorCreate($name, $colors) {
+  @each $color in $colors {
+    $i: index($colors, $color);
+    @if $i * 100 > 900 {
+      .#{$name}-A#{($i * 100) - 1000} {
+        background-color: $color;
+      }
+    } @else {
+      .#{$name}-#{$i * 100} {
+        background-color: $color;
+      }
+    }
+  }
+}
+
+// Start Background Color
+@include backgroundColorCreate("red", $red); // Start Red
+@include backgroundColorCreate("pink", $pink); // Start Pink
+@include backgroundColorCreate("purple", $purple); // Start Purple
+@include backgroundColorCreate("deepPurple", $deepPurple); // Start Deep Purple
+@include backgroundColorCreate("indigo", $indigo); // Start Indigo
+@include backgroundColorCreate("blue", $blue); // Start Blue
+@include backgroundColorCreate("lightBlue", $lightBlue); // Start Light Blue
+@include backgroundColorCreate("cyan", $cyan); // Start Cyan
+@include backgroundColorCreate("teal", $teal); // Start Teal
+@include backgroundColorCreate("green", $green); // Start Green
+@include backgroundColorCreate("lightGreen", $lightGreen); // Start Light Green
+@include backgroundColorCreate("lime", $lime); // Start Lime
+@include backgroundColorCreate("yellow", $yellow); // Start Yellow
+@include backgroundColorCreate("amber", $amber); // Start Amber
+@include backgroundColorCreate("orange", $orange); // Start Orange
+@include backgroundColorCreate("deepOrange", $deepOrange); // Start Deep Orange
+@include backgroundColorCreate("brown", $brown); // Start Brown
+@include backgroundColorCreate("gray", $gray); // Start Gray
+@include backgroundColorCreate("blueGray", $blueGray); // Start Blue
+@include backgroundColorCreate("black", $black); // Start Black
+@include backgroundColorCreate("white", $white); // Start White

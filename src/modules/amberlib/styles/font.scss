@@ -1,0 +1,405 @@
+@import "../variables.scss";
+
+// ===================================================
+// Font Create ======================================
+
+@mixin fontCreate($size, $coficent, $counts) {
+  @for $count from 0 to $counts {
+    .fs-#{$count} {
+      font-size: $size * ($coficent * $count);
+    }
+  }
+
+  // Align
+  .ta-c {
+    text-align: center;
+  }
+  .ta-l {
+    text-align: left;
+  }
+  .ta-r {
+    text-align: right;
+  }
+
+  // Style
+  .fs-i {
+    font-style: italic;
+  }
+  .fs-n {
+    font-style: normal;
+  }
+
+  // Decoration
+  .td-th {
+    text-decoration: line-through;
+  }
+  .td-th {
+    text-decoration: overline;
+  }
+  .td-o {
+    text-decoration: overline;
+  }
+  .td-u {
+    text-decoration: underline;
+  }
+  .td-n {
+    text-decoration: none;
+  }
+
+  // Transform
+  .tt-u {
+    text-transform: uppercase;
+  }
+  .tt-i {
+    text-transform: inherit;
+  }
+  .tt-n {
+    text-transform: none;
+  }
+
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .fs-#{$count}-XS {
+        font-size: $size * ($coficent * $count);
+      }
+    }
+
+    // Align
+    .ta-c-XS {
+      text-align: center;
+    }
+    .ta-l-XS {
+      text-align: left;
+    }
+    .ta-r-XS {
+      text-align: right;
+    }
+
+    // Style
+    .fs-i-XS {
+      font-style: italic;
+    }
+    .fs-n-XS {
+      font-style: normal;
+    }
+
+    // Decoration
+    .td-th-XS {
+      text-decoration: line-through;
+    }
+    .td-th-XS {
+      text-decoration: overline;
+    }
+    .td-o-XS {
+      text-decoration: overline;
+    }
+    .td-u-XS {
+      text-decoration: underline;
+    }
+    .td-n-XS {
+      text-decoration: none;
+    }
+
+    // Transform
+    .tt-u-XS {
+      text-transform: uppercase;
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .fs-#{$count}-S {
+        font-size: $size * ($coficent * $count);
+      }
+    }
+
+    // Align
+    .ta-c-S {
+      text-align: center;
+    }
+    .ta-l-S {
+      text-align: left;
+    }
+    .ta-r-S {
+      text-align: right;
+    }
+
+    // Style
+    .fs-i-S {
+      font-style: italic;
+    }
+    .fs-n-S {
+      font-style: normal;
+    }
+
+    // Decoration
+    .td-th-S {
+      text-decoration: line-through;
+    }
+    .td-th-S {
+      text-decoration: overline;
+    }
+    .td-o-S {
+      text-decoration: overline;
+    }
+    .td-u-S {
+      text-decoration: underline;
+    }
+    .td-n-S {
+      text-decoration: none;
+    }
+
+    // Transform
+    .tt-u-S {
+      text-transform: uppercase;
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .fs-#{$count}-M {
+        font-size: $size * ($coficent * $count);
+      }
+    }
+
+    // Align
+    .ta-c-M {
+      text-align: center;
+    }
+    .ta-l-M {
+      text-align: left;
+    }
+    .ta-r-M {
+      text-align: right;
+    }
+
+    // Style
+    .fs-i-M {
+      font-style: italic;
+    }
+    .fs-n-M {
+      font-style: normal;
+    }
+
+    // Decoration
+    .td-th-M {
+      text-decoration: line-through;
+    }
+    .td-th-M {
+      text-decoration: overline;
+    }
+    .td-o-M {
+      text-decoration: overline;
+    }
+    .td-u-M {
+      text-decoration: underline;
+    }
+    .td-n-M {
+      text-decoration: none;
+    }
+
+    // Transform
+    .tt-u-M {
+      text-transform: uppercase;
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .fs-#{$count}-L {
+        font-size: $size * ($coficent * $count);
+      }
+    }
+
+    // Align
+    .ta-c-L {
+      text-align: center;
+    }
+    .ta-l-L {
+      text-align: left;
+    }
+    .ta-r-L {
+      text-align: right;
+    }
+
+    // Style
+    .fs-i-L {
+      font-style: italic;
+    }
+    .fs-n-L {
+      font-style: normal;
+    }
+
+    // Decoration
+    .td-th-L {
+      text-decoration: line-through;
+    }
+    .td-th-L {
+      text-decoration: overline;
+    }
+    .td-o-L {
+      text-decoration: overline;
+    }
+    .td-u-L {
+      text-decoration: underline;
+    }
+    .td-n-L {
+      text-decoration: none;
+    }
+
+    // Transform
+    .tt-u-L {
+      text-transform: uppercase;
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .fs-#{$count}-XL {
+        font-size: $size * ($coficent * $count);
+      }
+    }
+
+    // Align
+    .ta-c-XL {
+      text-align: center;
+    }
+    .ta-l-XL {
+      text-align: left;
+    }
+    .ta-r-XL {
+      text-align: right;
+    }
+
+    // Style
+    .fs-i-XL {
+      font-style: italic;
+    }
+    .fs-n-XL {
+      font-style: normal;
+    }
+
+    // Decoration
+    .td-th-XL {
+      text-decoration: line-through;
+    }
+    .td-th-XL {
+      text-decoration: overline;
+    }
+    .td-o-XL {
+      text-decoration: overline;
+    }
+    .td-u-XL {
+      text-decoration: underline;
+    }
+    .td-n-XL {
+      text-decoration: none;
+    }
+
+    // Transform
+    .tt-u-XL {
+      text-transform: uppercase;
+    }
+  }
+}
+
+// Start Font Fixed
+@include fontCreate($fontSize, $fontSizeCoficent, $fontSizeCount);
+
+// ====================================================
+// Line Height ========================================
+
+@mixin lineHeightCreate($size, $coficent, $counts) {
+  @for $count from 0 to $counts {
+    .f-lh-#{$count} {
+      line-height: $size * ($coficent * $count);
+    }
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .f-lh-#{$count}-XS {
+        line-height: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .f-lh-#{$count}-S {
+        line-height: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .f-lh-#{$count}-M {
+        line-height: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .f-lh-#{$count}-L {
+        line-height: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .f-lh-#{$count}-XL {
+        line-height: $size * ($coficent * $count);
+      }
+    }
+  }
+}
+
+// Start Line Height Fixed
+@include lineHeightCreate(
+  $lineHeightSize,
+  $lineHeightSizeCoficent,
+  $lineHeightSizeCount
+);
+
+// ====================================================
+// Font Weight ========================================
+
+@mixin fontWeightCreate($size, $counts) {
+  @for $count from 0 to $counts {
+    .fw-#{$size * $count} {
+      font-weight: $size * $count;
+    }
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .fw-#{$size * $count}-XS {
+        font-weight: $size * $count;
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .fw-#{$size * $count}-S {
+        font-weight: $size * $count;
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .fw-#{$size * $count}-M {
+        font-weight: $size * $count;
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .fw-#{$size * $count}-L {
+        font-weight: $size * $count;
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .fw-#{$size * $count}-XL {
+        font-weight: $size * $count;
+      }
+    }
+  }
+}
+
+// Start Font Weight Fixed
+@include fontWeightCreate(100, 10);

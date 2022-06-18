@@ -1,0 +1,89 @@
+@import "../variables.scss";
+
+// ===================================================
+// Border Radius Create ==============================
+
+@mixin borderRadiusCreate($size, $counts, $fixed) {
+  @for $count from 0 to $counts {
+    @if $fixed {
+      .rad-fix-#{$count} {
+        border-radius: $size * $count;
+      }
+    } @else {
+      .rad-#{$count * 5} {
+        border-radius: $size * $count;
+      }
+    }
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .rad-fix-#{$count}-XS {
+          border-radius: $size * $count;
+        }
+      } @else {
+        .rad-#{$count * 5}-XS {
+          border-radius: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .rad-fix-#{$count}-S {
+          border-radius: $size * $count;
+        }
+      } @else {
+        .rad-#{$count * 5}-S {
+          border-radius: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .rad-fix-#{$count}-M {
+          border-radius: $size * $count;
+        }
+      } @else {
+        .rad-#{$count * 5}-M {
+          border-radius: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .rad-fix-#{$count}-L {
+          border-radius: $size * $count;
+        }
+      } @else {
+        .rad-#{$count * 5}-L {
+          border-radius: $size * $count;
+        }
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .rad-fix-#{$count}-XL {
+          border-radius: $size * $count;
+        }
+      } @else {
+        .rad-#{$count * 5}-XL {
+          border-radius: $size * $count;
+        }
+      }
+    }
+  }
+}
+
+// Start Border Radius Absolute
+@include borderRadiusCreate($radiusAbsoluteSize, $radiusAbsoluteCount, false);
+
+// Start Border Radius Fixed
+@include borderRadiusCreate($radiusFixedSize, $radiusFixedCount, true);

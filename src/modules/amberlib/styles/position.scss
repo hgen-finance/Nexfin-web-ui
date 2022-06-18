@@ -1,0 +1,401 @@
+@use "sass:math";
+@import "../variables.scss";
+
+// ===================================================
+// Position Create ===================================
+
+@mixin positionCreate($size, $counts, $fixed, $coficent) {
+  @for $count from 0 to $counts {
+    @if $fixed {
+      .l-fix-#{$count * 5} {
+        left: $size * $count;
+      }
+      .t-fix-#{$count * 5} {
+        top: $size * $count;
+      }
+      .r-fix-#{$count * 5} {
+        right: $size * $count;
+      }
+      .b-fix-#{$count * 5} {
+        bottom: $size * $count;
+      }
+      .l-fix-s-#{$count} {
+        left: math.div($size, $coficent) * $count;
+      }
+      .t-fix-s-#{$count} {
+        top: math.div($size, $coficent) * $count;
+      }
+      .r-fix-s-#{$count} {
+        right: math.div($size, $coficent) * $count;
+      }
+      .b-fix-s-#{$count} {
+        bottom: math.div($size, $coficent) * $count;
+      }
+    } @else {
+      .l-#{$count * 5} {
+        left: $size * $count;
+      }
+      .t-#{$count * 5} {
+        top: $size * $count;
+      }
+      .r-#{$count * 5} {
+        right: $size * $count;
+      }
+      .b-#{$count * 5} {
+        bottom: $size * $count;
+      }
+    }
+  }
+  .l-a {
+    left: auto;
+  }
+  .t-a {
+    top: auto;
+  }
+  .r-a {
+    right: auto;
+  }
+  .b-a {
+    bottom: auto;
+  }
+  .p-a {
+    position: absolute;
+  }
+  .p-r {
+    position: relative;
+  }
+  .p-f {
+    position: fixed;
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .l-fix-#{$count * 5}-XS {
+          left: $size * $count;
+        }
+        .t-fix-#{$count * 5}-XS {
+          top: $size * $count;
+        }
+        .r-fix-#{$count * 5}-XS {
+          right: $size * $count;
+        }
+        .b-fix-#{$count * 5}-XS {
+          bottom: $size * $count;
+        }
+        .l-fix-s-#{$count}-XS {
+          left: math.div($size, $coficent) * $count;
+        }
+        .t-fix-s-#{$count}-XS {
+          top: math.div($size, $coficent) * $count;
+        }
+        .r-fix-s-#{$count}-XS {
+          right: math.div($size, $coficent) * $count;
+        }
+        .b-fix-s-#{$count}-XS {
+          bottom: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .l-#{$count * 5}-XS {
+          left: $size * $count;
+        }
+        .t-#{$count * 5}-XS {
+          top: $size * $count;
+        }
+        .r-#{$count * 5}-XS {
+          right: $size * $count;
+        }
+        .b-#{$count * 5}-XS {
+          bottom: $size * $count;
+        }
+      }
+    }
+    .l-a-XS {
+      left: auto;
+    }
+    .t-a-XS {
+      top: auto;
+    }
+    .r-a-XS {
+      right: auto;
+    }
+    .b-a-XS {
+      bottom: auto;
+    }
+    .p-a-XS {
+      position: absolute;
+    }
+    .p-r-XS {
+      position: relative;
+    }
+    .p-f-XS {
+      position: fixed;
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .l-fix-#{$count * 5}-S {
+          left: $size * $count;
+        }
+        .t-fix-#{$count * 5}-S {
+          top: $size * $count;
+        }
+        .r-fix-#{$count * 5}-S {
+          right: $size * $count;
+        }
+        .b-fix-#{$count * 5}-S {
+          bottom: $size * $count;
+        }
+        .l-fix-s-#{$count}-S {
+          left: math.div($size, $coficent) * $count;
+        }
+        .t-fix-s-#{$count}-S {
+          top: math.div($size, $coficent) * $count;
+        }
+        .r-fix-s-#{$count}-S {
+          right: math.div($size, $coficent) * $count;
+        }
+        .b-fix-s-#{$count}-S {
+          bottom: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .l-#{$count * 5}-S {
+          left: $size * $count;
+        }
+        .t-#{$count * 5}-S {
+          top: $size * $count;
+        }
+        .r-#{$count * 5}-S {
+          right: $size * $count;
+        }
+        .b-#{$count * 5}-S {
+          bottom: $size * $count;
+        }
+      }
+    }
+    .l-a-S {
+      left: auto;
+    }
+    .t-a-S {
+      top: auto;
+    }
+    .r-a-S {
+      right: auto;
+    }
+    .b-a-S {
+      bottom: auto;
+    }
+    .p-a-S {
+      position: absolute;
+    }
+    .p-r-S {
+      position: relative;
+    }
+    .p-f-S {
+      position: fixed;
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .l-fix-#{$count * 5}-M {
+          left: $size * $count;
+        }
+        .t-fix-#{$count * 5}-M {
+          top: $size * $count;
+        }
+        .r-fix-#{$count * 5}-M {
+          right: $size * $count;
+        }
+        .b-fix-#{$count * 5}-M {
+          bottom: $size * $count;
+        }
+        .l-fix-s-#{$count}-M {
+          left: math.div($size, $coficent) * $count;
+        }
+        .t-fix-s-#{$count}-M {
+          top: math.div($size, $coficent) * $count;
+        }
+        .r-fix-s-#{$count}-M {
+          right: math.div($size, $coficent) * $count;
+        }
+        .b-fix-s-#{$count}-M {
+          bottom: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .l-#{$count * 5}-M {
+          left: $size * $count;
+        }
+        .t-#{$count * 5}-M {
+          top: $size * $count;
+        }
+        .r-#{$count * 5}-M {
+          right: $size * $count;
+        }
+        .b-#{$count * 5}-M {
+          bottom: $size * $count;
+        }
+      }
+    }
+    .l-a-M {
+      left: auto;
+    }
+    .t-a-M {
+      top: auto;
+    }
+    .r-a-M {
+      right: auto;
+    }
+    .b-a-M {
+      bottom: auto;
+    }
+    .p-a-M {
+      position: absolute;
+    }
+    .p-r-M {
+      position: relative;
+    }
+    .p-f-M {
+      position: fixed;
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .l-fix-#{$count * 5}-L {
+          left: $size * $count;
+        }
+        .t-fix-#{$count * 5}-L {
+          top: $size * $count;
+        }
+        .r-fix-#{$count * 5}-L {
+          right: $size * $count;
+        }
+        .b-fix-#{$count * 5}-L {
+          bottom: $size * $count;
+        }
+        .l-fix-s-#{$count}-L {
+          left: math.div($size, $coficent) * $count;
+        }
+        .t-fix-s-#{$count}-L {
+          top: math.div($size, $coficent) * $count;
+        }
+        .r-fix-s-#{$count}-L {
+          right: math.div($size, $coficent) * $count;
+        }
+        .b-fix-s-#{$count}-L {
+          bottom: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .l-#{$count * 5}-L {
+          left: $size * $count;
+        }
+        .t-#{$count * 5}-L {
+          top: $size * $count;
+        }
+        .r-#{$count * 5}-L {
+          right: $size * $count;
+        }
+        .b-#{$count * 5}-L {
+          bottom: $size * $count;
+        }
+      }
+    }
+    .l-a-L {
+      left: auto;
+    }
+    .t-a-L {
+      top: auto;
+    }
+    .r-a-L {
+      right: auto;
+    }
+    .b-a-L {
+      bottom: auto;
+    }
+    .p-a-L {
+      position: absolute;
+    }
+    .p-r-L {
+      position: relative;
+    }
+    .p-f-L {
+      position: fixed;
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      @if $fixed {
+        .l-fix-#{$count * 5}-XL {
+          left: $size * $count;
+        }
+        .t-fix-#{$count * 5}-XL {
+          top: $size * $count;
+        }
+        .r-fix-#{$count * 5}-XL {
+          right: $size * $count;
+        }
+        .b-fix-#{$count * 5}-XL {
+          bottom: $size * $count;
+        }
+        .l-fix-s-#{$count}-XL {
+          left: math.div($size, $coficent) * $count;
+        }
+        .t-fix-s-#{$count}-XL {
+          top: math.div($size, $coficent) * $count;
+        }
+        .r-fix-s-#{$count}-XL {
+          right: math.div($size, $coficent) * $count;
+        }
+        .b-fix-s-#{$count}-XL {
+          bottom: math.div($size, $coficent) * $count;
+        }
+      } @else {
+        .l-#{$count * 5}-XL {
+          left: $size * $count;
+        }
+        .t-#{$count * 5}-XL {
+          top: $size * $count;
+        }
+        .r-#{$count * 5}-XL {
+          right: $size * $count;
+        }
+        .b-#{$count * 5}-XL {
+          bottom: $size * $count;
+        }
+      }
+    }
+    .l-a-XL {
+      left: auto;
+    }
+    .t-a-XL {
+      top: auto;
+    }
+    .r-a-XL {
+      right: auto;
+    }
+    .b-a-XL {
+      bottom: auto;
+    }
+    .p-a-XL {
+      position: absolute;
+    }
+    .p-r-XL {
+      position: relative;
+    }
+    .p-f-XL {
+      position: fixed;
+    }
+  }
+}
+
+// Start Postion Absolute
+@include positionCreate(
+  $positionAbsoluteSize,
+  $positionAbsoluteCount,
+  false,
+  0
+);
+
+// Start Postion Fixed
+@include positionCreate($positionFixedSize, $positionFixedCount, true, 10);

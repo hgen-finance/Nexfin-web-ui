@@ -1,0 +1,43 @@
+@import "../variables.scss";
+@import "../pallete.scss";
+
+// ===================================================
+// Font Colors Create ================================
+
+@mixin fontColorCreate($name, $colors) {
+  @each $color in $colors {
+    $i: index($colors, $color);
+    @if $i * 100 > 900 {
+      .f-#{$name}-A#{($i * 100) - 1000} {
+        color: $color;
+      }
+    } @else {
+      .f-#{$name}-#{$i * 100} {
+        color: $color;
+      }
+    }
+  }
+}
+
+// Start Font Color
+@include fontColorCreate("red", $red); // Start Red
+@include fontColorCreate("pink", $pink); // Start Pink
+@include fontColorCreate("purple", $purple); // Start Purple
+@include fontColorCreate("deepPurple", $deepPurple); // Start Deep Purple
+@include fontColorCreate("indigo", $indigo); // Start Indigo
+@include fontColorCreate("blue", $blue); // Start Blue
+@include fontColorCreate("lightBlue", $lightBlue); // Start Light Blue
+@include fontColorCreate("cyan", $cyan); // Start Cyan
+@include fontColorCreate("teal", $teal); // Start Teal
+@include fontColorCreate("green", $green); // Start Green
+@include fontColorCreate("lightGreen", $lightGreen); // Start Light Green
+@include fontColorCreate("lime", $lime); // Start Lime
+@include fontColorCreate("yellow", $yellow); // Start Yellow
+@include fontColorCreate("amber", $amber); // Start Amber
+@include fontColorCreate("orange", $orange); // Start Orange
+@include fontColorCreate("deepOrange", $deepOrange); // Start Deep Orange
+@include fontColorCreate("brown", $brown); // Start Brown
+@include fontColorCreate("gray", $gray); // Start Gray
+@include fontColorCreate("blueGray", $blueGray); // Start Blue
+@include fontColorCreate("black", $black); // Start Black
+@include fontColorCreate("white", $white); // Start White

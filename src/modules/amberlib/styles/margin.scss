@@ -1,0 +1,170 @@
+@import "../variables.scss";
+
+// ===================================================
+// Margin Create ======================================
+
+@mixin marginCreate($size, $coficent, $counts) {
+  @for $count from 0 to $counts {
+    .m-#{$count} {
+      margin: $size * ($coficent * $count);
+    }
+    .mx-#{$count} {
+      margin-left: $size * ($coficent * $count);
+      margin-right: $size * ($coficent * $count);
+    }
+    .my-#{$count} {
+      margin-top: $size * ($coficent * $count);
+      margin-bottom: $size * ($coficent * $count);
+    }
+    .ml-#{$count} {
+      margin-left: $size * ($coficent * $count);
+    }
+    .mt-#{$count} {
+      margin-top: $size * ($coficent * $count);
+    }
+    .mr-#{$count} {
+      margin-right: $size * ($coficent * $count);
+    }
+    .mb-#{$count} {
+      margin-bottom: $size * ($coficent * $count);
+    }
+  }
+  @media (max-width: $small) {
+    @for $count from 0 to $counts {
+      .m-#{$count}-XS {
+        margin: $size * ($coficent * $count);
+      }
+      .mx-#{$count}-XS {
+        margin-left: $size * ($coficent * $count);
+        margin-right: $size * ($coficent * $count);
+      }
+      .my-#{$count}-XS {
+        margin-top: $size * ($coficent * $count);
+        margin-bottom: $size * ($coficent * $count);
+      }
+      .ml-#{$count}-XS {
+        margin-left: $size * ($coficent * $count);
+      }
+      .mt-#{$count}-XS {
+        margin-top: $size * ($coficent * $count);
+      }
+      .mr-#{$count}-XS {
+        margin-right: $size * ($coficent * $count);
+      }
+      .mb-#{$count}-XS {
+        margin-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $small) {
+    @for $count from 0 to $counts {
+      .m-#{$count}-S {
+        margin: $size * ($coficent * $count);
+      }
+      .mx-#{$count}-S {
+        margin-left: $size * ($coficent * $count);
+        margin-right: $size * ($coficent * $count);
+      }
+      .my-#{$count}-S {
+        margin-top: $size * ($coficent * $count);
+        margin-bottom: $size * ($coficent * $count);
+      }
+      .ml-#{$count}-S {
+        margin-left: $size * ($coficent * $count);
+      }
+      .mt-#{$count}-S {
+        margin-top: $size * ($coficent * $count);
+      }
+      .mr-#{$count}-S {
+        margin-right: $size * ($coficent * $count);
+      }
+      .mb-#{$count}-S {
+        margin-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    @for $count from 0 to $counts {
+      .m-#{$count}-M {
+        margin: $size * ($coficent * $count);
+      }
+      .mx-#{$count}-M {
+        margin-left: $size * ($coficent * $count);
+        margin-right: $size * ($coficent * $count);
+      }
+      .my-#{$count}-M {
+        margin-top: $size * ($coficent * $count);
+        margin-bottom: $size * ($coficent * $count);
+      }
+      .ml-#{$count}-M {
+        margin-left: $size * ($coficent * $count);
+      }
+      .mt-#{$count}-M {
+        margin-top: $size * ($coficent * $count);
+      }
+      .mr-#{$count}-M {
+        margin-right: $size * ($coficent * $count);
+      }
+      .mb-#{$count}-M {
+        margin-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $large) {
+    @for $count from 0 to $counts {
+      .m-#{$count}-L {
+        margin: $size * ($coficent * $count);
+      }
+      .mx-#{$count}-L {
+        margin-left: $size * ($coficent * $count);
+        margin-right: $size * ($coficent * $count);
+      }
+      .my-#{$count}-L {
+        margin-top: $size * ($coficent * $count);
+        margin-bottom: $size * ($coficent * $count);
+      }
+      .ml-#{$count}-L {
+        margin-left: $size * ($coficent * $count);
+      }
+      .mt-#{$count}-L {
+        margin-top: $size * ($coficent * $count);
+      }
+      .mr-#{$count}-L {
+        margin-right: $size * ($coficent * $count);
+      }
+      .mb-#{$count}-L {
+        margin-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+  @media (min-width: $xlarge) {
+    @for $count from 0 to $counts {
+      .m-#{$count}-XL {
+        margin: $size * ($coficent * $count);
+      }
+      .mx-#{$count}-XL {
+        margin-left: $size * ($coficent * $count);
+        margin-right: $size * ($coficent * $count);
+      }
+      .my-#{$count}-XL {
+        margin-top: $size * ($coficent * $count);
+        margin-bottom: $size * ($coficent * $count);
+      }
+      .ml-#{$count}-XL {
+        margin-left: $size * ($coficent * $count);
+      }
+      .mt-#{$count}-XL {
+        margin-top: $size * ($coficent * $count);
+      }
+      .mr-#{$count}-XL {
+        margin-right: $size * ($coficent * $count);
+      }
+      .mb-#{$count}-XL {
+        margin-bottom: $size * ($coficent * $count);
+      }
+    }
+  }
+}
+
+// Start Margin Fixed
+@include marginCreate($marginSize, $marginSizeCoficent, $marginSizeCount);

@@ -1,0 +1,43 @@
+@import "../variables.scss";
+@import "../pallete.scss";
+
+// ===================================================
+// Border Colors Create ==============================
+
+@mixin borderColorCreate($name, $colors) {
+  @each $color in $colors {
+    $i: index($colors, $color);
+    @if $i * 100 > 900 {
+      .br-#{$name}-A#{($i * 100) - 1000} {
+        border-color: $color;
+      }
+    } @else {
+      .br-#{$name}-#{$i * 100} {
+        border-color: $color;
+      }
+    }
+  }
+}
+
+// Start Border Color
+@include borderColorCreate("red", $red); // Start Red
+@include borderColorCreate("pink", $pink); // Start Pink
+@include borderColorCreate("purple", $purple); // Start Purple
+@include borderColorCreate("deepPurple", $deepPurple); // Start Deep Purple
+@include borderColorCreate("indigo", $indigo); // Start Indigo
+@include borderColorCreate("blue", $blue); // Start Blue
+@include borderColorCreate("lightBlue", $lightBlue); // Start Light Blue
+@include borderColorCreate("cyan", $cyan); // Start Cyan
+@include borderColorCreate("teal", $teal); // Start Teal
+@include borderColorCreate("green", $green); // Start Green
+@include borderColorCreate("lightGreen", $lightGreen); // Start Light Green
+@include borderColorCreate("lime", $lime); // Start Lime
+@include borderColorCreate("yellow", $yellow); // Start Yellow
+@include borderColorCreate("amber", $amber); // Start Amber
+@include borderColorCreate("orange", $orange); // Start Orange
+@include borderColorCreate("deepOrange", $deepOrange); // Start Deep Orange
+@include borderColorCreate("brown", $brown); // Start Brown
+@include borderColorCreate("gray", $gray); // Start Gray
+@include borderColorCreate("blueGray", $blueGray); // Start Blue
+@include borderColorCreate("black", $black); // Start Black
+@include borderColorCreate("white", $white); // Start White
