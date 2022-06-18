@@ -45,7 +45,7 @@ export const actions = actionTree(
                 params += "&sort_field=" + value.sort + "&sort_direction=desc";
             }
             commit("setLoading", true);
-            await this.$axios.get("/api/trove/list" + params).then(({ data }) => {
+            await this.$axios.get("/trove/list" + params).then(({ data }) => {
                 commit("setTroveTotal", data.total_count || 0);
                 commit("setLoading", false);
                 if (value.clear) {
@@ -59,7 +59,7 @@ export const actions = actionTree(
         async closeTroveUser({ state, commit, dispatch }, value) {
             if (value) {
                 await this.$axios
-                    .post("/api/trove/liquidate", { trove: value.trove.troveAccountPubkey })
+                    .post("/trove/liquidate", { trove: value.trove.troveAccountPubkey })
                     .then(() => {
                         this.$accessor.wallet.getBalance();
                         const newArr = state.troveList.filter((item) => item);

@@ -1,4 +1,5 @@
 import { Integrations } from "@sentry/tracing";
+require('dotenv').config()
 
 export default {
     srcDir: "./src/",
@@ -42,7 +43,7 @@ export default {
         // https://typed-vuex.roe.dev
         "nuxt-typed-vuex",
         // proxy for nuxt
-        "@nuxtjs/proxy",
+        // "@nuxtjs/proxy",
     ],
 
     // nuxt scroll behaviour for anchoring
@@ -101,13 +102,13 @@ export default {
     },
 
     axios: {
-        // baseUrl: process.env.baseUrl || "http://server:3000",
-        proxy: true,
+        baseUrl: process.env.baseUrl || "https://nexfin-backend.vercel.app",
+        // proxy: true,
     },
 
     //   ENV
     env: {
-        baseUrl: process.env.BASE_URL || "http://server:3000",
+        baseUrl: process.env.BASE_URL || "https://nexfin-backend.vercel.app",
         mint: "2aNEZTF7Lw9nfYv6qQEuWDyngSrB5hbdfx35jpqwcKz8",
         mintAuthority: process.env.MINT_AUTHORITY,
     },
@@ -121,13 +122,14 @@ export default {
         },
     },
     // for cors
-    proxy: {
-        "/api/": {
-            target: "http://server:3000/",
-            pathRewrite: { "^/api/": "/" },
-        },
-    },
+    // proxy: {
+    //     "/api/": {
+    //         target: process.env.BASE_URL || "http://server:3000/",
+    //         pathRewrite: { "^/api/": "/" },
+    //     },
+    // },
 
+    // TODO only for the containers
     dev: process.env.NODE_ENV !== "production",
     server: {
         host: "0.0.0.0",

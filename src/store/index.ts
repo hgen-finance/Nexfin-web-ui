@@ -209,7 +209,7 @@ export const actions = actionTree(
             pythConnection.start()
 
             // getting info from backend
-            await this.$axios.get("/api/info").then(({ data }) => {
+            await this.$axios.get("/info").then(({ data }) => {
                 commit("setTotalDeposit", data.depositTotal || 0);
                 commit("setGasFee", data.gasFee || 0);
                 commit("setGovernanceReward", data.governanceReward || 0);

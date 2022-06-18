@@ -36,7 +36,7 @@ export const actions = actionTree(
             if (this.$accessor.pool.depositKey) {
                 commit("setLoading", true);
                 await this.$axios
-                    .post("/api/deposit/claim", {
+                    .post("/deposit/claim", {
                         deposit: this.$accessor.pool.depositKey.deposit,
                     })
                     .then((res) => {

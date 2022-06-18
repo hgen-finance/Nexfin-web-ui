@@ -76,7 +76,7 @@ export const actions = actionTree(
             if (this.$wallet) {
                 try {
                     await this.$axios
-                        .get("/api/deposit?user=" + this.$wallet.publicKey.toBase58())
+                        .get("/deposit?user=" + this.$wallet.publicKey.toBase58())
                         .then(async ({ data }) => {
                             if (data.model) {
                                 commit("setDepositKey", data.model || "");
@@ -185,7 +185,7 @@ export const actions = actionTree(
                             commit("setDepositKey", data.depositAccountPubkey || "");
                             console.log(data, "newDeposit");
                             await this.$axios
-                                .post("/api/deposit/upsert", {
+                                .post("/deposit/upsert", {
                                     deposit: data.depositAccountPubkey,
                                     amount: Number(value.from),
                                     data: backend_data
@@ -296,7 +296,7 @@ export const actions = actionTree(
                             owner: result.authority.toBase58(),
                         }
 
-                        await this.$axios.post("/api/deposit/upsert", {
+                        await this.$axios.post("/deposit/upsert", {
                             deposit: state.depositKey.deposit,
                             amount: Number(value.from),
                             data: backend_data
@@ -369,7 +369,7 @@ export const actions = actionTree(
                         commit("setLoading", false);
 
                         await this.$axios
-                            .post("/api/deposit/withdraw", {
+                            .post("/deposit/withdraw", {
                                 deposit: state.depositKey.deposit,
                                 amount: Number(value),
                             })

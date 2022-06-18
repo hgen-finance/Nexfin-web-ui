@@ -110,7 +110,7 @@ export const actions = actionTree(
         async getTrove({ commit, dispatch }, value) {
             if (this.$wallet) {
                 await this.$axios
-                    .get("/api/trove?user=" + this.$wallet.publicKey.toBase58())
+                    .get("/trove?user=" + this.$wallet.publicKey.toBase58())
                     .then(({ data }) => {
                         if (data.model && data.model.trove) {
                             commit("setTroveId", data.model.trove || "");
@@ -201,7 +201,7 @@ export const actions = actionTree(
 
                     // pass wait transaction notification
                     await this.$axios
-                        .post("/api/trove/addBorrow", {
+                        .post("/trove/addBorrow", {
                             trove: data.troveAccountPubkey,
                             amount: Number(value.to),
                             user: value.mint,
@@ -237,7 +237,7 @@ export const actions = actionTree(
                         txId: data.txId,
                     });
                     await this.$axios
-                        .post("/api/reward/addReward", {
+                        .post("/reward/addReward", {
                             amount: value.to,
                         })
                         .then((res) => {
@@ -348,7 +348,7 @@ export const actions = actionTree(
 
                     if (data && data.troveAccountPubkey) {
                         await this.$axios
-                            .post("/api/trove/upsert", {
+                            .post("/trove/upsert", {
                                 trove: data.troveAccountPubkey.toBase58(),
                                 amount: Number(value.to),
                                 user: value.mint,
@@ -361,7 +361,7 @@ export const actions = actionTree(
                     }
 
                     await this.$axios
-                        .post("/api/reward/addReward", {
+                        .post("/reward/addReward", {
                             amount: value.to,
                         })
                         .then((res) => {
@@ -415,7 +415,7 @@ export const actions = actionTree(
                     }
 
                     await this.$axios
-                        .post("/api/trove/pay", {
+                        .post("/trove/pay", {
                             trove: state.trove.troveAccountPubkey,
                             amount: state.trove.amountToClose,
                         })
@@ -466,7 +466,7 @@ export const actions = actionTree(
 
                     commit("setTroveId", "");
                     await this.$axios
-                        .post("/api/trove/close", {
+                        .post("/trove/close", {
                             trove: state.trove.troveAccountPubkey,
                             data: backend_data
                         })
@@ -550,7 +550,7 @@ export const actions = actionTree(
                     );
 
                     await this.$axios
-                        .post("/api/trove/pay", {
+                        .post("/trove/pay", {
                             trove: data.troveAccountPubkey,
                             amount: value.amount,
                         })
@@ -601,7 +601,7 @@ export const actions = actionTree(
             if (value) {
                 commit("setLoadingSub", true);
                 await this.$axios
-                    .post("/api/notification/subscribe", { email: value })
+                    .post("/notification/subscribe", { email: value })
                     .then((res) => {
                         console.log(res, "Subscribe");
                     })
