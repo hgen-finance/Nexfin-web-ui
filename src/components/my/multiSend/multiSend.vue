@@ -2,10 +2,11 @@
   <div
     class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100 fd-c"
   >
-    <div class="w-100">
-      <div class="fw-600 fs-8-S fs-25-XS f-white-200">Multi Transaction</div>
-    </div>
-    <!-- <div class="w-100 fd-c ai-s" ref="container">
+    <div class="w-100" :class="{ 'op-0': getLoading }">
+      <div class="w-100">
+        <div class="fw-600 fs-8-S fs-25-XS f-white-200">Multi Transaction</div>
+      </div>
+      <!-- <div class="w-100 fd-c ai-s" ref="container">
       <div class="cside-L cside-M cside-S cside-XS fd-r jc-c mt-8-XS mt-2-S">
         <div
           class="fd-r jc-c f-white-200 ai-c micon-L micon-M micon-S micon-XS"
@@ -15,96 +16,96 @@
         </div>
       </div>
     </div> -->
-    <div
-      class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-15-XS fd-r"
-    >
-      <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS">
-        <div
-          class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-700 pl-5-XS pl-3-S rad-fix-5"
-        >
-          <AmSelectbox
-            v-bind:data.sync="tokens"
-            :update="true"
-            :shadow="false"
-            :padding="false"
-            color="mcolor-700"
-            bColor="mcolor-700"
-          />
-        </div>
-        <div class="w-45" v-if="getToken != 'SOL'">
-          <AmButton
-            color="mcolor-100"
-            bColor="mcolor-100"
-            opacityEffect
-            full
-            @click="getAccount"
-          >
-            Get Accounts
-          </AmButton>
-        </div>
-        <div class="w-45" v-if="getToken == 'SOL'">
-          <AmButton
-            color="mcolor-1001"
-            bColor="mcolor-1001"
-            opacityEffect
-            full
-            disabled
-          >
-            Get Accounts
-          </AmButton>
-        </div>
-      </div>
-    </div>
-    <div class="w-100" v-if="getToken != 'SOL'">
-      <div class="w-100 f-white-200 fw-500 fs-6 fs-10-XS my-1-S my-5-XS">
-        Your Token Account
-      </div>
       <div
-        class="w-100 mb-2-S mb-5-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+        class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-15-XS fd-r"
       >
-        <div class="w-100 f-mcolor-500 fs-5-S" v-if="getToken != 'SOL'">
-          <input
-            type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-500 f-mcolor-300"
-            placeholder="Token Account Address"
-            v-model="tokenAcc"
-          />
+        <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS">
+          <div
+            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-700 pl-5-XS pl-3-S rad-fix-5"
+          >
+            <AmSelectbox
+              v-bind:data.sync="tokens"
+              :update="true"
+              :shadow="false"
+              :padding="false"
+              color="mcolor-700"
+              bColor="mcolor-700"
+            />
+          </div>
+          <div class="w-45" v-if="getToken != 'SOL' && getDest">
+            <AmButton
+              color="mcolor-100"
+              bColor="mcolor-100"
+              opacityEffect
+              full
+              @click="getAccount"
+            >
+              Get Accounts
+            </AmButton>
+          </div>
+          <div class="w-45" v-if="!getDest || getToken == 'SOL'">
+            <AmButton
+              color="mcolor-1001"
+              bColor="mcolor-1001"
+              opacityEffect
+              full
+              disabled
+            >
+              Get Accounts
+            </AmButton>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="w-100">
-      <div class="w-100 f-white-200 fw-500 fs-6 fs-10-XS my-1-S my-5-XS">
-        List of Destination wallet Addresses
+      <div class="w-100" v-if="getToken != 'SOL'">
+        <div class="w-100 f-white-200 fw-500 fs-6 fs-10-XS my-1-S my-5-XS">
+          Your Token Account
+        </div>
+        <div
+          class="w-100 mb-2-S mb-5-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+        >
+          <div class="w-100 f-mcolor-500 fs-5-S" v-if="getToken != 'SOL'">
+            <input
+              type="text"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-500 f-mcolor-300"
+              placeholder="Token Account Address"
+              v-model="tokenAcc"
+            />
+          </div>
+        </div>
       </div>
-      <div class="w-100 mb-2-S mb-5-XS rad-fix-2 py-3-S py-10-XS">
-        <div class="w-100 f-mcolor-500 fs-5-S">
-          <!-- <textarea
+      <div class="w-100">
+        <div class="w-100 f-white-200 fw-500 fs-6 fs-10-XS my-1-S my-5-XS">
+          List of Destination wallet Addresses
+        </div>
+        <div class="w-100 mb-2-S mb-5-XS rad-fix-2 py-3-S py-10-XS">
+          <div class="w-100 f-mcolor-500 fs-5-S">
+            <!-- <textarea
             v-model="destAddress"
             class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-500 f-mcolor-300 h-fix-50-S h-fix-80-XS"
             placeholder="Add multiple address"
           ></textarea> -->
 
-          <codemirror
-            v-model="destAddress"
-            :options="cmOption"
-            placeholder="Wallet Address, Amount"
-          ></codemirror>
+            <codemirror
+              v-model="destAddress"
+              :options="cmOption"
+              placeholder="Wallet Address, Amount"
+            ></codemirror>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="w-100 fd-r jc-sb ai-c mb-3-S mb-10-XS">
-      <div class="w-45">
-        <AmButton
-          color="mcolor-200"
-          bColor="mcolor-100"
-          opacityEffect
-          full
-          @click="reset"
-        >
-          Reset
-        </AmButton>
-        <!-- <AmButton
+      <div class="w-100 fd-r jc-sb ai-c mb-3-S mb-10-XS">
+        <div class="w-45">
+          <AmButton
+            color="mcolor-200"
+            bColor="mcolor-100"
+            opacityEffect
+            full
+            @click="reset"
+          >
+            Reset
+          </AmButton>
+          <!-- <AmButton
         color="mcolor-1001"
         bColor="mcolor-1001"
         full
@@ -113,18 +114,18 @@
       >
         Claim
       </AmButton> -->
-      </div>
-      <div class="w-45">
-        <AmButton
-          color="mcolor-100"
-          bColor="mcolor-100"
-          opacityEffect
-          full
-          @click="send"
-        >
-          Send
-        </AmButton>
-        <!-- <AmButton
+        </div>
+        <div class="w-45">
+          <AmButton
+            color="mcolor-100"
+            bColor="mcolor-100"
+            opacityEffect
+            full
+            @click="send"
+          >
+            Send
+          </AmButton>
+          <!-- <AmButton
         color="mcolor-1001"
         bColor="mcolor-1001"
         full
@@ -133,29 +134,34 @@
       >
         Claim
       </AmButton> -->
+        </div>
+      </div>
+      <div
+        class="w-100 mcolor-700 p-4-S p-15-XS rad-fix-4 fs-5-S fs-20-XS f-white-200 mb-4-S mb-10-XS"
+      >
+        <div class="w-100">
+          <span class="fw-600 f-red-500">Note:</span> This is on development
+          feature.<br />
+          <br />
+          Please click on the
+          <span class="fw-600 f-green-500">GET ACCOUNTS</span> after you enter
+          the destination wallet address for the non native token. You need to
+          make sure that the destination wallet has token account available.
+          <br />
+          <br />
+          Approx. of <span class="fw-600 f-green-500">8</span> multi wallet
+          transactions are possible.
+        </div>
+      </div>
+      <div
+        class="w-100 mcolor-800 p-4-S p-15-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+        v-if="getAlert"
+      >
+        <div class="w-100">{{ getAlert }}</div>
       </div>
     </div>
-    <div
-      class="w-100 mcolor-700 p-4-S p-15-XS rad-fix-4 fs-5-S fs-20-XS f-white-200 mb-4-S mb-10-XS"
-    >
-      <div class="w-100">
-        <span class="fw-600 f-red-500">Note:</span> This is on development
-        feature.<br />
-        <br />
-        Please click on the
-        <span class="fw-600 f-green-500">GET ACCOUNTS</span> after you enter the
-        destination wallet address for the non native token. You need to make
-        sure that the destination wallet has token account available. <br />
-        <br />
-        Approx. of <span class="fw-600 f-green-500">8</span> multi wallet
-        transactions are possible.
-      </div>
-    </div>
-    <div
-      class="w-100 mcolor-800 p-4-S p-15-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
-      v-if="getAlert"
-    >
-      <div class="w-100">{{ getAlert }}</div>
+    <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
+      <Loading />
     </div>
   </div>
 </template>
@@ -215,6 +221,7 @@ export default {
     AddressInput,
     DynamicComp,
     Icon,
+    Loading,
   },
   data() {
     return {
@@ -251,6 +258,7 @@ export default {
       tokenAcc: "",
       destAddress: "",
       instructions: [],
+      loading: false,
     };
   },
   watch: {
@@ -259,6 +267,12 @@ export default {
     destAddress(val) {},
   },
   computed: {
+    getLoading() {
+      return this.loading;
+    },
+    getDest() {
+      return this.destAddress;
+    },
     getToken() {
       return TOKENS.filter((token) => token.value == this.tokens.value)[0]
         .label;
@@ -302,7 +316,10 @@ export default {
 
           if (!accAddr) {
             this.alertMsg = `you dont have ` + this.getToken + " token account";
+          } else {
+            this.loading = true;
           }
+          setInterval(() => (this.loading = false), 5000);
         }
       } else {
         this.alertMsg = "Please connect your wallet";
