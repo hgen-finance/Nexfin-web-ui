@@ -63,6 +63,10 @@ export const actions = actionTree(
             value.instructions
           );
         }
+
+        this.$accessor.wallet.getBalance();
+        this.$accessor.wallet.getGENSBalance();
+        this.$accessor.wallet.getHGENBalance();
       } catch (err) {
         console.log(err);
       }
