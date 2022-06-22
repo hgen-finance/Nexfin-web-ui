@@ -317,6 +317,7 @@ export default {
           details: this.destAddress,
           pay: this.pay,
           decimal: this.getTokenDecimal,
+          instructions: this.instructions,
         });
       } else {
         await this.$accessor.multisend.multiTransfer({

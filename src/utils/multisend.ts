@@ -45,6 +45,7 @@ export const multiSendUtil = async (
         toPubkey: new PublicKey(dest),
         lamports: LAMPORTS_PER_SOL * amount,
       });
+
       instructions.push(transferTx);
     });
   } else {

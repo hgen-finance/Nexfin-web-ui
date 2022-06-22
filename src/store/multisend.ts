@@ -38,8 +38,9 @@ export const actions = actionTree(
     async multiTransfer({ commit, dispatch, state }, value) {
       try {
         if (value.label == "SOL") {
+          let instructions: TransactionInstruction[] = [];
+
           let result = value.details.split("\n");
-          console.log(value.userTokenAcc, result, "teacher here 98*******");
           await multiSendUtil(
             this.$wallet,
             this.$web3,
@@ -47,7 +48,8 @@ export const actions = actionTree(
             value.mintAddr,
             result,
             value.pay,
-            value.label
+            value.label,
+            instructions
           );
         } else {
           await multiSendUtil(
@@ -101,7 +103,6 @@ export const actions = actionTree(
           let ata;
           // create a GENS account on the destination wallet
           if (res == "") {
-            console.log("enter ***************", res);
             ata = await Token.getAssociatedTokenAddress(
               ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
               TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
