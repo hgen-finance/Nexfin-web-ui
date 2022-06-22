@@ -250,6 +250,7 @@ export default {
       alertMsg: "",
       tokenAcc: "",
       destAddress: "",
+      instructions: [],
     };
   },
   watch: {
@@ -296,7 +297,8 @@ export default {
             mintAddr: this.tokens.value,
             details: this.destAddress,
           });
-          this.parseTokenAccounts = results;
+          this.parseTokenAccounts = results.result;
+          this.instructions = results.instructions;
 
           if (!accAddr) {
             this.alertMsg = `you dont have ` + this.getToken + " token account";
@@ -324,6 +326,7 @@ export default {
           details: this.parseTokenAccounts,
           pay: this.pay,
           decimal: this.getTokenDecimal,
+          instructions: this.instructions,
         });
       }
     },

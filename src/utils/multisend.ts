@@ -32,10 +32,9 @@ export const multiSendUtil = async (
   mintAddress: string,
   details: any,
   pay: string,
-  label: string
+  label: string,
+  instructions?: TransactionInstruction[]
 ) => {
-  let instructions: TransactionInstruction[] = [];
-
   if (label == "SOL") {
     details.forEach((val) => {
       let res = val.split(",");

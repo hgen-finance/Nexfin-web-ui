@@ -49,17 +49,18 @@ export const actions = actionTree(
             value.pay,
             value.label
           );
+        } else {
+          await multiSendUtil(
+            this.$wallet,
+            this.$web3,
+            value.userTokenAcc,
+            value.mintAddr,
+            value.details,
+            value.pay,
+            value.label,
+            value.instructions
+          );
         }
-
-        await multiSendUtil(
-          this.$wallet,
-          this.$web3,
-          value.userTokenAcc,
-          value.mintAddr,
-          value.details,
-          value.pay,
-          value.label
-        );
       } catch (err) {
         console.log(err);
       }
@@ -82,14 +83,12 @@ export const actions = actionTree(
     // getting wallets token accounts
     async getTokenAccounts({ commit, dispatch, state }, value) {
       let result = [];
+      let instructions: TransactionInstruction[] = [];
       try {
         let addresses = value.details.split("\n");
-        console.log(addresses, "testing 2");
         addresses.forEach(async (val) => {
-          console.log(val, "testin 4");
           val = val.split(",");
           const [dest, amount] = val;
-          console.log(dest, amount, "testing 3");
           let destTokenkAddr = await this.$web3.getParsedTokenAccountsByOwner(
             new PublicKey(dest),
             {
@@ -97,15 +96,39 @@ export const actions = actionTree(
             }
           );
 
-          console.log(
-            destTokenkAddr.value[0].pubkey.toBase58(),
-            amount,
-            "Testing...."
-          );
-          result.push([destTokenkAddr.value[0].pubkey, amount.trim()]);
+          let res;
+          res = destTokenkAddr.value[0] ? destTokenkAddr.value[0].pubkey : "";
+          let ata;
+          // create a GENS account on the destination wallet
+          if (res == "") {
+            console.log("enter ***************", res);
+            ata = await Token.getAssociatedTokenAddress(
+              ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
+              TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+              value.mintAddr, // mint
+              new PublicKey(dest) // owner
+            );
+            const ataAccountTx = Token.createAssociatedTokenAccountInstruction(
+              ASSOCIATED_TOKEN_PROGRAM_ID, // always ASSOCIATED_TOKEN_PROGRAM_ID
+              TOKEN_PROGRAM_ID, // always TOKEN_PROGRAM_ID
+              value.mintAddr, // mint
+              ata, // ata
+              new PublicKey(dest), // owner of token account
+              this.$wallet.publicKey // fee payer
+            );
+            instructions.push(ataAccountTx);
+            res = ata;
+          }
+
+          // console.log(
+          //     res.toBase58(),
+          //     amount,
+          //     "Testing...."
+          // );
+          result.push([res, amount.trim()]);
         });
         console.log(result, "my results");
-        return result;
+        return { result, instructions };
       } catch (err) {
         console.log(err);
       }
