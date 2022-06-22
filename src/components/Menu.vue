@@ -50,7 +50,7 @@
           </nuxt-link>
           <a
             class="w-a f-gray-600 fw-500 fs-5-M fs-7-S fs-25-XS link hv ts-3 mr-4 my-0-S my-10-XS"
-            href="https://drive.google.com/file/d/10AxtDw8tv6FP9kVNIr0BkRIYy_GIGCsL/view?usp=sharing"
+            href="https://drive.google.com/file/d/1BFL66WIzFpEjyrLbBtPUEx9vV7Si0RDp/view?usp=sharing"
             @click="togglemenu"
             target="_blank"
           >
