@@ -16,21 +16,21 @@ export const mutations = mutationTree(state, {});
 
 // Actions
 export const actions = actionTree(
-    { state, getters, mutations },
-    {
-        // Swap
-        async swap({ commit }, value) {
-            if (value && value.from) {
-                // await swap(this.$wallet, value.amount)
-                // TODO: for raydium swap
-                await swapUtil(
-                    this.$wallet,
-                    Number(value.from),
-                    value.mintFrom,
-                    value.mintTo,
-                    this.$web3
-                );
-            }
-        },
-    }
+  { state, getters, mutations },
+  {
+    // Swap
+    async swap({ commit }, value) {
+      if (value && value.from) {
+        // await swap(this.$wallet, value.amount)
+        // TODO: for raydium swap
+        await swapUtil(
+          this.$wallet,
+          Number(value.from),
+          value.mintFrom,
+          value.mintTo,
+          this.$web3
+        );
+      }
+    },
+  }
 );

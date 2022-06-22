@@ -12,7 +12,7 @@
       :class="[`f-${modelData.colorLabel}`]"
       v-if="[0, 1].indexOf(getActiveTheme) > -1 && modelData.label"
       v-html="modelData.label"
-    />
+    ></div>
     <div class="w-100 d-b amSelectboxBlock">
       <!-- <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span> -->
       <input
@@ -39,12 +39,12 @@
         :class="[getLabelPosition]"
         v-if="[2].indexOf(getActiveTheme) > -1 && modelData.label"
         v-html="modelData.label"
-      />
+      ></div>
       <span
         class="h-a p-a l-0 b-0 z-10 brs-s amSelectboxLine"
         :class="[lineBottomColor]"
         v-if="[1, 2].indexOf(getActiveTheme) > -1"
-      />
+      ></span>
       <!-- <svg
         class="w-fix-s-10-S h-fix-s-10-S w-fix-s-50-XS h-fix-s-50-XS p-a r-0 b-fix-s-5-XL b-fix-s-5-S b-fix-s-10-XS"
         :class="{
@@ -86,7 +86,7 @@
           ]"
         >
           <input
-            class="w-100 h-fix-s-28min-S h-fix-s-100min-XS h-fix-25min-XS br-0 brb-4 brb-s br-gray-400 px-2 fs-5-S fs-20-XS"
+            class="w-100 h-fix-s-28min-S h-fix-s-100min-XS h-fix-25min-XS br-0 brb-4 brb-s br-gray-400 px-5 fs-5-S fs-20-XS"
             :placeholder="modelData.searchText"
             v-model="searchModel"
             v-if="modelData.search"
@@ -95,7 +95,7 @@
             class="w-100 h-fix-s-28min-S h-fix-s-100min-XS fd-r ai-c jc-c"
             v-if="modelData.search && getItems.length === 0"
             v-html="modelData.searchNotFound"
-          />
+          ></div>
           <div
             class="w-100"
             :class="{
@@ -139,7 +139,7 @@
                 <span
                   class="d-b w-100 h-100 p-a l-0 t-0"
                   :class="[modelData.colorOptionHover]"
-                />
+                ></span>
               </div>
             </AmScroll>
           </div>
@@ -152,13 +152,13 @@
         :class="[`f-${modelData.colorError}`]"
         v-if="modelData.error"
         v-html="modelData.error"
-      />
+      ></div>
       <div
         class="w-100 fs-4 pt-3"
         v-if="modelData.bottomText"
         v-html="modelData.bottomText"
         :class="[`f-${modelData.colorBottomText}`]"
-      />
+      ></div>
     </div>
   </div>
 </template>

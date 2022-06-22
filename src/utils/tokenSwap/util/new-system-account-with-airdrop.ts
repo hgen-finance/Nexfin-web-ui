@@ -1,6 +1,6 @@
 // @flow
 
-import { Account, Connection } from '@solana/web3.js';
+import { Account, Connection } from "@solana/web3.js";
 
 /**
  * Create a new system account and airdrop it some lamports
@@ -8,10 +8,10 @@ import { Account, Connection } from '@solana/web3.js';
  * @private
  */
 export async function newSystemAccountWithAirdrop(
-    connection: Connection,
-    lamports: number = 1,
+  connection: Connection,
+  lamports: number = 1
 ): Promise<Account> {
-    const account = new Account();
-    await connection.requestAirdrop(account.publicKey, lamports);
-    return account;
+  const account = new Account();
+  await connection.requestAirdrop(account.publicKey, lamports);
+  return account;
 }

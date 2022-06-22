@@ -5,11 +5,11 @@ import { Market } from "@project-serum/serum";
 import Wallet from "@project-serum/sol-wallet-adapter";
 
 export const addLiquidityUtil = async (
-    wallet: Wallet,
-    price: number,
-    from: string,
-    to: string,
-    connection: Connection
+  wallet: Wallet,
+  price: number,
+  from: string,
+  to: string,
+  connection: Connection
 ) => {
-    //TODO: Add the logic here later
+  //TODO: Add the logic here later
 };

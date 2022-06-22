@@ -15,11 +15,11 @@ export const mutations = mutationTree(state, {});
 
 // Actions
 export const actions = actionTree(
-    { state, getters, mutations },
-    {
-        async addSol() {
-            await faucetUtil(this.$wallet, this.$web3)
-            this.$accessor.wallet.getBalance();
-        },
-    }
+  { state, getters, mutations },
+  {
+    async addSol() {
+      await faucetUtil(this.$wallet, this.$web3);
+      this.$accessor.wallet.getBalance();
+    },
+  }
 );

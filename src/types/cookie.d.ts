@@ -1,3 +1,2 @@
-
-import VueCookie from 'vue-cookie';
-export interface NuxtCookieInstance extends VueCookie { }
+import VueCookie from "vue-cookie";
+export interface NuxtCookieInstance extends VueCookie {}
