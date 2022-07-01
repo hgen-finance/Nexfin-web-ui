@@ -192,7 +192,7 @@ export const actions = actionTree(
           // tslint:disable-next-line:no-console
           let pyth;
           const PERCENT = 100;
-          const CALL_PERCENT = -30;
+          const CALL_PERCENT = -3;
           const REFRESH_HOURS = 24;
 
           let prev_price = 32.3;
