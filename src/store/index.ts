@@ -221,7 +221,7 @@ export const actions = actionTree(
                 price_change_check[1].substr(0, 2);
               commit("setPriceChange", price_change_check);
             } else {
-              console.log("setPriceChange", price_change_check);
+              console.log("setPriceChange", price_change_percent);
             }
 
             prev_price = sol_price;
