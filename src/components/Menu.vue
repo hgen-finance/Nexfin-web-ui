@@ -1,12 +1,18 @@
 <template>
-  <div class="w-100 fd-r jc-c">
+  <div class="w-100 fd-c jc-c">
+    <div
+      class="w-100 mcolor-1000 f-orange-400 fw-600 py-3-S py-10-XS jc-c ai-c ta-c"
+      v-if="getPriceStat"
+    >
+      {{ warningMsg }}
+    </div>
     <div
       class="w-100 w-100-XS h-a-S h-100-XS fd-r py-3-S py-5-XS px-10 z-10 bs-menu"
     >
       <span
         class="w-100 h-100 p-f t-0 gradient-400 d-n-S ts-3"
         :class="{ 'l-100': !open, 'l-0': open }"
-      />
+      ></span>
       <div
         class="w-100 h-a-S h-100-XS fd-r-S fd-c-XS ai-c p-r-S p-f-XS l-0 t-0 ts-3 ovh-y-v-S ovh-y-a-XS"
         :class="{ 'l-100': !open, 'l-0': open }"
@@ -112,6 +118,8 @@ export default {
   },
   data() {
     return {
+      warningMsg:
+        "SOL price has decreased by more than 30%. Borrowing and lending will be halted in few hours.",
       items: [
         {
           title: "Beginners Guide",
@@ -137,6 +145,9 @@ export default {
   computed: {
     getLogo() {
       return this.$accessor.dashboard.logo;
+    },
+    getPriceStatus() {
+      return this.$accessor.priceStat;
     },
   },
   watch: {
@@ -194,6 +205,7 @@ export default {
   },
   mounted() {
     this.resize();
+    this.getPriceStatus;
     window.addEventListener("resize", this.resize);
   },
 };

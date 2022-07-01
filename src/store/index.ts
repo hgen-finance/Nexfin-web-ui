@@ -30,6 +30,8 @@ import { PriceStatus } from "@/store/priceStatus";
 
 // chainlink
 import { OCR2Feed } from "@chainlink/solana-sdk";
+import { startIdleTransaction } from "@sentry/tracing";
+import { cp } from "fs";
 
 // anchor
 const anchor = require("@project-serum/anchor");
@@ -52,6 +54,8 @@ export const state = () => ({
   lightMode: false,
   logo: false,
   newToken: 0,
+  priceStat: false,
+  priceChange: 0,
 });
 
 export type RootState = ReturnType<typeof state>;
@@ -106,6 +110,12 @@ export const mutations = mutationTree(state, {
   setNewToken(state, newValue: number) {
     state.newToken = newValue;
   },
+  setPriceStat(state, newValue: boolean) {
+    state.priceStat = newValue;
+  },
+  setPriceChange(state, newValue: number) {
+    state.priceChange = newValue;
+  },
 });
 
 // Actions
@@ -153,7 +163,7 @@ export const actions = actionTree(
       //listen for events agains the price feed, and grab the latest rounds price data
       let price: any;
       listener = dataFeed.onRound(feedAddress, (event) => {
-        console.log(event.answer.toNumber(), "ChainLink Price");
+        // console.log(event.answer.toNumber(), "ChainLink Price");
         price = event.answer.toNumber() / 1e8;
         price = price.toString().split(".");
         if (price.length > 1 && price[1].length > 2) {
@@ -181,8 +191,48 @@ export const actions = actionTree(
         if (price.price && price.confidence) {
           // tslint:disable-next-line:no-console
           let pyth;
+          const PERCENT = 100;
+          const CALL_PERCENT = -30;
+          const REFRESH_HOURS = 24;
+
+          let prev_price = 32.3;
+          let zero_price = 0;
+          let prev_price_diff = zero_price;
+
+          let price_diff, price_change_percent, sol_price;
           if (product.symbol == "Crypto.SOL/USD") {
             // console.log(`${product.symbol}: $${price.price} \xB1$${price.confidence}`)
+
+            // for alerting the system when the price goes below 30%
+            sol_price = price.price;
+            price_diff = Number(sol_price) - prev_price + prev_price_diff;
+            console.log("price diff: ", price_diff);
+
+            price_change_percent = (price_diff / sol_price) * PERCENT;
+            console.log(
+              `Price change: ${sol_price} Change: ${price_diff} Percent: ${price_change_percent}`
+            );
+
+            let price_change_check = price_change_percent.toString().split(".");
+            if (price_change_check.length > 1) {
+              price_change_check =
+                price_change_check[0] +
+                "." +
+                price_change_check[1].substr(0, 2);
+              commit("setPriceChange", price_change_check);
+            } else {
+              console.log("setPriceChange", price_change_check);
+            }
+
+            prev_price = sol_price;
+            prev_price_diff = price_diff;
+
+            if (price_change_percent <= CALL_PERCENT) {
+              commit("setPriceStat", true);
+            } else {
+              commit("setPriceStat", false);
+            }
+
             pyth = price.price.toString();
             pyth = pyth.toString().split(".");
             if (pyth.length > 1 && pyth[1].length > 2) {
@@ -193,6 +243,11 @@ export const actions = actionTree(
               }
             }
             commit("setPusd", pyth);
+
+            // set the new price change every 24 hrs
+            setTimeout(() => {
+              prev_price = sol_price;
+            }, 3.6e6 * REFRESH_HOURS);
           }
         } else {
           // tslint:disable-next-line:no-console
