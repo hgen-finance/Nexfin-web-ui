@@ -2,7 +2,7 @@
   <div class="w-100 fd-c jc-c">
     <div
       class="w-100 mcolor-1000 f-orange-400 fw-600 py-3-S py-10-XS jc-c ai-c ta-c"
-      v-if="getPriceStat"
+      v-if="getPriceStatus"
     >
       {{ warningMsg }}
     </div>
