@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 fd-r jc-r">
+  <div class="w-50 fd-r jc-r">
     <span
       class="fs-3-S fs-4-M px-1-S fw-600 py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv d-n-XS fsh-0"
       style="align-self: center"
