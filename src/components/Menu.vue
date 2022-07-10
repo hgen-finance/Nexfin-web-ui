@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       warningMsg:
-        "SOL price has decreased by more than 30%. Borrowing and lending will be halted in few hours.",
+        "SOL price has decreased by more than 7%. Borrowing and lending will be halted in few hours.",
       items: [
         {
           title: "Beginners Guide",
