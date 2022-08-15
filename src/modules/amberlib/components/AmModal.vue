@@ -25,8 +25,8 @@ export default {
   props: {
     show: { type: Boolean, default: false },
     max: { type: String, default: "w-80" },
-    shadow: { type: String, default: "shadow-purple-100" },
-    background: { type: String, default: "mcolor-500" },
+    shadow: { type: String, default: "shadow-cyan-200" },
+    background: { type: String, default: "bg-new" },
   },
   methods: {
     closed() {

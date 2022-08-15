@@ -7,7 +7,7 @@
       </div>
       <div>
         <div class="fw-600 fs-6 sub-mt-1">
-          <span class="f-mcolor-500">9.003</span>
+          <span class="f-bg-new">9.003</span>
           <span class="f-white-200">MEMBERS</span>
         </div>
       </div>
@@ -18,7 +18,7 @@
       </div>
       <div class="w-45 d-f fd-r jc-sb ai-c">
         <div class="w-40">
-          <AmButton color="mcolor-100" opacityEffect scaleEffect :full="true">
+          <AmButton color="gradient-5002" opacityEffect scaleEffect :full="true">
             Find
           </AmButton>
         </div>

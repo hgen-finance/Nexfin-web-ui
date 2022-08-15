@@ -6,10 +6,10 @@
       <Balance />
     </div>
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all mt-2-S mt-10-XS mb-2-S mb-10-XS"
+      class="w-100 p-4-S p-10-XS  rad-fix-3  mt-2-S mt-10-XS mb-2-S mb-10-XS"
     >
       <div
-        class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS fd-r ai-c pt-3 jc-l-S jc-c-XS"
+        class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 pb-2-S pb-10-XS mb-2-S fd-r ai-c pt-3 jc-l-S jc-c-XS brbs-s br-gray-800"
       >
         Rewards Calculation
         <Hint>
@@ -19,43 +19,43 @@
           how much of reward you will be receiving during the term.
         </Hint>
       </div>
-      <div class="w-100 fd-r py-2-S py-10-XS">
+      <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
           <span class="fs-5-S fs-20-XS pl-2"
-            ><span class="f-mcolor-100">32.50%</span> APR</span
+            ><span class="f-white-200">32.50%</span> APR</span
           >
         </div>
 
         <div
-          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-white-200 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ getApr.toFixed(3) }}</span>
+          <span class="f-cyan-1500 pr-2">{{ getApr.toFixed(3) }}</span>
           <span class="f-white-200 pl-1-S pr-5-XS">HGEN</span>
         </div>
       </div>
-      <div class="w-100 fd-r py-2-S py-10-XS">
+      <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
           <span class="fs-5-S fs-20-XS pl-2"
-            ><span class="f-mcolor-100">8.50%</span> Monthly</span
+            ><span class="f-white-200">8.50%</span> Monthly</span
           >
         </div>
         <div
-          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-white-200 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ getMonthly.toFixed(3) }}</span>
+          <span class="f-cyan-1500 pr-2">{{ getMonthly.toFixed(3) }}</span>
           <span class="f-white-200 pl-1-S pr-5-XS">HGEN</span>
         </div>
       </div>
-      <div class="w-100 fd-r py-2-S py-10-XS">
+      <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-5-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
           <span class="fs-5-S fs-20-XS pl-2"
-            ><span class="f-mcolor-100">1.50%</span> Daily</span
+            ><span class="f-white-200">1.50%</span> Daily</span
           >
         </div>
         <div
-          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-mcolor-100 fd-r ai-c"
+          class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 fw-600 f-white-200 fd-r ai-c"
         >
-          <span class="f-mcolor-300 pr-2">{{ getDaily.toFixed(3) }}</span>
+          <span class="f-cyan-1500 pr-2">{{ getDaily.toFixed(3) }}</span>
           <span class="f-white-200 pl-1-S pr-5-XS">HGEN</span>
         </div>
       </div>

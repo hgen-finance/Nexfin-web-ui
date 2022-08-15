@@ -185,20 +185,17 @@ export const actions = actionTree(
       const SOLANA_CLUSTER_NAME = "devnet";
       const pythPublicKey = getPythProgramKeyForCluster(SOLANA_CLUSTER_NAME);
       const pythConnection = new PythConnection(this.$web3, pythPublicKey);
+      let prev_price = 40.2;
+      let pyth;
+      const PERCENT = 100;
+      const CALL_PERCENT = -7;
+      const REFRESH_HOURS = 24;
+      let zero_price = 0;
+      let prev_price_diff = zero_price;
+
       pythConnection.onPriceChange((product, price) => {
-        // sample output:
-        // SRM/USD: $8.68725 ±$0.0131
         if (price.price && price.confidence) {
           // tslint:disable-next-line:no-console
-          let pyth;
-          const PERCENT = 100;
-          const CALL_PERCENT = -7;
-          const REFRESH_HOURS = 24;
-
-          let prev_price = 32.3;
-          let zero_price = 0;
-          let prev_price_diff = zero_price;
-
           let price_diff, price_change_percent, sol_price;
           if (product.symbol == "Crypto.SOL/USD") {
             // console.log(`${product.symbol}: $${price.price} \xB1$${price.confidence}`)
@@ -245,9 +242,9 @@ export const actions = actionTree(
             commit("setPusd", pyth);
 
             // set the new price change every 24 hrs
-            setTimeout(() => {
+            setInterval(() => {
               prev_price = sol_price;
-            }, 3.6e6 * REFRESH_HOURS);
+            }, 3600000 * REFRESH_HOURS);
           }
         } else {
           // tslint:disable-next-line:no-console

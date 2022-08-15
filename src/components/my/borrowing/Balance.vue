@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all pt-0-XS">
+  <div class="w-100 p-4-S p-10-XS  rad-fix-3  pt-0-XS">
     <div
       class="w-100 fs-8-S fs-40-XS fw-600 f-white-200 pb-5-L pb-5-M pb-6-S pb-30-XS ta-c-XS fd-r"
     >
@@ -11,16 +11,16 @@
       <div
         class="w-30 fs-4-L fs-4-M fs-6-S fs-15-XS fw-400 f-gray-500 fd-r ai-c jc-r"
       >
-        <span class="f-mcolor-100 pr-1-S pl-1-S pr-1-XS pl-5-XS"
+        <span class="f-cyan-1500 pr-1-S pl-1-S pr-1-XS pl-5-XS"
           >Chainlink</span
         >
         Price
       </div>
     </div>
-    <div class="w-100 fd-c fw-w">
-      <div class="w-100-L w-100-M w-100-S w-100-XS">
-        <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r">
-          <div class="w-20 fs-6-S fs-20-XS fw-600 f-mcolor-100 fd-r ai-c">
+    <div class="w-100 fd-c fw-w ">
+      <div class="w-100-L w-100-M w-100-S w-100-XS pb-1-S brbs-s brb-3 br-gray-800">
+        <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ">
+          <div class="w-20 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             SOL
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
@@ -29,9 +29,9 @@
           </div>
         </div>
       </div>
-      <div class="w-100-L w-100-M w-100-S w-100-XS my-2 my-5-XS">
+      <div class="w-100-L w-100-M w-100-S w-100-XS py-1-S my-5-XS brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
-          <div class="w-20 fs-6-S fs-20-XS fw-600 f-mcolor-100 fd-r ai-c">
+          <div class="w-20 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             HGEN
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
@@ -41,9 +41,9 @@
           </div>
         </div>
       </div>
-      <div class="w-100-L w-100-M w-100-S w-100-XS">
+      <div class="w-100-L w-100-M w-100-S w-100-XS py-1-S brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r">
-          <div class="w-20 fs-6-S fs-20-XS fw-600 f-mcolor-100 fd-r ai-c">
+          <div class="w-20 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             GENS
           </div>
           <div class="w-80 fs-5-S fs-20-XS fw-500 f-gray-600 fd-r jc-r">
@@ -94,6 +94,7 @@ export default {
         result = Number(this.$accessor.wallet.balanceHGEN)
           .toString()
           .split(".");
+        console.log("the gens is", result);
         if (result.length > 1) {
           result =
             result[1].length > 1

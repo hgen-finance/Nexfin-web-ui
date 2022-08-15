@@ -1,7 +1,7 @@
 <template>
   <div class="notification-box">
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all pt-0-XS notification-inner"
+      class="w-100 p-4-S p-10-XS gradient-2000 rad-fix-10 bs-sb-all pt-0-XS notification-inner"
       v-if="getTotalNotifications > 0"
     >
       <!-- TODO: check for the type of message  -->
@@ -18,7 +18,7 @@
           <div class="fs-6-M fs-5-S fs-25-XS f-white-200 fw-500">
             {{ handleTxNotifications.title }}
           </div>
-          <div class="fs-5-S fs-25-XS f-mcolor-500 pt-2 fw-500">
+          <div class="fs-5-S fs-25-XS f-cyan-1500 pt-2 fw-500">
             {{ handleTxNotifications.description }}
           </div>
           <div class="w-100 fs-5-S fs-20-XS f-white-200 fw-500 pt-1 ta-c">

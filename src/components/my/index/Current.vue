@@ -14,7 +14,7 @@
           <AmButton
             :height="false"
             color="mcolor-200"
-            bColor="mcolor-100"
+            bColor="gradient-5002"
             opacityEffect
             full
             @click="claimFunc"
@@ -40,7 +40,7 @@
           Liquidation Incentive
         </div>
         <div class="w-45 fs-5-S fs-20-XS fsh-0 f-white-200 fw-600">
-          <span class="f-mcolor-100 mr-1">{{ getCoin }}</span> SOL
+          <span class="f-white-200 mr-1">{{ getCoin }}</span> SOL
         </div>
       </div>
       <div class="w-100 fd-r ai-c py-2-S py-5-XS">
@@ -48,13 +48,13 @@
           Transaction Fee
         </div>
         <div class="w-45 fs-5-S fs-20-XS fsh-0 f-white-200 fw-600">
-          <span class="f-mcolor-100 mr-1">{{ getGens }}</span> GENS
+          <span class="f-white-200 mr-1">{{ getGens }}</span> GENS
         </div>
       </div>
       <div class="w-100 fd-r ai-c py-2-S py-5-XS">
         <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200">Rewards</div>
         <div class="w-45 fs-5-S fs-20-XS fsh-0 f-white-200 fw-600">
-          <span class="f-mcolor-100 mr-1">{{ getHgen }}</span> HGEN
+          <span class="f-white-200 mr-1">{{ getHgen }}</span> HGEN
         </div>
       </div>
     </div>

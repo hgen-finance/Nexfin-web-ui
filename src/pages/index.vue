@@ -1,18 +1,5 @@
 <template>
-  <div class="w-100 fd-r">
-    <!-- <div
-      class="w-100 f-mcolor-300 fw-800 fs-15-S fs-30-XS ta-c pt-20-XS pb-1-S pb-3-XS"
-    >
-      <span class="f-white-200 pr-3">$</span>{{ getTotal }}
-    </div>
-    <div class="w-100 f-white-200 fw-400 fs-6-S fs-20-XS ta-c pb-10-S pb-30-XS">
-      Total Deposited Value (Total Value Locked)
-    </div> -->
-
-    <!-- making a carousel -->
-
-    <!-- <div class="w-100"> -->
-    <!-- <div class="w-100 fd-r-S fd-c-XS ai-s jc-sb"> -->
+  <div class="w-100 fd-c ai-c">
     <div class="w-100" v-if="getTotalNotifications > 0">
       <NotificaitonsTx />
     </div>
@@ -20,74 +7,43 @@
       :show="modalSession == 'new'"
       :shadow="'bs-sb-all'"
       max="w-fix-250-S w-90-XS "
-      background="gradient-7001"
+      background="gradient-200"
       @closed="setModalFunc('old')"
     >
       <WelcomePopup @cancel="setModalFunc" max="w-fix-250-S w-90-XS" />
     </AmModal>
-    <div class="w-75">
-      <input type="radio" name="slider" id="item-1" checked />
-      <input type="radio" name="slider" id="item-2" />
-      <input type="radio" name="slider" id="item-3" />
-      <div class="cards cards-M cards-S">
-        <label
-          class="w-45-S w-100-XS br-6 gradient-1000 rad-fix-8 p-6-S p-20-XS card"
-          id="card-1"
-          for="item-1"
-        >
-          <Borrowing />
-        </label>
-        <label
-          class="w-45-S w-100-XS gradient-1000 rad-fix-8 p-6-S p-20-XS fsh-0 mt-20-XS card"
-          id="card-2"
-          for="item-2"
-        >
-          <Pool />
-        </label>
-        <label
-          class="w-45-S w-100-XS gradient-1000 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS mt-12-S mt-20-XS card"
-          id="card-3"
-          for="item-3"
-        >
-          <Farming />
-          <!-- <img src="@/static/my-farming.png" class="h-100 p-a r-0 t-0" /> -->
-        </label>
-      </div>
-    </div>
-    <div class="w-25 d-b-XS mr-10-S">
-      <div
-        class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all pt-5-S pt-10-XS"
-      >
-        <div
-          class="w-100 f-mcolor-300 fw-800 fs-10-S fs-30-XS ta-c pt-20-XS pb-1-S pb-3-XS"
-        >
-          <span class="f-white-200 pr-3">$</span>{{ getTotal }}
+    <div
+      class="w-80 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 jc-c mb-5-S fd-c"
+    >
+      <div class="w-100 fd-r ai-c">
+        <span class="fw-600 mr-4-S"
+          ><img
+            src="@/assets/svg/symbol-company.png"
+            class="h-fix-45-S h-fix-55-XS mr-1"
+        /></span>
+        <div class="w-60 f-white-200 fs-12-S fw-600">
+          Connecting value and ESG
         </div>
-        <div
-          class="w-100 f-white-200 fw-400 fs-4-S fs-20-XS ta-c pb-5-S pb-10-XS"
-        >
-          Total Deposited Value (Total Value Locked)
+      </div>
+      <div class="w-100 fd-r my-5-S mx-2-S">
+        <div class="fw-600 f-cyan-1500 mr-8-S">$HGEN</div>
+        <div class="f-white-200 fs-5-S">
+          HGEN is our governance token with which HGEN holders govern our
+          ecosystem and receive the majority of fees from the farm performance.
+          Holding HGEN not only yields individual earnings but also contribute
+          to the expansion and growth of hydrogen industry making the Earth a
+          better place.
+        </div>
+      </div>
+      <div class="w-100 fd-r mx-2-S">
+        <div class="fw-600 f-cyan-1500 mr-8-S">$GENS</div>
+        <div class="f-white-200 fs-5-S">
+          GENS is a stable coin of HGEN platform designed to be pegged to USD.
+          <br />
+          GENS is main currency for our borrowing and lending protocol.
         </div>
       </div>
     </div>
-    <!-- <div class="w-100 f-mcolor-300 fw-800 fs-15-S fs-35-XS ta-c pt-12-S pt-30-XS pb-2-S pb-5-XS">
-      <span class="f-white-200 pr-3">$</span>{{ getTotal }}
-    </div>
-    <div class="w-100 f-white-200 fw-400 fs-6-S fs-25-XS ta-c pb-10-S pb-30-XS">
-      Total Deposited Value (Total Value Locked)
-    </div> -->
-    <!-- <div class="w-100 fd-r-S fd-c-XS ai-s">
-       <div class="w-50-S w-100-XS br-6 brs-s br-mcolor-300 shadow-purple-100 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS mr-2-S">
-        <Current />
-      </div> 
-        <div
-          class="w-45-S w-100-XS gradient-600 p-6-S p-20-XS rad-fix-8-S rad-fix-20-XS  mt-12-S mt-20-XS"
-        >
-          <Farming />
-          <img src="@/static/my-farming.png" class="h-100 p-a r-0 t-0" />
-        </div> 
-      </div> -->
-    <!-- </div> -->
   </div>
 </template>
 

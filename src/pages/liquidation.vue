@@ -1,161 +1,177 @@
 <template>
-  <div class="w-75 p-5-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all">
-    <div class="w-100 fs-10 fw-600 f-white-200 pb-10 ta-c-XS">Liquidation</div>
-    <div class="w-100 fd-r pb-6">
-      <div class="fs-6 fw-500 f-white-200 pr-10">Total</div>
-      <div class="fs-6 f-white-200">
-        <span class="f-mcolor-300 fw-600 pr-1">{{ totalBorrowers }}</span>
-        BORROWERS
+  <div class="w-100 fd-c ai-c">
+    <div
+      class="w-80 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+    >
+      <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
+      <div class="f-white-200 fs-5-S">
+        GENS is a stable coin of HGEN platform designed to be pegged to USD.
+        <br />
+        GENS is main currency for our borrowing and lending protocol.
       </div>
     </div>
-    <div class="w-100 pb-8 fd-r-S fd-c-XS">
-      <div class="w-65-S w-100-XS pr-6-S pr-0-XS fd-r ai-c">
-        <input
-          type="text"
-          class="w-100 mcolor-700 br-0 pl-3 pr-10 py-3 rad-fix-3 oul-n f-mcolor-300 fs-6"
-          placeholder="Search..."
-          maxlength="60"
-          v-model="search"
-        />
-        <img src="@/assets/svg/search.svg" class="w-fix-15 p-a r-fix-s-15" />
-      </div>
-      <div class="w-a-S w-100-XS fsh-0 pt-6-XS">
-        <AmButton
-          :height="false"
-          color="mcolor-100"
-          bColor="mcolor-100"
-          opacityEffect
-          class="py-2"
-          @click="find"
-        >
-          FIND
-        </AmButton>
-      </div>
-      <div class="w-35-M w-100-XS pl-6-M pl-0-XS pt-6-XS">
-        <AmSelectbox
-          :data="sort"
-          :update="false"
-          :shadow="false"
-          @set="sortValue = $event"
-        />
+    <div class="w-80">
+      <div class="w-100 fs-10 fw-600 f-white-200 mb-3-S mb-10-XS ta-c-XS">
+        Liquidation
       </div>
     </div>
-    <div class="w-100 fd-r ai-s">
-      <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
-        <loading />
+    <div class="w-80 p-5-S p-10-XS gradient-2000 rad-fix-20 shadow-cyan-200">
+      <div class="w-100 fd-r pb-6">
+        <div class="fs-6 fw-500 f-white-200 pr-10">Total</div>
+        <div class="fs-6 f-white-200">
+          <span class="f-cyan-1500 fw-600 pr-1">{{ totalBorrowers }}</span>
+          BORROWERS
+        </div>
       </div>
-      <div class="w-100 fd-r ai-s" v-if="!getLoading">
-        <div
-          class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100"
-          v-for="(header, h) in headers"
-          :key="h"
-        >
-          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-600">
-            {{ header }}
+      <div class="w-100 pb-8 fd-r-S fd-c-XS">
+        <div class="w-65-S w-100-XS pr-6-S pr-0-XS fd-r ai-c">
+          <input
+            type="text"
+            class="w-100 mcolor-1100 br-0 pl-3 pr-10 py-3 rad-fix-3 oul-n f-white-200 fs-6 br-mcolor-800 brs-s-L br-1-L"
+            placeholder="Search..."
+            maxlength="60"
+            v-model="search"
+          />
+          <img src="@/assets/svg/search.svg" class="w-fix-15 p-a r-fix-s-15" />
+        </div>
+        <div class="w-a-S w-100-XS fsh-0 pt-6-XS">
+          <AmButton
+            :height="false"
+            color="gradient-5002"
+            bColor="gradient-5002"
+            opacityEffect
+            class="py-2 rad-fix-10"
+            @click="find"
+          >
+            FIND
+          </AmButton>
+        </div>
+        <div class="w-35-M w-100-XS pl-6-M pl-0-XS pt-6-XS">
+          <AmSelectbox
+            :data="sort"
+            :update="false"
+            :shadow="false"
+            @set="sortValue = $event"
+          />
+        </div>
+      </div>
+      <div class="w-100 fd-r ai-s">
+        <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
+          <loading />
+        </div>
+        <div class="w-100 fd-r ai-s" v-if="!getLoading">
+          <div
+            class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100"
+            v-for="(header, h) in headers"
+            :key="h"
+          >
+            <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-600">
+              {{ header }}
+            </div>
           </div>
         </div>
-      </div>
-      <div class="w-5 fsh-0"></div>
-    </div>
-    <div
-      class="w-100 fd-r ai-s br-t-4 brts-d br-mcolor-400"
-      v-for="(data, d) in aTroveList"
-      :key="d"
-    >
-      <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
-      >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.createdAt ? getDate(data.createdAt) : "" }}
-        </div>
+        <div class="w-5 fsh-0"></div>
       </div>
       <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-mcolor-300"
-        :title="data.owner"
+        class="w-100 fd-r ai-s br-t-4 brts-d br-mcolor-1200"
+        v-for="(data, d) in aTroveList"
+        :key="d"
       >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.owner.substr(0, 4) + "..." + data.owner.substr(-4) }}
+        <div
+          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
+            {{ data.createdAt ? getDate(data.createdAt) : "" }}
+          </div>
         </div>
-      </div>
-      <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
-      >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ getLamports(data.lamports) }}
+        <div
+          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-cyan-1100"
+          :title="data.owner"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
+            {{ data.owner.substr(0, 4) + "..." + data.owner.substr(-4) }}
+          </div>
         </div>
-      </div>
-      <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
-      >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ data.amountToClose }}
+        <div
+          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
+            {{ getLamports(data.lamports) }}
+          </div>
         </div>
-      </div>
-      <!-- <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+        <div
+          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
+            {{ data.amountToClose }}
+          </div>
+        </div>
+        <!-- <div
+        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
       >
         <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
           {{ data.depositorFee / 1000 }}
         </div>
       </div> -->
-      <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
-      >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{
-            getCollateralFunc(
-              data.amountToClose.toString(),
-              data.lamports.toString()
-            )
-          }}%
+        <div
+          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
+            {{
+              getCollateralFunc(
+                data.amountToClose.toString(),
+                data.lamports.toString()
+              )
+            }}%
+          </div>
         </div>
-      </div>
-      <div
-        class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
-      >
-        <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
-          {{ getliquidationPrice(data.amountToClose, data.lamports) }}
+        <div
+          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+        >
+          <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
+            {{ getliquidationPrice(data.amountToClose, data.lamports) }}
+          </div>
         </div>
-      </div>
-      <div class="w-5 fsh-0 fd-r ai-c jc-c">
-        <!-- <img
+        <div class="w-5 fsh-0 fd-r ai-c jc-c">
+          <!-- <img
           src="@/assets/svg/my/bin.svg"
           class="w-fix-s-10 hv ts-3"
           @click="false"
         /> -->
-        <!-- <img
+          <!-- <img
           src="@/assets/svg/my/bin.svg"
           class="w-fix-s-10 hv ts-3"
           @click="binAction({ trove: data, index: d })"
         /> -->
+        </div>
       </div>
-    </div>
-    <div
-      class="w-100 fd-r jc-c pt-10"
-      v-if="aTroveList.length >= page * 10 && aTroveList.length > 0"
-    >
-      <AmButton
-        :height="false"
-        color="mcolor-100"
-        bColor="mcolor-100"
-        opacityEffect
-        @click="nextPage"
-        class="py-2"
+      <div
+        class="w-100 fd-r jc-c pt-10"
+        v-if="aTroveList.length >= page * 10 && aTroveList.length > 0"
       >
-        More
-      </AmButton>
-    </div>
-    <div class="w-100 fd-r jc-c pt-10" v-if="false">
-      <AmButton
-        :height="false"
-        color="mcolor-100"
-        bColor="mcolor-100"
-        opacityEffect
-        @click="nextPage"
-        class="py-2"
-      >
-        More
-      </AmButton>
+        <AmButton
+          :height="false"
+          color="gradient-5002"
+          bColor="gradient-5002"
+          opacityEffect
+          @click="nextPage"
+          class="py-2"
+        >
+          More
+        </AmButton>
+      </div>
+      <div class="w-100 fd-r jc-c pt-10" v-if="false">
+        <AmButton
+          :height="false"
+          color="gradient-5002"
+          bColor="gradient-5002"
+          opacityEffect
+          @click="nextPage"
+          class="py-2"
+        >
+          More
+        </AmButton>
+      </div>
     </div>
   </div>
 </template>
@@ -204,7 +220,7 @@ export default {
         colorDefault: "white-100",
         colorBackground: "white-100",
         colorFocus: "white-100",
-        colorTitle: "mcolor-300",
+        colorTitle: "cyan-1500",
       },
       headers: [
         "Date",

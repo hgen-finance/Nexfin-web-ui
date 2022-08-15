@@ -1,6 +1,6 @@
 <template>
   <div class="w-100 h-100min">
-    <div class="w-100 h-100min p-f l-0 t-0 ovh-y-a bg-r" />
+    <div class="w-100 h-100min p-f l-0 t-0 ovh-y-a bg-new" />
     <Menu @connect="setModalFunc" :publicKey="publicKey" @logout="logout" />
     <!-- <div class="w-100 fd-r jc-c pt-0" v-if="publicKey && wallet"> -->
 
@@ -24,7 +24,7 @@
     </div>
     <AmModal
       :show="modal === 'connect'"
-      :shadow="errorConnect ? 'shadow-red-100' : 'shadow-purple-300'"
+      :shadow="errorConnect ? 'shadow-red-100' : 'shadow-cyan-200'"
       max="w-fix-250-S w-90-XS"
       @closed="setModalFunc"
     >

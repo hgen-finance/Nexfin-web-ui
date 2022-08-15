@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100 fd-c"
+    class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c"
   >
     <div class="w-100" :class="{ 'op-0': getLoading }">
       <div class="w-100">
@@ -17,39 +17,41 @@
       </div>
     </div> -->
       <div
-        class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-15-XS fd-r"
+        class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-10-XS fd-r"
       >
         <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS">
           <div
-            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-700 pl-5-XS pl-3-S rad-fix-5"
+            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-1100 pl-5-XS pl-3-S rad-fix-5 br-mcolor-800 brs-s-L br-1-L"
           >
             <AmSelectbox
               v-bind:data.sync="tokens"
               :update="true"
               :shadow="false"
               :padding="false"
-              color="mcolor-700"
-              bColor="mcolor-700"
+              color="mcolor-1100"
+              bColor="mcolor-1100"
             />
           </div>
           <div class="w-45" v-if="getToken != 'SOL' && getDest">
             <AmButton
-              color="mcolor-100"
-              bColor="mcolor-100"
+              color="gradient-5002"
+              bColor="gradient-5002"
               opacityEffect
               full
               @click="getAccount"
+              class="rad-fix-10"
             >
               Get Accounts
             </AmButton>
           </div>
           <div class="w-45" v-if="!getDest || getToken == 'SOL'">
             <AmButton
-              color="mcolor-1001"
-              bColor="mcolor-1001"
+              color="gradient-5002"
+              bColor="gradient-5002"
               opacityEffect
               full
               disabled
+              class="rad-fix-10"
             >
               Get Accounts
             </AmButton>
@@ -63,7 +65,7 @@
         <div
           class="w-100 mb-2-S mb-5-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
         >
-          <div class="w-100 f-mcolor-500 fs-5-S" v-if="getToken != 'SOL'">
+          <div class="w-100 f-bg-new fs-5-S" v-if="getToken != 'SOL'">
             <input
               type="text"
               class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-500 f-mcolor-300"
@@ -78,7 +80,7 @@
           List of Destination wallet Addresses
         </div>
         <div class="w-100 mb-2-S mb-5-XS rad-fix-2 py-3-S py-10-XS">
-          <div class="w-100 f-mcolor-500 fs-5-S">
+          <div class="w-100 f-bg-new fs-5-S">
             <!-- <textarea
             v-model="destAddress"
             class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-500 f-mcolor-300 h-fix-50-S h-fix-80-XS"
@@ -97,17 +99,18 @@
       <div class="w-100 fd-r jc-sb ai-c mb-3-S mb-10-XS">
         <div class="w-45">
           <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
+            color="gradient-1000"
+            bColor="gradient-1000"
             opacityEffect
             full
             @click="reset"
+            class="rad-fix-10"
           >
             Reset
           </AmButton>
           <!-- <AmButton
-        color="mcolor-1001"
-        bColor="mcolor-1001"
+        color="gradient-50021"
+        bColor="gradient-50021"
         full
         v-if="dayLeft != 0"
         disabled
@@ -117,17 +120,18 @@
         </div>
         <div class="w-45">
           <AmButton
-            color="mcolor-100"
-            bColor="mcolor-100"
+            color="gradient-5002"
+            bColor="gradient-5002"
             opacityEffect
             full
             @click="send"
+            class="rad-fix-10"
           >
             Send
           </AmButton>
           <!-- <AmButton
-        color="mcolor-1001"
-        bColor="mcolor-1001"
+        color="gradient-50021"
+        bColor="gradient-50021"
         full
         v-if="dayLeft != 0"
         disabled
@@ -154,7 +158,7 @@
         </div>
       </div>
       <div
-        class="w-100 mcolor-800 p-4-S p-15-XS rad-fix-4 fs-5-S fs-20-XS f-mcolor-500 mb-4-S mb-10-XS"
+        class="w-100 mcolor-800 p-4-S p-15-XS rad-fix-4 fs-5-S fs-20-XS f-bg-new mb-4-S mb-10-XS"
         v-if="getAlert"
       >
         <div class="w-100">{{ getAlert }}</div>
@@ -246,9 +250,9 @@ export default {
         theme: "default",
         value: "",
         items: TOKENS,
-        colorDefault: "mcolor-700",
-        colorFocus: "mcolor-700",
-        colorBackground: "mcolor-700",
+        colorDefault: "mcolor-1100",
+        colorFocus: "mcolor-1100",
+        colorBackground: "mcolor-1100",
         colorTitle: "white-200",
       },
       pay: true,

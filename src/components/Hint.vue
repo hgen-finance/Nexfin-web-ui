@@ -1,11 +1,11 @@
 <template>
   <span class="hint f-white-200">
     <label
-      class="w-fix-s-12-S h-fix-s-12-S w-fix-s-42-XS h-fix-s-42-XS fd-r jc-c ai-c mcolor-100 rad-fix-2 fs-6-S fs-17-XS fw-600 ml-2-S ml-6-XS p-r"
+      class="w-fix-s-12-S h-fix-s-12-S w-fix-s-42-XS h-fix-s-42-XS fd-r jc-c ai-c mcolor-900 rad-fix-20 fs-6-S fs-17-XS fw-600 ml-2-S ml-6-XS p-r"
       >?</label
     >
     <span
-      class="popup w-fix-100min w-100max-S w-a-XS shadow-purple-100 p-2-S p-10-XS p-a l-0 t-100 fs-5-S fs-20-XS mcolor-500 rad-fix-3 fw-400 f-lh-13-S f-lh-43-XS z-15"
+      class="popup w-fix-100min w-100max-S w-a-XS shadow-cyan-200 p-2-S p-10-XS p-a l-0 t-100 fs-5-S fs-20-XS bg-new rad-fix-3 fw-400 f-lh-13-S f-lh-43-XS z-15"
     >
       <slot />
     </span>

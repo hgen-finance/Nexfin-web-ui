@@ -14,7 +14,7 @@
       v-html="modelData.label"
     ></div>
     <div class="w-100 d-b amSelectboxBlock">
-      <!-- <span class="fs-6 f-mcolor-100 td-u ts-3 hv d-n-XS fsh-0">Max</span> -->
+      <!-- <span class="fs-6 f-white-200 td-u ts-3 hv d-n-XS fsh-0">Max</span> -->
       <input
         readonly
         type="text"
@@ -26,7 +26,7 @@
           getFocusClass,
           { focus: focusValue },
           modelData.colorBackground,
-          { 'shadow-purple-100': shadow, 'px-4-S px-15-XS': padding },
+          { 'shadow-cyan-200': shadow, 'px-4-S px-15-XS': padding },
         ]"
         @focus="focusValue = true"
         @blur="
@@ -171,11 +171,11 @@ export default {
     // Colors Props
     colorLabel: { type: String, default: "gray-800" },
     colorBackground: { type: String, default: "mcolor-200" },
-    colorDefault: { type: String, default: "mcolor-100" },
+    colorDefault: { type: String, default: "gradient-5002" },
     colorFocus: { type: String, default: "green-500" },
     colorTitle: { type: String, default: "white-200" },
     colorOptions: { type: String, default: "white-200" },
-    colorOptionsBorder: { type: String, default: "gray-400" },
+    colorOptionsBorder: { type: String, default: "mcolor-1100" },
     colorOptionHover: { type: String, default: "gray-300" },
     colorOptionLine: { type: String, default: "gray-200" },
     colorOptionTitle: { type: String, default: "gray-A100" },

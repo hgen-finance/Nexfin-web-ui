@@ -1,5 +1,5 @@
 <template>
-  <div class="w-100 br-6 brs-s br-mcolor-100 p-6-S p-20-XS rad-fix-8">
+  <div class="w-100 br-6 brs-s br-gradient-5002 p-6-S p-20-XS rad-fix-8">
     <div class="w-100" :class="{ 'op-0': getLoading }">
       <div
         class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-15-XS ta-c-XS"
@@ -28,8 +28,8 @@
       </div>
       <div class="w-100 pt-8-S pt-20-XS fd-r jc-c">
         <AmButton
-          color="mcolor-100"
-          bColor="mcolor-100"
+          color="gradient-5002"
+          bColor="gradient-5002"
           opacityEffect
           @click="sendEmail"
           :full="true"

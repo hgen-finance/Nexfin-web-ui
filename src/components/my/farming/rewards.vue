@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all mb-4-S mb-10-XS"
+      class="w-100 p-4-S p-10-XS gradient-2000 rad-fix-20 shadow-cyan-200  mb-4-S mb-10-XS"
     >
       <div
         class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-5-S pb-15-XS ta-l-S ta-c-XS"
@@ -14,7 +14,7 @@
             Farming Date
           </div>
           <div
-            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 py-1-S py-5-XS"
+            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-white-200 py-1-S py-5-XS"
           >
             <span class="f-white-200">{{ getStartDate || "-" }}</span>
           </div>
@@ -24,7 +24,7 @@
             Redemption Date
           </div>
           <div
-            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 py-1-S py-5-XS ai-c"
+            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-white-200 py-1-S py-5-XS ai-c"
           >
             <span class="f-white-200">{{ getEndDate || "-" }}</span>
           </div>
@@ -35,7 +35,7 @@
             LP Tokens
           </div>
           <div
-            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-mcolor-100 py-1-S py-5-XS ai-c"
+            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-white-200 py-1-S py-5-XS ai-c"
           >
             <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">{{
               getYourAmount
@@ -45,10 +45,10 @@
         </div>
         <div class="w-100 py-1-S py-10-XS fd-c">
           <div class="w-100 fs-5-S fs-20-XS f-white-200 ai-c">
-            Earnings (<span class="f-mcolor-100">SOL</span>)
+            Earnings (<span class="f-white-200">SOL</span>)
           </div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 f-mcolor-100 py-1-S py-5-XS ai-c"
+            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 f-white-200 py-1-S py-5-XS ai-c"
           >
             <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">$</span
             >{{ getEarning }}
@@ -57,19 +57,20 @@
         <div class="w-100 py-1-S py-10-XS fd-c">
           <div class="w-100 fs-5-S fs-20-XS f-white-200 ai-c">APR %</div>
           <div
-            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 f-mcolor-100 py-1-S py-5-XS ai-c"
+            class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 f-white-200 py-1-S py-5-XS ai-c"
           >
             {{ getApr.toFixed(2) }}
           </div>
         </div>
         <div class="">
           <AmButton
-            color="mcolor-100"
-            bColor="mcolor-100"
+            color="gradient-5002"
+            bColor="gradient-5002"
             opacityEffect
             full
             v-if="dayLeft <= 0 && dayLeft"
             @click="withdrawFarm()"
+            class="rad-fix-10"
           >
             Claim
           </AmButton>
@@ -79,6 +80,7 @@
             full
             v-if="dayLeft > 0 || dayLeft == null"
             disabled
+            class="rad-fix-10"
           >
             Claim
           </AmButton>

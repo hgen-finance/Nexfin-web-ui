@@ -17,7 +17,7 @@
           <div class="w-45">
             <AmButton
               color="mcolor-200"
-              bColor="mcolor-100"
+              bColor="gradient-5002"
               colorText="mcolor-300"
               opacityEffect
               :full="true"
@@ -28,7 +28,7 @@
           </div>
           <div class="w-45">
             <AmButton
-              color="mcolor-100"
+              color="gradient-5002"
               opacityEffect
               :full="true"
               @click="sendWarning"
@@ -53,7 +53,7 @@
           <div class="w-45">
             <AmButton
               color="mcolor-200"
-              bColor="mcolor-100"
+              bColor="gradient-5002"
               colorText="mcolor-300"
               opacityEffect
               :full="true"
@@ -64,7 +64,7 @@
           </div>
           <div class="w-45">
             <AmButton
-              color="mcolor-100"
+              color="gradient-5002"
               opacityEffect
               :full="true"
               @click="sendLiquidation"

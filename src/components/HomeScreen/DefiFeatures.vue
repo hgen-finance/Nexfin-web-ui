@@ -40,7 +40,7 @@
             existing hydrogen engineering art.
           </div>
           <div class="w-100-S w-100-XS">
-            <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
+            <AmButton color="gradient-5002" bColor="gradient-5002" opacityEffect>
               Beginner’s Guide to DeFi
             </AmButton>
           </div>
@@ -57,7 +57,7 @@
           class="w-33-M w-100-S w-100-XS p-8-M p-10-S p-20-XS"
           v-for="(item, i) in hydrogenItems"
           :key="i"
-          :class="{ 'mcolor rad-fix-10 shadow-purple-100': i === 0 }"
+          :class="{ 'mcolor rad-fix-10 shadow-cyan-200': i === 0 }"
         > -->
           <!-- <img
             :src="require('@/static/' + item.img)"

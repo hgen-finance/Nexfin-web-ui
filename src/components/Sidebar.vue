@@ -1,16 +1,16 @@
 <template>
   <div
-    class="w-100 br-sb bs-sb gradient-200 p-r-S p-f-XS l-0 t-0-S t-a-XS b-a-S b-0-XS pl-10-M pl-5-S pl-0-XS fd-c-S fd-r-XS mt-2-XS py-2-XS"
+    class="w-100 p-r-S p-f-XS l-0 t-0-S t-a-XS b-a-S b-0-XS pl-10-M pl-5-S pl-0-XS fd-c-S fd-r-XS mt-2-XS py-2-XS"
   >
     <span class="w-100 h-100 bg-r p-a l-0 t-0 d-n-S d-f-XS" />
     <div class="w-100" v-for="item in items" :key="item.class">
       <nuxt-link
         :to="item.to"
-        class="w-a-M w-100-S w-100-XS fd-r-S fd-c-XS ai-c hv ts-3 my-2-S my-10-XS"
+        class="w-a-M w-100-S w-100-XS fd-r-S fd-c-XS ai-c hv ts-3 mb-2-S my-10-XS brbs-s br-gray-800 brb-3 pb-2-S"
       >
         <div class="w-fix-s-15-S w-100-XS mr-2-S fd-r ai-c jc-l-S jc-c-XS">
           <HomeSvg
-            class="w-fix-10-S w-40-XS"
+            class="w-fix-10-S w-40-XS "
             v-if="item.id === 1 && !getActive(item)"
           />
           <HomeActiveSvg
@@ -91,7 +91,7 @@
           />
         </div>
         <span
-          class="fs-5-S fs-4-XS ts-3 pt-0-M pt-0-S pt-2-XS d-f-S d-n-XS"
+          class="fs-5-S fs-4-XS ts-3 pt-0-M pt-0-S pt-2-XS d-f-S d-n-XS "
           :class="{
             'f-mcolor-300 fw-600': getActive(item),
             'f-white-200 fw-400': !getActive(item),
@@ -101,6 +101,11 @@
         </span>
       </nuxt-link>
     </div>
+     <div class="w-100 fd-r jc-c pt-5-M pt-30-XS px-0-S px-20-XS">
+        <AmButton color="gradient-5002" bColor="gradient-5002" class="rad-fix-10" opacityEffect>
+          <div class="w-100 tt-n fs-5-S fs-18-XS fw-600">Beginner’s Guide</div>
+        </AmButton>
+      </div>
   </div>
 </template>
 

@@ -10,11 +10,11 @@
             src="@/assets/svg/warning.svg"
             class="w-fix-s-10-S w-fix-s-40-XS"
           />
-          <div class="fs-7-M fs-5-S fs-25-XS f-mcolor-500 fw-800 pl-2">
+          <div class="fs-7-M fs-5-S fs-25-XS f-bg-new fw-800 pl-2">
             Connect to wallet
           </div>
         </div>
-        <div class="w-100 fs-6-S fs-20-XS f-mcolor-500 fw-400 pt-2 ta-c">
+        <div class="w-100 fs-6-S fs-20-XS f-bg-new fw-400 pt-2 ta-c">
           Please install and initialize Solong waller extention first
         </div>
       </div>
@@ -23,7 +23,7 @@
       Connect to wallet
     </div>
     <div
-      class="w-100 ta-c fs-8-M fs-6-S fs-20-XS f-gray-500 fw-400 pt-4-M pt-2-S pt-8-XS pb-2"
+      class="w-100 ta-c fs-8-M fs-6-S fs-20-XS f-white-200 fw-400 pt-4-M pt-2-S pt-8-XS pb-2"
     >
       Solana Blockchain
     </div>
@@ -35,7 +35,7 @@
         v-for="(wallet, index) in wallets"
         :key="index"
         @click="$emit('set', wallet)"
-        class="mcolor-100"
+        class="gradient-5002"
       >
         <span>{{ wallet.name }}</span>
         <img
@@ -47,7 +47,7 @@
         />
       </Button> -->
       <span
-        class="my-1-S my-6-XS fs-6-M fs-8-S fs-23-XS f-gray-700 hvw ts-3 btn-effect rad-fix-3"
+        class="my-1-S my-6-XS fs-6-M fs-8-S fs-23-XS f-white-200 hvw ts-3 btn-effect rad-fix-3"
         v-for="(wallet, i) in wallets"
         :key="i"
         @click="$emit('set', wallet)"
@@ -70,8 +70,8 @@
     </div>
     <div class="w-100 fd-r jc-c px-15-M px-0-S px-0-XS pt-4">
       <AmButton
-        color="mcolor-100"
-        bColor="mcolor-100"
+        color="gradient-5002"
+        bColor="gradient-5002"
         opacityEffect
         @click="$emit('cancel', false)"
       >
@@ -81,7 +81,7 @@
     <div class="w-100 fd-r jc-c pt-4-S pt-20-XS">
       <nuxt-link
         to="/"
-        class="td-u ts-3 hv f-mcolor-100 fs-6-S fs-20-XS fw-600"
+        class="td-u ts-3 hv f-white-200 fs-6-S fs-20-XS fw-600"
       >
         Wallet guide
       </nuxt-link>
@@ -132,7 +132,7 @@ export default {
       border-radius: 50%;
     }
     &:hover {
-      background: #8f00ff;
+      background: rgb(30, 141, 210);
       transition: ease-in 300ms;
     }
   }

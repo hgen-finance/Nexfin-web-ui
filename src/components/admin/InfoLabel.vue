@@ -2,7 +2,7 @@
   <div class="d-f">
     <div class="f-white-200 fw-400 fs-6">{{ label }}</div>
     <div class="fw-600 fs-6" v-if="count !== '' && info !== ''">
-      <span class="f-mcolor-500">
+      <span class="f-">
         {{ count }}
       </span>
       <span class="f-white-200">

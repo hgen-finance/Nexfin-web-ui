@@ -10,12 +10,12 @@
       Your Current Debt
     </div>
     <div class="w-100 fs-6-S fs-20-XS f-white-200 pb-4-S pb-20-XS">
-      <span class="fs-8-S fs-25-XS fw-800 f-mcolor-100">{{
+      <span class="fs-8-S fs-25-XS fw-800 f-white-200">{{
         getDebt.toLocaleString()
       }}</span>
       <span class="fs-8-S fs-25-XS fw-600 px-1-S px-3-XS">GENS</span>
       (
-      <span class="f-mcolor-100 fw-800 pr-1-S pr-3-XS"
+      <span class="f-white-200 fw-800 pr-1-S pr-3-XS"
         >{{ getCollateral }}%</span
       >
       Collateral )
@@ -28,7 +28,7 @@
         class="w-45 fsh-0 fs-5-S fs-20-XS f-white-200 fw-600 ta-r"
         :title="getTotalDebt.toLocaleString()"
       >
-        <span class="f-mcolor-100 pr-1-S pr-3-XS"
+        <span class="f-white-200 pr-1-S pr-3-XS"
           >{{ getTotalDebt.toLocaleString().toString().slice(0, 10)
           }}{{ getTotalDebt.toString().length > 10 ? "... " : " " }}</span
         >
@@ -40,7 +40,7 @@
         Total Collateral Ratio
       </div>
       <div class="w-45 fsh-0 fs-5-S fs-20-XS f-white-200 fw-600 ta-r">
-        <span class="f-mcolor-100">{{ getTotalCollateral }}</span> %
+        <span class="f-white-200">{{ getTotalCollateral }}</span> %
       </div>
     </div>
     <div class="w-100 fd-r ai-c py-1-M py-2-S py-10-XS" v-if="true">
@@ -55,8 +55,8 @@
     <div class="w-100 pb-4-S pb-15-XS fd-c-L fd-r-S fd-c-XS">
       <div class="w-100 mr-0-L mr-2-S mr-0-XS mt-6-S pt-15-XS" v-if="!isBorrow">
         <AmButton
-          color="mcolor-100"
-          bColor="mcolor-100"
+          color="gradient-5002"
+          bColor="gradient-5002"
           opacityEffect
           full
           to="/my/borrowing"
@@ -67,7 +67,7 @@
       <div class="w-100 mr-0-L mt-6-S" v-if="isBorrow">
         <AmButton
           color="mcolor-200"
-          bColor="mcolor-100"
+          bColor="gradient-5002"
           opacityEffect
           full
           @click="payDebt"

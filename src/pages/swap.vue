@@ -4,7 +4,7 @@
       <Balance />
     </div>
     <div class="w-100 fd-r-S fd-c-XS jc-se">
-      <div class="w-35-S w-100-XS pt-0-S pt-30-XS">
+      <div class="w-50-S w-100-XS pt-0-S pt-30-XS">
         <Raydium @createRayFunc="createRayFunc" />
       </div>
       <div class="w-25-S w-100-XS pt-30-XS">

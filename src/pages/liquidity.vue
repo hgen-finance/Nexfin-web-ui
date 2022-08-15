@@ -4,10 +4,10 @@
       <Balance />
     </div>
     <div class="w-100 fd-r-S fd-c-XS jc-se">
-      <div class="w-35-S w-100-XS pt-0-S pt-30-XS" v-if="getLiquidityState">
+      <div class="w-50-S w-100-XS pt-0-S pt-30-XS" v-if="getLiquidityState">
         <AddLiquidity />
       </div>
-      <div class="w-35-S w-100-XS pt-0-S pt-30-XS" v-if="!getLiquidityState">
+      <div class="w-50-S w-100-XS pt-0-S pt-30-XS" v-if="!getLiquidityState">
         <RemoveLiquidity />
       </div>
       <div class="w-25-S w-100-XS pt-30-XS">

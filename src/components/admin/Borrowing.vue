@@ -19,15 +19,15 @@
         </div>
         <div>
           <div class="fw-600 fs-6 sub-mt-1">
-            <span class="f-mcolor-500">{{ totalTroveList }}</span>
+            <span class="f-bg-new">{{ totalTroveList }}</span>
             <span class="f-white-200">MEMBERS</span>
           </div>
           <div class="fw-600 fs-6 sub-mt-1">
-            <span class="f-mcolor-500">{{ troveTotal }}</span>
+            <span class="f-bg-new">{{ troveTotal }}</span>
             <span class="f-white-200">GENS</span>
           </div>
           <div class="fw-600 fs-6 sub-mt-1">
-            <span class="f-mcolor-500">{{ debtRatio }}</span>
+            <span class="f-bg-new">{{ debtRatio }}</span>
             <span class="f-white-200">%</span>
           </div>
           <div class="fw-600 fs-6 sub-mt-1">
@@ -50,11 +50,11 @@
             </div>
             <div>
               <div class="fw-600 fs-6 sub-mt-1">
-                <span class="f-mcolor-500">9.003</span>
+                <span class="f-bg-new">9.003</span>
                 <span class="f-white-200">GENS</span>
               </div>
               <div class="fw-600 fs-6 sub-mt-1">
-                <span class="f-mcolor-500">45645645</span>
+                <span class="f-bg-new">45645645</span>
                 <span class="f-white-200">GENS</span>
               </div>
             </div>
@@ -75,11 +75,11 @@
             </div>
             <div>
               <div class="fw-600 fs-6 sub-mt-1">
-                <span class="f-mcolor-500">9.003</span>
+                <span class="f-bg-new">9.003</span>
                 <span class="f-white-200">GENS</span>
               </div>
               <div class="fw-600 fs-6 sub-mt-1">
-                <span class="f-mcolor-500">45645645</span>
+                <span class="f-bg-new">45645645</span>
                 <span class="f-white-200">GENS</span>
               </div>
             </div>
@@ -98,11 +98,11 @@
             </div>
             <div>
               <div class="fw-600 fs-6 sub-mt-1">
-                <span class="f-mcolor-500">9.003</span>
+                <span class="f-bg-new">9.003</span>
                 <span class="f-white-200">GENS</span>
               </div>
               <div class="fw-600 fs-6 sub-mt-1">
-                <span class="f-mcolor-500">45645645</span>
+                <span class="f-bg-new">45645645</span>
                 <span class="f-white-200">GENS</span>
               </div>
             </div>

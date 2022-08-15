@@ -17,8 +17,8 @@
       </div>
       <div class="w-20-S w-100-XS">
         <AmButton
-          color="mcolor-100"
-          bColor="mcolor-100"
+          color="gradient-5002"
+          bColor="gradient-5002"
           opacityEffect
           scaleEffect
           class="ml-2 ml-0-XS mt-0-S mt-10-XS fw-600"
@@ -49,8 +49,8 @@
       data-aos="zoom-in"
     >
       <AmButton
-        color="mcolor-100"
-        bColor="mcolor-100"
+        color="gradient-5002"
+        bColor="gradient-5002"
         opacityEffect
         scaleEffect
         class="mr-2-S mr-0-XS"
@@ -61,8 +61,8 @@
         </div>
       </AmButton>
       <AmButton
-        color="mcolor-100"
-        bColor="mcolor-100"
+        color="gradient-5002"
+        bColor="gradient-5002"
         opacityEffect
         scaleEffect
         class="ml-2 ml-0-XS mt-0-S mt-10-XS"
@@ -110,7 +110,7 @@
           p-3-S p-10-XS
           br-6
           brs-s
-          br-mcolor-100
+          br-gradient-5002
           m-5-S m-20-XS
         "
         v-for="(item, i) in items"

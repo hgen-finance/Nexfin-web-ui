@@ -14,15 +14,15 @@
       </div>
       <div>
         <div class="fw-600 fs-6 sub-mt-1">
-          <span class="f-mcolor-500">9.003</span>
+          <span class="f-bg-new">9.003</span>
           <span class="f-white-200">MEMBERS</span>
         </div>
         <div class="fw-600 fs-6 sub-mt-1">
-          <span class="f-mcolor-500">45645645</span>
+          <span class="f-bg-new">45645645</span>
           <span class="f-white-200">GENS</span>
         </div>
         <div class="fw-600 fs-6 sub-mt-1">
-          <span class="f-mcolor-500">9.003</span>
+          <span class="f-bg-new">9.003</span>
           <span class="f-white-200">%</span>
         </div>
         <div class="fw-600 fs-6 f-red-600 sub-mt-1">
@@ -42,7 +42,7 @@
       </div>
     </div>
     <div class="w-100 mt-2">
-      <AmButton color="mcolor-100" opacityEffect :full="true">
+      <AmButton color="gradient-5002" opacityEffect :full="true">
         Confirm
       </AmButton>
     </div>

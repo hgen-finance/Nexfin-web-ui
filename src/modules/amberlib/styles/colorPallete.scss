@@ -7,7 +7,7 @@
 @mixin fontColorCreate($name, $colors) {
   @each $color in $colors {
     $i: index($colors, $color);
-    @if $i * 100 > 900 {
+    @if $i * 100 > 1500 {
       .f-#{$name}-A#{($i * 100) - 1000} {
         color: $color;
       }

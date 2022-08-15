@@ -1,20 +1,31 @@
 <template>
-  <div
-    class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
-  >
-    <div class="w-100" :class="{ 'op-0': getLoading }">
-      <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
-        <span v-if="raySwap" class="fs-8-S fs-7-M" style="align-self: center"
-          >Raydium Swap</span
-        >
-        <span v-if="!raySwap" class="fs-8-S fs-7-M" style="align-self: center"
-          >Swap</span
-        >
-        <div class="w-100" v-if="getTotalNotifications > 0">
-          <NotificaitonsTx />
-        </div>
-        <div class="fd-r buttons">
-          <!-- <Tooltip placement="bottomright">
+  <div>
+    <div
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+    >
+      <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
+      <div class="f-white-200 fs-5-S">
+        GENS is a stable coin of HGEN platform designed to be pegged to USD.
+        <br />
+        GENS is main currency for our borrowing and lending protocol.
+      </div>
+    </div>
+    <div
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c shadow-cyan-200"
+    >
+      <div class="w-70" :class="{ 'op-0': getLoading }">
+        <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
+          <span v-if="raySwap" class="fs-8-S fs-7-M" style="align-self: center"
+            >Raydium Swap</span
+          >
+          <span v-if="!raySwap" class="fs-8-S fs-7-M" style="align-self: center"
+            >Swap</span
+          >
+          <div class="w-100" v-if="getTotalNotifications > 0">
+            <NotificaitonsTx />
+          </div>
+          <div class="fd-r buttons">
+            <!-- <Tooltip placement="bottomright">
           <Progress
             type="circle"
             :width="20"
@@ -23,10 +34,10 @@
             :show-info="false"
           />
         </Tooltip> -->
-          <Tooltip placement="bottomRight">
-            <!-- <template slot="title">
+            <Tooltip placement="bottomRight">
+              <!-- <template slot="title">
             <div
-              class="shadow-purple-100 p-2-S p-10-XS f-white-200 fs-5-S fs-20-XS mcolor-500 rad-fix-3 z-15"
+              class="shadow-cyan-200 p-2-S p-10-XS f-white-200 fs-5-S fs-20-XS bg-new rad-fix-3 z-15"
             >
               <p>Program Addresses (DO NOT DEPOSIT)</p>
               <div class="swap-info">
@@ -58,16 +69,16 @@
               </div>
             </div>
           </template> -->
-          </Tooltip>
+            </Tooltip>
 
-          <!-- <Tooltip>
+            <!-- <Tooltip>
           <Icon
             type="search"
             :style="{ width: '40px', height: '40px' }"
             class="fd-r jc-c ai-c"
           />
         </Tooltip> -->
-          <!-- <Tooltip>
+            <!-- <Tooltip>
             <Icon
               type="switcher"
               @click="toggleSwap"
@@ -75,22 +86,23 @@
               class="fd-r jc-c ai-c"
             />
           </Tooltip> -->
-        </div>
-      </div>
-      <div
-        class="w-100 mt-2-S mt-10-XS mb-1 mcolor-700 rad-fix-2-S rad-fix-15-XS px-4-S px-10-XS fd-r"
-      >
-        <div class="w-100 pb-0 fd-r jc-r ai-c">
-          <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-35-XS">
-            <AmSelectbox
-              v-bind:data.sync="currencyFrom"
-              :update="true"
-              :shadow="false"
-              :padding="false"
-            />
           </div>
+        </div>
+        <div
+          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-r br-mcolor-800 brs-s-L br-1-L"
+        >
+          <div class="w-100 pb-0 fd-r jc-r ai-c">
+            <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-35-XS">
+              <AmSelectbox
+                v-bind:data.sync="currencyFrom"
+                :update="true"
+                :shadow="false"
+                :padding="false"
+                :colorBackground="''"
+              />
+            </div>
 
-          <!-- <span
+            <!-- <span
               class="p-a-S p-r-XS r-0 t-0 w-fix-35-S w-35-XS pb-1 f-white-200 py-3 ta-r"
               >Bal.
               <span class="f-green-500" v-if="currencyFrom.name == 'GENS'">
@@ -103,185 +115,189 @@
                 {{ getBalance || 0 }}
               </span>
             </span> -->
-        </div>
-        <div
-          class="w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-1-S pt-10-XS fd-c"
-        >
-          <div class="jc-r mt-1-S mb-2-S d-f jc-r">
-            <span
-              class="fs-4-S fs-20-XS f-mcolor-500 fw-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3 py-1 rad-fix-3"
-              @click="setMax"
-              >max</span
-            >
           </div>
+          <div
+            class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-2-S pb-10-XS pt-1-S pt-10-XS fd-c"
+          >
+            <div class="jc-r mt-1-S mb-2-S d-f jc-r">
+              <span
+                class="fs-4-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0  px-3 py-1 rad-fix-10"
+                @click="setMax"
+                >max</span
+              >
+            </div>
 
-          <input
-            class="w-fix-s-10min fs-7-S fs-25-XS fw-600 f-mcolor-300 br-0 oul-n white-100 ta-r"
-            placeholder="0.00"
-            v-model="from"
-            maxlength="15"
-            type="text"
-          />
-        </div>
-      </div>
-      <div class="cside-L cside-M cside-S cside-XS fd-r jc-c mt-8-XS mt-2-S">
-        <div
-          class="fd-r jc-c f-white-200 ai-c micon-L micon-M micon-S micon-XS"
-        >
-          <!-- <Icon type="swap" :rotate="90" @click="toggleToken" /> -->
-          <Icon type="arrow-down" :rotate="0" @click="toggleToken" />
-        </div>
-      </div>
-      <div
-        class="w-100 mt-2-S mt-10-XS mb-1 mcolor-700 rad-fix-2-S rad-fix-15-XS px-4-S px-10-XS fd-r"
-      >
-        <div class="w-100 pb-0 fd-r jc-r">
-          <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-35-XS">
-            <AmSelectbox
-              v-bind:data.sync="currencyTo"
-              :update="true"
-              :shadow="false"
-              :padding="false"
+            <input
+              class="w-fix-s-10min fs-7-S fs-25-XS fw-600 f-cyan-1500 br-0 oul-n white-100 ta-r"
+              placeholder="0.00"
+              v-model="from"
+              maxlength="15"
+              type="text"
             />
           </div>
         </div>
-        <div
-          class="w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-1-S pt-10-XS ai-c"
-        >
-          <span
-            class="fs-4-S fs-20-XS f-mcolor-500 fw-500 ts-3 f-white-200 pl-1 py-1 rad-fix-3 d-f jc-r mb-2-S"
-            >est.</span
-          >
-
+        <div class="cside-L cside-M cside-S cside-XS fd-r jc-c mt-8-XS mt-2-S ">
           <div
-            class="w-fix-s-10min fs-6-S fs-25-XS fw-600 br-0 oul-n ta-r"
-            :class="{
-              'f-mcolor-300': Number(to) > 0,
-              'f-gray-800': Number(to) === 0,
-            }"
+            class="fd-r jc-c f-white-200 ai-c micon-L micon-M micon-S micon-XS br-mcolor-800 brs-s-L br-1-L"
           >
-            {{ to }}
+            <!-- <Icon type="swap" :rotate="90" @click="toggleToken" /> -->
+            <Icon type="arrow-down" :rotate="0" @click="toggleToken" />
           </div>
         </div>
-      </div>
-      <div
-        class="w-100 pt-2-S pt-15-XS ta-c fs-5-S fs-20-XS fw-500 f-white-200 pb-2-S pb-15-XS"
-        v-if="currencyFrom.value"
-      >
-        1 {{ currencyFrom.name }} ≈ {{ getPrice }} {{ currencyTo.name }}
-      </div>
-      <!-- <div
+        <div
+          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-r br-mcolor-800 brs-s-L br-1-L"
+        >
+          <div class="w-100 pb-0 fd-r jc-r">
+            <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-35-XS">
+              <AmSelectbox
+                v-bind:data.sync="currencyTo"
+                :update="true"
+                :shadow="false"
+                :padding="false"
+              />
+            </div>
+          </div>
+          <div
+            class="w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-1-S pt-10-XS ai-c"
+          >
+            <span
+              class="fs-4-S fs-20-XS f-bg-new fw-500 ts-3 f-white-200 pl-1 py-1 rad-fix-10 d-f jc-r mb-2-S"
+              >est.</span
+            >
+
+            <div
+              class="w-fix-s-10min fs-6-S fs-25-XS fw-600 br-0 oul-n ta-r"
+              :class="{
+                'f-cyan-1500': Number(to) > 0,
+                'f-white-200': Number(to) === 0,
+              }"
+            >
+              {{ to }}
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-100 pt-2-S pt-15-XS ta-c fs-5-S fs-20-XS fw-500 f-white-200 pb-2-S pb-15-XS"
+          v-if="currencyFrom.value"
+        >
+          1 {{ currencyFrom.name }} ≈ {{ getPrice }} {{ currencyTo.name }}
+        </div>
+        <!-- <div
       class="w-100 pt-2-S pt-15-XS ta-c fs-5-S fs-20-XS fw-500 f-white-200 pb-2-S pb-15-XS"
       v-if="currencyFrom.value === tokens[1].value"
     >
       1 HGEN ≈ {{ convertSOL }} GENS
     </div> -->
-      <div class="w-100 fd-r py-1-S py-5-XS">
-        <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
-          Slippage Tolerance
-          <Hint>
-            The difference between the price at the confirmation and the actual
-            transaction that users are willing to accept during the swapping.
-          </Hint>
-        </div>
-        <div
-          class="w-15 fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 ai-c pt-2-XS jc-c-XS"
-        >
-          <div class="mcolor-700 rad-fix-2 fd-r ai-c py-1">
-            <input
-              class="w-fix-s-10min fs-5-S fs-25-XS fw-600 f-mcolor-300 br-0 oul-n white-100 pl-2"
-              placeholder="0.00"
-              v-model="slippageTolerance"
-              maxlength="15"
-              type="text"
-            />
-            <span class="f-white-200 fw-400 pl-1 pr-2 fs-4-S fs-25-X">%</span>
+        <div class="w-100 fd-r py-1-S py-5-XS brbs-s brb-3 br-gray-800">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
+            Slippage Tolerance
+            <Hint>
+              The difference between the price at the confirmation and the
+              actual transaction that users are willing to accept during the
+              swapping.
+            </Hint>
+          </div>
+          <div
+            class="w-15 fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 ai-c pt-2-XS jc-c-XS"
+          >
+            <div class="rad-fix-10 fd-r ai-c py-1">
+              <input
+                class="w-fix-s-10min fs-5-S fs-25-XS fw-600 f-cyan-1500 br-0 oul-n white-100 pl-2"
+                placeholder="0.00"
+                v-model="slippageTolerance"
+                maxlength="15"
+                type="text"
+              />
+              <span class="f-white-200 fw-400 pl-1 pr-2 fs-4-S fs-25-X">%</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="w-100 fd-r py-1-S py-5-XS">
-        <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
-          Minimum Received
-          <Hint>
-            Your transaction will be reverted if there is a large, unfavorable
-            price movement before it is confirmed.
-          </Hint>
-        </div>
-        <div
-          class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
-          v-if="currencyTo.value === tokens[0].value"
-        >
-          {{ slippagePrice.toFixed(2) }}
-          <span class="f-white-200 pl-1">GENS</span>
-        </div>
-        <div
-          class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
-          v-if="currencyTo.value === tokens[1].value"
-        >
-          {{ slippagePrice.toFixed(2) }}
-          <span class="f-white-200 pl-1">HGEN</span>
-        </div>
-        <div
-          class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
-          v-if="currencyTo.value === tokens[2].value"
-        >
-          {{ slippagePrice.toFixed(2) }}
-          <span class="f-white-200 pl-1">SOL</span>
-        </div>
-      </div>
-      <div class="w-100 fd-r py-1-S py-5-XS">
-        <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
-          Price Impact
-          <Hint>
-            Estimated % difference in price at the swapping compared to the
-            displayed price.
-          </Hint>
-        </div>
-        <div
-          class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
-        >
-          <span class="px-1" v-if="priceImpact <= 0.1"> > </span>
-          {{ priceImpact }} <span class="f-white-200 pl-1">%</span>
-        </div>
-      </div>
-      <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
-        <AmButton
-          color="mcolor-100"
-          bColor="mcolor-100"
-          opacityEffect
-          @click="confirm"
-          :full="true"
-          v-if="raySwap"
-        >
-          RAYDIUM SWAP
-        </AmButton>
-        <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
-          <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
-            opacityEffect
-            full
-            @click="reset"
+        <div class="w-100 fd-r py-1-S py-5-XS brbs-s brb-3 br-gray-800">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
+            Minimum Received
+            <Hint>
+              Your transaction will be reverted if there is a large, unfavorable
+              price movement before it is confirmed.
+            </Hint>
+          </div>
+          <div
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
+            v-if="currencyTo.value === tokens[0].value"
           >
-            reset
-          </AmButton>
+            {{ slippagePrice.toFixed(2) }}
+            <span class="f-white-200 pl-1">GENS</span>
+          </div>
+          <div
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
+            v-if="currencyTo.value === tokens[1].value"
+          >
+            {{ slippagePrice.toFixed(2) }}
+            <span class="f-white-200 pl-1">HGEN</span>
+          </div>
+          <div
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
+            v-if="currencyTo.value === tokens[2].value"
+          >
+            {{ slippagePrice.toFixed(2) }}
+            <span class="f-white-200 pl-1">SOL</span>
+          </div>
         </div>
-        <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+        <div class="w-100 fd-r py-1-S py-5-XS brbs-s brb-3 br-gray-800">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
+            Price Impact
+            <Hint>
+              Estimated % difference in price at the swapping compared to the
+              displayed price.
+            </Hint>
+          </div>
+          <div
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
+          >
+            <span class="px-1" v-if="priceImpact <= 0.1"> > </span>
+            {{ priceImpact }} <span class="f-white-200 pl-1">%</span>
+          </div>
+        </div>
+        <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
           <AmButton
-            color="mcolor-100"
-            bColor="mcolor-100"
+            color="gradient-5002"
+            bColor="gradient-5002"
             opacityEffect
             @click="confirm"
             :full="true"
-            v-if="!raySwap"
+            v-if="raySwap"
           >
-            SWAP
+            RAYDIUM SWAP
           </AmButton>
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+            <AmButton
+              color="gradient-1000"
+              bColor="gradient-1000"
+              opacityEffect
+              full
+              @click="reset"
+              class="rad-fix-10"
+            >
+              reset
+            </AmButton>
+          </div>
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+            <AmButton
+              color="gradient-5002"
+              bColor="gradient-5002"
+              opacityEffect
+              @click="confirm"
+              :full="true"
+              v-if="!raySwap"
+              class="rad-fix-10"
+            >
+              SWAP
+            </AmButton>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
-      <Loading />
+      <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
+        <Loading />
+      </div>
     </div>
   </div>
 </template>
@@ -361,9 +377,9 @@ export default {
         theme: "default",
         value: "",
         items: POOL_TOKENS,
-        colorDefault: "mcolor-700",
-        colorFocus: "mcolor-700",
-        colorBackground: "mcolor-700",
+        colorDefault: "mcolor-1100",
+        colorFocus: "mcolor-1100",
+        colorBackground: "mcolor-1100",
         colorTitle: "white-200",
         name: "GENS",
         balance: 0,
@@ -373,9 +389,9 @@ export default {
         theme: "default",
         value: "",
         items: POOL_TOKENS,
-        colorDefault: "mcolor-700",
-        colorFocus: "mcolor-700",
-        colorBackground: "mcolor-700",
+        colorDefault: "mcolor-1100",
+        colorFocus: "mcolor-1100",
+        colorBackground: "mcolor-1100",
         colorTitle: "white-200",
         name: "HGEN",
       },
@@ -1191,8 +1207,8 @@ export default {
       }
     },
     reset() {
-      this.to = null;
-      this.from = null;
+      this.to = "0.00";
+      this.from = "0.00";
       this.priceImpact = 0;
     },
   },

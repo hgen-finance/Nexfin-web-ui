@@ -1,11 +1,11 @@
 <template>
-  <!-- { disabled: disabled, 'shadow-purple-100': !disabled }, -->
+  <!-- { disabled: disabled, 'shadow-cyan-200': !disabled }, -->
   <!-- <div
     class="w-100-XS d-ib tt-u rad-fix-2 amButton br-4 brs-s" -->
   <div
     class="w-100-XS d-ib tt-u rad-fix-3 amButton br-4"
     :class="[
-      { disabled: disabled, 'shadow-purple-100': !disabled },
+      { disabled: disabled, 'shadow-cyan-200': !disabled },
       { disableShadow: disableShadow, 'bs-sb-all': disableShadow },
       color,
       `f-${colorText}`,
@@ -85,7 +85,7 @@ export default {
     height: { type: Boolean, default: true },
     full: { type: Boolean, default: false },
     disabled: { type: Boolean, default: false },
-    shadow: { type: String, default: "shadow-purple-100" },
+    shadow: { type: String, default: "shadow-cyan-200" },
     disableShadow: { type: Boolean, default: false },
   },
   computed: {

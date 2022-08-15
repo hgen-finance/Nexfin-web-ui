@@ -111,7 +111,7 @@
         </div>
       </div>
       <div class="w-100 fd-r jc-c pt-10-S pt-30-XS px-0-S px-20-XS">
-        <AmButton color="mcolor-100" bColor="mcolor-100" opacityEffect>
+        <AmButton color="gradient-5002" bColor="gradient-5002" opacityEffect>
           <div class="w-100 tt-n fs-6-S fs-18-XS fw-600">
             Beginner’s Guide to Token
           </div>
@@ -138,7 +138,7 @@
             <span class="fs-10-S fs-30-XS fw-600"><i>Buy Tax</i></span>
           </div>
           <div
-            class="w-100 shadow-purple-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-mcolor-100"
+            class="w-100 shadow-cyan-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-gradient-5002"
             v-for="(item, i) in items"
             :key="i"
             :class="{ 'mt-3-S mt-10-XS': i > 0 }"
@@ -162,7 +162,7 @@
             <span class="fs-10-S fs-30-XS fw-600"><i>Sell Tax</i></span>
           </div>
           <div
-            class="w-100 shadow-purple-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-mcolor-100"
+            class="w-100 shadow-cyan-200 rad-fix-6 p-3-S p-10-XS br-6 brs-s br-gradient-5002"
             v-for="(item, i) in items2"
             :key="i"
             :class="{ 'mt-3-S mt-10-XS': i > 0 }"

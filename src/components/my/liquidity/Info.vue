@@ -6,7 +6,7 @@
       <Balance />
     </div>
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all mt-2-S mt-10-XS mb-2-S mb-10-XS"
+      class="w-100 p-4-S p-10-XS  rad-fix-3  mt-2-S mt-10-XS mb-2-S mb-10-XS"
     >
       <div class="w-100">
         <div class="w-100 fd-c py-10-XS">
@@ -34,41 +34,41 @@
             >
           </div>
           <div
-            class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-5-M pb-6-S pb-30-XS ta-l-S ta-c-XS fd-r"
+            class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-2-M pb-2-S pb-30-XS mb-2-S ta-l-S ta-c-XS fd-r brbs-s  br-gray-800"
           >
             Liquidity Pool
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             TOTAL LP SUPPLY
             <Hint> Total supply of LP token in the pool. </Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             {{ lpTotalSupply }}
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             TOTAL HGEN
             <Hint>Total HGEN in the liquidity pool.</Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             {{ getPoolInfo.tokenAmountA }}
             <span class="f-white-200 pl-1">HGEN</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             TOTAL SOL
             <Hint> Total SOL in the liquidity pool. </Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             {{ getPoolInfo.tokenAmountB }}
             <span class="f-white-200 pl-1">SOL</span>
@@ -77,56 +77,56 @@
       </div>
     </div>
     <div
-      class="w-100 p-4-S p-10-XS mcolor-500 rad-fix-3 bs-sb-all mt-2-S mt-10-XS mb-2-S mb-10-XS"
+      class="w-100 p-4-S p-10-XS  rad-fix-3  mt-2-S mt-10-XS mb-2-S mb-10-XS"
     >
       <div class="w-100">
         <div class="w-100 fd-r py-2-S py-10-XS">
           <div
-            class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-5-M pb-6-S pb-30-XS ta-l-S ta-c-XS"
+            class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-2-M pb-3-S pb-30-XS mb-2-S ta-l-S ta-c-XS brbs-s br-gray-800"
           >
             Your Liquidity Pool
           </div>
         </div>
-        <div class="w-100 fd-r pb-2-S py-10-XS">
+        <div class="w-100 fd-r pb-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             HGENS in Pool
             <Hint> Your HGEN share in the liquidity pool. </Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             ≈ {{ getTokenA }} <span class="f-white-200 pl-1">HGEN</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             SOL in Pool
             <Hint> Your SOL share in the liquidity pool.</Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             ≈ {{ getTokenB }}<span class="f-white-200 pl-1">SOL</span>
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             LP Tokens
             <Hint> LP tokens you provided in the liquidity pool.</Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             {{ getMyLpToken }}
           </div>
         </div>
-        <div class="w-100 fd-r py-2-S py-10-XS">
+        <div class="w-100 fd-r py-2-S py-10-XS brbs-s brb-3 br-gray-800">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
             Pool Share
             <Hint>Percentage of your HGEN in the pool. </Hint>
           </div>
           <div
-            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
           >
             {{ getPoolShare }}<span class="f-white-200 pl-1">%</span>
           </div>

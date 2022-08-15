@@ -1,139 +1,146 @@
 <template>
-  <div
-    class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
-  >
-    <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
-      <span class="fs-8-S fs-7-M" style="align-self: center"
-        >Remove Liquidity</span
-      >
-      <span
-        class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv d-n-XS fsh-0"
-        style="align-self: center"
-        v-if="true"
-        @click="changeLiquidityStateToAdd"
-      >
-        + Add Liquidity
-      </span>
-      <!-- <span
-        class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv d-n-XS fsh-0"
-        style="align-self: center"
-        v-if="true"
-        @click="createSwapPool"
-      >
-        + Create Pool
-      </span> -->
-      <!-- <span
-        class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv d-n-XS fsh-0"
-        style="align-self: center"
-        v-if="true"
-        @click="addToken"
-      >
-        + Add Tokens
-      </span> -->
-    </div>
-    <div class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS">
-      Your Current Liquidity
-    </div>
+  <div>
     <div
-      class="fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
-      data-tour-step="1"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
     >
-      <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{ getLpTokens }}</span>
-      <span class="mr-1"> LP Tokens </span>(<span class="fw-800 f-mcolor-100">
-        {{ getPoolShare }}
-      </span>
-      <span class="fw-600 pr-1">% </span>Pool Share)
-    </div>
-    <div
-      class="w-100 mt-2-S mt-10-XS mb-1 mcolor-700 rad-fix-2-S rad-fix-15-XS px-4-S px-10-XS fd-c jc-r"
-    >
-      <div class="w-100 mt-1-S d-f jc-r">
-        <span
-          class="fs-4-S fs-20-XS f-mcolor-500 fw-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3 py-1 rad-fix-3"
-          @click="setMax"
-        >
-          max
-        </span>
+      <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
+      <div class="f-white-200 fs-5-S">
+        GENS is a stable coin of HGEN platform designed to be pegged to USD.
+        <br />
+        GENS is main currency for our borrowing and lending protocol.
       </div>
-
-      <div class="w-100 py-3-S mt-1-S pb-0 fd-r jc-r">
-        <div class="p-a-S p-r-XS l-0 b-0 w-fix-60-S w-35-S w-35-XS">
-          <AmSelectbox
-            v-bind:data.sync="currencyFrom"
-            :update="true"
-            :shadow="false"
-            :padding="false"
-          />
+    </div>
+    <div
+      class="w-100 br-6 gradient-2000 rad-fix-10 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
+    >
+      <div class="w-70" :class="{ 'op-0': getLoading }">
+        <div class="w-100" v-if="getTotalNotifications > 0">
+          <NotificaitonsTx />
         </div>
-        <input
-          class="w-fix-s-10min fs-6-S fs-25-XS fw-600 f-mcolor-300 br-0 oul-n white-100 ta-r"
-          placeholder="0"
-          v-model="from"
-          maxlength="15"
-          type="text"
-        />
-      </div>
-    </div>
+        <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
+          <span class="fs-8-S fs-7-M" style="align-self: center"
+            >Remove Liquidity</span
+          >
+          <span
+            class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv d-n-XS fsh-0"
+            style="align-self: center"
+            v-if="true"
+            @click="changeLiquidityStateToAdd"
+          >
+            + Add Liquidity
+          </span>
+        </div>
+        <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS ta-c-XS">
+          Your Current Liquidity
+        </div>
+        <div
+          class="fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
+          data-tour-step="1"
+        >
+          <span class="fs-7-S fs-25-XS f-white-200 fw-800">{{
+            getLpTokens
+          }}</span>
+          <span class="mr-1"> LP Tokens </span>(<span
+            class="fw-800 f-white-200"
+          >
+            {{ getPoolShare }}
+          </span>
+          <span class="fw-600 pr-1">% </span>Pool Share)
+        </div>
+        <div
+          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-c jc-r br-mcolor-800 brs-s-L br-1-L"
+        >
+          <div class="w-100 mt-1-S d-f jc-r">
+            <span
+              class="fs-4-S fs-20-XS f-cyan-1500 fw-500 ts-3 hv d-n-XS fsh-0 px-3 py-1 rad-fix-10"
+              @click="setMax"
+            >
+              max
+            </span>
+          </div>
 
-    <div class="w-100 fd-r py-1-S py-5-XS">
-      <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
-        Slippage Tolerance
-        <Hint>
-          Difference on price of 2 different coins you are using in transaction
-          during time it takes to complete transaction.
-        </Hint>
-      </div>
-      <div
-        class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
-      >
-        1 <span class="f-white-200 pl-1">%</span>
-      </div>
-    </div>
-    <div class="w-100 fd-r py-1-S py-5-XS">
-      <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
-        Price Impact
-        <Hint>
-          If the pool is $1,000 and you sell $1 worth, thay will "impact" the
-          pool 0.1%.
-        </Hint>
-      </div>
-      <div
-        class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-mcolor-100 fd-r ai-c pt-2-XS jc-c-XS"
-      >
-        0.00 <span class="f-white-200 pl-1">%</span>
-      </div>
-    </div>
-    <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
-      <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
-        <AmButton
-          color="mcolor-200"
-          bColor="mcolor-100"
-          opacityEffect
-          full
-          @click="reset"
+          <div class="w-100 py-3-S mt-1-S pb-0 fd-r jc-r">
+            <div class="p-a-S p-r-XS l-0 b-0 w-fix-60-S w-35-S w-35-XS">
+              <AmSelectbox
+                v-bind:data.sync="currencyFrom"
+                :update="true"
+                :shadow="false"
+                :padding="false"
+              />
+            </div>
+            <input
+              class="w-fix-s-10min fs-6-S fs-25-XS fw-600 f-white-200 br-0 oul-n white-100 ta-r"
+              placeholder="0"
+              v-model="from"
+              maxlength="15"
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div class="w-100 fd-r py-1-S py-5-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
+            Slippage Tolerance
+            <Hint>
+              Difference on price of 2 different coins you are using in
+              transaction during time it takes to complete transaction.
+            </Hint>
+          </div>
+          <div
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
+          >
+            1 <span class="f-white-200 pl-1">%</span>
+          </div>
+        </div>
+        <div class="w-100 fd-r py-1-S py-5-XS">
+          <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 fd-r ai-c">
+            Price Impact
+            <Hint>
+              If the pool is $1,000 and you sell $1 worth, thay will "impact"
+              the pool 0.1%.
+            </Hint>
+          </div>
+          <div
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-400 f-white-200 fd-r ai-c pt-2-XS jc-c-XS"
+          >
+            0.00 <span class="f-white-200 pl-1">%</span>
+          </div>
+        </div>
+        <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+            <AmButton
+              color="gradient-1000"
+              bColor="gradient-1000"
+              opacityEffect
+              full
+              @click="reset"
+              class="rad-fix-10"
+            >
+              reset
+            </AmButton>
+          </div>
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+            <AmButton
+              color="gradient-5002"
+              bColor="gradient-5002"
+              opacityEffect
+              @click="confirm"
+              :full="true"
+              class="rad-fix-10"
+            >
+              REMOVE LIQUIDITY
+            </AmButton>
+          </div>
+        </div>
+        <div
+          class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-10 "
+          v-if="alert"
         >
-          reset
-        </AmButton>
+          <span class="f-orange-600">
+            {{ alertMessage }}
+          </span>
+        </div>
       </div>
-      <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
-        <AmButton
-          color="mcolor-100"
-          bColor="mcolor-100"
-          opacityEffect
-          @click="confirm"
-          :full="true"
-        >
-          REMOVE LIQUIDITY
-        </AmButton>
-      </div>
-    </div>
-    <div
-      class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-5"
-      v-if="alert"
-    >
-      <span class="f-orange-600">
-        {{ alertMessage }}
-      </span>
     </div>
   </div>
 </template>
@@ -178,9 +185,9 @@ export default {
         theme: "default",
         value: TOKENS[0].value,
         items: TOKENS,
-        colorDefault: "mcolor-700",
+        colorDefault: "mcolor-1100",
         colorFocus: "mcolor-700",
-        colorBackground: "mcolor-700",
+        colorBackground: "mcolor-1100",
         colorTitle: "white-200",
       },
       tokenPoolType: "HS",

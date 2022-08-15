@@ -1,10 +1,21 @@
 <template>
+<div>
   <div
-    class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+    >
+      <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
+      <div class="f-white-200 fs-5-S">
+        GENS is a stable coin of HGEN platform designed to be pegged to USD.
+        <br />
+        GENS is main currency for our borrowing and lending protocol.
+      </div>
+    </div>
+  <div
+    class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
   >
-    <div class="w-100" :class="{ 'op-0': getLoading }">
+    <div class="w-70" :class="{ 'op-0': getLoading }">
       <div class="w-100 fd-r ai-c pb-4-S pb-10-XS jc-sb">
-        <!-- <span class="fs-6 f-mcolor-100  ts-3 hv d-n-XS fsh-0">Close</span> -->
+        <!-- <span class="fs-6 f-white-200  ts-3 hv d-n-XS fsh-0">Close</span> -->
         <div class="w-80 fs-8-S fs-25-XS fw-600 f-white-200 ta-l-S ta-l-XS">
           Farm
         </div>
@@ -19,24 +30,24 @@
           </Tooltip> -->
         </span>
         <span class="fs-6-S fs-25-XS f-white-200 ts-3 hv fsh-0 ta-r-S"
-          ><Tooltip placement="bottomRight" class="f-green-600">
+          ><Tooltip placement="bottomRight" class="f-cyan-1500 fw-600">
             <!-- <Icon type="caret-down" /> -->
-            Open
+            OPEN
           </Tooltip>
         </span>
       </div>
 
-      <div class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS">
+      <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS ta-c-XS">
         Your Current Farm
       </div>
       <div
         class="fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
         data-tour-step="1"
       >
-        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{
+        <span class="fs-7-S fs-25-XS f-white-200 fw-800">{{
           getDepsoitedLpToken
         }}</span>
-        <span class="mr-1"> LP Tokens </span>(<span class="fw-800 f-mcolor-100">
+        <span class="mr-1"> LP Tokens </span>(<span class="fw-800 f-white-200">
           {{ getPoolShare }}
         </span>
         <span class="fw-600 pr-1">% </span>Pool Share)
@@ -56,7 +67,7 @@
             <span> HGEN </span>
           </div>
           <span
-            class="fw-600 fs-6-L fs-5-S fs-20-XS f-mcolor-100 mr-2 ml-2 my-10-XS ml-10-XS mr-10-XS"
+            class="fw-600 fs-6-L fs-5-S fs-20-XS f-white-200 mr-2 ml-2 my-10-XS ml-10-XS mr-10-XS"
             >:</span
           >
           <div class="fd-r ai-c">
@@ -71,10 +82,10 @@
         </div>
 
         <div
-          class="w-100 my-2-S my-10-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+          class="w-100 my-2-S my-10-XS mcolor-1100 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS br-mcolor-800 brs-s-L br-1-L"
           v-if="getDepositKey"
         >
-          <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
             Set amount you want to deposit
           </div>
           <div class="w-100 fd-r ai-c">
@@ -85,23 +96,23 @@
             <input
               type="text"
               id="lp"
-              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-white-200"
               placeholder="0.00"
               v-model="lp"
               maxlength="12"
             />
             <span
-              class="fs-5-S fs-20-XS f-mcolor-500 fw-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3 py-1 rad-fix-3"
+              class="fs-5-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 px-3 py-1 rad-fix-10"
               @click="setMax"
               >max</span
             >
           </div>
         </div>
         <div
-          class="w-100 my-2-S my-10-XS mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
+          class="w-100 my-2-S my-10-XS mcolor-1100 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS br-mcolor-800 brs-s-L br-1-L"
           v-if="getDepositKey"
         >
-          <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
             Set farming duration
           </div>
           <div class="w-100 fd-r ai-c">
@@ -111,11 +122,11 @@
             >
             <input
               type="text"
-              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-white-200"
               placeholder="0"
               v-model="day"
             />
-            <!-- <span class="fs-6 f-mcolor-100 ts-3 hv d-n-XS fsh-0">Day</span> -->
+            <!-- <span class="fs-6 f-white-200 ts-3 hv d-n-XS fsh-0">Day</span> -->
           </div>
         </div>
         <!-- <div class="w-100 fd-r jc-r ai-c">
@@ -128,12 +139,13 @@
         <div class="w-100 fd-r-S fd-c-XS pt-4-S pt-20-XS" v-if="getDepositKey">
           <div class="w-50-S w-100-XS mr-2-S mr-0-XS">
             <AmButton
-              color="mcolor-200"
-              bColor="mcolor-100"
+              color="gradient-1000"
+              bColor="gradient-1000"
               opacityEffect
               full
               v-if="getDepositKey"
               @click="reset()"
+              class="rad-fix-10"
             >
               Reset
             </AmButton>
@@ -142,12 +154,13 @@
             class="w-50-S w-100-XS ml-2-S ml-0-XS mt-0-S mt-4-XS mt-0-S mt-10-XS"
           >
             <AmButton
-              color="mcolor-100"
-              bColor="mcolor-100"
+              color="gradient-5002"
+              bColor="gradient-5002"
               opacityEffect
               full
               v-if="getDepositKey"
               @click="setFarmingData()"
+              class="rad-fix-10"
             >
               confirm
             </AmButton>
@@ -155,7 +168,7 @@
         </div>
       </div>
       <div
-        class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-5"
+        class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-10"
         v-if="getFarmWarning"
       >
         <span class="f-orange-600">
@@ -173,7 +186,7 @@
         >
       </div>
       <div
-        class="w-100 mt-3 fs-6-S f-green-500 fs-25-XS mcolor-1000 p-3-S rad-fix-5"
+        class="w-100 mt-3 fs-6-S f-green-500 fs-25-XS gradient-5002 p-3-S rad-fix-5"
         v-if="getOutcome > 1 && lp > 0 && day > 0"
       >
         <span class="f-green-500"
@@ -185,6 +198,7 @@
         <Loading />
       </div>
     </div>
+  </div>
   </div>
 </template>
 

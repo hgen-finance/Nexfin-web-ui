@@ -4,7 +4,7 @@
       <Balance />
     </div>
     <div class="w-100 fd-r fw-w pt-0-S jc-se">
-      <div class="w-35-S w-100-XS pt-30-XS">
+      <div class="w-50-S w-100-XS pt-30-XS">
         <Safe @confirmFunc="confirmFunc" />
       </div>
       <div class="w-25-S w-100-XS pt-30-XS">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <!-- <div class="w-100 fd-r jc-c pt-10-S pt-30-XS">
-      <AmButton color="mcolor-200" bColor="mcolor-100" opacityEffect>
+      <AmButton color="mcolor-200" bColor="gradient-5002" opacityEffect>
         How to use Safe Pool <img src="@/assets/svg/my/arrow-r.svg" class="w-fix-s-3 ml-1" />
       </AmButton>
     </div> -->

@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 d-f fd-c ai-c">
-    <span class="f-mcolor-500 mb-3 fw-600 fs-8">
+    <span class="f-bg-new mb-3 fw-600 fs-8">
       {{ marketPrice.token }}
     </span>
     <span class="f-white-200 mb-3 fw-700 fs-14">

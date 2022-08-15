@@ -24,7 +24,7 @@
                 class="w-100-S w-100-XS px-8-S py-4-M py-10-S p-20-XS mb-3-S mb-10-XS"
                 v-for="(item, i) in items"
                 :key="i"
-                :class="{ 'mcolor-1000  rad-fix-10 bs-sb-all': i === 0 }"
+                :class="{ 'gradient-5002  rad-fix-10 bs-sb-all': i === 0 }"
               >
                 <div
                   class="w-100 fs-8-M fs-10-S fs-25-XS f-white-200 fw-600"
@@ -47,20 +47,20 @@
             </div>
             <p class="fs-5-M fs-6-S fs-15-XS">
               We are currently on
-              <span class="f-purple-500 fw-600"> Devnet</span> and still on
+              <span class="f-cyan-1100 fw-600"> Devnet</span> and still on
               development. Help
-              <span class="f-purple-500 fw-600">HGEN</span> improve by reporting
+              <span class="f-cyan-1100 fw-600">HGEN</span> improve by reporting
               bug to our
-              <span class="f-purple-500"
+              <span class="f-cyan-1100"
                 ><a href="https://discord.com/invite/kmc8QUX3Jx"
                   >Discord</a
                 ></span
               >
               or
-              <span class="f-purple-500"
+              <span class="f-cyan-1100"
                 ><a href="https://t.me/hgenFinance">Telegram</a></span
               >. We are in
-              <span class="f-purple-500">process of auditing</span> our smart
+              <span class="f-cyan-1100">process of auditing</span> our smart
               contract.
             </p>
           </div>

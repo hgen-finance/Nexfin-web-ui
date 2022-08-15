@@ -32,8 +32,8 @@
           <div class="w-a-S w-100-XS fsh-0 pt-6-XS">
             <AmButton
               :height="false"
-              color="mcolor-100"
-              bColor="mcolor-100"
+              color="gradient-5002"
+              bColor="gradient-5002"
               opacityEffect
               class="py-2"
               @click="find"
@@ -111,8 +111,8 @@
         >
           <AmButton
             :height="false"
-            color="mcolor-100"
-            bColor="mcolor-100"
+            color="gradient-5002"
+            bColor="gradient-5002"
             opacityEffect
             @click="nextPage"
             class="py-2"
@@ -160,8 +160,8 @@ export default {
         ],
         colorLabel: "white-200",
         colorBackground: "white-100",
-        colorBorderChecked: "mcolor-100",
-        colorBackgroundChecked: "mcolor-100",
+        colorBorderChecked: "gradient-5002",
+        colorBackgroundChecked: "gradient-5002",
       },
       sort: {
         theme: "default",

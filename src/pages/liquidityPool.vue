@@ -1,33 +1,45 @@
 <template>
-  <div class="w-90 p-5-S p-10-XS mcolor-500 rad-fix-8 bs-sb-all ft-h inner">
-    <div class="w-100">
-      <div class="w-100 fd-r jc-sb ai-c my-3-S">
-        <div class="fs-4-S f-white-200 ai-s br-mcolor-400 rad-fix-5">
-          <span class="hv d-n-XS fsh-0" @click="showPoolUI"> Pools </span>
-          <!-- |
-          <span class="hv d-n-XS fsh-0" @click="showMyPoolUI"> My pool </span> -->
-        </div>
-        <div class="fd-r buttons">
-          <Tooltip>
-            <Icon
-              type="search"
-              :style="{ width: '40px', height: '40px' }"
-              class="fd-r jc-c ai-c f-white-200"
-            />
-          </Tooltip>
-          <Tooltip>
-            <Icon
-              type="sync"
-              :style="{ width: '40px', height: '40px' }"
-              class="fd-r jc-c ai-c f-white-200"
-              :rotate="135"
-            />
-          </Tooltip>
-        </div>
+  <div class="w-90 fd-c ai-c">
+    <div
+      class="w-90 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+    >
+      <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
+      <div class="f-white-200 fs-5-S">
+        GENS is a stable coin of HGEN platform designed to be pegged to USD.
+        <br />
+        GENS is main currency for our borrowing and lending protocol.
       </div>
     </div>
-    <ListPool v-if="poolUI" />
-    <MyPool v-if="!poolUI" />
+    <div class="w-100 px-10-S p-10-XS ">
+      <div class="w-100">
+        <div class="w-100 fd-r jc-sb ai-c my-3-S">
+          <div class="fs-10-S f-white-200 ai-s br-mcolor-400 rad-fix-5 fw-600">
+            <span class="hv d-n-XS fsh-0" @click="showPoolUI"> POOLS </span>
+            <!-- |
+          <span class="hv d-n-XS fsh-0" @click="showMyPoolUI"> My pool </span> -->
+          </div>
+          <div class="fd-r buttons">
+            <Tooltip>
+              <Icon
+                type="search"
+                :style="{ width: '40px', height: '40px' }"
+                class="fd-r jc-c ai-c f-white-200"
+              />
+            </Tooltip>
+            <Tooltip>
+              <Icon
+                type="sync"
+                :style="{ width: '40px', height: '40px' }"
+                class="fd-r jc-c ai-c f-white-200"
+                :rotate="135"
+              />
+            </Tooltip>
+          </div>
+        </div>
+      </div>
+      <ListPool v-if="poolUI" />
+      <MyPool v-if="!poolUI" />
+    </div>
   </div>
 </template>
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div class="w-100">
     <div class="w-100 d-f jc-se">
-      <div class="w-35-S w-100-XS pt-30-XS">
+      <div class="w-50-S w-100-XS pt-30-XS">
         <!-- <div class="w-100 fd-r jc-sb ai-c my-3-S"> -->
         <MultiSend />
         <!-- </div> -->

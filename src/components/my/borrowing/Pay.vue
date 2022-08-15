@@ -1,293 +1,330 @@
 <template>
-  <div
-    class="w-100 br-6 gradient-2000 rad-fix-8 p-8-S p-20-XS shadow-purple-100"
-  >
-    <div class="w-100" :class="{ 'op-0': getLoading }">
-      <div
-        class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-15-XS ta-c-XS"
-        data-tour-step="0"
-      >
-        Borrow
+  <div>
+    <div
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+    >
+      <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
+      <div class="f-white-200 fs-5-S">
+        GENS is a stable coin of HGEN platform designed to be pegged to USD.
+        <br />
+        GENS is main currency for our borrowing and lending protocol.
       </div>
-      <div class="w-100" v-if="getTotalNotifications > 0">
-        <NotificaitonsTx />
-      </div>
-      <div class="w-100 fs-5-S fs-20-XS f-gray-500 pb-1-S pb-5-XS ta-c-XS">
-        Your Current Debt
-      </div>
-      <div
-        class="fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600"
-        data-tour-step="1"
-      >
-        <span class="fs-7-S fs-25-XS f-mcolor-100 fw-800">{{ getDebt }}</span>
-        <span class="mr-1"> GENS </span>(<span class="fw-800 f-mcolor-100">
-          {{ getRatio }}
-        </span>
-        <span class="fw-600 pr-1">% </span>CR)
-      </div>
-      <div class="w-100 fd-r-S fd-r-XS mcolor-1000 bs-sb-all rad-fix-3">
-        <div class="w-50-S w-100-XS">
-          <AmButton
-            color="mcolor-1000"
-            bColor="mcolor-1000"
-            full
-            opacityEffect
-            scaleEffect
-            disableShadow
-            v-if="!getBorrowOrPay"
-            @click="changeBorrowOrPayFunc"
+    </div>
+    <div
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
+    >
+      <div class="w-70" :class="{ 'op-0': getLoading }">
+        <div class="w-100" v-if="getTotalNotifications > 0">
+          <NotificaitonsTx />
+        </div>
+        <div class="fd-r">
+          <div
+            class="w-50 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-15-XS ta-c-XS"
+            data-tour-step="0"
           >
             Borrow
-          </AmButton>
-          <AmButton
-            color="gradient-5000"
-            bColor="gradient-5000"
-            colorText="white-200"
-            full
-            disabled
-            v-if="getBorrowOrPay"
-          >
-            Borrow
-          </AmButton>
-        </div>
-        <div class="w-50-S w-100-XS">
-          <AmButton
-            color="gradient-5001"
-            bColor="gradient-5001"
-            colorText="white-200"
-            full
-            disabled
-            v-if="!getBorrowOrPay"
-          >
-            Pay Debt
-          </AmButton>
-          <AmButton
-            color=""
-            bColor="mcolor-1000"
-            full
-            opacityEffect
-            scaleEffect
-            disableShadow
-            v-if="getBorrowOrPay"
-            @click="changeBorrowOrPayFunc"
-          >
-            Pay Debt
-          </AmButton>
-        </div>
-      </div>
+          </div>
 
-      <div
-        class="w-100 mt-4 mb-2 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        data-tour-step="2"
-        v-if="getBorrowOrPay"
-      >
-        <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
-          Set amount of collateral
+          <div class="w-50 fd-c ai-r">
+            <div
+              class="w-100 fs-4-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS ta-r-S ta-c-XS"
+            >
+              Your Current Debt
+            </div>
+            <div
+              class="fs-7-S fs-20-XS f-white-200 ta-c-XS pb-2-S pb-10-XS ta-c-XS mb-10-XS fw-600 ta-r-S"
+              data-tour-step="1"
+            >
+              <span class="fs-7-S fs-25-XS f-white-200 fw-800">{{
+                getDebt
+              }}</span>
+              <span class="mr-1"> GENS </span>(<span class="fw-800 f-white-200">
+                {{ getRatio }}
+              </span>
+              <span class="fw-600 pr-1">% </span>CR)
+            </div>
+          </div>
         </div>
-        <div class="w-100 fd-r ai-c">
-          <span class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
-            >SOL</span
-          >
-          <input
-            type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
-            placeholder="0.00"
-            v-model="from"
-            maxlength="12"
-          />
-          <!-- <span
-            class="fs-5-S fs-20-XS f-mcolor-500 fw-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3 py-1 rad-fix-3"
+        <div class="w-100 fd-r-S fd-r-XS mcolor-1000 bs-sb-all rad-fix-10">
+          <div class="w-50-S w-100-XS">
+            <AmButton
+              color="mcolor-1000"
+              bColor="mcolor-1000"
+              full
+              opacityEffect
+              scaleEffect
+              disableShadow
+              v-if="!getBorrowOrPay"
+              @click="changeBorrowOrPayFunc"
+              class="rad-fix-10"
+            >
+              Borrow
+            </AmButton>
+            <AmButton
+              color="gradient-5000"
+              bColor="gradient-5000"
+              colorText="white-200"
+              full
+              disabled
+              v-if="getBorrowOrPay"
+              class="rad-fix-10"
+            >
+              Borrow
+            </AmButton>
+          </div>
+          <div class="w-50-S w-100-XS">
+            <AmButton
+              color="gradient-5001"
+              bColor="gradient-5001"
+              colorText="white-200"
+              full
+              disabled
+              v-if="!getBorrowOrPay"
+              class="rad-fix-10"
+            >
+              Pay Debt
+            </AmButton>
+            <AmButton
+              color=""
+              bColor="gradient-5002"
+              full
+              opacityEffect
+              scaleEffect
+              disableShadow
+              class="rad-fix-10"
+              v-if="getBorrowOrPay"
+              @click="changeBorrowOrPayFunc"
+            >
+              Pay Debt
+            </AmButton>
+          </div>
+        </div>
+
+        <div
+          class="w-100 mt-4 mb-2 mcolor-1100 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS br-mcolor-800 brs-s-L br-1-L"
+          data-tour-step="2"
+          v-if="getBorrowOrPay"
+        >
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
+            Set amount of collateral
+          </div>
+          <div class="w-100 fd-r ai-c">
+            <span
+              class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
+              >SOL</span
+            >
+            <input
+              type="text"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-white-200"
+              placeholder="0.00"
+              v-model="from"
+              maxlength="12"
+            />
+            <!-- <span
+            class="fs-5-S fs-20-XS f-bg-new fw-500 ts-3 hv d-n-XS fsh-0 bg-new px-3 py-1 rad-fix-3"
             @click="setMax"
             >max</span
           > -->
-        </div>
-      </div>
-      <div
-        class="w-100 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        data-tour-step="3"
-        v-if="getBorrowOrPay"
-      >
-        <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
-          Amount received
-        </div>
-        <div class="w-100 fd-r ai-c">
-          <span class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
-            >GENS</span
-          >
-          <input
-            type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
-            placeholder="0.00"
-            v-model="to"
-            maxlength="20"
-          />
-        </div>
-      </div>
-      <div class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS" v-if="getBorrowOrPay">
-        <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS" data-tour-step="4">
-          <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
-            opacityEffect
-            full
-            @click="reset"
-          >
-            reset
-          </AmButton>
+          </div>
         </div>
         <div
-          class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS mt-0-S mt-8-XS"
-          data-tour-step="5"
+          class="w-100 mb-4 mcolor-1100 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS br-mcolor-800 brs-s-L br-1-L"
+          data-tour-step="3"
+          v-if="getBorrowOrPay"
         >
-          <AmButton
-            color="mcolor-100"
-            bColor="mcolor-100"
-            opacityEffect
-            full
-            @click="confirmFunc"
-          >
-            confirm
-          </AmButton>
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
+            Amount received
+          </div>
+          <div class="w-100 fd-r ai-c">
+            <span
+              class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
+              >GENS</span
+            >
+            <input
+              type="text"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-white-200"
+              placeholder="0.00"
+              v-model="to"
+              maxlength="20"
+            />
+          </div>
         </div>
-      </div>
+        <div class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS" v-if="getBorrowOrPay">
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS" data-tour-step="4">
+            <AmButton
+              color="gradient-1000"
+              bColor="gradient-1000"
+              opacityEffect
+              full
+              @click="reset"
+              class="rad-fix-10"
+            >
+              reset
+            </AmButton>
+          </div>
+          <div
+            class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS mt-0-S mt-8-XS"
+            data-tour-step="5"
+          >
+            <AmButton
+              color="gradient-5002"
+              bColor="gradient-5002"
+              opacityEffect
+              full
+              @click="confirmFunc"
+              class="rad-fix-10"
+            >
+              confirm
+            </AmButton>
+          </div>
+        </div>
 
-      <!-- This section for the pay debt  -->
-      <div
-        class="w-100 mt-4 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        v-if="!getBorrowOrPay"
-      >
-        <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
-          Set amount of repayment
-        </div>
-        <div class="w-100 fd-r ai-c">
-          <span class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
-            >GENS</span
-          >
-          <input
-            type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
-            placeholder="0.00"
-            v-model="repayTo"
-            maxlength="12"
-          />
-          <!-- <span
-            class="fs-5-S fs-20-XS f-mcolor-500 fw-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3 py-1 rad-fix-3"
+        <!-- This section for the pay debt  -->
+        <div
+          class="w-100 mt-4 mb-4 mcolor-1100 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS br-mcolor-800 brs-s-L br-1-L"
+          v-if="!getBorrowOrPay"
+        >
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
+            Set amount of repayment
+          </div>
+          <div class="w-100 fd-r ai-c">
+            <span
+              class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
+              >GENS</span
+            >
+            <input
+              type="text"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-white-200"
+              placeholder="0.00"
+              v-model="repayTo"
+              maxlength="12"
+            />
+            <!-- <span
+            class="fs-5-S fs-20-XS f-bg-new fw-500 ts-3 hv d-n-XS fsh-0 bg-new px-3 py-1 rad-fix-3"
             @click="setMaxGens"
             >max</span
           > -->
-          <span
-            class="fs-5-S fw-500 fs-20-XS f-mcolor-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3-S px-5-XS py-2-S py-5-XS rad-fix-3"
-            @click="closeTroveFunc"
-            >Pay All Debt</span
-          >
-        </div>
-      </div>
-
-      <!-- for sol -->
-      <div
-        class="w-100 mt-4 mb-4 mcolor-700 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS"
-        v-if="!getBorrowOrPay"
-      >
-        <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
-          Amount you want to receive in SOL
-        </div>
-        <div class="w-100 fd-r ai-c">
-          <span class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
-            >SOL</span
-          >
-          <input
-            type="text"
-            class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-mcolor-300"
-            placeholder="0.00"
-            v-model="repaySol"
-            maxlength="12"
-          />
-        </div>
-      </div>
-
-      <!-- for collateral ratio   -->
-      <div
-        class="w-100 mt-4 mb-3 rad-fix-2 px-4-S px-10-XS py-3-S py-10-XS fd-r ai-c"
-        v-if="!getBorrowOrPay"
-      >
-        <div class="w-100 fs-5-S fs-20-XS f-gray-600 pb-1-S pb-5-XS">
-          Collateral Ratio
-        </div>
-        <div>
-          <div class="w-100 fd-r ai-c">
-            <input
-              type="text"
-              class="w-100 fs-8 mx-1 white-100 br-0 oul-n fs-20-XS fw-600 f-mcolor-300 ta-r"
-              placeholder="0"
-              v-model="collateralRatio"
-              maxlength="12"
-              disabled
-            />
-            <span class="f-white-200 fs-8 fw-500">%</span>
+            <span
+              class="fs-5-S fw-500 fs-20-XS f-cyan-300 ts-3 hv d-n-XS fsh-0 px-3-S px-5-XS py-2-S py-5-XS rad-fix-10"
+              @click="closeTroveFunc"
+              >Pay All Debt</span
+            >
           </div>
         </div>
-      </div>
-      <div
-        class="w-100 p-2-S mcolor-700 f-white-200 fs-6 rad-fix-8 mb-3"
-        v-if="close && getIsBorrow && !getBorrowOrPay"
-      >
-        Your {{ getDebt }} GENS Debt will be repaid and you will receive
-        collateral {{ getLamports / 1e9 }} SOL.
-      </div>
 
-      <!-- <div class="w-100 mb-3-S d-f jc-r" v-if="!getBorrowOrPay">
+        <!-- for sol -->
+        <div
+          class="w-100 mt-4 mb-4 mcolor-1100 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS br-mcolor-800 brs-s-L br-1-L"
+          v-if="!getBorrowOrPay"
+        >
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
+            Amount you want to receive in SOL
+          </div>
+          <div class="w-100 fd-r ai-c">
+            <span
+              class="w-15-S w-25-XS fs-6-S fs-20-XS fw-600 f-white-200 fsh-0"
+              >SOL</span
+            >
+            <input
+              type="text"
+              class="w-100 mx-1 white-100 br-0 oul-n fs-6-S fs-20-XS fw-600 f-white-200"
+              placeholder="0.00"
+              v-model="repaySol"
+              maxlength="12"
+            />
+          </div>
+        </div>
+
+        <!-- for collateral ratio   -->
+        <div
+          class="w-100 mt-4 mb-3 rad-fix-10 px-4-S px-10-XS py-3-S py-10-XS fd-r ai-c"
+          v-if="!getBorrowOrPay"
+        >
+          <div class="w-100 fs-5-S fs-20-XS f-cyan-1500 pb-1-S pb-5-XS">
+            Collateral Ratio
+          </div>
+          <div>
+            <div class="w-100 fd-r ai-c">
+              <input
+                type="text"
+                class="w-100 fs-8 mx-1 white-100 br-0 oul-n fs-20-XS fw-600 f-cyan-1500 ta-r"
+                placeholder="0"
+                v-model="collateralRatio"
+                maxlength="12"
+                disabled
+                
+              />
+              <span class="f-white-200 fs-8 fw-500">%</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-100 p-2-S mcolor-700 f-white-200 fs-6 rad-fix-8 mb-3"
+          v-if="close && getIsBorrow && !getBorrowOrPay"
+        >
+          Your {{ getDebt }} GENS Debt will be repaid and you will receive
+          collateral {{ getLamports / 1e9 }} SOL.
+        </div>
+
+        <!-- <div class="w-100 mb-3-S d-f jc-r" v-if="!getBorrowOrPay">
         <span
-          class="fs-5-S fw-500 fs-20-XS f-mcolor-500 ts-3 hv d-n-XS fsh-0 mcolor-500 px-3-S px-5-XS py-2-S py-5-XS rad-fix-3"
+          class="fs-5-S fw-500 fs-20-XS f-bg-new ts-3 hv d-n-XS fsh-0 bg-new px-3-S px-5-XS py-2-S py-5-XS rad-fix-3"
           @click="closeTroveFunc"
           >Close Borrow</span
         >
       </div> -->
 
-      <div class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS" v-if="!getBorrowOrPay">
-        <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
-          <AmButton
-            color="mcolor-200"
-            bColor="mcolor-100"
-            opacityEffect
-            full
-            @click="resetPay"
-          >
-            reset
-          </AmButton>
-        </div>
-        <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS mt-0-S mt-8-XS">
-          <AmButton
-            color="mcolor-100"
-            bColor="mcolor-100"
-            opacityEffect
-            full
-            @click="payTroveFunc"
-          >
-            confirm
-          </AmButton>
+        <div
+          class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS"
+          v-if="!getBorrowOrPay"
+        >
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+            <AmButton
+              color="gradient-1000"
+              bColor="gradient-1000"
+              opacityEffect
+              full
+              @click="resetPay"
+              class="rad-fix-10"
+            >
+              reset
+            </AmButton>
+          </div>
+          <div class="w-50-S w-100-XS ml-2-L ml-2-S ml-0-XS mt-0-S mt-8-XS">
+            <AmButton
+              color="gradient-5002"
+              bColor="gradient-5002"
+              opacityEffect
+              full
+              @click="payTroveFunc"
+              class="rad-fix-10"
+            >
+              confirm
+            </AmButton>
+          </div>
         </div>
       </div>
+      <div
+        class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-5"
+        v-if="alert"
+      >
+        <span class="f-orange-600">
+          {{ alertMessage }}
+        </span>
+      </div>
+      <div
+        class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-5"
+        v-if="alertm"
+      >
+        <span class="f-orange-600">
+          {{ alertmsg }}
+        </span>
+      </div>
+      <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
+        <Loading />
+      </div>
+      <v-tour name="borrowGuide" :steps="steps" :options="myOptions"> </v-tour>
     </div>
-    <div
-      class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-5"
-      v-if="alert"
-    >
-      <span class="f-orange-600">
-        {{ alertMessage }}
-      </span>
-    </div>
-    <div
-      class="w-100 my-2 fs-6-S f-red-500 fs-25-XS mcolor-800 p-3-S rad-fix-5"
-      v-if="alertm"
-    >
-      <span class="f-orange-600">
-        {{ alertmsg }}
-      </span>
-    </div>
-    <div class="w-100 h-100 p-a l-0 t-0 fd-r ai-c jc-c" v-if="getLoading">
-      <Loading />
-    </div>
-    <v-tour name="borrowGuide" :steps="steps" :options="myOptions"> </v-tour>
   </div>
 </template>
 

@@ -17,7 +17,7 @@
           class="z-12 w-fix-40-M w-fix-45-S w-fix-100-XS p-a b-90-S b-90-XS my-logo-align"
         />
         <div
-          class="w-20-S w-60-XS h-fix-95-M h-fix-s-150-XS brs-s br-mcolor-100 shadow-purple-100 ovh rad-fix-6"
+          class="w-20-S w-60-XS h-fix-95-M h-fix-s-150-XS brs-s br-gradient-5002 shadow-cyan-200 ovh rad-fix-6"
         >
           <img
             :src="require('@/assets/advisors/' + item.img)"
@@ -31,7 +31,7 @@
             {{ item.name }}
           </div>
           <div
-            class="w-100 fs-6-M fs-8-S fs-20-XS fw-600 ta-l pb-2-S pb-5-XS pt-0-S pt-10-XS f-mcolor-100 tt-u"
+            class="w-100 fs-6-M fs-8-S fs-20-XS fw-600 ta-l pb-2-S pb-5-XS pt-0-S pt-10-XS f-white-200 tt-u"
           >
             {{ item.position }}
           </div>

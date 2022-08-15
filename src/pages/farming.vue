@@ -2,7 +2,7 @@
   <div class="w-100">
     <div class="w-100 fd-c ai-c">
       <div class="w-100 fd-r fw-w pt-0-S jc-se mb-10-S mb-20-XS">
-        <div class="w-35-S w-100-XS pt-30-XS">
+        <div class="w-50-S w-100-XS pt-30-XS">
           <Farm
             @confirmFunc="confirmFunc"
             @lp="depositedLp = $event"
@@ -13,7 +13,7 @@
           <Info :depositedLp="Number(depositedLp)" :day="Number(day)" />
         </div>
       </div>
-      <div class="w-75-S w-100-XS">
+      <div class="w-85-S w-100-XS">
         <Rewards />
       </div>
     </div>
