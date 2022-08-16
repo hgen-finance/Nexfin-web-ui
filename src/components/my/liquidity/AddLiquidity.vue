@@ -48,14 +48,14 @@
           <span class="fw-600 pr-1">% </span>Pool Share)
         </div>
         <div
-          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS br-mcolor-800 brs-s-L br-1-L"
+          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S py-1-S py-5-XS px-10-XS br-mcolor-800 brs-s-L br-1-L"
         >
           <div
             class="w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-3-S pt-10-XS jc-r fd-r ai-r"
           >
             <div class="mb-2-S">
               <span
-                class="fs-4-S fs-20-XS f-cyan-1100 fw-500 ts-3 hv d-n-XS fsh-0 px-3 py-1 rad-fix-10"
+                class="fs-4-S fs-20-XS f-cyan-1100 fw-500 ts-3 hv d-n-XS fsh-0  py-1 "
                 @click="setMax"
                 >max</span
               >

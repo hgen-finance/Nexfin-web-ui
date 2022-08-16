@@ -121,7 +121,7 @@
           >
             <div class="jc-r mt-1-S mb-2-S d-f jc-r">
               <span
-                class="fs-4-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0  px-3 py-1 rad-fix-10"
+                class="fs-4-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 py-1 "
                 @click="setMax"
                 >max</span
               >

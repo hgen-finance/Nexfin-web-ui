@@ -11,7 +11,7 @@
       </div>
     </div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-10 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
     >
       <div class="w-70" :class="{ 'op-0': getLoading }">
         <div class="w-100" v-if="getTotalNotifications > 0">
@@ -48,11 +48,11 @@
           <span class="fw-600 pr-1">% </span>Pool Share)
         </div>
         <div
-          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-c jc-r br-mcolor-800 brs-s-L br-1-L"
+          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S py-1-S py-5-XS px-10-XS fd-c jc-r br-mcolor-800 brs-s-L br-1-L"
         >
           <div class="w-100 mt-1-S d-f jc-r">
             <span
-              class="fs-4-S fs-20-XS f-cyan-1500 fw-500 ts-3 hv d-n-XS fsh-0 px-3 py-1 rad-fix-10"
+              class="fs-4-S fs-20-XS f-cyan-1100 fw-500 ts-3 hv d-n-XS fsh-0 py-1 rad-fix-10"
               @click="setMax"
             >
               max

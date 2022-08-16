@@ -205,7 +205,7 @@
             >max</span
           > -->
             <span
-              class="fs-5-S fw-500 fs-20-XS f-cyan-300 ts-3 hv d-n-XS fsh-0 px-3-S px-5-XS py-2-S py-5-XS rad-fix-10"
+              class="fs-5-S fw-500 fs-20-XS f-cyan-300 ts-3 hv d-n-XS fsh-0  py-2-S py-5-XS"
               @click="closeTroveFunc"
               >Pay All Debt</span
             >

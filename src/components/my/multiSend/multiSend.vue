@@ -17,11 +17,11 @@
       </div>
     </div> -->
       <div
-        class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-10-XS fd-r"
+        class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-10-XS fd-r "
       >
-        <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS">
+        <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS ">
           <div
-            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-1100 pl-5-XS pl-3-S rad-fix-5 br-mcolor-800 brs-s-L br-1-L"
+            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-1100 pl-5-XS pl-3-S rad-fix-5 br-mcolor-800 brs-s-L br-1-L pb-1-S py-5-XS"
           >
             <AmSelectbox
               v-bind:data.sync="tokens"

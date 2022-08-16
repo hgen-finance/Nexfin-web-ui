@@ -117,7 +117,7 @@
               v-model="withdrawAmount"
             />
             <span
-              class="fs-5-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 px-3 py-1 rad-fix-10"
+              class="fs-5-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 py-1 rad-fix-10"
               @click="setMaxWithdraw"
               >max</span
             >
@@ -142,7 +142,7 @@
               v-model="from"
             />
             <span
-              class="fs-5-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 px-3 py-1 rad-fix-10"
+              class="fs-5-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 py-1 "
               @click="setMax"
               >max</span
             >
