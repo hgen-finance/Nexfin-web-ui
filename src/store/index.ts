@@ -185,7 +185,7 @@ export const actions = actionTree(
       const SOLANA_CLUSTER_NAME = "devnet";
       const pythPublicKey = getPythProgramKeyForCluster(SOLANA_CLUSTER_NAME);
       const pythConnection = new PythConnection(this.$web3, pythPublicKey);
-      let prev_price = 40.2;
+      let prev_price = 31.2;
       let pyth;
       const PERCENT = 100;
       const CALL_PERCENT = -7;
