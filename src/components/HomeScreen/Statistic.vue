@@ -191,9 +191,9 @@ export default {
       sellTax: { value: 11 },
       buyTax: { value: 9 },
       items: [
-        { name: "BuyBack", count: 3 },
-        { name: "Marketing", count: 3 },
-        { name: "Burn", count: 3 },
+        { name: "BuyBack", count: 0 },
+        { name: "Marketing", count: 0 },
+        { name: "Burn", count: 0 },
       ],
       items2: [
         { name: "BuyBack", count: 3 },
