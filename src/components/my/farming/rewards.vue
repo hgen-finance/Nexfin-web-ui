@@ -8,8 +8,8 @@
       >
         Your current Farmings
       </div>
-      <div class="w-100 fd-r">
-        <div class="w-100 py-1-M py-2-S py-10-XS fd-c">
+      <div class="w-100 fd-r fd-c-XS px-10-XS">
+        <div class="w-100 py-1-M py-2-S py-10-XS fd-c fd-r-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200">
             Farming Date
           </div>
@@ -19,7 +19,7 @@
             <span class="f-white-200">{{ getStartDate || "-" }}</span>
           </div>
         </div>
-        <div class="w-100 py-1-M py-2-S py-10-XS fd-c">
+        <div class="w-100 py-1-M py-2-S py-10-XS fd-c fd-r-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 ai-c">
             Redemption Date
           </div>
@@ -30,12 +30,12 @@
           </div>
         </div>
 
-        <div class="w-100 py-1-M py-2-S py-10-XS fd-c">
+        <div class="w-100 py-1-M py-2-S py-10-XS fd-c fd-r-XS">
           <div class="w-100 fs-5-S fs-20-XS fw-400 f-white-200 ai-c">
             LP Tokens
           </div>
           <div
-            class="w-a fs-4-S fs-15-XS fsh-0 fw-600 f-white-200 py-1-S py-5-XS ai-c"
+            class="w-a fs-5-S fs-20-XS fsh-0 fw-600 f-white-200 py-1-S py-5-XS ai-c"
           >
             <span class="f-white-200 pr-1-L pr-1-M pr-1-S pr-5-XS">{{
               getYourAmount
@@ -43,7 +43,7 @@
             ({{ getPoolSharePercent }} <span class="f-white-200">%</span>)
           </div>
         </div>
-        <div class="w-100 py-1-S py-10-XS fd-c">
+        <div class="w-100 py-1-S py-10-XS fd-c fd-r-XS">
           <div class="w-100 fs-5-S fs-20-XS f-white-200 ai-c">
             Earnings (<span class="f-white-200">SOL</span>)
           </div>
@@ -54,7 +54,7 @@
             >{{ getEarning }}
           </div>
         </div>
-        <div class="w-100 py-1-S py-10-XS fd-c">
+        <div class="w-100 py-1-S py-10-XS fd-c fd-r-XS">
           <div class="w-100 fs-5-S fs-20-XS f-white-200 ai-c">APR %</div>
           <div
             class="w-a fs-5-M fs-8-S fs-25-XS fsh-0 f-white-200 py-1-S py-5-XS ai-c"

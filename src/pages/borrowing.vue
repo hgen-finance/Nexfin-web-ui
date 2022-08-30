@@ -1,8 +1,8 @@
 <template>
   <div class="w-100">
-    <!-- <div class="w-100 d-n-S d-b-XS">
+    <div class="w-100 d-n-S d-b-XS">
       <Balance />
-    </div> -->
+    </div>
     <div class="w-100 fd-r fw-w pt-0-S pt-30-XS jc-se">
       <div class="w-50-S w-100-XS">
         <Pay

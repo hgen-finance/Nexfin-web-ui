@@ -3,7 +3,7 @@
       <div class="w-100 fd-r ai-s">
         <div class="w-100 fd-r ai-s mcolor-700 rad-fix-9 gradient-200">
           <div
-            class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100"
+            class="d-i fs-5 fs-15-XS f-white-200 ta-c px-1 py-2 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100"
             v-for="(header, h) in headers"
             :key="h"
           >
@@ -35,14 +35,14 @@
           :key="p"
         >
           <div
-            class="d-i fs-5 ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+            class="d-i fs-5 fs-15-XS ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
           >
             <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400 fw-600">
               {{ pool }}
             </div>
           </div>
           <div
-            class="d-i fs-5 ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+            class="d-i fs-5 fs-15-XS ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
           >
             <div
               class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400"
@@ -64,7 +64,7 @@
             </div>
           </div>
           <div
-            class="d-i fs-5 ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
+            class="d-i fs-5 fs-15-XS ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-gray-400"
           >
             <div
               class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400"
@@ -86,7 +86,7 @@
             </div>
           </div>
           <div
-            class="d-i fs-5 ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-white-200"
+            class="d-i fs-5 fs-15-XS ta-c px-1 py-3 br-r-4 br-mcolor-400 fd-r ai-c jc-c w-100 f-white-200"
           >
             <div
               class="w-100 h-100 fd-r ai-c jc-c ta-c fw-600"

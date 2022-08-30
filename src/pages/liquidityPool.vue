@@ -1,7 +1,7 @@
 <template>
-  <div class="w-90 fd-c ai-c">
+  <div class="w-90 w-100-XS fd-c ai-c">
     <div
-      class="w-90 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -10,7 +10,7 @@
         GENS is main currency for our borrowing and lending protocol.
       </div>
     </div>
-    <div class="w-100 px-10-S p-10-XS ">
+    <div class="w-100 px-10-S px-0-XS ">
       <div class="w-100">
         <div class="w-100 fd-r jc-sb ai-c my-3-S">
           <div class="fs-10-S f-white-200 ai-s br-mcolor-400 rad-fix-5 fw-600">

@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 fd-c ai-c">
     <div
-      class="w-80 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -10,15 +10,15 @@
         GENS is main currency for our borrowing and lending protocol.
       </div>
     </div>
-    <div class="w-80">
-      <div class="w-100 fs-10 fw-600 f-white-200 mb-3-S mb-10-XS ta-c-XS">
+    <div class="w-80 w-100-XS">
+      <div class="w-100 fs-10 fs-30-XS fw-600 f-white-200 mb-3-S mb-10-XS ta-c-XS">
         Liquidation
       </div>
     </div>
-    <div class="w-80 p-5-S p-10-XS gradient-2000 rad-fix-20 shadow-cyan-200">
+    <div class="w-80 w-100-XS p-5-S p-10-XS gradient-2000 rad-fix-20 shadow-cyan-200">
       <div class="w-100 fd-r pb-6">
-        <div class="fs-6 fw-500 f-white-200 pr-10">Total</div>
-        <div class="fs-6 f-white-200">
+        <div class="fs-6 fs-20-XS fw-500 f-white-200 pr-10">Total</div>
+        <div class="fs-6 fs-20-XS f-white-200">
           <span class="f-cyan-1500 fw-600 pr-1">{{ totalBorrowers }}</span>
           BORROWERS
         </div>
@@ -27,12 +27,12 @@
         <div class="w-65-S w-100-XS pr-6-S pr-0-XS fd-r ai-c">
           <input
             type="text"
-            class="w-100 mcolor-1100 br-0 pl-3 pr-10 py-3 rad-fix-3 oul-n f-white-200 fs-6 br-mcolor-800 brs-s-L br-1-L"
+            class="w-100 fs-20-XS mcolor-1100 br-0 pl-3 pr-10 py-3 py-10-XS px-5-XS rad-fix-3 oul-n f-white-200 fs-6 br-mcolor-800 brs-s-L br-1-L"
             placeholder="Search..."
             maxlength="60"
             v-model="search"
           />
-          <img src="@/assets/svg/search.svg" class="w-fix-15 p-a r-fix-s-15" />
+          <img src="@/assets/svg/search.svg" class="w-fix-15 w-fix-40-XS p-a r-fix-s-15" />
         </div>
         <div class="w-a-S w-100-XS fsh-0 pt-6-XS">
           <AmButton
@@ -61,7 +61,7 @@
         </div>
         <div class="w-100 fd-r ai-s" v-if="!getLoading">
           <div
-            class="d-i fs-5 f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100"
+            class="d-i fs-5 fs-15-XS f-white-200 ta-c px-1 py-2 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100"
             v-for="(header, h) in headers"
             :key="h"
           >
@@ -78,14 +78,14 @@
         :key="d"
       >
         <div
-          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+          class="d-i fs-5 fs-15-XS ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
         >
           <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
             {{ data.createdAt ? getDate(data.createdAt) : "" }}
           </div>
         </div>
         <div
-          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-cyan-1100"
+          class="d-i fs-5 fs-15-XS ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-cyan-1100"
           :title="data.owner"
         >
           <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
@@ -93,14 +93,14 @@
           </div>
         </div>
         <div
-          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+          class="d-i fs-5 fs-15-XS ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
         >
           <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
             {{ getLamports(data.lamports) }}
           </div>
         </div>
         <div
-          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+          class="d-i fs-5 fs-15-XS ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
         >
           <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
             {{ data.amountToClose }}
@@ -114,7 +114,7 @@
         </div>
       </div> -->
         <div
-          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+          class="d-i fs-5 fs-15-XS ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
         >
           <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
             {{
@@ -126,7 +126,7 @@
           </div>
         </div>
         <div
-          class="d-i fs-5 ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
+          class="d-i fs-5 fs-15-XS ta-c px-1 py-4 br-r-4 brrs-s br-mcolor-1200 fd-r ai-c jc-c w-100 f-gray-400"
         >
           <div class="w-100 h-100 fd-r ai-c jc-c ta-c fw-400">
             {{ getliquidationPrice(data.amountToClose, data.lamports) }}

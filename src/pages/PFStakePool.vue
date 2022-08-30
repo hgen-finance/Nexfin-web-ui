@@ -1,7 +1,7 @@
 <template>
 <div clss = "w-100">
   <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">

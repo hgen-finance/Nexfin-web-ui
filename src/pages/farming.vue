@@ -1,5 +1,8 @@
 <template>
   <div class="w-100">
+    <div class="w-100 d-n-S d-b-XS">
+      <Balance />
+    </div>
     <div class="w-100 fd-c ai-c">
       <div class="w-100 fd-r fw-w pt-0-S jc-se mb-10-S mb-20-XS">
         <div class="w-50-S w-100-XS pt-30-XS">

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -11,18 +11,18 @@
       </div>
     </div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200  fd-c ai-c jc-c"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
     >
-      <div class="w-70" :class="{ 'op-0': getLoading }">
+      <div class="w-70 w-100-XS" :class="{ 'op-0': getLoading }">
         <div class="w-100" v-if="getTotalNotifications > 0">
           <NotificaitonsTx />
         </div>
-        <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
+        <div class="w-100 fw-600 f-white-200 fd-r jc-sb jc-c-XS fd-c-XS">
           <span class="fs-8-S fs-7-M" style="align-self: center"
             >Add Liquidity</span
           >
           <span
-            class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-red-500 ts-3 hv d-n-XS fsh-0"
+            class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-red-500 ts-3 hv fsh-0"
             style="align-self: center"
             v-if="true"
             @click="changeLiquidityStateToRemove"
@@ -55,7 +55,7 @@
           >
             <div class="mb-2-S">
               <span
-                class="fs-4-S fs-20-XS f-cyan-1100 fw-500 ts-3 hv d-n-XS fsh-0  py-1 "
+                class="fs-4-S fs-20-XS f-cyan-1100 fw-500 ts-3 hv d-n-XS fsh-0 py-1"
                 @click="setMax"
                 >max</span
               >
@@ -90,21 +90,7 @@
         <div
           class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS br-mcolor-800 brs-s-L br-1-L"
         >
-          <!-- <div
-        class="ta-r w-100 fs-5-S fs-20-XS f-gray-600 pb-2-S pb-10-XS pt-3-S pt-10-XS fd-r jc-r z-4"
-      >
-        Set amount you want to add
-      </div> -->
           <div class="w-100 pb-3-S pt-3-S fd-r jc-r ai-c">
-            <div
-              class="w-fix-s-10min fs-6-S fs-25-XS fw-600 br-0 oul-n ta-r"
-              :class="{
-                'f-cyan-1500': Number(to) > 0,
-                'f-white-200': Number(to) === 0,
-              }"
-            >
-              {{ to || "0.00" }}
-            </div>
             <div class="p-a-S p-r-XS l-0 b-0 w-fix-35-S w-35-XS">
               <AmSelectbox
                 v-bind:data.sync="currencyTo"
@@ -112,6 +98,15 @@
                 :shadow="false"
                 :padding="false"
               />
+            </div>
+            <div
+              class="w-fix-s-10min w-65-XS fs-6-S fs-25-XS fw-600 br-0 oul-n ta-r"
+              :class="{
+                'f-cyan-1500': Number(to) > 0,
+                'f-white-200': Number(to) === 0,
+              }"
+            >
+              {{ to || "0.00" }}
             </div>
           </div>
         </div>
@@ -164,8 +159,8 @@
             0.00 <span class="f-white-200 pl-1">%</span>
           </div>
         </div>
-        <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
-          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+        <div class="w-100 pt-6-S pt-20-XS fd-r fd-c-XS jc-c">
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS mb-10-XS">
             <AmButton
               color="gradient-1000"
               bColor="gradient-1000"

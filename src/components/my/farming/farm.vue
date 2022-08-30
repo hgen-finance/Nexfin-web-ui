@@ -1,7 +1,7 @@
 <template>
 <div>
   <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -13,7 +13,7 @@
   <div
     class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
   >
-    <div class="w-70" :class="{ 'op-0': getLoading }">
+    <div class="w-70 w-100-XS" :class="{ 'op-0': getLoading }">
       <div class="w-100 fd-r ai-c pb-4-S pb-10-XS jc-sb">
         <!-- <span class="fs-6 f-white-200  ts-3 hv d-n-XS fsh-0">Close</span> -->
         <div class="w-80 fs-8-S fs-25-XS fw-600 f-white-200 ta-l-S ta-l-XS">

@@ -4,7 +4,7 @@
     <Menu @connect="setModalFunc" :publicKey="publicKey" @logout="logout" />
     <!-- <div class="w-100 fd-r jc-c pt-0" v-if="publicKey && wallet"> -->
 
-    <MarketDetails />
+    <div class = "d-n-XS"><MarketDetails /></div>
     <div class="w-100 fd-r jc-c pt-0" v-if="true">
       <div class="w-100-L w-100-M w-100-S w-100-XS fd-r jc-c">
         <div class="w-15-L w-15-M w-15-S w-0-XS fsh-0 z-10 pt-0-S pt-5-XS">

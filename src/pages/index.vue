@@ -19,14 +19,14 @@
         <span class="fw-600 mr-4-S"
           ><img
             src="@/assets/svg/symbol-company.png"
-            class="h-fix-45-S h-fix-55-XS mr-1"
+            class="h-fix-45-S h-fix-60-XS mr-1 mr-10-XS"
         /></span>
-        <div class="w-60 f-white-200 fs-12-S fw-600">
+        <div class="w-60 f-white-200 fs-12-S fs-25-XS fw-600">
           Connecting value and ESG
         </div>
       </div>
-      <div class="w-100 fd-r my-5-S mx-2-S">
-        <div class="fw-600 f-cyan-1500 mr-8-S">$HGEN</div>
+      <div class="w-100 fd-r my-5-S mx-2-S fd-c-XS my-10-XS ai-c-XS fs-20-XS">
+        <div class="fw-600 f-cyan-1500 mr-8-S my-5-XS">$HGEN</div>
         <div class="f-white-200 fs-5-S">
           HGEN is our governance token with which HGEN holders govern our
           ecosystem and receive the majority of fees from the farm performance.
@@ -35,8 +35,8 @@
           better place.
         </div>
       </div>
-      <div class="w-100 fd-r mx-2-S">
-        <div class="fw-600 f-cyan-1500 mr-8-S">$GENS</div>
+      <div class="w-100 fd-r fd-c-XS mx-2-S ai-c-XS fs-20-XS">
+        <div class="fw-600 f-cyan-1500 mr-8-S my-5-XS">$GENS</div>
         <div class="f-white-200 fs-5-S">
           GENS is a stable coin of HGEN platform designed to be pegged to USD.
           <br />

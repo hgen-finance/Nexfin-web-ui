@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -13,14 +13,14 @@
     <div
       class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
     >
-      <div class="w-70" :class="{ 'op-0': getLoading }">
+      <div class="w-70 w-100-XS" :class="{ 'op-0': getLoading }">
         <div class="w-100" v-if="getTotalNotifications > 0">
           <NotificaitonsTx />
         </div>
 
-        <div class="fd-r">
+        <div class="fd-r fd-c-XS ai-c-XS">
           <div
-            class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-2-S pb-10-XS ta-c-XS fd-r ai-c jc-sb"
+            class="w-100 fs-8-S fs-25-XS fw-600 f-white-200 pb-2-S pb-10-XS ta-c-XS fd-r ai-c jc-sb jc-c-XS"
           >
             GENS Staking
           </div>

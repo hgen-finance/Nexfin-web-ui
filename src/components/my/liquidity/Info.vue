@@ -34,7 +34,7 @@
             >
           </div>
           <div
-            class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-2-M pb-2-S pb-30-XS mb-2-S ta-l-S ta-c-XS fd-r brbs-s  br-gray-800"
+            class="w-100 fs-7-L fs-7-M fs-6-S fs-40-XS fw-600 f-white-200 pb-2-M pb-2-S pb-30-XS mb-2-S ta-l-S ta-c-XS fd-r brbs-s  br-gray-800 jc-c-XS"
           >
             Liquidity Pool
           </div>

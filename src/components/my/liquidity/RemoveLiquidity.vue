@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -13,16 +13,16 @@
     <div
       class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
     >
-      <div class="w-70" :class="{ 'op-0': getLoading }">
+      <div class="w-70 w-100-XS" :class="{ 'op-0': getLoading }">
         <div class="w-100" v-if="getTotalNotifications > 0">
           <NotificaitonsTx />
         </div>
-        <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
+        <div class="w-100 fw-600 f-white-200 fd-r jc-sb jc-c-XS fd-c-XS">
           <span class="fs-8-S fs-7-M" style="align-self: center"
             >Remove Liquidity</span
           >
           <span
-            class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv d-n-XS fsh-0"
+            class="fs-3-S fs-4-M px-1-S py-1-S px-3-XS py-3-XS f-green-500 ts-3 hv fsh-0"
             style="align-self: center"
             v-if="true"
             @click="changeLiquidityStateToAdd"
@@ -106,8 +106,8 @@
             0.00 <span class="f-white-200 pl-1">%</span>
           </div>
         </div>
-        <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
-          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+        <div class="w-100 pt-6-S pt-20-XS fd-r fd-c-XS jc-c">
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS mb-10-XS">
             <AmButton
               color="gradient-1000"
               bColor="gradient-1000"

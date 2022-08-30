@@ -17,9 +17,9 @@
         Price
       </div>
     </div>
-    <div class="w-100 fd-c fw-w">
-      <div class="w-100-L w-100-M w-100-S w-100-XS">
-        <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r">
+    <div class="w-100 fd-c fw-w ">
+      <div class="w-100-L w-100-M w-100-S w-100-XS pb-1-S brbs-s brb-3 br-gray-800">
+        <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ">
           <div class="w-20 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             SOL
           </div>
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="w-100-L w-100-M w-100-S w-100-XS my-2 my-5-XS">
+      <div class="w-100-L w-100-M w-100-S w-100-XS py-1-S my-5-XS brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
           <div class="w-20 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             HGEN
@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <div class="w-100-L w-100-M w-100-S w-100-XS">
+      <div class="w-100-L w-100-M w-100-S w-100-XS py-1-S brbs-s brb-3 br-gray-800">
         <div class="w-100 fs-6-S fs-20-XS fw-600 f-white-200 fd-r">
           <div class="w-20 fs-6-S fs-20-XS fw-600 f-white-200 fd-r ai-c">
             GENS
@@ -94,6 +94,7 @@ export default {
         result = Number(this.$accessor.wallet.balanceHGEN)
           .toString()
           .split(".");
+        console.log("the gens is", result);
         if (result.length > 1) {
           result =
             result[1].length > 1

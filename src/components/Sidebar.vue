@@ -6,7 +6,7 @@
     <div class="w-100" v-for="item in items" :key="item.class">
       <nuxt-link
         :to="item.to"
-        class="w-a-M w-100-S w-100-XS fd-r-S fd-c-XS ai-c hv ts-3 mb-2-S my-10-XS brbs-s br-gray-800 brb-3 pb-2-S"
+        class="w-a-M w-100-S w-100-XS fd-r-S fd-c-XS ai-c hv ts-3 mb-2-S my-10-XS brbs-s-S br-gray-800 brb-3 pb-2-S"
       >
         <div class="w-fix-s-15-S w-100-XS mr-2-S fd-r ai-c jc-l-S jc-c-XS">
           <HomeSvg
@@ -101,7 +101,7 @@
         </span>
       </nuxt-link>
     </div>
-     <div class="w-100 fd-r jc-c pt-5-M pt-30-XS px-0-S px-20-XS">
+     <div class="w-100 fd-r jc-c pt-5-M pt-30-XS px-0-S px-20-XS d-n-XS">
         <AmButton color="gradient-5002" bColor="gradient-5002" class="rad-fix-10" opacityEffect>
           <div class="w-100 tt-n fs-5-S fs-18-XS fw-600">Beginner’s Guide</div>
         </AmButton>

@@ -1,10 +1,10 @@
 <template>
   <div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
-      <div class="f-white-200 fs-5-S">
+      <div class="f-white-200 fs-5-S fs-20-XS mt-5-XS">
         GENS is a stable coin of HGEN platform designed to be pegged to USD.
         <br />
         GENS is main currency for our borrowing and lending protocol.
@@ -13,11 +13,11 @@
     <div
       class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c"
     >
-      <div class="w-70" :class="{ 'op-0': getLoading }">
+      <div class="w-70 w-100-XS" :class="{ 'op-0': getLoading }">
         <div class="w-100" v-if="getTotalNotifications > 0">
           <NotificaitonsTx />
         </div>
-        <div class="fd-r">
+        <div class="fd-r fd-c-XS ai-c-XS">
           <div
             class="w-50 fs-8-S fs-25-XS fw-600 f-white-200 pb-4-S pb-15-XS ta-c-XS"
             data-tour-step="0"
@@ -247,14 +247,14 @@
             <div class="w-100 fd-r ai-c">
               <input
                 type="text"
-                class="w-100 fs-8 mx-1 white-100 br-0 oul-n fs-20-XS fw-600 f-cyan-1500 ta-r"
+                class="w-100 fs-8 mx-1 white-100 br-0 oul-n fs-25-XS fw-600 f-cyan-1500 ta-r"
                 placeholder="0"
                 v-model="collateralRatio"
                 maxlength="12"
                 disabled
                 
               />
-              <span class="f-white-200 fs-8 fw-500">%</span>
+              <span class="f-white-200 fs-8 fs-25-XS fw-500">%</span>
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@
       </div> -->
 
         <div
-          class="w-100 fd-r-S fd-c-XS mt-0-S mt-15-XS"
+          class="w-100 fd-r-S fd-c-XS mt-0-S mt-5-XS"
           v-if="!getBorrowOrPay"
         >
           <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">

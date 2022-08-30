@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c mb-5-S fd-r"
+      class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c-XS ai-c jc-c mb-5-S mb-10-XS fd-r"
     >
       <div class="fw-600 f-cyan-1500 mr-3-S">$GENS</div>
       <div class="f-white-200 fs-5-S">
@@ -13,7 +13,7 @@
     <div
       class="w-100 br-6 gradient-2000 rad-fix-20 p-8-S p-20-XS shadow-cyan-200 fd-c ai-c jc-c shadow-cyan-200"
     >
-      <div class="w-70" :class="{ 'op-0': getLoading }">
+      <div class="w-70 w-100-XS" :class="{ 'op-0': getLoading }">
         <div class="w-100 fw-600 f-white-200 fd-r jc-sb">
           <span v-if="raySwap" class="fs-8-S fs-7-M" style="align-self: center"
             >Raydium Swap</span
@@ -89,10 +89,10 @@
           </div>
         </div>
         <div
-          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-r br-mcolor-800 brs-s-L br-1-L"
+          class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-r br-mcolor-800 brs-s-L br-1-L jc-se"
         >
           <div class="w-100 pb-0 fd-r jc-r ai-c">
-            <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-35-XS">
+            <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-fix-150-XS">
               <AmSelectbox
                 v-bind:data.sync="currencyFrom"
                 :update="true"
@@ -121,14 +121,14 @@
           >
             <div class="jc-r mt-1-S mb-2-S d-f jc-r">
               <span
-                class="fs-4-S fs-20-XS f-cyan-200 fw-500 ts-3 hv d-n-XS fsh-0 py-1 "
+                class="fs-4-S fs-20-XS f-cyan-200 fw-500 ts-3 hv fsh-0 py-1"
                 @click="setMax"
                 >max</span
               >
             </div>
 
             <input
-              class="w-fix-s-10min fs-7-S fs-25-XS fw-600 f-cyan-1500 br-0 oul-n white-100 ta-r"
+              class="w-fix-s-10min fs-7-S fs-25-XS fw-600 f-cyan-1500 br-0 oul-n white-100 ta-r "
               placeholder="0.00"
               v-model="from"
               maxlength="15"
@@ -147,8 +147,8 @@
         <div
           class="w-100 mt-2-S mt-10-XS mb-1 mcolor-1100 rad-fix-10-S rad-fix-10-XS px-4-S px-10-XS fd-r br-mcolor-800 brs-s-L br-1-L"
         >
-          <div class="w-100 pb-0 fd-r jc-r">
-            <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S w-35-XS">
+          <div class="w-100 pb-0 fd-r jc-l">
+            <div class="p-a-S p-r-XS l-0 t-15 w-fix-35-S  w-fix-150-XS">
               <AmSelectbox
                 v-bind:data.sync="currencyTo"
                 :update="true"
@@ -257,7 +257,7 @@
             {{ priceImpact }} <span class="f-white-200 pl-1">%</span>
           </div>
         </div>
-        <div class="w-100 pt-6-S pt-20-XS fd-r jc-c">
+        <div class="w-100 pt-6-S pt-20-XS fd-r fd-c-XS jc-c">
           <AmButton
             color="gradient-5002"
             bColor="gradient-5002"
@@ -268,7 +268,7 @@
           >
             RAYDIUM SWAP
           </AmButton>
-          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS">
+          <div class="w-50-S w-100-XS mr-2-L mr-2-S mr-0-XS mb-10-XS">
             <AmButton
               color="gradient-1000"
               bColor="gradient-1000"
