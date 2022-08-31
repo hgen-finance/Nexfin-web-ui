@@ -6,22 +6,13 @@
       <div class="w-100">
         <div class="fw-600 fs-8-S fs-25-XS f-white-200">Multi Transaction</div>
       </div>
-      <!-- <div class="w-100 fd-c ai-s" ref="container">
-      <div class="cside-L cside-M cside-S cside-XS fd-r jc-c mt-8-XS mt-2-S">
-        <div
-          class="fd-r jc-c f-white-200 ai-c micon-L micon-M micon-S micon-XS"
-          @click="addInput"
-        >
-          <Icon type="plus" :rotate="90" />
-        </div>
-      </div>
-    </div> -->
+      
       <div
         class="w-100 mt-2-S mt-10-XS mb-1 mb-5-XS rad-fix-2-S rad-fix-10-XS fd-r "
       >
-        <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS ">
+        <div class="w-100 pb-0 fd-r jc-r ai-c py-2-S py-5-XS fd-c-XS">
           <div
-            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 mcolor-1100 pl-5-XS pl-3-S rad-fix-5 br-mcolor-800 brs-s-L br-1-L pb-1-S py-5-XS"
+            class="pr-2 pr-5-XS p-a-S p-r-XS l-0 t-15 w-50 w-100-XS mcolor-1100 pl-5-XS pl-3-S rad-fix-5 br-mcolor-800 brs-s-L br-1-L pb-1-S py-5-XS mb-15-XS"
           >
             <AmSelectbox
               v-bind:data.sync="tokens"
@@ -32,7 +23,7 @@
               bColor="mcolor-1100"
             />
           </div>
-          <div class="w-45" v-if="getToken != 'SOL' && getDest">
+          <div class="w-45 w-100-XS" v-if="getToken != 'SOL' && getDest">
             <AmButton
               color="gradient-5002"
               bColor="gradient-5002"
@@ -44,7 +35,7 @@
               Get Accounts
             </AmButton>
           </div>
-          <div class="w-45" v-if="!getDest || getToken == 'SOL'">
+          <div class="w-45 w-100-XS" v-if="!getDest || getToken == 'SOL'">
             <AmButton
               color="gradient-5002"
               bColor="gradient-5002"
@@ -96,8 +87,8 @@
         </div>
       </div>
 
-      <div class="w-100 fd-r jc-sb ai-c mb-3-S mb-10-XS">
-        <div class="w-45">
+      <div class="w-100 fd-r fd-c-XS jc-sb ai-c mb-3-S mb-8-XS">
+        <div class="w-45 w-100-XS mb-5-XS">
           <AmButton
             color="gradient-1000"
             bColor="gradient-1000"
@@ -118,7 +109,7 @@
         Claim
       </AmButton> -->
         </div>
-        <div class="w-45">
+        <div class="w-45 w-100-XS">
           <AmButton
             color="gradient-5002"
             bColor="gradient-5002"
