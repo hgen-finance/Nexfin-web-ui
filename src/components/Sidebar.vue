@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-100 p-r-S p-f-XS l-0 t-0-S t-a-XS b-a-S b-0-XS pl-10-M pl-5-S pl-0-XS fd-c-S fd-r-XS mt-2-XS py-2-XS"
+    class="w-100 p-r-S p-f-XS l-0 t-0-S t-a-XS b-a-S b-0-XS pl-10-M pl-5-S pl-0-XS fd-c-S fd-r-XS mt-2-XS py-2-XS ai-c-XS"
   >
     <span class="w-100 h-100 bg-r p-a l-0 t-0 d-n-S d-f-XS" />
     <div class="w-100" v-for="item in items" :key="item.class">
@@ -8,7 +8,7 @@
         :to="item.to"
         class="w-a-M w-100-S w-100-XS fd-r-S fd-c-XS ai-c hv ts-3 mb-2-S my-10-XS brbs-s-S br-gray-800 brb-3 pb-2-S"
       >
-        <div class="w-fix-s-15-S w-100-XS mr-2-S fd-r ai-c jc-l-S jc-c-XS">
+        <div class="w-fix-s-15-S w-100-XS mr-2-S fd-r ai-c  jc-l-S jc-c-XS">
           <HomeSvg
             class="w-fix-10-S w-40-XS "
             v-if="item.id === 1 && !getActive(item)"
@@ -34,58 +34,58 @@
             v-if="item.id === 3 && getActive(item)"
           />
           <PieSvg
-            class="w-fix-10-S w-80-XS"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 4 && !getActive(item)"
           />
           <PieActiveSvg
-            class="w-fix-10-S w-80-XS"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 4 && getActive(item)"
           />
-          <CoinsSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/liquidation.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 5 && !getActive(item)"
           />
-          <CoinsActiveSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/liquidation.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 5 && getActive(item)"
           />
-          <CoinsSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/farm.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 6 && !getActive(item)"
           />
-          <CoinsActiveSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/farm.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 6 && getActive(item)"
           />
           <CoinsSvg
-            class="w-fix-10-S w-80-XS"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 7 && !getActive(item)"
           />
           <CoinsActiveSvg
-            class="w-fix-10-S w-80-XS"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 7 && getActive(item)"
           />
-          <CoinsSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/liquidity.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 8 && !getActive(item)"
           />
-          <CoinsActiveSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/liquidity.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 8 && getActive(item)"
           />
-          <CoinsSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/pool.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 9 && !getActive(item)"
           />
-          <CoinsActiveSvg
-            class="w-fix-10-S w-80-XS"
+          <img src="@/assets/icons/pool.png"
+            class="w-fix-10-S w-40-XS"
             v-if="item.id === 9 && getActive(item)"
           />
-          <SwitchSvg
+          <img src="@/assets/icons/multi-send.png"
             class="w-fix-10-S w-40-XS"
             v-if="item.id === 10 && !getActive(item)"
           />
-          <SwitchActiveSvg
+          <img src="@/assets/icons/multi-send.png"
             class="w-fix-10-S w-40-XS"
             v-if="item.id === 10 && getActive(item)"
           />
@@ -102,7 +102,7 @@
       </nuxt-link>
     </div>
      <div class="w-100 fd-r jc-c pt-5-M pt-30-XS px-0-S px-20-XS d-n-XS">
-        <AmButton color="gradient-5002" bColor="gradient-5002" class="rad-fix-10" opacityEffect>
+        <AmButton color="gradient-5002" bColor="gradient-5002" class="rad-fix-10" opacityEffect link="https://docs.hgen.finance/beginners-guide">
           <div class="w-100 tt-n fs-5-S fs-18-XS fw-600">Beginner’s Guide</div>
         </AmButton>
       </div>

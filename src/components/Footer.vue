@@ -25,24 +25,27 @@
           </div>
         </div>
         <div class="w-a fsh-0 pt-0-S pt-20-XS fd-r jc-c">
-          <a href="" class="mx-4-S mx-10-XS hv ts-3 op-7">
+          <a href="https://t.me/hgenFinance" class="mx-4-S mx-10-XS hv ts-3 op-7">
             <img
               src="@/assets/svg/telegram.svg"
               class="h-fix-15-S h-fix-55-XS"
             />
           </a>
-          <a href="" class="mx-4-S mx-10-XS hv ts-3 op-7">
+          <a href="https://twitter.com/hgen_finance" class="mx-4-S mx-10-XS hv ts-3 op-7">
             <img
               src="@/assets/svg/twitter.svg"
               class="h-fix-15-S h-fix-55-XS"
             />
           </a>
-          <a href="" class="mx-4-S mx-10-XS hv ts-3 op-7">
-            <img src="@/assets/svg/reddit.svg" class="h-fix-15-S h-fix-55-XS" />
-          </a>
-          <a href="" class="mx-4-S mx-10-XS hv ts-3 op-7">
+          <a href="https://discord.gg/MuDrrpV7MT" class="mx-4-S mx-10-XS hv ts-3 op-7">
             <img
               src="@/assets/svg/discord.svg"
+              class="h-fix-15-S h-fix-55-XS"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/hgen-finance-6bbb49236/" class="mx-4-S mx-10-XS hv ts-3 op-7">
+            <img
+              src="@/assets/svg/linkedin.svg"
               class="h-fix-15-S h-fix-55-XS"
             />
           </a>
